@@ -26,7 +26,7 @@
             <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
             <li class="breadcrumb-item text-sm text-dark active" aria-current="page">CRM</li>
           </ol>
-          <h6 class="font-weight-bolder mb-0">CRM</h6>
+          <h6 class="font-weight-bolder mb-0"></h6>
         </nav>
         <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
           <a href="javascript:;" class="nav-link text-body p-0">
@@ -218,7 +218,7 @@
                   <span class="mask bg-gradient-dark"></span>
                   <div class="card-body position-relative z-index-1 h-100 p-3">
                     <h6 class="text-white font-weight-bolder mb-3">Hey John!</h6>
-                    <p class="text-white mb-3">Wealth creation is an evolutionarily recent positive-sum game. It is all about who take the opportunity first.</p>
+                    <p class="text-white mb-3">{{ $accessToken }}</p>
                     <a class="btn btn-round btn-outline-white mb-0" href="javascript:;">
                       Read More
                       <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>

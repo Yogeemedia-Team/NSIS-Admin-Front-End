@@ -21,12 +21,12 @@ Route::get('/', function () {
 });
 
 Route::get('/login', [LoginController::class, 'userLoginForm'])->name('user.login-form');
-Route::post('/login', [LoginController::class, 'userLogin'])->name('user.login');
+Route::post('/login', [LoginController::class, 'loginApi'])->name('loginApi');
 
 Route::get('/register', [LoginController::class, 'userRegisterForm'])->name('user.register-form');
 Route::post('/register', [LoginController::class, 'userRegister'])->name('user.register');
 
-Route::get('/admin/login', [LoginController::class, 'adminLoginForm'])->name('admin.login-form');
+Route::get('/permission', [LoginController::class, 'getPermission'])->name('getpermission');
 Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
 
