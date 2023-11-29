@@ -31,10 +31,16 @@ class LoginController extends Controller
         // Decode the response and return the result
         $result = json_decode((string) $response->getBody(), true);
 
-        session(['temp_access_token' => $result['data']['access_token']]);
+if($result['status'] == false){
+    return view('layouts.auth.login', ['errors' => $result['errors'], 'message' => $result['message']]);
+}else{
+  // Pass the access token to the view
+    session(['temp_access_token' => $result['data']['access_token']]);
+    return view('layouts.pages.dashboard', ['accessToken' => $result['data']['access_token']]); 
+}
+        
 
-    // Pass the access token to the view
-        return view('layouts.pages.dashboard', ['accessToken' => $result['data']['access_token']]);
+
     }
 
    
