@@ -13,6 +13,7 @@ class LoginController extends Controller
     }
 
     public function loginApi (Request $request){
+        
         $email = $request->email;
         $password = $request->password;
         // Retrieve the access token from the session
@@ -22,13 +23,14 @@ class LoginController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json',
-        ])->post(env('APP_URL') . '/api/login', [
+        ])->post(env('APP_API') . '/api/login', [
             'email' => $email,
             'password' => $password
         ]);
 
         // Decode the response and return the result
         $result = json_decode((string) $response->getBody(), true);
+
         session(['temp_access_token' => $result['data']['access_token']]);
 
     // Pass the access token to the view
@@ -46,7 +48,7 @@ class LoginController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json',
-        ])->get(env('APP_URL') . '/api/permissions');
+        ])->get(env('APP_API') . '/api/permissions');
 
         // Decode the response and return the result
         $result = json_decode((string) $response->getBody(), true);
