@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 class LoginController extends Controller
 {
+   
     public function userLoginForm(){
         return view('layouts.auth.login');
     }
@@ -21,7 +22,7 @@ class LoginController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json',
-        ])->post('http://127.0.0.1:9000/api/login', [
+        ])->post(env('APP_URL') . '/api/login', [
             'email' => $email,
             'password' => $password
         ]);
@@ -45,7 +46,7 @@ class LoginController extends Controller
         $response = Http::withHeaders([
             'Authorization' => 'Bearer ' . $accessToken,
             'Content-Type' => 'application/json',
-        ])->get('http://127.0.0.1:9000/api/permissions');
+        ])->get(env('APP_URL') . '/api/permissions');
 
         // Decode the response and return the result
         $result = json_decode((string) $response->getBody(), true);
