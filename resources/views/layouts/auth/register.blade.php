@@ -39,7 +39,7 @@
                       </label>
                     </div>
                     <div class="text-center">
-                      <button type="button" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
+                      <button type="submit" class="btn bg-gradient-primary w-100 mt-4 mb-0">Sign up</button>
                     </div>
                   </form>
                 </div>
