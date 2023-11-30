@@ -92,10 +92,11 @@ class LoginController extends Controller
 
     public function userRegister(Request $request){
         $clientSecret = Str::random(40);
-        $response = $this->apiService->makeApiRequest('POST', 'register', [
+         $response = $this->apiService->makeApiRequest('POST', 'register', [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
+            'password_confirmation' => $request->password_confirmation,
             'user_type'=> $request->password,
             'client_secret' => $clientSecret,
             // Add other parameters as needed
@@ -107,7 +108,7 @@ class LoginController extends Controller
         } else {
             // Store the access token in the session
             $user = User::create([ 'client_secret' => $clientSecret]);
-            return view('layouts.auth.register', ['errors' => $response['errors'], 'message' => $response['message']]);;
+            return view('layouts.auth.register', ['message' => $response['message']]);;
         }
     }
 
