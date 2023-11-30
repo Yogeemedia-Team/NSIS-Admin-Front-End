@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Services\ApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Cache;
-
+use Illuminate\Support\Str;
 class LoginController extends Controller
 {
 
@@ -89,8 +90,25 @@ class LoginController extends Controller
         return view('layouts.auth.register');
     }
 
-    public function userRegister(){
-
+    public function userRegister(Request $request){
+        $clientSecret = Str::random(40);
+        $response = $this->apiService->makeApiRequest('POST', 'register', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'user_type'=> $request->password,
+            'client_secret' => $clientSecret,
+            // Add other parameters as needed
+            ]);
+            
+        if ($response['status'] === false) {
+            
+            return view('layouts.auth.register', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+            // Store the access token in the session
+            $user = User::create([ 'client_secret' => $clientSecret]);
+            return view('layouts.auth.register', ['errors' => $response['errors'], 'message' => $response['message']]);;
+        }
     }
 
     public function adminLoginForm(){
