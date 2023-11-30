@@ -12,6 +12,22 @@
                   <p class="mb-0">Enter your email and password to register</p>
                 </div>
                 <div class="card-body pb-3">
+                  @if(isset($message))
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <strong  style="color:white;text">{{ $message }}</strong>
+  <button type="button" class="btn-close auth_form_message" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+                                
+                                @endif
+@if(isset($errors) && is_array($errors) && count($errors) > 0)
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach($errors as $error)
+                                            <li style="color:white;font-weight:600;">{{ $error[0] }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                                @endif
                   <form role="form" action="{{ route('register') }}" method="POST">
                     @csrf
                     <label>Name</label>
