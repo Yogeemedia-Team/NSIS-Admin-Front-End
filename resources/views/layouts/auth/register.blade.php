@@ -44,7 +44,7 @@
                     </div>
                     <label for="password_confirmation">Confirm Password:</label>
                     <div class="mb-3">
-                      <input type="password" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password" required>
+                      <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password" required>
                     </div>  
                     <label>User type</label>
                     <div class="mb-3">
