@@ -44,7 +44,7 @@ class ApiService
             
             return [
                 'status' => false,
-                'errors' => ['api' => 'API request failed.'],
+                'errors' => [],
                 'message' => 'Failed to communicate with the API.',
             ];
         }
