@@ -23,11 +23,18 @@ Route::get('/', function () {
 Route::get('/login', [LoginController::class, 'userLoginForm'])->name('user.login-form');
 Route::post('/login', [LoginController::class, 'loginApi'])->name('loginApi');
 
-Route::get('/register', [LoginController::class, 'userRegisterForm'])->name('user.register-form');
-Route::post('/register', [LoginController::class, 'userRegister'])->name('user.register');
-
-Route::get('/permission', [LoginController::class, 'getPermission'])->name('getpermission');
-Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
 
 
-Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+Route::group(['middleware' => 'checkRoutes'], function () {
+    // Your routes here
+    Route::get('/register', [LoginController::class, 'userRegisterForm'])->name('user.register-form');
+    Route::post('/register', [LoginController::class, 'userRegister'])->name('user.register');
+
+    Route::get('/permission', [HomeController::class, 'getPermission'])->name('getpermission');
+    Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
+
+
+    Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
+    Route::post('/logout', [LoginController::class, 'logOut'])->name('logOut');
+});
+
