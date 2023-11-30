@@ -12,18 +12,25 @@
                   <p class="mb-0">Enter your email and password to register</p>
                 </div>
                 <div class="card-body pb-3">
-                  <form role="form">
+                  <form role="form" action="{{ route('register') }}" method="POST">
                     <label>Name</label>
                     <div class="mb-3">
-                      <input type="text" class="form-control" placeholder="Name" aria-label="Name">
+                      <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
                     </div>
                     <label>Email</label>
                     <div class="mb-3">
-                      <input type="email" class="form-control" placeholder="Email" aria-label="Email">
+                      <input type="email" class="form-control" name="email" placeholder="Email" aria-label="Email">
                     </div>
                     <label>Password</label>
                     <div class="mb-3">
-                      <input type="password" class="form-control" placeholder="Password" aria-label="Password">
+                      <input type="password" class="form-control" name="password" placeholder="Password" aria-label="Password">
+                    </div>
+                    <label>User type</label>
+                    <div class="mb-3">
+                      <select class="form-control" id="exampleFormControlSelect1">
+                          <option value="0">User</option>
+                          <option value="1">Admin</option>
+                        </select>
                     </div>
                     <div class="form-check form-check-info text-left">
                       <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" checked>

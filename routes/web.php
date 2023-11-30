@@ -28,7 +28,7 @@ Route::post('/login', [LoginController::class, 'loginApi'])->name('loginApi');
 Route::group(['middleware' => 'checkRoutes'], function () {
     // Your routes here
     Route::get('/register', [LoginController::class, 'userRegisterForm'])->name('user.register-form');
-    Route::post('/register', [LoginController::class, 'userRegister'])->name('user.register');
+    Route::post('/register', [LoginController::class, 'userRegister'])->name('register');
 
     Route::get('/permission', [HomeController::class, 'getPermission'])->name('getpermission');
     Route::post('/admin/login', [LoginController::class, 'adminLogin'])->name('admin.login');
