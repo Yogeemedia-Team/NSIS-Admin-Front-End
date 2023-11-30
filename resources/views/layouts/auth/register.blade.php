@@ -13,6 +13,7 @@
                 </div>
                 <div class="card-body pb-3">
                   <form role="form" action="{{ route('register') }}" method="POST">
+                    @csrf
                     <label>Name</label>
                     <div class="mb-3">
                       <input type="text" class="form-control" name="name" placeholder="Name" aria-label="Name">
