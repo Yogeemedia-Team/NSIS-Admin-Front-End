@@ -166,7 +166,7 @@
                </div>
                <div class="col-md-5 col-lg-4 ms-auto text-center mt-5 mt-lg-0">
                  <div class="border-radius-lg h-100">
-                   <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
+                   <!-- <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves"> -->
                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
                      <img class="w-100 position-relative z-index-2 pt-4" src="../assets/img/children.png" alt="rocket">
                    </div>
