@@ -24,4 +24,7 @@ class HomeController extends Controller
     public function dashboard(){
         return view('layouts.pages.dashboard');
     }
+    public function formpage(){
+        return view('layouts.pages.formpage');
+    }
 }

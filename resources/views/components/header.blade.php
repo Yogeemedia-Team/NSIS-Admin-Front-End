@@ -20,6 +20,8 @@
   <link href="{{ asset('assets/css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
+  <!-- Custom css file -->
+  <link id="pagestyle" href="{{ asset('assets/css/custom.css?v=1.1.1') }}" rel="stylesheet" />
 </head>
 
 <body class="">
