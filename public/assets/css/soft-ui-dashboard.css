@@ -21742,7 +21742,7 @@ label,
 }
 /* newly aded */
 .bg-gradient-primary {
-	background-image: linear-gradient(310deg, #2C3793 0%, #A29B9E 100%);
+	background-image: linear-gradient(310deg, #2C3793 0%, #FBFBFB 100%);
 }
 
 .bg-gradient-secondary {
@@ -21855,7 +21855,7 @@ label,
 .icon-shape i {
   color: #fff;
   opacity: 0.8;
-  top: 11px;
+  /* top: 11px; */
   position: relative;
 }
 

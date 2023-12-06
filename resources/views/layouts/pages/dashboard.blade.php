@@ -196,6 +196,8 @@
          </div>
        </div>
      </div>
+
+     <!-- Cards section  -->
      <div class="row mt-5">
        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
          <div class="card">
@@ -203,16 +205,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 1 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Students</p>
                    <h5 class="font-weight-bolder mb-0">
-                     $11111
+                     1000+
+                     <br>
                      <span class="text-success text-sm font-weight-bolder">+1%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-secondary shadow text-center border-radius-md">
-                   <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-secondary shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                   <i class="fa-solid fa-3x fa-user"></i>
                  </div>
                </div>
              </div>
@@ -225,16 +228,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 2 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Teachers</p>
                    <h5 class="font-weight-bolder mb-0">
-                     2222%
+                     100+
+                     <br>
                      <span class="text-success text-sm font-weight-bolder">+2%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
-                   <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-success shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                 <i class="fa-solid fa-3x fa-person-chalkboard"></i>
                  </div>
                </div>
              </div>
@@ -247,16 +251,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 3 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Monitoring</p>
                    <h5 class="font-weight-bolder mb-0">
-                     +3333
-                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                     90%
+                     <br>
+                     <span class="text-success text-sm font-weight-bolder">+50%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                   <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-info shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                 <i class="fa-solid fa-3x fa-desktop"></i>
                  </div>
                </div>
              </div>
@@ -269,16 +274,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 4 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Reports</p>
                    <h5 class="font-weight-bolder mb-0">
-                     -4444
-                     <span class="text-success text-sm font-weight-bolder">+5%</span>
+                     9+
+                     <br>
+                     <span class="text-success text-sm font-weight-bolder">+10%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                   <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-warning shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                 <i class="fa-solid fa-3x fa-clipboard"></i>
                  </div>
                </div>
              </div>
