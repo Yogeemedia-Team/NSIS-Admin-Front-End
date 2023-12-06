@@ -148,7 +148,7 @@
      </div>
    </nav>
    <!-- End Navbar -->
-   <div class="container-fluid py-4">
+   <div class="container-fluid body_content py-4">
      <div class="row">
        <div class="col-md-12">
          <div class="card">
@@ -166,7 +166,7 @@
                </div>
                <div class="col-md-5 col-lg-4 ms-auto text-center mt-5 mt-lg-0">
                  <div class="border-radius-lg h-100">
-                   <img src="../assets/img/shapes/waves-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves">
+                   <!-- <img src="../assets/img/shapes/waves`-white.svg" class="position-absolute h-100 w-50 top-0 d-lg-block d-none" alt="waves"> -->
                    <div class="position-relative d-flex align-items-center justify-content-center h-100">
                      <img class="w-100 position-relative z-index-2 pt-4" src="../assets/img/children.png" alt="rocket">
                    </div>
@@ -196,6 +196,7 @@
          </div>
        </div>
      </div>
+     <!-- Cards section  -->
      <div class="row mt-5">
        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
          <div class="card">
@@ -203,16 +204,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 1 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Students</p>
                    <h5 class="font-weight-bolder mb-0">
-                     $11111
+                     1000+
+                     <br>
                      <span class="text-success text-sm font-weight-bolder">+1%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-secondary shadow text-center border-radius-md">
-                   <i class="ni ni-money-coins text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-secondary shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                   <i class="fa-solid fa-3x fa-user"></i>
                  </div>
                </div>
              </div>
@@ -225,16 +227,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 2 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Teachers</p>
                    <h5 class="font-weight-bolder mb-0">
-                     2222%
+                     100+
+                     <br>
                      <span class="text-success text-sm font-weight-bolder">+2%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-danger shadow text-center border-radius-md">
-                   <i class="ni ni-world text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-success shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                   <i class="fa-solid fa-3x fa-person-chalkboard"></i>
                  </div>
                </div>
              </div>
@@ -247,16 +250,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 3 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Monitoring</p>
                    <h5 class="font-weight-bolder mb-0">
-                     +3333
-                     <span class="text-danger text-sm font-weight-bolder">-2%</span>
+                     90%
+                     <br>
+                     <span class="text-success text-sm font-weight-bolder">+50%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-info shadow text-center border-radius-md">
-                   <i class="ni ni-paper-diploma text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-info shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                   <i class="fa-solid fa-3x fa-desktop"></i>
                  </div>
                </div>
              </div>
@@ -269,16 +273,17 @@
              <div class="row">
                <div class="col-8">
                  <div class="numbers">
-                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Card 4 data</p>
+                   <p class="text-sm mb-0 text-capitalize font-weight-bold">Reports</p>
                    <h5 class="font-weight-bolder mb-0">
-                     -4444
-                     <span class="text-success text-sm font-weight-bolder">+5%</span>
+                     9+
+                     <br>
+                     <span class="text-success text-sm font-weight-bolder">+10%</span>
                    </h5>
                  </div>
                </div>
                <div class="col-4 text-end">
-                 <div class="icon icon-shape bg-gradient-success shadow text-center border-radius-md">
-                   <i class="ni ni-cart text-lg opacity-10" aria-hidden="true"></i>
+                 <div class="h-100 w-100 icon icon-shape bg-gradient-warning shadow text-center border-radius-md d-flex align-items-center justify-content-center">
+                   <i class="fa-solid fa-3x fa-clipboard"></i>
                  </div>
                </div>
              </div>
@@ -286,37 +291,37 @@
          </div>
        </div>
      </div>
-     <footer class="footer pt-5">
-       <div class="container-fluid">
-         <div class="row align-items-center justify-content-lg-between">
-           <div class="col-lg-6 mb-lg-0 mb-4">
-             <div class="copyright text-center text-sm text-muted text-lg-start">
-               © <script>
-                 document.write(new Date().getFullYear())
-               </script>,
-               made with <i class="fa fa-heart"></i> by
-               <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Yogeemedia</a>
-               for a better web.
-             </div>
-           </div>
-           <div class="col-lg-6">
-             <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-
-               <li class="nav-item">
-                 <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-               </li>
-               <li class="nav-item">
-                 <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-               </li>
-               <li class="nav-item">
-                 <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-               </li>
-             </ul>
+   </div>
+   <footer class="footer">
+     <div class="container-fluid">
+       <div class="row align-items-center justify-content-lg-between">
+         <div class="col-lg-6 mb-lg-0 mb-4">
+           <div class="copyright text-center text-sm text-muted text-lg-start">
+             © <script>
+               document.write(new Date().getFullYear())
+             </script>,
+             made with <i class="fa fa-heart"></i> by
+             <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Yogeemedia</a>
+             for a better web.
            </div>
          </div>
+         <div class="col-lg-6">
+           <ul class="nav nav-footer justify-content-center justify-content-lg-end">
+
+             <li class="nav-item">
+               <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
+             </li>
+             <li class="nav-item">
+               <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
+             </li>
+             <li class="nav-item">
+               <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+             </li>
+           </ul>
+         </div>
        </div>
-     </footer>
-   </div>
+     </div>
+   </footer>
  </main>
 
  @endsection

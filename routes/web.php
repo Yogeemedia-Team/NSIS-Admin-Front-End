@@ -36,5 +36,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     Route::get('/dashboard', [HomeController::class, 'dashboard'])->name('dashboard');
     Route::post('/logout', [LoginController::class, 'logOut'])->name('logOut');
+
+    Route::get('/formpage', [HomeController::class, 'formpage'])->name('formpage');
 });
 
