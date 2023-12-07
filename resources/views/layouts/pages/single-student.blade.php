@@ -149,191 +149,215 @@
     </nav>
     <!-- End Navbar -->
     <div class="container-fluid body_content py-4">
-        <!-- Students table -->
+        <!-- Single Student View -->
+        <section style="background-color: #eee;">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body text-center">
+                                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava3.webp" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <h5 class="my-3">Full Name</h5>
+                                <p class="text-muted mb-1">Organization</p>
+                                <p class="text-muted mb-4">Address</p>
+                                <div class="d-flex justify-content-center mb-2">
+                                    <a href="tel:0123456789" class="btn btn-primary"><i class="fa-solid fa-phone me-2"></i> Call</a>
+                                    <a href="mailto:test@mail.com" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-2"></i>Email</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card mb-4 mb-md-0">
+                            <div class="card-body">
+                                <p class="mb-4"><span class="text-primary font-italic me-1">assigment</span> Project Status
+                                </p>
+                                <p class="mb-1" style="font-size: .77rem;">Web Design</p>
+                                <div class="progress rounded" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mt-4 mb-1" style="font-size: .77rem;">Website Markup</p>
+                                <div class="progress rounded" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mt-4 mb-1" style="font-size: .77rem;">One Page</p>
+                                <div class="progress rounded" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mt-4 mb-1" style="font-size: .77rem;">Mobile Template</p>
+                                <div class="progress rounded" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                                <p class="mt-4 mb-1" style="font-size: .77rem;">Backend API</p>
+                                <div class="progress rounded mb-2" style="height: 5px;">
+                                    <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Full Name</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Johnatan Smith</p>
+                                    </div>
+                                </div>
 
-        <table id="dataTable" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Admission No</th>
-                    <th>Mobile No</th>
-                    <th>Admission date</th>
-                    <th>Payment Status</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Tiger Nixon</td>
-                    <td>0001</td>
-                    <td>+94771234567</td>
-                    <td>2011-04-25</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Garrett Winters</td>
-                    <td>0002</td>
-                    <td>+94711234567</td>
-                    <td>2011-07-25</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Ashton Cox</td>
-                    <td>0003</td>
-                    <td>+94781234567</td>
-                    <td>2009-01-12</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td>Cedric Kelly</td>
-                    <td>0004</td>
-                    <td>+94751234567</td>
-                    <td>2012-03-29</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>06</td>
-                    <td>Airi Satou</td>
-                    <td>0005</td>
-                    <td>+94701234567</td>
-                    <td>2008-11-28</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>07</td>
-                    <td>Angelica Ramos</td>
-                    <td>0006</td>
-                    <td>+94761234567</td>
-                    <td>2010-08-27</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>08</td>
-                    <td>Monica Smith</td>
-                    <td>0007</td>
-                    <td>+94791234567</td>
-                    <td>2013-05-14</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>09</td>
-                    <td>Brenda Anderson</td>
-                    <td>0008</td>
-                    <td>+94721234567</td>
-                    <td>2014-09-18</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>John Doe</td>
-                    <td>0009</td>
-                    <td>+94731234567</td>
-                    <td>2015-12-10</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Susan Johnson</td>
-                    <td>0010</td>
-                    <td>+94741234567</td>
-                    <td>2016-06-22</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Michael Davis</td>
-                    <td>0011</td>
-                    <td>+94761234567</td>
-                    <td>2017-03-11</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Emily White</td>
-                    <td>0012</td>
-                    <td>+94781234567</td>
-                    <td>2018-09-05</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Christopher Moore</td>
-                    <td>0013</td>
-                    <td>+94791234567</td>
-                    <td>2019-11-30</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Olivia Turner</td>
-                    <td>0014</td>
-                    <td>+94721234567</td>
-                    <td>2020-05-18</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Year</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Sample year</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Address</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Telephone</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">(097) 234-5678</p>
+                                    </div>
+                                </div>
 
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Mobile</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">(098) 765-4321</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Sex</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Male</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Date of Birth</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">2023/12/07</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Religion</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Buddhist</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Ethnicity</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">Asian</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Birthcertificate No</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">000001</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Health Conditions</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="mb-0 text-muted"><span class="badge badge-success text-dark">Good</span></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Admission Date</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">2023/12/07</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Payment Amount</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">LKR 10,000</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Number of Installments</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">3</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Admission Status</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="mb-0 text-muted"><span class="badge badge-warning text-dark">Review</span></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">School Fee</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">LKR 5,000</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Total Due</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0">LKR 2,000</p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Payment Status</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0"><span class="badge badge-danger text-dark">Pending</span></p>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-sm-5">
+                                        <p class="mb-0">Academic Status</p>
+                                    </div>
+                                    <div class="col-sm-7">
+                                        <p class="text-muted mb-0"><span class="badge badge-danger text-dark">Pending</span></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            </tbody>
-
-        </table>
-        <!-- Students table -->
+        <!-- Single Student View -->
     </div>
     <footer class="footer">
         <div class="container-fluid">

@@ -30,4 +30,7 @@ class HomeController extends Controller
     public function students(){
         return view('layouts.pages.students');
     }
+    public function singleStudent(){
+        return view('layouts.pages.single-student');
+    }
 }
