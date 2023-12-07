@@ -1,8 +1,11 @@
 /* Custom styles */
 .body_content{
-    height: calc(100vh - 91.3px);
+    height: calc(100vh - 130px);
 }
-
+.footer {
+	margin-top: 50px;
+    padding: 10px;
+}
 /* Mark input boxes that gets an error on validation: */
 .reg_form input.invalid {
     background-color: #ffdddd;
@@ -32,4 +35,15 @@
 /* Mark the steps that are finished and valid: */
 .reg_form .step.finish {
     background-color: #04AA6D;
+}
+
+/* Data table styles*/
+.dataTables_wrapper .paginate_button .page-link {
+	width: 100%;
+	border-radius: 0 !important;
+	height: auto;
+	padding: 5px 10px;
+}
+.dataTables_wrapper .form-select{
+    padding-right: 40px;
 }

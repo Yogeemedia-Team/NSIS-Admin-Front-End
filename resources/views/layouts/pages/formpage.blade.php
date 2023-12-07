@@ -333,8 +333,8 @@
                         <!-- Profile Picture Path -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="profle_picture_path" class="form-label">Profile Picture Path</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="profle_picture_path">
+                                <label for="profle_picture_path" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" oninput="this.className = 'form-control'" name="profle_picture_path">
                             </div>
                         </div>
 

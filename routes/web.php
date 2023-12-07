@@ -38,5 +38,11 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/logout', [LoginController::class, 'logOut'])->name('logOut');
 
     Route::get('/formpage', [HomeController::class, 'formpage'])->name('formpage');
+
+    Route::get('/students', [HomeController::class, 'students'])->name('students');
+
+    // temp single student route
+    Route::get('/single-student', [HomeController::class, 'singleStudent'])->name('single-student');
+
 });
 
