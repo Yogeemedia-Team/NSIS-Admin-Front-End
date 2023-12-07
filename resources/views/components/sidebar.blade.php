@@ -37,6 +37,12 @@
                 </a>
               </li>
               <li class="nav-item ">
+                <a class="nav-link " href="/students">
+                  <span class="sidenav-mini-icon"> S </span>
+                  <span class="sidenav-normal"> Students </span>
+                </a>
+              </li>
+              <li class="nav-item ">
                 <a class="nav-link " href="../../pages/dashboards/default.html">
                   <span class="sidenav-mini-icon"> D </span>
                   <span class="sidenav-normal"> Default </span>

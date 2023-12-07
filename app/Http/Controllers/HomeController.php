@@ -27,4 +27,7 @@ class HomeController extends Controller
     public function formpage(){
         return view('layouts.pages.formpage');
     }
+    public function students(){
+        return view('layouts.pages.students');
+    }
 }
