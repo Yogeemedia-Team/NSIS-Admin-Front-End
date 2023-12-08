@@ -151,188 +151,192 @@
     <div class="container-fluid body_content py-4">
         <!-- Students table -->
 
-        <table id="dataTable" class="table table-striped" style="width:100%">
-            <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Full Name</th>
-                    <th>Admission No</th>
-                    <th>Mobile No</th>
-                    <th>Admission date</th>
-                    <th>Payment Status</th>
-                    <th>Details</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>01</td>
-                    <td>Tiger Nixon</td>
-                    <td>0001</td>
-                    <td>+94771234567</td>
-                    <td>2011-04-25</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>02</td>
-                    <td>Garrett Winters</td>
-                    <td>0002</td>
-                    <td>+94711234567</td>
-                    <td>2011-07-25</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>03</td>
-                    <td>Ashton Cox</td>
-                    <td>0003</td>
-                    <td>+94781234567</td>
-                    <td>2009-01-12</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>05</td>
-                    <td>Cedric Kelly</td>
-                    <td>0004</td>
-                    <td>+94751234567</td>
-                    <td>2012-03-29</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>06</td>
-                    <td>Airi Satou</td>
-                    <td>0005</td>
-                    <td>+94701234567</td>
-                    <td>2008-11-28</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>07</td>
-                    <td>Angelica Ramos</td>
-                    <td>0006</td>
-                    <td>+94761234567</td>
-                    <td>2010-08-27</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>08</td>
-                    <td>Monica Smith</td>
-                    <td>0007</td>
-                    <td>+94791234567</td>
-                    <td>2013-05-14</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>09</td>
-                    <td>Brenda Anderson</td>
-                    <td>0008</td>
-                    <td>+94721234567</td>
-                    <td>2014-09-18</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>John Doe</td>
-                    <td>0009</td>
-                    <td>+94731234567</td>
-                    <td>2015-12-10</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>11</td>
-                    <td>Susan Johnson</td>
-                    <td>0010</td>
-                    <td>+94741234567</td>
-                    <td>2016-06-22</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>12</td>
-                    <td>Michael Davis</td>
-                    <td>0011</td>
-                    <td>+94761234567</td>
-                    <td>2017-03-11</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>13</td>
-                    <td>Emily White</td>
-                    <td>0012</td>
-                    <td>+94781234567</td>
-                    <td>2018-09-05</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>14</td>
-                    <td>Christopher Moore</td>
-                    <td>0013</td>
-                    <td>+94791234567</td>
-                    <td>2019-11-30</td>
-                    <td><span class="badge bg-secondary">Pending</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>15</td>
-                    <td>Olivia Turner</td>
-                    <td>0014</td>
-                    <td>+94721234567</td>
-                    <td>2020-05-18</td>
-                    <td><span class="badge bg-success">Success</span></td>
-                    <td>
-                        <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                        <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                    </td>
-                </tr>
+        <div class="card">
+           <div class="card-body">
+           <table id="dataTable" class="table table-striped" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Full Name</th>
+                        <th>Admission No</th>
+                        <th>Mobile No</th>
+                        <th>Admission date</th>
+                        <th>Payment Status</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>01</td>
+                        <td>Tiger Nixon</td>
+                        <td>0001</td>
+                        <td>+94771234567</td>
+                        <td>2011-04-25</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Garrett Winters</td>
+                        <td>0002</td>
+                        <td>+94711234567</td>
+                        <td>2011-07-25</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Ashton Cox</td>
+                        <td>0003</td>
+                        <td>+94781234567</td>
+                        <td>2009-01-12</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Cedric Kelly</td>
+                        <td>0004</td>
+                        <td>+94751234567</td>
+                        <td>2012-03-29</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Airi Satou</td>
+                        <td>0005</td>
+                        <td>+94701234567</td>
+                        <td>2008-11-28</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>07</td>
+                        <td>Angelica Ramos</td>
+                        <td>0006</td>
+                        <td>+94761234567</td>
+                        <td>2010-08-27</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>08</td>
+                        <td>Monica Smith</td>
+                        <td>0007</td>
+                        <td>+94791234567</td>
+                        <td>2013-05-14</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>09</td>
+                        <td>Brenda Anderson</td>
+                        <td>0008</td>
+                        <td>+94721234567</td>
+                        <td>2014-09-18</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>10</td>
+                        <td>John Doe</td>
+                        <td>0009</td>
+                        <td>+94731234567</td>
+                        <td>2015-12-10</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>11</td>
+                        <td>Susan Johnson</td>
+                        <td>0010</td>
+                        <td>+94741234567</td>
+                        <td>2016-06-22</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>12</td>
+                        <td>Michael Davis</td>
+                        <td>0011</td>
+                        <td>+94761234567</td>
+                        <td>2017-03-11</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>13</td>
+                        <td>Emily White</td>
+                        <td>0012</td>
+                        <td>+94781234567</td>
+                        <td>2018-09-05</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>14</td>
+                        <td>Christopher Moore</td>
+                        <td>0013</td>
+                        <td>+94791234567</td>
+                        <td>2019-11-30</td>
+                        <td><span class="badge bg-secondary">Pending</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>15</td>
+                        <td>Olivia Turner</td>
+                        <td>0014</td>
+                        <td>+94721234567</td>
+                        <td>2020-05-18</td>
+                        <td><span class="badge bg-success">Success</span></td>
+                        <td>
+                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                        </td>
+                    </tr>
 
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+           </div>
+        </div>
         <!-- Students table -->
     </div>
     <footer class="footer">

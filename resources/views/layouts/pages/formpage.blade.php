@@ -150,7 +150,9 @@
     <!-- End Navbar -->
     <div class="container-fluid body_content py-4">
         <!-- step form -->
-        <div class="reg_form">
+        <div class="card">
+            <div class="card-body">
+            <div class="reg_form">
             <form id="regForm" action="/action_page.php">
                 <div class="form_title mb-4">
                     <h4>Student Register Form</h4>
@@ -442,6 +444,8 @@
                     <span class="step"></span>
                 </div>
             </form>
+        </div>
+            </div>
         </div>
         
         <!-- step form -->

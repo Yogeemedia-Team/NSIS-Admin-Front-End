@@ -1,11 +1,15 @@
 /* Custom styles */
-.body_content{
-    height: calc(100vh - 130px);
+.body_content {
+    /* height: calc(100vh - 130px); */
+    background-color: #eee;
+    border-radius: 15px;
+    min-height: 85vh;
 }
+
 .footer {
-	margin-top: 50px;
     padding: 10px;
 }
+
 /* Mark input boxes that gets an error on validation: */
 .reg_form input.invalid {
     background-color: #ffdddd;
@@ -39,11 +43,12 @@
 
 /* Data table styles*/
 .dataTables_wrapper .paginate_button .page-link {
-	width: 100%;
-	border-radius: 0 !important;
-	height: auto;
-	padding: 5px 10px;
+    width: 100%;
+    border-radius: 0 !important;
+    height: auto;
+    padding: 5px 10px;
 }
-.dataTables_wrapper .form-select{
+
+.dataTables_wrapper .form-select {
     padding-right: 40px;
 }

@@ -30,6 +30,12 @@
           </a>
           <div class="collapse  show " id="dashboardsExamples">
             <ul class="nav ms-4 ps-3">
+            <li class="nav-item ">
+                <a class="nav-link " href="/dashboard">
+                  <span class="sidenav-mini-icon"> H </span>
+                  <span class="sidenav-normal"> Home </span>
+                </a>
+              </li>
               <li class="nav-item ">
                 <a class="nav-link " href="/formpage">
                   <span class="sidenav-mini-icon"> F </span>
