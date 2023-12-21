@@ -121,3 +121,9 @@
 .dataTables_wrapper .form-select {
     padding-right: 40px;
 }
+.sidenav .icon-sm i {
+	top: 0;
+}
+.navbar-vertical .navbar-nav > .nav-item .nav-link .icon {
+	background-image: linear-gradient(310deg, #2C3793 0%, #2C3793 100%);
+}
