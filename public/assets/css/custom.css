@@ -133,3 +133,12 @@
 .navbar .sidenav-toggler-inner {
     display: none !important;
 }
+
+.text-sm {
+    font-size: 0.775rem !important;
+    line-height: 1.4;
+}
+.text-xs {
+	font-size: 0.65rem !important;
+	line-height: 1.1;
+}
