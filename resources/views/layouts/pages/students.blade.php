@@ -174,7 +174,7 @@
                         <td>2011-04-25</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -185,7 +185,7 @@
                         <td>+94711234567</td>
                         <td>2011-07-25</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -196,7 +196,7 @@
                         <td>+94781234567</td>
                         <td>2009-01-12</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -207,7 +207,7 @@
                         <td>+94751234567</td>
                         <td>2012-03-29</td>
                         <td><span class="badge bg-success">Success</span></td>
-                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -218,7 +218,7 @@
                         <td>+94701234567</td>
                         <td>2008-11-28</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -230,7 +230,7 @@
                         <td>2010-08-27</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -242,7 +242,7 @@
                         <td>2013-05-14</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -254,7 +254,7 @@
                         <td>2014-09-18</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -266,7 +266,7 @@
                         <td>2015-12-10</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -278,7 +278,7 @@
                         <td>2016-06-22</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -290,7 +290,7 @@
                         <td>2017-03-11</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -302,7 +302,7 @@
                         <td>2018-09-05</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -314,7 +314,7 @@
                         <td>2019-11-30</td>
                         <td><span class="badge bg-secondary">Pending</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -326,7 +326,7 @@
                         <td>2020-05-18</td>
                         <td><span class="badge bg-success">Success</span></td>
                         <td>
-                            <a class="btn btn-primary m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                             <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                         </td>
                     </tr>
@@ -341,7 +341,7 @@
     </div>
     <footer class="footer">
         <div class="container-fluid">
-            <div class="row align-items-center justify-content-lg-between">
+            <!-- <div class="row align-items-center justify-content-lg-between">
                 <div class="col-lg-6 mb-lg-0 mb-4">
                     <div class="copyright text-center text-sm text-muted text-lg-start">
                         © <script>
@@ -366,7 +366,7 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </div> -->
         </div>
     </footer>
 </main>
