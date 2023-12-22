@@ -33,4 +33,7 @@ class HomeController extends Controller
     public function singleStudent(){
         return view('layouts.pages.single-student');
     }
+    public function documant(){
+        return view('layouts.pages.documant');
+    }
 }

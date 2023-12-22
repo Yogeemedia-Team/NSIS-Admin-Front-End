@@ -152,302 +152,423 @@
         <!-- step form -->
         <div class="card">
             <div class="card-body">
-            <div class="reg_form">
-            <form id="regForm" action="/action_page.php">
-                <div class="form_title mb-4">
-                    <h4>Student Register Form</h4>
+                <div class="reg_form">
+                    <form id="regForm" action="/action_page.php">
+                        <div class="form_title mb-4">
+                            <h4>Student Register Form</h4>
+                        </div>
+                        <!-- One "tab" for each step in the form: -->
+                        <div class="tab">
+                            <h6 class="mb-3">personal Details</h6>
+                            <div class="row">
+                                <!-- Admission Number -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="id" class="form-label">Admission Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_no">
+                                    </div>
+                                </div>
+                                <!-- First Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="first_name">
+                                    </div>
+                                </div>
+                                <!-- Last Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="last_name">
+                                    </div>
+                                </div>
+                                <!-- Name with Initials -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name_with_initials" class="form-label">Name with Initials</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="name_with_initials">
+                                    </div>
+                                </div>
+
+                                <!-- Name in Full -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="name_in_full" class="form-label">Name in Full</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="name_in_full">
+                                    </div>
+                                </div>
+                                <!-- Address Line 1 -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="address_line1" class="form-label">Address Line 1</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_line1">
+                                    </div>
+                                </div>
+
+                                <!-- Address Line 2 -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="address_line2" class="form-label">Address Line 2</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_line2">
+                                    </div>
+                                </div>
+
+                                <!-- Address City -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="address_city" class="form-label">Address City</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_city">
+                                    </div>
+                                </div>
+
+                                <!-- Telephone Residence -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="telephone_residence" class="form-label">Telephone Residence</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_residence">
+                                    </div>
+                                </div>
+
+                                <!-- Telephone Mobile -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="telephone_mobile" class="form-label">Telephone Mobile</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_mobile">
+                                    </div>
+                                </div>
+
+                                <!-- Telephone WhatsApp -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_whatsapp">
+                                    </div>
+                                </div>
+
+                                <!-- Email Address -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="email_address" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control" oninput="this.className = 'form-control'" name="email_address">
+                                    </div>
+                                </div>
+                                <!-- Sex -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="sex" class="form-label">Gender</label>
+                                        <select class="form-select" name="sex">
+                                            <option value="male">Male</option>
+                                            <option value="female">Female</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Date of Birth -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="date_of_birth" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="date_of_birth">
+                                    </div>
+                                </div>
+
+                                <!-- Religion -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="religion" class="form-label">Religion</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="religion">
+                                    </div>
+                                </div>
+
+                                <!-- Ethnicity -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="ethnicity" class="form-label">Ethnicity</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="ethnicity">
+                                    </div>
+                                </div>
+
+                                <!-- Number of Birth Certificate -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="birthcertificate_number" class="form-label">Birth Certificate Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="birthcertificate_number">
+                                    </div>
+                                </div>
+
+                                <!-- Health Conditions -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="health_conditions" class="form-label">Health Conditions</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="health_conditions"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab">
+                            <h6 class="mb-3">Father’s Information</h6>
+                            <div class="row">
+                                <!-- First Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_first_name">
+                                    </div>
+                                </div>
+                                <!-- Last Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_last_name">
+                                    </div>
+                                </div>
+                                <!-- NIC No -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_nic">
+                                    </div>
+                                </div>
+                                <!-- Higher Education Qualification -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_higher_education_qualification">
+                                    </div>
+                                </div>
+                                <!-- Occupation -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_occupation">
+                                    </div>
+                                </div>
+                                <!-- Official Address -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_official_address" class="form-label">Official Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="fath_official_address"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Permanent Address -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_permanent_address" class="form-label">Permanent Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="fath_permanent_address"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Official Contact Number -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_contact_official">
+                                    </div>
+                                </div>
+                                <!-- Mobile Number -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_contact_mobile">
+                                    </div>
+                                </div>
+                                <!-- Admission Date -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_admission_date" class="form-label">Admission Date</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="fath_admission_date">
+                                    </div>
+                                </div>
+                                <!-- Admission Payment Amount -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_admission_payment_amount" class="form-label">Admission Payment Amount</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_admission_payment_amount">
+                                    </div>
+                                </div>
+                                <!-- Number of Installments -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="fath_no_of_installments" class="form-label">Number of Installments</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="fath_no_of_installments">
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="mt-4 mb-3">Mother’s Information</h6>
+                            <div class="row">
+                                <!-- First Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_first_name">
+                                    </div>
+                                </div>
+                                <!-- Last Name -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_last_name">
+                                    </div>
+                                </div>
+                                <!-- NIC No -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_nic">
+                                    </div>
+                                </div>
+                                <!-- Higher Education Qualification -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_higher_education_qualification">
+                                    </div>
+                                </div>
+                                <!-- Occupation -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_occupation">
+                                    </div>
+                                </div>
+                                <!-- Official Address -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_official_address" class="form-label">Official Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="moth_official_address"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Permanent Address -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_permanent_address" class="form-label">Permanent Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="moth_permanent_address"></textarea>
+                                    </div>
+                                </div>
+                                <!-- Official Contact Number -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_contact_official">
+                                    </div>
+                                </div>
+                                <!-- Mobile Number -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_contact_mobile">
+                                    </div>
+                                </div>
+                                <!-- Admission Date -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_admission_date" class="form-label">Admission Date</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="moth_admission_date">
+                                    </div>
+                                </div>
+                                <!-- Admission Payment Amount -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_admission_payment_amount" class="form-label">Admission Payment Amount</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_admission_payment_amount">
+                                    </div>
+                                </div>
+                                <!-- Number of Installments -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="moth_no_of_installments" class="form-label">Number of Installments</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="moth_no_of_installments">
+                                    </div>
+                                </div>
+                            </div>
+                            <h6 class="mt-4 mb-3">Student Siblings</h6>
+                            <table class="table" id="siblingsTable">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th>First Name</th>
+                                        <th>Last Name</th>
+                                        <th>Sex</th>
+                                        <th>Date of Birth</th>
+                                        <th>School</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Existing rows go here -->
+                                </tbody>
+                            </table>
+                            <button type="button" class="btn btn-primary" onclick="addRow()">Add Row</button>
+                        </div>
+                        <div class="tab">
+                            <div class="row">
+                                <h6 class="mt-4 mb-3">Attachments</h6>
+                                <!-- Profile Picture Path -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="profle_picture_path" class="form-label">Profile Picture</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="profle_picture_path">
+                                    </div>
+                                </div>
+                                <!-- Birth Certificate -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="birth_certificate" class="form-label">Birth Certificate</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="birth_certificate">
+                                    </div>
+                                </div>
+                                <!-- Father NIC -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nic_father" class="form-label">Father NIC</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="nic_father">
+                                    </div>
+                                </div>
+                                <!-- Mother NIC -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="nic_mother" class="form-label">Mother NIC</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="nic_mother">
+                                    </div>
+                                </div>
+                                <!-- Marriage Certificate -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="marriage_certificate" class="form-label">Marriage Certificate</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="marriage_certificate">
+                                    </div>
+                                </div>
+                                <!-- Permission Letter -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="permission_letter" class="form-label">Permission Letter</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="permission_letter">
+                                    </div>
+                                </div>
+                                <!-- Permission Letter -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="leaving_certificate" class="form-label">Leaving Certificate</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="leaving_certificate">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- tabs over -->
+                        <div class="mt-3" style="overflow:auto;">
+                            <div style="float:right;">
+                                <button class="btn btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                                <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+                            </div>
+                        </div>
+                        <!-- Circles which indicates the steps of the form: -->
+                        <div style="text-align:center;margin-top:40px;">
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                            <span class="step"></span>
+                        </div>
+                    </form>
                 </div>
-                <!-- One "tab" for each step in the form: -->
-                <div class="tab">
-                    <div class="row">
-                        <!-- ID Number -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="id" class="form-label">ID Number</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="id">
-                            </div>
-                        </div>
-
-                        <!-- Organization ID -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="organization_id" class="form-label">Organization ID</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="organization_id">
-                            </div>
-                        </div>
-
-                        <!-- Year/Grade/Class ID -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="year_grade_class_id" class="form-label">Year/Grade/Class ID</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="year_grade_class_id">
-                            </div>
-                        </div>
-
-                        <!-- Admission Number -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="admission_no" class="form-label">Admission No</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_no">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab">
-                    <div class="row">
-                        <!-- First Name -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="first_name">
-                            </div>
-                        </div>
-
-                        <!-- Last Name -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="last_name">
-                            </div>
-                        </div>
-
-                        <!-- Name with Initials -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="name_with_initials" class="form-label">Name with Initials</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="name_with_initials">
-                            </div>
-                        </div>
-
-                        <!-- Name in Full -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="name_in_full" class="form-label">Name in Full</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="name_in_full">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab">
-                    <div class="row">
-                        <!-- Address Line 1 -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="address_line1" class="form-label">Address Line 1</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_line1">
-                            </div>
-                        </div>
-
-                        <!-- Address Line 2 -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="address_line2" class="form-label">Address Line 2</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_line2">
-                            </div>
-                        </div>
-
-                        <!-- Address City -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="address_city" class="form-label">Address City</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="address_city">
-                            </div>
-                        </div>
-
-                        <!-- Telephone Residence -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="telephone_residence" class="form-label">Telephone Residence</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_residence">
-                            </div>
-                        </div>
-
-                        <!-- Telephone Mobile -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="telephone_mobile" class="form-label">Telephone Mobile</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_mobile">
-                            </div>
-                        </div>
-
-                        <!-- Telephone WhatsApp -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="telephone_whatsapp">
-                            </div>
-                        </div>
-
-                        <!-- Email Address -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="email_address" class="form-label">Email Address</label>
-                                <input type="email" class="form-control" oninput="this.className = 'form-control'" name="email_address">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab">
-                    <div class="row">
-                        <!-- Sex -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="sex" class="form-label">Sex</label>
-                                <select class="form-select" name="sex">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Date of Birth -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="date_of_birth" class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control" oninput="this.className = 'form-control'" name="date_of_birth">
-                            </div>
-                        </div>
-
-                        <!-- Religion -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="religion" class="form-label">Religion</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="religion">
-                            </div>
-                        </div>
-
-                        <!-- Ethnicity -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="ethnicity" class="form-label">Ethnicity</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="ethnicity">
-                            </div>
-                        </div>
-
-                        <!-- Number of Birth Certificate -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="number_of_birthcertificate" class="form-label">Number of Birth Certificate</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="number_of_birthcertificate">
-                            </div>
-                        </div>
-
-                        <!-- Profile Picture Path -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="profle_picture_path" class="form-label">Profile Picture</label>
-                                <input type="file" class="form-control" oninput="this.className = 'form-control'" name="profle_picture_path">
-                            </div>
-                        </div>
-
-                        <!-- Health Conditions -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="health_conditions" class="form-label">Health Conditions</label>
-                                <textarea class="form-control" oninput="this.className = 'form-control'" name="health_conditions"></textarea>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="tab">
-                    <div class="row">
-                        <!-- Admission Date -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="admission_date" class="form-label">Admission Date</label>
-                                <input type="date" class="form-control" oninput="this.className = 'form-control'" name="admission_date">
-                            </div>
-                        </div>
-
-                        <!-- Admission Payment Amount -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="admission_payment_amount" class="form-label">Admission Payment Amount</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_payment_amount">
-                            </div>
-                        </div>
-
-                        <!-- Number of Installments -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="no_of_installments" class="form-label">Number of Installments</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="no_of_installments">
-                            </div>
-                        </div>
-
-                        <!-- Admission Status -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="admission_status" class="form-label">Admission Status</label>
-                                <select class="form-select" name="admission_status">
-                                    <option value="pending">Pending</option>
-                                    <option value="approved">Approved</option>
-                                    <option value="rejected">Rejected</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- School Fee -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="school_fee" class="form-label">School Fee</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="school_fee">
-                            </div>
-                        </div>
-
-                        <!-- Total Due -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="total_due" class="form-label">Total Due</label>
-                                <input type="text" class="form-control" oninput="this.className = 'form-control'" name="total_due">
-                            </div>
-                        </div>
-
-                        <!-- Payment Status -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="payment_status" class="form-label">Payment Status</label>
-                                <select class="form-select" name="payment_status">
-                                    <option value="pending">Pending</option>
-                                    <option value="paid">Paid</option>
-                                    <option value="partial">Partial</option>
-                                    <option value="not_paid">Not Paid</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Academic Status -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="academic_status" class="form-label">Academic Status</label>
-                                <select class="form-select" name="academic_status">
-                                    <option value="active">Active</option>
-                                    <option value="inactive">Inactive</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- tabs over -->
-                <div class="mt-3" style="overflow:auto;">
-                    <div style="float:right;">
-                        <button class="btn btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                        <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                    </div>
-                </div>
-                <!-- Circles which indicates the steps of the form: -->
-                <div style="text-align:center;margin-top:40px;">
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                </div>
-            </form>
-        </div>
             </div>
         </div>
-        
+
         <!-- step form -->
     </div>
     <footer class="footer">
@@ -485,77 +606,123 @@
 @endsection
 @section('footer-scripts')
 <script>
-            var currentTab = 0; // Current tab is set to be the first tab (0)
-            showTab(currentTab); // Display the current tab
+    function addRow() {
+        var table = document.getElementById("siblingsTable");
+        var newRow = table.insertRow(table.rows.length);
 
-            function showTab(n) {
-                // This function will display the specified tab of the form...
-                var x = document.getElementsByClassName("tab");
-                x[n].style.display = "block";
-                //... and fix the Previous/Next buttons:
-                if (n == 0) {
-                    document.getElementById("prevBtn").style.display = "none";
-                } else {
-                    document.getElementById("prevBtn").style.display = "inline";
-                }
-                if (n == (x.length - 1)) {
-                    document.getElementById("nextBtn").innerHTML = "Submit";
-                } else {
-                    document.getElementById("nextBtn").innerHTML = "Next";
-                }
-                //... and run a function that will display the correct step indicator:
-                fixStepIndicator(n)
-            }
+        for (var i = 0; i < 5; i++) {
+            var cell = newRow.insertCell(i);
+            var input = document.createElement("input");
+            input.type = "text";
+            input.className = "form-control";
+            cell.appendChild(input);
+        }
+    }
 
-            function nextPrev(n) {
-                // This function will figure out which tab to display
-                var x = document.getElementsByClassName("tab");
-                // Exit the function if any field in the current tab is invalid:
-                if (n == 1 && !validateForm()) return false;
-                // Hide the current tab:
-                x[currentTab].style.display = "none";
-                // Increase or decrease the current tab by 1:
-                currentTab = currentTab + n;
-                // if you have reached the end of the form...
-                if (currentTab >= x.length) {
-                    // ... the form gets submitted:
-                    document.getElementById("regForm").submit();
-                    return false;
-                }
-                // Otherwise, display the correct tab:
-                showTab(currentTab);
-            }
+    function saveData(event) {
+        event.preventDefault();
 
-            function validateForm() {
-                // This function deals with validation of the form fields
-                var x, y, i, valid = true;
-                x = document.getElementsByClassName("tab");
-                y = x[currentTab].getElementsByTagName("input");
-                // A loop that checks every input field in the current tab:
-                for (i = 0; i < y.length; i++) {
-                    // If a field is empty...
-                    if (y[i].value == "") {
-                        // add an "invalid" class to the field:
-                        y[i].className += " invalid";
-                        // and set the current valid status to false
-                        valid = false;
-                    }
-                }
-                // If the valid status is true, mark the step as finished and valid:
-                if (valid) {
-                    document.getElementsByClassName("step")[currentTab].className += " finish";
-                }
-                return valid; // return the valid status
-            }
+        var tableData = [];
+        var tableRows = document.getElementById("siblingsTable").rows;
 
-            function fixStepIndicator(n) {
-                // This function removes the "active" class of all steps...
-                var i, x = document.getElementsByClassName("step");
-                for (i = 0; i < x.length; i++) {
-                    x[i].className = x[i].className.replace(" active", "");
-                }
-                //... and adds the "active" class on the current step:
-                x[n].className += " active";
+        for (var i = 1; i < tableRows.length; i++) {
+            var rowData = [];
+            for (var j = 0; j < tableRows[i].cells.length; j++) {
+                rowData.push(tableRows[i].cells[j].querySelector("input").value);
             }
-        </script>
+            tableData.push(rowData);
+        }
+
+        // Convert the tableData array to a JSON string
+        var jsonData = JSON.stringify(tableData);
+
+        // Add a hidden input field to the form and set its value
+        var hiddenInput = document.createElement("input");
+        hiddenInput.type = "hidden";
+        hiddenInput.name = "tableData";
+        hiddenInput.value = jsonData;
+        document.getElementById("regForm").appendChild(hiddenInput);
+
+        // You can submit the form or perform other actions here
+        // For example:
+        // document.getElementById("myForm").submit();
+
+        // Log the table data for demonstration purposes
+        console.log(tableData);
+    }
+</script>
+<script>
+    var currentTab = 0; // Current tab is set to be the first tab (0)
+    showTab(currentTab); // Display the current tab
+
+    function showTab(n) {
+        // This function will display the specified tab of the form...
+        var x = document.getElementsByClassName("tab");
+        x[n].style.display = "block";
+        //... and fix the Previous/Next buttons:
+        if (n == 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n == (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "Submit";
+        } else {
+            document.getElementById("nextBtn").innerHTML = "Next";
+        }
+        //... and run a function that will display the correct step indicator:
+        fixStepIndicator(n)
+    }
+
+    function nextPrev(n) {
+        // This function will figure out which tab to display
+        var x = document.getElementsByClassName("tab");
+        // Exit the function if any field in the current tab is invalid:
+        if (n == 1 && !validateForm()) return false;
+        // Hide the current tab:
+        x[currentTab].style.display = "none";
+        // Increase or decrease the current tab by 1:
+        currentTab = currentTab + n;
+        // if you have reached the end of the form...
+        if (currentTab >= x.length) {
+            // ... the form gets submitted:
+            document.getElementById("regForm").submit();
+            return false;
+        }
+        // Otherwise, display the correct tab:
+        showTab(currentTab);
+    }
+
+    function validateForm() {
+        // This function deals with validation of the form fields
+        var x, y, i, valid = true;
+        x = document.getElementsByClassName("tab");
+        y = x[currentTab].getElementsByTagName("input");
+        // A loop that checks every input field in the current tab:
+        for (i = 0; i < y.length; i++) {
+            // If a field is empty...
+            if (y[i].value == "") {
+                // add an "invalid" class to the field:
+                y[i].className += " invalid";
+                // and set the current valid status to false
+                valid = false;
+            }
+        }
+        // If the valid status is true, mark the step as finished and valid:
+        if (valid) {
+            document.getElementsByClassName("step")[currentTab].className += " finish";
+        }
+        return valid; // return the valid status
+    }
+
+    function fixStepIndicator(n) {
+        // This function removes the "active" class of all steps...
+        var i, x = document.getElementsByClassName("step");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        //... and adds the "active" class on the current step:
+        x[n].className += " active";
+    }
+</script>
 @endsection
