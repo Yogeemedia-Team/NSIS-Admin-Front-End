@@ -23,8 +23,7 @@
                </svg>
              </a>
            </li>
-           <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-           <li class="breadcrumb-item text-sm text-dark active" aria-current="page">CRM</li>
+           <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
          </ol>
          <h6 class="font-weight-bolder mb-0"></h6>
        </nav>
