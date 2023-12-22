@@ -163,9 +163,14 @@
                             <h6 class="mb-3">personal Details</h6>
                             <div class="row">
                                 <!-- Admission Number -->
+                                @php
+                                    $uniqueId = uniqid();
+                                @endphp
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Admission Number</label>
+                                        <input type="hidden" value="{{ $uniqueId }}" name="student_id">
+                                        <input type="hidden" value="{{ env('ORGANIZATION_ID') }}" name="organization_id">
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_no">
                                     </div>
                                 </div>
