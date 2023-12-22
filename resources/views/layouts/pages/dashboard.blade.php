@@ -420,7 +420,7 @@ new Chart(ctx2, {
       },
       centerTitle: {
         display: true,
-        text: "January",
+        text: "December",
         position: "bottom",
       },
     },
