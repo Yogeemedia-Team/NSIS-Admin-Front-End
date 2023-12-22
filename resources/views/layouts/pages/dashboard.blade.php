@@ -206,10 +206,10 @@
        <div class="col-md-12">
          <div class="card z-index-2">
            <div class="p-3">
-             <h6>Attendance overview</h6>
+             <h6>Pay overview</h6>
              <p class="text-sm">
                <i class="fa fa-arrow-up text-success" aria-hidden="true"></i>
-               <span class="font-weight-bold">4% more</span> in 2023
+               <span class="font-weight-bold">4% more</span> in November
              </p>
            </div>
            <div class="card-body p-3">
@@ -366,11 +366,15 @@
    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-   const daysOfMonth = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
+  const currentDate = new Date();
+const currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
+const currentDay = currentDate.getDate();
 
-// Generate random income values for each day
+const daysOfMonth = Array.from({ length: currentMonth === 1 ? 31 : currentDay }, (_, i) => (i + 1).toString());
+const daysOfJanuary = Array.from({ length: currentMonth === 1 ? currentDay : 31 }, (_, i) => (i + 1).toString());
+
 const generateRandomIncomes = () => {
-  return Array.from({ length: 31 }, () => Math.floor(Math.random() * 50000) + 5000);
+  return Array.from({ length: currentMonth === 1 ? currentDay : 31 }, () => Math.floor(Math.random() * 50000) + 5000);
 };
 
 const mobileAppsData = generateRandomIncomes();
@@ -379,7 +383,7 @@ const websitesData = generateRandomIncomes();
 new Chart(ctx2, {
   type: "line",
   data: {
-    labels: daysOfMonth,
+    labels: currentMonth === 1 ? daysOfJanuary : daysOfMonth,
     datasets: [
       {
         label: "Total Income",
@@ -390,7 +394,7 @@ new Chart(ctx2, {
         borderWidth: 3,
         backgroundColor: gradientStroke1,
         fill: true,
-        data: mobileAppsData,
+        data: currentMonth === 1 ? generateRandomIncomes() : mobileAppsData,
         maxBarThickness: 6
       },
       {
@@ -402,7 +406,7 @@ new Chart(ctx2, {
         borderWidth: 3,
         backgroundColor: gradientStroke2,
         fill: true,
-        data: websitesData,
+        data: currentMonth === 1 ? generateRandomIncomes() : websitesData,
         maxBarThickness: 6
       },
     ],
@@ -413,7 +417,12 @@ new Chart(ctx2, {
     plugins: {
       legend: {
         display: false,
-      }
+      },
+      centerTitle: {
+        display: true,
+        text: "January",
+        position: "bottom",
+      },
     },
     interaction: {
       intersect: false,
@@ -448,6 +457,26 @@ new Chart(ctx2, {
       },
     },
   },
-});
+  plugins: [{
+    id: 'centerTitle',
+    beforeDraw: (chart) => {
+      const ctx = chart.ctx;
+      const { chartArea, scales } = chart;
+      const xAxis = scales['x'];
+      const yPosition = chartArea.bottom + 55; // Adjust the y position as needed
+
+      ctx.save();
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillStyle = '#000'; // Set the color for the title
+
+      // Calculate the x position based on the center of the x-axis
+      const xPosition = (xAxis.left + xAxis.right) / 2;
+
+      ctx.fillText(chart.options.plugins.centerTitle.text, xPosition, yPosition);
+      ctx.restore();
+    }
+  }],
+})
  </script>
  @endsection
