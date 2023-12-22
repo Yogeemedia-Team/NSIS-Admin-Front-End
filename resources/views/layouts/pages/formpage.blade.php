@@ -491,21 +491,35 @@
                                 </div>
                             </div>
                             <h6 class="mt-4 mb-3">Student Siblings</h6>
-                            <table class="table" id="siblingsTable">
-                                <thead class="thead-dark">
+                            <table id="siblings_table" class="table">
+                                <thead>
                                     <tr>
                                         <th>First Name</th>
                                         <th>Last Name</th>
-                                        <th>Sex</th>
+                                        <th>Gender</th>
                                         <th>Date of Birth</th>
                                         <th>School</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Existing rows go here -->
+                                    <tr>
+                                        <td><input type="text" class="form-control" name="siblings[0][first_name]"></td>
+                                        <td><input type="text" class="form-control" name="siblings[0][last_name]"></td>
+                                        <td>
+                                            <select class="form-select" name="siblings[0][sex]">
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                            </select>
+                                        </td>
+                                        <td><input type="date" class="form-control" name="siblings[0][date_of_birth]"></td>
+                                        <td><input type="text" class="form-control" name="siblings[0][school]"></td>
+                                        <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            <button type="button" class="btn btn-primary" onclick="addRow()">Add Row</button>
+                            <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
+                            <input type="hidden" name="siblings_data" id="siblings_data">
                         </div>
                         <div class="tab">
                             <div class="row">
@@ -616,52 +630,60 @@
 
 @endsection
 @section('footer-scripts')
-<script>
-    function addRow() {
-        var table = document.getElementById("siblingsTable");
-        var newRow = table.insertRow(table.rows.length);
 
-        for (var i = 0; i < 5; i++) {
-            var cell = newRow.insertCell(i);
-            var input = document.createElement("input");
-            input.type = "text";
-            input.className = "form-control";
-            cell.appendChild(input);
-        }
+<script>
+    var siblingIndex = 1;
+
+    function addSiblingRow() {
+        var table = document.getElementById("siblings_table").getElementsByTagName('tbody')[0];
+        var row = table.insertRow(table.rows.length);
+
+        var cell1 = row.insertCell(0);
+        var cell2 = row.insertCell(1);
+        var cell3 = row.insertCell(2);
+        var cell4 = row.insertCell(3);
+        var cell5 = row.insertCell(4);
+        var cell6 = row.insertCell(5);
+
+        cell1.innerHTML = '<input type="text" class="form-control" name="siblings[' + siblingIndex + '][first_name]">';
+        cell2.innerHTML = '<input type="text" class="form-control" name="siblings[' + siblingIndex + '][last_name]">';
+        cell3.innerHTML = '<select class="form-select" name="siblings[' + siblingIndex + '][sex]"><option value="male">Male</option><option value="female">Female</option></select>';
+        cell4.innerHTML = '<input type="date" class="form-control" name="siblings[' + siblingIndex + '][date_of_birth]">';
+        cell5.innerHTML = '<input type="text" class="form-control" name="siblings[' + siblingIndex + '][school]">';
+        cell6.innerHTML = '<button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button>';
+
+        siblingIndex++;
+        updateSiblingsData();
     }
 
-    function saveData(event) {
-        event.preventDefault();
+    function removeSiblingRow(button) {
+        var row = button.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+        updateSiblingsData();
+    }
 
-        var tableData = [];
-        var tableRows = document.getElementById("siblingsTable").rows;
+    function updateSiblingsData() {
+        var siblingsData = [];
 
-        for (var i = 1; i < tableRows.length; i++) {
-            var rowData = [];
-            for (var j = 0; j < tableRows[i].cells.length; j++) {
-                rowData.push(tableRows[i].cells[j].querySelector("input").value);
-            }
-            tableData.push(rowData);
-        }
+        // Iterate through the table rows and collect sibling data
+        $('#siblings_table tbody tr').each(function(index, row) {
+            var sibling = {
+                first_name: $(row).find('[name^="siblings"]').eq(0).val(),
+                last_name: $(row).find('[name^="siblings"]').eq(1).val(),
+                sex: $(row).find('[name^="siblings"]').eq(2).val(),
+                date_of_birth: $(row).find('[name^="siblings"]').eq(3).val(),
+                school: $(row).find('[name^="siblings"]').eq(4).val(),
+            };
 
-        // Convert the tableData array to a JSON string
-        var jsonData = JSON.stringify(tableData);
+            siblingsData.push(sibling);
+        });
 
-        // Add a hidden input field to the form and set its value
-        var hiddenInput = document.createElement("input");
-        hiddenInput.type = "hidden";
-        hiddenInput.name = "tableData";
-        hiddenInput.value = jsonData;
-        document.getElementById("regForm").appendChild(hiddenInput);
-
-        // You can submit the form or perform other actions here
-        // For example:
-        // document.getElementById("myForm").submit();
-
-        // Log the table data for demonstration purposes
-        console.log(tableData);
+        // Update the hidden input with the serialized sibling data
+        $('#siblings_data').val(JSON.stringify(siblingsData));
     }
 </script>
+
+
 <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
     showTab(currentTab); // Display the current tab
