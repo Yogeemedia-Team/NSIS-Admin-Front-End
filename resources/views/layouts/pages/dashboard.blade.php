@@ -368,7 +368,7 @@
    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
   const currentDate = new Date();
 const currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
-const currentDay = currentDate.getDate();
+const currentDay = new Date(currentDate.getFullYear(), currentMonth, 0).getDate();
 
 const daysOfMonth = Array.from({ length: currentMonth === 1 ? 31 : currentDay }, (_, i) => (i + 1).toString());
 const daysOfJanuary = Array.from({ length: currentMonth === 1 ? currentDay : 31 }, (_, i) => (i + 1).toString());
@@ -463,7 +463,7 @@ new Chart(ctx2, {
       const ctx = chart.ctx;
       const { chartArea, scales } = chart;
       const xAxis = scales['x'];
-      const yPosition = chartArea.bottom + 55; // Adjust the y position as needed
+      const yPosition = chartArea.bottom + 65; // Adjust the y position as needed
 
       ctx.save();
       ctx.textAlign = 'center';
