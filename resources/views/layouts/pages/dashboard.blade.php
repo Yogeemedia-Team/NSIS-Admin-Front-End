@@ -392,8 +392,8 @@ new Chart(ctx2, {
         pointRadius: 0,
         borderColor: "#82d616",
         borderWidth: 3,
-        backgroundColor: gradientStroke1,
-        fill: true,
+       // backgroundColor: gradientStroke1,
+       // fill: true,
         data: currentMonth === 1 ? generateRandomIncomes() : mobileAppsData,
         maxBarThickness: 6
       },
@@ -404,8 +404,8 @@ new Chart(ctx2, {
         pointRadius: 0,
         borderColor: "#c1476e",
         borderWidth: 3,
-        backgroundColor: gradientStroke2,
-        fill: true,
+       // backgroundColor: gradientStroke2,
+        //fill: true,
         data: currentMonth === 1 ? generateRandomIncomes() : websitesData,
         maxBarThickness: 6
       },
