@@ -153,7 +153,8 @@
         <div class="card">
             <div class="card-body">
                 <div class="reg_form">
-                    <form id="regForm" action="/action_page.php">
+                    <form id="regForm" action="/action_page.php" method="POST">
+                        @csrf
                         <div class="form_title mb-4">
                             <h4>Student Register Form</h4>
                         </div>
@@ -166,6 +167,16 @@
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Admission Number</label>
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_no">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="sex" class="form-label">Year/Class/Grade</label>
+                                        <select class="form-select" name="sex">
+                                            <option value="year1">Year 1</option>
+                                            <option value="year1">Year 2</option>
+                                            <option value="year1">Year 3</option>
+                                        </select>
                                     </div>
                                 </div>
                                 <!-- First Name -->
