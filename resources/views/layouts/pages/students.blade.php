@@ -23,8 +23,8 @@
                             </svg>
                         </a>
                     </li>
-                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Pages</a></li>
-                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">CRM</li>
+                    <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Students</a></li>
+                    <li class="breadcrumb-item text-sm text-dark active" aria-current="page">All Students</li>
                 </ol>
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
@@ -71,78 +71,102 @@
                         </a>
                     </li>
                     <li class="nav-item dropdown pe-2 d-flex align-items-center">
-                        <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fa fa-bell cursor-pointer"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="../../assets/img/ym.jpg" class="avatar avatar-sm  me-3 " alt="user image">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">New message</span> from Yogeemedia
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1"></i>
-                                                13 minutes ago
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li class="mb-2">
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="my-auto">
-                                            <img src="../../assets/img/small_logo.png" class="avatar avatar-sm bg-gradient-dark  me-3 " alt="nsis">
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                <span class="font-weight-bold">New lecture</span> by NSIS
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1"></i>
-                                                1 day
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item border-radius-md" href="javascript:;">
-                                    <div class="d-flex py-1">
-                                        <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
-                                            <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                                                <title>credit-card</title>
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
-                                                        <g transform="translate(1716.000000, 291.000000)">
-                                                            <g transform="translate(453.000000, 454.000000)">
-                                                                <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
-                                                                <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div class="d-flex flex-column justify-content-center">
-                                            <h6 class="text-sm font-weight-normal mb-1">
-                                                Payment successfully completed
-                                            </h6>
-                                            <p class="text-xs text-secondary mb-0">
-                                                <i class="fa fa-clock me-1"></i>
-                                                2 days
-                                            </p>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+             <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+               <i class="fa fa-bell cursor-pointer"></i>
+             </a>
+             <ul class="dropdown-menu dropdown-menu-end px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+               <li class="mb-2">
+                 <a class="dropdown-item border-radius-md" href="javascript:;">
+                   <div class="d-flex py-1">
+                   <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                       <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                         <title>credit-card</title>
+                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                           <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                             <g transform="translate(1716.000000, 291.000000)">
+                               <g transform="translate(453.000000, 454.000000)">
+                                 <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                 <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                               </g>
+                             </g>
+                           </g>
+                         </g>
+                       </svg>
+                     </div>
+                     <div class="d-flex flex-column justify-content-center">
+                       <h6 class="text-sm font-weight-normal mb-1">
+                         <span>Sample Notification 1</span>
+                       </h6>
+                       <p class="text-xs text-secondary mb-0">
+                         <i class="fa fa-clock me-1"></i>
+                         13 minutes ago
+                       </p>
+                     </div>
+                   </div>
+                 </a>
+               </li>
+               <li class="mb-2">
+                 <a class="dropdown-item border-radius-md" href="javascript:;">
+                   <div class="d-flex py-1">
+                   <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                       <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                         <title>credit-card</title>
+                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                           <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                             <g transform="translate(1716.000000, 291.000000)">
+                               <g transform="translate(453.000000, 454.000000)">
+                                 <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                 <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                               </g>
+                             </g>
+                           </g>
+                         </g>
+                       </svg>
+                     </div>
+                     <div class="d-flex flex-column justify-content-center">
+                       <h6 class="text-sm font-weight-normal mb-1">
+                       <span>Sample Notification 2</span>
+                       </h6>
+                       <p class="text-xs text-secondary mb-0">
+                         <i class="fa fa-clock me-1"></i>
+                         1 day
+                       </p>
+                     </div>
+                   </div>
+                 </a>
+               </li>
+               <li>
+                 <a class="dropdown-item border-radius-md" href="javascript:;">
+                   <div class="d-flex py-1">
+                     <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                       <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                         <title>credit-card</title>
+                         <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                           <g transform="translate(-2169.000000, -745.000000)" fill="#FFFFFF" fill-rule="nonzero">
+                             <g transform="translate(1716.000000, 291.000000)">
+                               <g transform="translate(453.000000, 454.000000)">
+                                 <path class="color-background" d="M43,10.7482083 L43,3.58333333 C43,1.60354167 41.3964583,0 39.4166667,0 L3.58333333,0 C1.60354167,0 0,1.60354167 0,3.58333333 L0,10.7482083 L43,10.7482083 Z" opacity="0.593633743"></path>
+                                 <path class="color-background" d="M0,16.125 L0,32.25 C0,34.2297917 1.60354167,35.8333333 3.58333333,35.8333333 L39.4166667,35.8333333 C41.3964583,35.8333333 43,34.2297917 43,32.25 L43,16.125 L0,16.125 Z M19.7083333,26.875 L7.16666667,26.875 L7.16666667,23.2916667 L19.7083333,23.2916667 L19.7083333,26.875 Z M35.8333333,26.875 L28.6666667,26.875 L28.6666667,23.2916667 L35.8333333,23.2916667 L35.8333333,26.875 Z"></path>
+                               </g>
+                             </g>
+                           </g>
+                         </g>
+                       </svg>
+                     </div>
+                     <div class="d-flex flex-column justify-content-center">
+                       <h6 class="text-sm font-weight-normal mb-1">
+                       <span>Sample Notification 3</span>
+                       </h6>
+                       <p class="text-xs text-secondary mb-0">
+                         <i class="fa fa-clock me-1"></i>
+                         2 days
+                       </p>
+                     </div>
+                   </div>
+                 </a>
+               </li>
+             </ul>
+           </li>
                 </ul>
             </div>
         </div>
@@ -152,193 +176,114 @@
         <!-- Students table -->
 
         <div class="card">
-           <div class="card-body">
-            <div class="text-end">
-                <a href="/formpage" class="btn btn-primary">Add New</a>
+            <div class="card-body">
+                <div class="text-end">
+                    <a href="/formpage" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                </div>
+                <table id="dataTable" class="table table-striped" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>Admission No</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Mobile</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0001</td>
+                            <td>Tiger</td>
+                            <td>Nixon</td>
+                            <td>tiger@example.com</td> <!-- Placeholder for email -->
+                            <td>+94771234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0002</td>
+                            <td>Garrett</td>
+                            <td>Winters</td>
+                            <td>garrett@example.com</td>
+                            <td>+94711234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0003</td>
+                            <td>Ashton</td>
+                            <td>Cox</td>
+                            <td>ashton@example.com</td>
+                            <td>+94781234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0004</td>
+                            <td>Cedric</td>
+                            <td>Kelly</td>
+                            <td>cedric@example.com</td>
+                            <td>+94751234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0005</td>
+                            <td>Airi</td>
+                            <td>Satou</td>
+                            <td>airi@example.com</td>
+                            <td>+94701234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0006</td>
+                            <td>Angelica</td>
+                            <td>Ramos</td>
+                            <td>angelica@example.com</td>
+                            <td>+94761234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0007</td>
+                            <td>Monica</td>
+                            <td>Smith</td>
+                            <td>monica@example.com</td>
+                            <td>+94791234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>0008</td>
+                            <td>Brenda</td>
+                            <td>Anderson</td>
+                            <td>brenda@example.com</td>
+                            <td>+94721234567</td>
+                            <td>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
             </div>
-           <table id="dataTable" class="table table-striped" style="width:100%">
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Full Name</th>
-                        <th>Admission No</th>
-                        <th>Mobile No</th>
-                        <th>Admission date</th>
-                        <th>Payment Status</th>
-                        <th>Details</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>01</td>
-                        <td>Tiger Nixon</td>
-                        <td>0001</td>
-                        <td>+94771234567</td>
-                        <td>2011-04-25</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>02</td>
-                        <td>Garrett Winters</td>
-                        <td>0002</td>
-                        <td>+94711234567</td>
-                        <td>2011-07-25</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>03</td>
-                        <td>Ashton Cox</td>
-                        <td>0003</td>
-                        <td>+94781234567</td>
-                        <td>2009-01-12</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>05</td>
-                        <td>Cedric Kelly</td>
-                        <td>0004</td>
-                        <td>+94751234567</td>
-                        <td>2012-03-29</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>06</td>
-                        <td>Airi Satou</td>
-                        <td>0005</td>
-                        <td>+94701234567</td>
-                        <td>2008-11-28</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td><a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>07</td>
-                        <td>Angelica Ramos</td>
-                        <td>0006</td>
-                        <td>+94761234567</td>
-                        <td>2010-08-27</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>08</td>
-                        <td>Monica Smith</td>
-                        <td>0007</td>
-                        <td>+94791234567</td>
-                        <td>2013-05-14</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>09</td>
-                        <td>Brenda Anderson</td>
-                        <td>0008</td>
-                        <td>+94721234567</td>
-                        <td>2014-09-18</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>10</td>
-                        <td>John Doe</td>
-                        <td>0009</td>
-                        <td>+94731234567</td>
-                        <td>2015-12-10</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>11</td>
-                        <td>Susan Johnson</td>
-                        <td>0010</td>
-                        <td>+94741234567</td>
-                        <td>2016-06-22</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>Michael Davis</td>
-                        <td>0011</td>
-                        <td>+94761234567</td>
-                        <td>2017-03-11</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>13</td>
-                        <td>Emily White</td>
-                        <td>0012</td>
-                        <td>+94781234567</td>
-                        <td>2018-09-05</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>14</td>
-                        <td>Christopher Moore</td>
-                        <td>0013</td>
-                        <td>+94791234567</td>
-                        <td>2019-11-30</td>
-                        <td><span class="badge bg-secondary">Pending</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>15</td>
-                        <td>Olivia Turner</td>
-                        <td>0014</td>
-                        <td>+94721234567</td>
-                        <td>2020-05-18</td>
-                        <td><span class="badge bg-success">Success</span></td>
-                        <td>
-                            <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                            <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                        </td>
-                    </tr>
-
-
-                </tbody>
-
-            </table>
-           </div>
         </div>
         <!-- Students table -->
     </div>
