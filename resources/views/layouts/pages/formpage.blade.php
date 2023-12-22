@@ -171,8 +171,8 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sex" class="form-label">Year/Class/Grade</label>
-                                        <select class="form-select" name="sex">
+                                        <label for="year_grade_class_id" class="form-label">Year/Class/Grade</label>
+                                        <select class="form-select" name="year_grade_class_id">
                                             <option value="year1">Year 1</option>
                                             <option value="year1">Year 2</option>
                                             <option value="year1">Year 3</option>
