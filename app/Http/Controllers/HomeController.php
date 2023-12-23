@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
 use Illuminate\Support\Facades\Http;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class HomeController extends Controller
 {
 
@@ -67,7 +67,23 @@ public function student_create(Request $request){
     $response = $this->apiService->makeApiRequest('POST', 'students', $apiData);
         // Make the HTTP request with the access token in the headers
       
-    dd($response);
+   if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('login');
+        } else {
+
+
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'Login successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the dashboard.
+            return redirect()->route('dashboard');
+        }
 }
 
 }
