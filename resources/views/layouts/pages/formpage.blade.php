@@ -177,7 +177,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="reg_form">
-                    <form id="regForm" action="/action_page.php" method="POST">
+                    <form id="regForm" action="{{ route('student_create') }}" method="POST">
                         @csrf
                         <div class="form_title mb-4">
                             <h4>Student Register Form</h4>
