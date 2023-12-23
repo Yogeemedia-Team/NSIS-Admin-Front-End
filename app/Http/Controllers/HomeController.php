@@ -29,9 +29,20 @@ class HomeController extends Controller
     public function formpage(){
         return view('layouts.pages.formpage');
     }
-    public function students(){
-        return view('layouts.pages.students');
+
+    public function students(Request $request){
+          $response = $this->apiService->makeApiRequest('GET', 'students');
+            
+        if ($response['status'] === false) {
+            
+            return view('layouts.pages.students', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+           $studentDetails = $response['data']['studentDetail'];
+           return view('layouts.pages.students', compact('studentDetails'));
+        }
     }
+
     public function singleStudent(){
         return view('layouts.pages.single-student');
     }
