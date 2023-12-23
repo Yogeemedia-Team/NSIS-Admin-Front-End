@@ -200,7 +200,7 @@
                             <td>{{ $student['sd_email_address'] }}</td>
                             <td>{{ $student['sd_telephone_mobile'] }}</td>
                             <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
+                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student?{{ $student['id'] }}"><i class="fa-solid fa-eye"></i></a>
                                 <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
