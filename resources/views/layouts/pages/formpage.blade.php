@@ -477,27 +477,6 @@
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_contact_mobile">
                                     </div>
                                 </div>
-                                <!-- Admission Date -->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="sp_mother_admission_date" class="form-label">Admission Date</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_admission_date">
-                                    </div>
-                                </div>
-                                <!-- Admission Payment Amount -->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="sp_mother_admission_payment_amount" class="form-label">Admission Payment Amount</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_admission_payment_amount">
-                                    </div>
-                                </div>
-                                <!-- Number of Installments -->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="sp_mother_no_of_installments" class="form-label">Number of Installments</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_no_of_installments">
-                                    </div>
-                                </div>
                             </div>
                             <h6 class="mt-4 mb-3">Student Payment</h6>
                             <div class="row">
