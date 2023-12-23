@@ -43,15 +43,7 @@ class HomeController extends Controller
 
 public function student_create(Request $request){
     // Validate the form data, including the file uploads
-    $request->validate([
-        'sd_profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_birth_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_nic_father' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_nic_mother' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_marriage_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_permission_letter' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'sd_leaving_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+
 
     // Upload and store each document only if it exists
     $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents') : null;
@@ -75,7 +67,7 @@ public function student_create(Request $request){
     $response = $this->apiService->makeApiRequest('POST', 'students', $apiData);
         // Make the HTTP request with the access token in the headers
       
-        dd($response);
+    dd($response);
 }
 
 }

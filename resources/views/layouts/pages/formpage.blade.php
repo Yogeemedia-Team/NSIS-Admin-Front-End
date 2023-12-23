@@ -552,7 +552,7 @@
                                 </tbody>
                             </table>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <input type="hidden" name="ss_data" id="siblings_data">
+                            <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
                         <div class="tab">
                             <div class="row">
