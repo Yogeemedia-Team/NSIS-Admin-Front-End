@@ -548,7 +548,7 @@
                                 </tbody>
                             </table>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <input type="hidden" name="student_parents_siblings_data" id="siblings_data">
+                            <input type="hidden" name="student_siblings_siblings_data" id="siblings_data">
                         </div>
                         <div class="tab">
                             <div class="row">
