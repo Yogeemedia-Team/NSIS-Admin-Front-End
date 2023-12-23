@@ -180,11 +180,11 @@
                             <div class="card-body text-center">
                                 <img src="{{ asset("storage/".$studentDetails['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</h5>
-                                <p class="text-muted mb-1">Organization</p>
-                                <p class="text-muted mb-4">Address</p>
+                                <p class="text-muted mb-1">{{ $studentDetails['organization_id']}}</p>
+                                <p class="text-muted mb-4">{{ $studentDetails['sd_address_line1'] .','.$studentDetails['sd_address_line2']}}</p>
                                 <div class="d-flex justify-content-center mb-2">
-                                    <a href="tel:0123456789" class="btn btn-primary"><i class="fa-solid fa-phone me-2"></i> Call</a>
-                                    <a href="mailto:test@mail.com" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-2"></i>Email</a>
+                                    <a href="tel:{{ $studentDetails['sd_telephone_residence']}}" class="btn btn-primary"><i class="fa-solid fa-phone me-2"></i> Call</a>
+                                    <a href="mailto:{{ $studentDetails['sd_email_address']}}" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-2"></i>Email</a>
                                 </div>
                             </div>
                         </div>
