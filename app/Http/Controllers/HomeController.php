@@ -74,15 +74,15 @@ public function student_create(Request $request){
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
 
             // Redirect back to the login page.
-            return redirect()->route('login');
+            return redirect()->route('formpage');
         } else {
 
 
             // Use SweetAlert to display a success message.
-            Alert::success('Success', 'Login successful!')->showConfirmButton('OK');
+            Alert::success('Success', 'Student create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the dashboard.
-            return redirect()->route('dashboard');
+            return redirect()->route('formpage');
         }
 }
 
