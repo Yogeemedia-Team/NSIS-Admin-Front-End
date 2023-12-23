@@ -195,7 +195,7 @@
                                         <label for="id" class="form-label">Admission Number</label>
                                         <input type="hidden" value="{{ $uniqueId }}" name="student_id">
                                         <input type="hidden" value="{{ env('ORGANIZATION_ID') }}" name="organization_id">
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="admission_no">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_no">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
