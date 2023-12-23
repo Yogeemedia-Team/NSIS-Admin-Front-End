@@ -38,8 +38,8 @@ class HomeController extends Controller
             return view('layouts.pages.students', ['errors' => $response['errors'], 'message' => $response['message']]);
         } else {
 
-           $studentDetails = $response['data']['studentDetail'];
-           return view('layouts.pages.students', compact('studentDetails'));
+          $studentDetails = $response['data'];
+          return view('layouts.pages.students', compact('studentDetails'));
         }
     }
 
