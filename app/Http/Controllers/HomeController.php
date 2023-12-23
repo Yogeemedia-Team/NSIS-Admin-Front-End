@@ -74,7 +74,7 @@ public function student_create(Request $request){
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
 
             // Redirect back to the login page.
-            return redirect()->route('formpage');
+            return redirect()->route('students');
         } else {
 
 
@@ -82,7 +82,7 @@ public function student_create(Request $request){
             Alert::success('Success', 'Student create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the dashboard.
-            return redirect()->route('formpage');
+            return redirect()->route('students');
         }
 }
 
