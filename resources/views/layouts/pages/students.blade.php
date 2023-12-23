@@ -194,11 +194,11 @@
                     <tbody>
                       @foreach($studentDetails as $student)
                         <tr>
-                            <td>{{ $student['admission_no'] }}</td>
-                            <td>{{ $student['first_name'] }}</td>
-                            <td>{{ $student['last_name'] }}</td>
-                            <td>{{ $student['email_address'] }}</td> <!-- Placeholder for email -->
-                            <td>{{ $student['telephone_mobile'] }}</td>
+                             <td>{{ $student['sd_admission_no'] }}</td>
+                            <td>{{ $student['sd_first_name'] }}</td>
+                            <td>{{ $student['sd_last_name'] }}</td>
+                            <td>{{ $student['sd_email_address'] }}</td>
+                            <td>{{ $student['sd_telephone_mobile'] }}</td>
                             <td>
                                 <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                                 <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
