@@ -43,9 +43,27 @@ class HomeController extends Controller
         }
     }
 
-    public function singleStudent(){
-        return view('layouts.pages.single-student');
-    }
+
+
+        public function singleStudent($id)
+        {
+        // Make API request to fetch details for the specified student ID
+        $endpoint = 'students/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', 'students');
+
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $studentDetails = $response['data'];
+
+        // Pass the student details to the view
+        return view('layouts.pages.single-student', compact('studentDetails'));
+         }
+
     public function documant(){
         return view('layouts.pages.documant');
     }

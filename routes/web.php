@@ -43,7 +43,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/students', [HomeController::class, 'students'])->name('students');
 
     // temp single student route
-    Route::get('/single-student', [HomeController::class, 'singleStudent'])->name('single-student');
+    Route::get('/single-student/{id}', [HomeController::class, 'singleStudent'])->name('single-student');
 
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 });
