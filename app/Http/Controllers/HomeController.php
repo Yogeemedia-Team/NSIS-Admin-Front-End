@@ -44,47 +44,38 @@ class HomeController extends Controller
 public function student_create(Request $request){
     // Validate the form data, including the file uploads
     $request->validate([
-        'profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'birth_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'nic_father' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'nic_mother' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'marriage_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'permission_letter' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
-        'leaving_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_profile_picture' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_birth_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_nic_father' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_nic_mother' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_marriage_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_permission_letter' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        'sd_leaving_certificate' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
     ]);
 
-    // Upload and store each document
-    $profilePicturePath = $request->file('profile_picture')->store('student_documents');
-    $birthCertificatePath = $request->file('birth_certificate')->store('student_documents');
-    $nicFatherPath = $request->file('nic_father')->store('student_documents');
-    $nicMotherPath = $request->file('nic_mother')->store('student_documents');
-    $marriageCertificatePath = $request->file('marriage_certificate')->store('student_documents');
-    $permissionLetterPath = $request->file('permission_letter')->store('student_documents');
-    $leavingCertificatePath = $request->file('leaving_certificate')->store('student_documents');
+    // Upload and store each document only if it exists
+    $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents') : null;
+    $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents') : null;
+    $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('sd') : null;
+    $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('sd') : null;
+    $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents') : null;
+    $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents') : null;
+    $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents') : null;
 
     // Prepare data for API request
     $apiData = $request->all(); // You might need to modify this based on your API structure
-    $apiData['student_documents_profile_picture_path'] = $profilePicturePath;
-    $apiData['student_documents_birth_certificate'] = $birthCertificatePath;
-    $apiData['student_documents_nic_father'] = $nicFatherPath;
-    $apiData['student_documents_nic_mother'] = $nicMotherPath;
-    $apiData['student_documents_marriage_certificate'] = $marriageCertificatePath;
-    $apiData['student_documents_permission_letter'] = $permissionLetterPath;
-    $apiData['student_documents_leaving_certificate'] = $leavingCertificatePath;
+    $apiData['sd_profile_picture'] = $profilePicturePath;
+    $apiData['sd_birth_certificate'] = $birthCertificatePath;
+    $apiData['sd_nic_father'] = $nicFatherPath;
+    $apiData['sd_nic_mother'] = $nicMotherPath;
+    $apiData['sd_marriage_certificate'] = $marriageCertificatePath;
+    $apiData['sd_permission_letter'] = $permissionLetterPath;
+    $apiData['sd_leaving_certificate'] = $leavingCertificatePath;
 
-    // Make the API request
-    $apiUrl = env('API_URL');
-    
-    $response = Http::post($apiUrl, $apiData);
-
-    // Check if the request was successful
-    if ($response->successful()) {
-        // API request was successful
-        return redirect()->back()->with('success', 'Documents uploaded successfully');
-    } else {
-        // API request failed
-        return redirect()->back()->with('error', 'Failed to upload documents to the API');
-    }
+    $response = $this->apiService->makeApiRequest('POST', 'students', $apiData);
+        // Make the HTTP request with the access token in the headers
+      
+        dd($response);
 }
 
 }
