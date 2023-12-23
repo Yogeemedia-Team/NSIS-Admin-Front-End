@@ -178,7 +178,7 @@
                     <div class="col-lg-4">
                         <div class="card mb-4">
                             <div class="card-body text-center">
-                                <img src="https://cdn-icons-png.flaticon.com/512/21/21104.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                                <img src="{{ asset("storage/".$studentDetails['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                                 <h5 class="my-3">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</h5>
                                 <p class="text-muted mb-1">Organization</p>
                                 <p class="text-muted mb-4">Address</p>
