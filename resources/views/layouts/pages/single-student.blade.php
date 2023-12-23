@@ -179,7 +179,7 @@
                         <div class="card mb-4">
                             <div class="card-body text-center">
                                 <img src="https://cdn-icons-png.flaticon.com/512/21/21104.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                                <h5 class="my-3">Full Name</h5>
+                                <h5 class="my-3">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</h5>
                                 <p class="text-muted mb-1">Organization</p>
                                 <p class="text-muted mb-4">Address</p>
                                 <div class="d-flex justify-content-center mb-2">
@@ -223,7 +223,7 @@
                                         <p class="mb-0">Full Name</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Johnatan Smith</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</p>
                                     </div>
                                 </div>
 
@@ -232,7 +232,7 @@
                                         <p class="mb-0">Year</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Sample year</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_year_grade_class_id']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -240,7 +240,7 @@
                                         <p class="mb-0">Address</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_address_line1'] .','.$studentDetails['sd_address_line2'] }}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -248,7 +248,7 @@
                                         <p class="mb-0">Telephone</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">(097) 234-5678</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_telephone_residence']}}</p>
                                     </div>
                                 </div>
 
@@ -257,15 +257,15 @@
                                         <p class="mb-0">Mobile</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">(098) 765-4321</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_telephone_mobile']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-sm-5">
-                                        <p class="mb-0">Sex</p>
+                                        <p class="mb-0">Gender</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Male</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_gender']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -273,7 +273,7 @@
                                         <p class="mb-0">Date of Birth</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">2023/12/07</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_date_of_birth']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -281,7 +281,7 @@
                                         <p class="mb-0">Religion</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Buddhist</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_religion']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -289,7 +289,7 @@
                                         <p class="mb-0">Ethnicity</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">Asian</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_ethnicity']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -297,7 +297,7 @@
                                         <p class="mb-0">Birthcertificate No</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">000001</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_birth_certificate_number']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -305,7 +305,7 @@
                                         <p class="mb-0">Health Conditions</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="mb-0 text-muted"><span class="badge badge-success text-dark">Good</span></p>
+                                        <p class="mb-0 text-muted"><span class="badge badge-success text-dark">{{ $studentDetails['sd_health_conditions']}}</span></p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -313,7 +313,7 @@
                                         <p class="mb-0">Admission Date</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">2023/12/07</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_admission_date']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -321,7 +321,7 @@
                                         <p class="mb-0">Payment Amount</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">LKR 10,000</p>
+                                        <p class="text-muted mb-0">LKR {{ $studentDetails['sd_admission_payment_amount']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
@@ -329,7 +329,7 @@
                                         <p class="mb-0">Number of Installments</p>
                                     </div>
                                     <div class="col-sm-7">
-                                        <p class="text-muted mb-0">3</p>
+                                        <p class="text-muted mb-0">{{ $studentDetails['sd_no_of_installments']}}</p>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
