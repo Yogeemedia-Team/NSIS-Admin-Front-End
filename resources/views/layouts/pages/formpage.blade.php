@@ -331,7 +331,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_birthcertificate_number">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate_number">
                                     </div>
                                 </div>
 
