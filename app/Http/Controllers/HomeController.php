@@ -49,7 +49,7 @@ class HomeController extends Controller
         {
         // Make API request to fetch details for the specified student ID
         $endpoint = 'students/' . $id;
-        $response = $this->apiService->makeApiRequest('GET', 'students');
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
 
         // Check if the API request was successful
         if ($response['status'] === false) {
