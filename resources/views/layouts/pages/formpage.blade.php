@@ -350,85 +350,85 @@
                                 <!-- First Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_first_name">
+                                        <label for="sp_father_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_first_name">
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_last_name">
+                                        <label for="sp_father_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_last_name">
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_nic">
+                                        <label for="sp_father_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_nic">
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_higher_education_qualification" class="form-label">Higher Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_higher_education_qualification">
+                                        <label for="sp_father_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_higher_education_qualification">
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_occupation">
+                                        <label for="sp_father_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_occupation">
                                     </div>
                                 </div>
                                 <!-- Official Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_official_address" class="form-label">Official Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_fath_official_address"></textarea>
+                                        <label for="sp_father_official_address" class="form-label">Official Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_father_official_address"></textarea>
                                     </div>
                                 </div>
                                 <!-- Permanent Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_permanent_address" class="form-label">Permanent Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_fath_permanent_address"></textarea>
+                                        <label for="sp_father_permanent_address" class="form-label">Permanent Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_father_permanent_address"></textarea>
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_contact_official" class="form-label">Official Contact Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_contact_official">
+                                        <label for="sp_father_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_contact_official">
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_contact_mobile">
+                                        <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_contact_mobile">
                                     </div>
                                 </div>
                                 <!-- Admission Date -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_admission_date" class="form-label">Admission Date</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_admission_date">
+                                        <label for="sp_father_admission_date" class="form-label">Admission Date</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sp_father_admission_date">
                                     </div>
                                 </div>
                                 <!-- Admission Payment Amount -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_admission_payment_amount" class="form-label">Admission Payment Amount</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_admission_payment_amount">
+                                        <label for="sp_father_admission_payment_amount" class="form-label">Admission Payment Amount</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_admission_payment_amount">
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_fath_no_of_installments" class="form-label">Number of Installments</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_fath_no_of_installments">
+                                        <label for="sp_father_no_of_installments" class="form-label">Number of Installments</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_no_of_installments">
                                     </div>
                                 </div>
                             </div>
@@ -437,85 +437,85 @@
                                 <!-- First Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_first_name">
+                                        <label for="sp_mother_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_first_name">
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_last_name">
+                                        <label for="sp_mother_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_last_name">
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_nic">
+                                        <label for="sp_mother_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_nic">
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_higher_education_qualification" class="form-label">Higher Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_higher_education_qualification">
+                                        <label for="sp_mother_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_higher_education_qualification">
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_occupation">
+                                        <label for="sp_mother_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_occupation">
                                     </div>
                                 </div>
                                 <!-- Official Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_official_address" class="form-label">Official Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_moth_official_address"></textarea>
+                                        <label for="sp_mother_official_address" class="form-label">Official Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_mother_official_address"></textarea>
                                     </div>
                                 </div>
                                 <!-- Permanent Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_permanent_address" class="form-label">Permanent Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_moth_permanent_address"></textarea>
+                                        <label for="sp_mother_permanent_address" class="form-label">Permanent Address</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_mother_permanent_address"></textarea>
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_contact_official" class="form-label">Official Contact Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_contact_official">
+                                        <label for="sp_mother_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_contact_official">
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_contact_mobile">
+                                        <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_contact_mobile">
                                     </div>
                                 </div>
                                 <!-- Admission Date -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_admission_date" class="form-label">Admission Date</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_admission_date">
+                                        <label for="sp_mother_admission_date" class="form-label">Admission Date</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_admission_date">
                                     </div>
                                 </div>
                                 <!-- Admission Payment Amount -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_admission_payment_amount" class="form-label">Admission Payment Amount</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_admission_payment_amount">
+                                        <label for="sp_mother_admission_payment_amount" class="form-label">Admission Payment Amount</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_admission_payment_amount">
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sp_moth_no_of_installments" class="form-label">Number of Installments</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_moth_no_of_installments">
+                                        <label for="sp_mother_no_of_installments" class="form-label">Number of Installments</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_no_of_installments">
                                     </div>
                                 </div>
                             </div>
@@ -548,7 +548,7 @@
                                 </tbody>
                             </table>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <input type="hidden" name="ss_siblings_data" id="siblings_data">
+                            <input type="hidden" name="ss_data" id="siblings_data">
                         </div>
                         <div class="tab">
                             <div class="row">
@@ -557,7 +557,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_profle_picture">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_profile_picture">
                                     </div>
                                 </div>
                                 <!-- Birth Certificate -->
@@ -570,14 +570,14 @@
                                 <!-- Father NIC -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sd_nic_father" class="form-label">Father NIC</label>
+                                        <label for="sd_nic_fatherer" class="form-label">Father NIC</label>
                                         <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_nic_father">
                                     </div>
                                 </div>
                                 <!-- Mother NIC -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="sd_nic_mother" class="form-label">Mother NIC</label>
+                                        <label for="sd_nic_motherer" class="form-label">Mother NIC</label>
                                         <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_nic_mother">
                                     </div>
                                 </div>
