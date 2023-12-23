@@ -296,7 +296,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_sex" class="form-label">Gender</label>
-                                        <select class="form-select" name="sd_sex">
+                                        <select class="form-select" name="sd_gender">
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
                                         </select>
