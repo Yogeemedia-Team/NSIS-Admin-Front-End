@@ -192,94 +192,20 @@
                         </tr>
                     </thead>
                     <tbody>
+                      @foreach($studentDetails as $student)
                         <tr>
-                            <td>0001</td>
-                            <td>Tiger</td>
-                            <td>Nixon</td>
-                            <td>tiger@example.com</td> <!-- Placeholder for email -->
-                            <td>+94771234567</td>
+                            <td>{{ $student['admission_no'] }}</td>
+                            <td>{{ $student['first_name'] }}</td>
+                            <td>{{ $student['last_name'] }}</td>
+                            <td>{{ $student['email_address'] }}</td> <!-- Placeholder for email -->
+                            <td>{{ $student['telephone_mobile'] }}</td>
                             <td>
                                 <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
                                 <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
                             </td>
                         </tr>
-                        <tr>
-                            <td>0002</td>
-                            <td>Garrett</td>
-                            <td>Winters</td>
-                            <td>garrett@example.com</td>
-                            <td>+94711234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0003</td>
-                            <td>Ashton</td>
-                            <td>Cox</td>
-                            <td>ashton@example.com</td>
-                            <td>+94781234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0004</td>
-                            <td>Cedric</td>
-                            <td>Kelly</td>
-                            <td>cedric@example.com</td>
-                            <td>+94751234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0005</td>
-                            <td>Airi</td>
-                            <td>Satou</td>
-                            <td>airi@example.com</td>
-                            <td>+94701234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0006</td>
-                            <td>Angelica</td>
-                            <td>Ramos</td>
-                            <td>angelica@example.com</td>
-                            <td>+94761234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0007</td>
-                            <td>Monica</td>
-                            <td>Smith</td>
-                            <td>monica@example.com</td>
-                            <td>+94791234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>0008</td>
-                            <td>Brenda</td>
-                            <td>Anderson</td>
-                            <td>brenda@example.com</td>
-                            <td>+94721234567</td>
-                            <td>
-                                <a class="btn btn-warning m-0 py-1 px-2" href="/single-student"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-danger m-0 py-1 px-2" href=""><i class="fa-solid fa-trash"></i></a>
-                            </td>
-                        </tr>
+                        @endforeach
+
                     </tbody>
                 </table>
 
