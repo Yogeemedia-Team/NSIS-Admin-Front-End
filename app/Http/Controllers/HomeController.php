@@ -64,10 +64,21 @@ class HomeController extends Controller
         return view('layouts.pages.single-student', compact('studentDetails'));
          }
 
-    public function documant(){
-        return view('layouts.pages.documant');
-    }
+        public function documant(){
+            return view('layouts.pages.documant');
+        }
 
+        public function studentDelete($id){
+             $endpoint = 'students/' . $id;
+            $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+        // Pass the student details to the view
+             return redirect()->route('students');
+        }
 
 
 public function student_create(Request $request){
