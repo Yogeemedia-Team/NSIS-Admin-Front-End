@@ -26,7 +26,7 @@ Breadcrumbs::for('single-student', function ($trail) {
     
     $trail->parent('home');
     $trail->push('All Students', route('students'));
-    $trail->push('View students');
+    $trail->push('View Student');
 });
 
 // Home > Blog > [Category]
