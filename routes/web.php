@@ -45,5 +45,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     // temp single student route
     Route::get('/single-student/{id}', [HomeController::class, 'singleStudent'])->name('single-student');
 
+    Route::post('/student_delete/{id}', [HomeController::class, 'studentDelete'])->name('student_delete');
+
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 });
