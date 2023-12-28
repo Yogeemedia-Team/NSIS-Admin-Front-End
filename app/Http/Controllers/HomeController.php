@@ -126,4 +126,68 @@ public function student_create(Request $request){
         }
 }
 
+
+public function StudentEdit($id){
+       $endpoint = 'students/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $studentDetails = $response;
+
+        // Pass the student details to the view
+        return view('layouts.pages.edit-student', compact('studentDetails'));
+}
+
+public function student_update(Request $request, $studentId){
+    // Validate the form data, including the file uploads
+
+    // Fetch existing student data from the API
+    $existingStudentData = $this->apiService->makeApiRequest('GET', 'students/'.$studentId);
+
+    if ($existingStudentData['status'] === false) {
+        // Handle error if the student data cannot be fetched
+        Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+        return redirect()->route('students');
+    }
+
+    // Handle file uploads for fields that are being updated
+    $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents','public') : $existingStudentData['sd_profile_picture'];
+    $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents','public') : $existingStudentData['sd_birth_certificate'];
+    $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents','public') : $existingStudentData['sd_nic_father'];
+    $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents','public') : $existingStudentData['sd_nic_mother'];
+    $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents', 'public') : $existingStudentData['sd_marriage_certificate'];
+    $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents','public') : $existingStudentData['sd_permission_letter'];
+    $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents','public') : $existingStudentData['sd_leaving_certificate'];
+
+    // Update the data with the new values
+    $updatedData = $request->all(); // You might need to modify this based on your form fields
+    $updatedData['sd_profile_picture'] = $profilePicturePath;
+    $updatedData['sd_birth_certificate'] = $birthCertificatePath;
+    $updatedData['sd_nic_father'] = $nicFatherPath;
+    $updatedData['sd_nic_mother'] = $nicMotherPath;
+    $updatedData['sd_marriage_certificate'] = $marriageCertificatePath;
+    $updatedData['sd_permission_letter'] = $permissionLetterPath;
+    $updatedData['sd_leaving_certificate'] = $leavingCertificatePath;
+
+    // Make the API request to update the student record
+    $response = $this->apiService->makeApiRequest('PUT', 'students/'.$studentId, $updatedData);
+
+    if ($response['status'] === false) {
+        // If the update request fails, display an error message.
+        Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        return redirect()->route('students');
+    } else {
+        // If the update is successful, display a success message.
+        Alert::success('Success', 'Student update successful!')->showConfirmButton('OK');
+        return redirect()->route('students');
+    }
+}
+
+
 }
