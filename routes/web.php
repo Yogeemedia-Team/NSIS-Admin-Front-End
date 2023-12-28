@@ -49,5 +49,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     Route::get('/students/{studentId}/edit', [HomeController::class, 'StudentEdit'])->name('student_edit');
 
+    Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students.update');
+
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 });
