@@ -355,27 +355,27 @@
                                 </thead>
                                 <tbody>
 
-                                  @if(isset($studentDetails['data']['parent_data']))
-                                        <tr>
-                                            <td><b>Father</b></td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
-                                        </tr>
-                                        <tr>
-                                            <td><b>Mother</b></td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
-                                        </tr>
+                                    @if(isset($studentDetails['data']['parent_data']))
+                                    <tr>
+                                        <td><b>Father</b></td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Mother</b></td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
+                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
+                                    </tr>
                                     @else
-                                        <tr>
-                                            <td colspan="6">No parent data available</td>
-                                        </tr>
+                                    <tr>
+                                        <td colspan="6">No parent data available</td>
+                                    </tr>
                                     @endif
 
                                 </tbody>
@@ -396,12 +396,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']))
+                                    @foreach($studentDetails['data']['documents'][0] as $key => $value)
+                                    @if (strpos($key, 'sd_') === 0)
                                     <tr>
-                                        <td>1</td>
-                                        <td>Birth Certificate</td>
-                                        <td><a target="_blank" href="" class="btn btn-secondary btn-sm">View</a></td>
+                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
+                                        <td>
+                                            <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
+                                        </td>
                                     </tr>
-
+                                    @endif
+                                    @endforeach
+                                    @else
+                                    <tr>
+                                        <td colspan="3">No attachment data available</td>
+                                    </tr>
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
