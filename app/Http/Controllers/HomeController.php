@@ -58,7 +58,7 @@ class HomeController extends Controller
         }
 
         // Extract student details from the response
-        $studentDetails = $response['data'];
+        $studentDetails = $response;
 
         // Pass the student details to the view
         return view('layouts.pages.single-student', compact('studentDetails'));
