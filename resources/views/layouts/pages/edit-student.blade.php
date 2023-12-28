@@ -163,6 +163,7 @@
                             <h4>Student Register Form</h4>
                         </div>
                         <!-- One "tab" for each step in the form: -->
+                        
                         <div class="tab">
                             <h6 class="mb-3">Personal Details</h6>
                             <div class="row">
@@ -173,9 +174,9 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="id" class="form-label">Admission Number</label>
-                                        <input type="hidden" value="{{ $uniqueId }}" name="student_id">
-                                        <input type="hidden" value="{{ env('ORGANIZATION_ID') }}" name="organization_id">
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_no" required>
+                                        <input type="hidden" value="{{ $studentDetails['data']['student_id'] }}" name="student_id">
+                                        <input type="hidden" value="{{ $studentDetails['data']['organization_id'] }}" name="organization_id">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_no'] }}" name="sd_admission_no" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -193,21 +194,21 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_first_name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_first_name'] }}" name="sd_first_name" required>
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_last_name" required>
+                                        <input type="text" class="form-control" value="{{ $studentDetails['data']['sd_last_name'] }}" oninput="this.className = 'form-control'" name="sd_last_name" required>
                                     </div>
                                 </div>
                                 <!-- Name with Initials -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_name_with_initials" class="form-label">Name with Initials</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_name_with_initials" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_name_with_initials'] }}" name="sd_name_with_initials" required>
                                     </div>
                                 </div>
 
@@ -215,14 +216,14 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_name_in_full" class="form-label">Name in Full</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_name_in_full" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_name_in_full'] }}" name="sd_name_in_full" required>
                                     </div>
                                 </div>
                                 <!-- Address Line 1 -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_address_line1" class="form-label">Address Line 1</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_line1" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_address_line1'] }}" name="sd_address_line1" required>
                                     </div>
                                 </div>
 
@@ -230,7 +231,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_address_line2" class="form-label">Address Line 2</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_line2">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_address_line2'] ?? '' }}" name="sd_address_line2">
                                     </div>
                                 </div>
 
@@ -238,7 +239,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_address_city" class="form-label">Address City</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_city" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_address_city'] }}" name="sd_address_city" required>
                                     </div>
                                 </div>
 
@@ -246,7 +247,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_telephone_residence" class="form-label">Telephone Residence</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_telephone_residence" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_residence'] }}" name="sd_telephone_residence" required>
                                     </div>
                                 </div>
 
@@ -254,7 +255,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_telephone_mobile" class="form-label">Telephone Mobile</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_telephone_mobile" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_mobile'] }}" name="sd_telephone_mobile" required>
                                     </div>
                                 </div>
 
@@ -262,7 +263,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_telephone_whatsapp" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" name="sd_telephone_whatsapp" required>
                                     </div>
                                 </div>
 
@@ -270,7 +271,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_email_address" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" oninput="this.className = 'form-control'" name="sd_email_address" required>
+                                        <input type="email" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_email_address'] }}" name="sd_email_address" required>
                                     </div>
                                 </div>
                                 <!-- Sex -->
@@ -288,7 +289,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_date_of_birth" class="form-label">Date of Birth</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_date_of_birth" required>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_date_of_birth'] }}" name="sd_date_of_birth" required>
                                     </div>
                                 </div>
 
@@ -296,7 +297,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_religion" class="form-label">Religion</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_religion" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_religion'] }}" name="sd_religion" required>
                                     </div>
                                 </div>
 
@@ -304,7 +305,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_ethnicity" class="form-label">Ethnicity</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_ethnicity" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_ethnicity'] }}" name="sd_ethnicity" required>
                                     </div>
                                 </div>
 
@@ -312,7 +313,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate_number" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] }}" name="sd_birth_certificate_number" required>
                                     </div>
                                 </div>
 
@@ -320,7 +321,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_health_conditions" class="form-label">Health Conditions</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sd_health_conditions"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sd_health_conditions">{{ $studentDetails['data']['sd_health_conditions'] }}</textarea>
                                     </div>
                                 </div>
                             </div>
@@ -332,63 +333,63 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_first_name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}"  name="sp_father_first_name" required>
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_last_name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? ''  }}" name="sp_father_last_name" required>
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_nic" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? ''  }}" name="sp_father_nic" required>
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_higher_education_qualification" class="form-label">Higher Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_higher_education_qualification" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_higher_education_qualification'] ?? ''  }}" name="sp_father_higher_education_qualification" required>
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_occupation" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? ''  }}" name="sp_father_occupation" required>
                                     </div>
                                 </div>
                                 <!-- Official Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_official_address" class="form-label">Official Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_father_official_address"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'"  name="sp_father_official_address">{{ $studentDetails['data']['parent_data'][0]['sp_father_official_address'] ?? ''  }}</textarea>
                                     </div>
                                 </div>
                                 <!-- Permanent Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_permanent_address" class="form-label">Permanent Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_father_permanent_address"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_father_permanent_address">{{ $studentDetails['data']['parent_data'][0]['sp_father_permanent_address'] ?? ''  }}</textarea>
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_contact_official" class="form-label">Official Contact Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_contact_official" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? ''  }}" name="sp_father_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_contact_mobile" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? ''  }}" name="sp_father_contact_mobile" required>
                                     </div>
                                 </div>
 
@@ -399,63 +400,63 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_first_name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? ''  }}" name="sp_mother_first_name" required>
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_last_name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? ''  }}" name="sp_mother_last_name" required>
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_nic" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? ''  }}" name="sp_mother_nic" required>
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_higher_education_qualification" class="form-label">Higher Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_higher_education_qualification" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_higher_education_qualification'] ?? ''  }}" name="sp_mother_higher_education_qualification" required>
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_occupation" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? ''  }}" name="sp_mother_occupation" required>
                                     </div>
                                 </div>
                                 <!-- Official Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_official_address" class="form-label">Official Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_mother_official_address"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'"  name="sp_mother_official_address">{{ $studentDetails['data']['parent_data'][0]['sp_mother_official_address'] ?? ''  }}</textarea>
                                     </div>
                                 </div>
                                 <!-- Permanent Address -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_permanent_address" class="form-label">Permanent Address</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_mother_permanent_address"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sp_mother_permanent_address">{{ $studentDetails['data']['parent_data'][0]['sp_mother_permanent_address'] ?? ''  }}</textarea>
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_official" class="form-label">Official Contact Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_contact_official" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? ''  }}" name="sp_mother_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_contact_mobile" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? ''  }}" name="sp_mother_contact_mobile" required>
                                     </div>
                                 </div>
                             </div>
@@ -465,21 +466,21 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_admission_date" class="form-label">Admission Date</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_date" required>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_date'] }}" name="sd_admission_date" required>
                                     </div>
                                 </div>
                                 <!-- Admission Payment Amount -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_admission_payment_amount" class="form-label">Admission Payment Amount</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_payment_amount" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" required>
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_no_of_installments" class="form-label">Number of Installments</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_no_of_installments" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" required>
                                     </div>
                                 </div>
                             </div>
@@ -495,20 +496,30 @@
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" class="form-control" name="siblings[0][first_name]"></td>
-                                        <td><input type="text" class="form-control" name="siblings[0][last_name]"></td>
-                                        <td>
-                                            <select class="form-select" name="siblings[0][sex]">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="date" class="form-control" name="siblings[0][date_of_birth]"></td>
-                                        <td><input type="text" class="form-control" name="siblings[0][school]"></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
-                                    </tr>
+                               <tbody>
+                                    {{-- Decode the JSON string into an array --}}
+                                    @php
+                                        $siblingData = json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
+                                        
+                                    @endphp
+
+                                    {{-- Loop through sibling data --}}
+                                    @foreach ($siblingData as $index => $sibling)
+                                
+                                        <tr>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][first_name]" value="{{ $sibling['first_name'] }}"></td>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][last_name]" value="{{ $sibling['last_name'] }}"></td>
+                                            <td>
+                                                <select class="form-select" name="siblings[{{ $index }}][sex]">
+                                                    <option value="male" {{ $sibling['sex'] === 'male' ? 'selected' : '' }}>Male</option>
+                                                    <option value="female" {{ $sibling['sex'] === 'female' ? 'selected' : '' }}>Female</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control" name="siblings[{{ $index }}][date_of_birth]" value="{{ $sibling['date_of_birth'] }}"></td>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][school]" value="{{ $sibling['school'] }}"></td>
+                                            <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
@@ -521,49 +532,49 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_profile_picture" required>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_profile_picture" value="{{ $studentDetails['data']['documents'][0]['sd_profile_picture'] ?? ''  }}" >
                                     </div>
                                 </div>
                                 <!-- Birth Certificate -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_birth_certificate" class="form-label">Birth Certificate</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" required>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" value="{{ $studentDetails['data']['documents'][0]['sp_mother_contact_mobile'] ?? ''  }}" >
                                     </div>
                                 </div>
                                 <!-- Father NIC -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_nic_fatherer" class="form-label">Father NIC</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_nic_father">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['documents'][0]['sd_nic_father'] ?? ''  }}" name="sd_nic_father">
                                     </div>
                                 </div>
                                 <!-- Mother NIC -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_nic_motherer" class="form-label">Mother NIC</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_nic_mother">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['documents'][0]['sd_nic_mother'] ?? ''  }}" name="sd_nic_mother">
                                     </div>
                                 </div>
                                 <!-- Marriage Certificate -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_marriage_certificate" class="form-label">Marriage Certificate</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_marriage_certificate">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['documents'][0]['sd_marriage_certificate'] ?? ''  }}" name="sd_marriage_certificate">
                                     </div>
                                 </div>
                                 <!-- Permission Letter -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_permission_letter" class="form-label">Permission Letter</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_permission_letter">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['documents'][0]['sd_permission_letter'] ?? ''  }}" name="sd_permission_letter">
                                     </div>
                                 </div>
                                 <!-- Permission Letter -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_leaving_certificate" class="form-label">Leaving Certificate</label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_leaving_certificate">
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['documents'][0]['sd_leaving_certificate'] ?? ''  }}" name="sd_leaving_certificate">
                                     </div>
                                 </div>
                             </div>
