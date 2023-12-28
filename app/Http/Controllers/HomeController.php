@@ -156,24 +156,25 @@ public function student_update(Request $request, $studentId){
         return redirect()->route('students');
     }
 
-    // Handle file uploads for fields that are being updated
-    $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents','public') : $existingStudentData['sd_profile_picture'];
-    $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents','public') : $existingStudentData['sd_birth_certificate'];
-    $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents','public') : $existingStudentData['sd_nic_father'];
-    $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents','public') : $existingStudentData['sd_nic_mother'];
-    $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents', 'public') : $existingStudentData['sd_marriage_certificate'];
-    $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents','public') : $existingStudentData['sd_permission_letter'];
-    $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents','public') : $existingStudentData['sd_leaving_certificate'];
+    $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_profile_picture'];
+        $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_birth_certificate'];
+        $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_father'];
+        $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_mother'];
+        $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_marriage_certificate'];
+        $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_permission_letter'];
+        $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_leaving_certificate'];
+        
+        // Update the data with the new values
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        $updatedData['data']['documents'][0]['sd_profile_picture'] = $profilePicturePath;
+        $updatedData['data']['documents'][0]['sd_birth_certificate'] = $birthCertificatePath;
+        $updatedData['data']['documents'][0]['sd_nic_father'] = $nicFatherPath;
+        $updatedData['data']['documents'][0]['sd_nic_mother'] = $nicMotherPath;
+        $updatedData['data']['documents'][0]['sd_marriage_certificate'] = $marriageCertificatePath;
+        $updatedData['data']['documents'][0]['sd_permission_letter'] = $permissionLetterPath;
+        $updatedData['data']['documents'][0]['sd_leaving_certificate'] = $leavingCertificatePath;
 
-    // Update the data with the new values
-    $updatedData = $request->all(); // You might need to modify this based on your form fields
-    $updatedData['sd_profile_picture'] = $profilePicturePath;
-    $updatedData['sd_birth_certificate'] = $birthCertificatePath;
-    $updatedData['sd_nic_father'] = $nicFatherPath;
-    $updatedData['sd_nic_mother'] = $nicMotherPath;
-    $updatedData['sd_marriage_certificate'] = $marriageCertificatePath;
-    $updatedData['sd_permission_letter'] = $permissionLetterPath;
-    $updatedData['sd_leaving_certificate'] = $leavingCertificatePath;
+
 
     // Make the API request to update the student record
     $response = $this->apiService->makeApiRequest('PUT', 'students/'.$studentId, $updatedData);

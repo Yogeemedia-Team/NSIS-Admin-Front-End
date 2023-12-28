@@ -157,7 +157,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="reg_form">
-                    <form id="regForm" action="{{ route('students.update', ['studentId' => $studentId]) }}" method="POST" enctype="multipart/form-data">
+                    <form id="regForm" action="{{ route('students_update', ['studentId' => $studentDetails['data']['student_id']]) }}" method="POST" enctype="multipart/form-data">
                         
                         @csrf
                         <div class="form_title mb-4">
