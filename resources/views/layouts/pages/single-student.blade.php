@@ -158,13 +158,13 @@
             <div class="col-lg-4">
                 <div class="card mb-4">
                     <div class="card-body text-center">
-                        <img src="{{ asset("storage/".$studentDetails['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</h5>
-                        <p class="text-muted mb-1">{{ $studentDetails['sd_year_grade_class_id']}}</p>
-                        <p class="text-muted mb-4">{{ $studentDetails['organization_id']}}</p>
+                        <img src="{{ asset("storage/".$studentDetails['data'][0]['sd_profile_picture']  ?? '' ) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <h5 class="my-3">{{ $studentDetails['data'][0]['sd_first_name']  ?? '' .' '.$studentDetails['data'][0]['sd_last_name']  ?? '' }}</h5>
+                        <p class="text-muted mb-1">{{ $studentDetails['data'][0]['sd_year_grade_class_id']}}</p>
+                        <p class="text-muted mb-4">{{ $studentDetails['data'][0]['organization_id']  ?? '' }}</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <a target="_blank" href="https://wa.me/{{ $studentDetails['sd_telephone_whatsapp']}}" class="btn btn-primary" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
-                            <a href="mailto:{{ $studentDetails['sd_email_address']}}" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-1"></i>Email</a>
+                            <a target="_blank" href="https://wa.me/{{ $studentDetails['data'][0]['sd_telephone_whatsapp']  ?? '' }}" class="btn btn-primary" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
+                            <a href="mailto:{{ $studentDetails['data'][0]['sd_email_address']  ?? '' }}" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-1"></i>Email</a>
                         </div>
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_first_name'] .' '.$studentDetails['sd_last_name']  }}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_first_name'] ?? ''  .' '.$studentDetails['data'][0]['sd_last_name'] ?? ''   }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -211,7 +211,7 @@
                                 <p class="mb-0">Name With Initials</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_name_with_initials'] }}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_name_with_initials'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -219,7 +219,7 @@
                                 <p class="mb-0">Gender</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_gender']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_gender'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -227,7 +227,7 @@
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_address_line1'] .', '.$studentDetails['sd_address_line2'] }}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_address_line1'] ?? '' .', '.$studentDetails['data'][0]['sd_address_line2'] ?? ''  }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -235,7 +235,7 @@
                                 <p class="mb-0">Telephone</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_telephone_residence']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_telephone_residence'] ?? '' }}</p>
                             </div>
                         </div>
 
@@ -244,7 +244,7 @@
                                 <p class="mb-0">Mobile</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_telephone_mobile']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_telephone_mobile'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -252,7 +252,7 @@
                                 <p class="mb-0">Watsapp Number</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_telephone_whatsapp']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_telephone_whatsapp'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -260,7 +260,7 @@
                                 <p class="mb-0">Email</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_email_address']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_email_address'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -268,7 +268,7 @@
                                 <p class="mb-0">Date of Birth</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_date_of_birth']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_date_of_birth'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -276,7 +276,7 @@
                                 <p class="mb-0">Religion</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_religion']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_religion'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -284,7 +284,7 @@
                                 <p class="mb-0">Ethnicity</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_ethnicity']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_ethnicity'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -292,7 +292,7 @@
                                 <p class="mb-0">Birthcertificate No</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_birth_certificate_number']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_birth_certificate_number'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row">
@@ -300,7 +300,7 @@
                                 <p class="mb-0">Health Conditions</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="mb-0 text-muted"><span class="badge badge-success text-dark">{{ $studentDetails['sd_health_conditions']}}</span></p>
+                                <p class="mb-0 text-muted"><span class="badge badge-success text-dark">{{ $studentDetails['data'][0]['sd_health_conditions'] ?? '' }}</span></p>
                             </div>
                         </div>
 
@@ -310,7 +310,7 @@
                                 <p class="mb-0">Admission Date</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_admission_date']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_admission_date'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -318,7 +318,7 @@
                                 <p class="mb-0">Payment Amount</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">LKR {{ $studentDetails['sd_admission_payment_amount']}}</p>
+                                <p class="text-muted mb-0">LKR {{ $studentDetails['data'][0]['sd_admission_payment_amount'] ?? '' }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -326,7 +326,7 @@
                                 <p class="mb-0">Number of Installments</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['sd_no_of_installments']}}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data'][0]['sd_no_of_installments'] ?? '' }}</p>
                             </div>
                         </div> -->
                     </div>
