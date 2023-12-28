@@ -22,6 +22,10 @@
     background-color: #35ab58 !important;
     border-color: #35ab58 !important;
 }
+.badge-success{
+    background-color: #35ab58 !important;
+    color: #fff !important;
+}
 
 .bg-secondary {
     background-color: #7A818E !important;
@@ -30,6 +34,10 @@
 .btn-secondary {
     background-color: #7A818E !important;
     border-color: #7A818E !important;
+}
+.badge-secondary{
+    background-color: #7A818E !important;
+    color: #fff !important;
 }
 
 .bg-warning {
@@ -40,6 +48,10 @@
     background-color: #cba544 !important;
     border-color: #cba544 !important;
 }
+.badge-warning{
+    background-color: #cba544 !important;
+    color: #fff !important;
+}
 
 .bg-danger {
     background-color: #c1476e !important;
@@ -48,7 +60,10 @@
 .btn-danger {
     background-color: #c1476e !important;
     border-color: #c1476e !important;
-
+}
+.badge-danger{
+    background-color: #c1476e !important;
+    color: #fff !important;
 }
 
 .bg-gradient-primary {
@@ -81,7 +96,7 @@
 
 /* Mark input boxes that gets an error on validation: */
 .reg_form input.invalid {
-    background-color: #ffdddd;
+    background-color: #ff000031;
 }
 
 /* Hide all steps by default: */
@@ -145,4 +160,23 @@
 
 .sidenav-footer .card.card-background::after {
     opacity: 0.15;
+}
+
+/* back button */
+.body_content{
+    position: relative;
+}
+.back_btn {
+	position: absolute;
+	top: 30px;
+	right: 30px;
+}
+
+.body_content .progress-bar {
+	background-image: linear-gradient(to right, rgb(0, 167, 8) , rgb(130, 255, 119));
+}
+.form-control:focus,
+.form-select:focus {
+	border: 3px solid #405189;
+	box-shadow: none;
 }
