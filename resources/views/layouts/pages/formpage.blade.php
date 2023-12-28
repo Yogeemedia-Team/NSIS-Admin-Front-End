@@ -175,16 +175,17 @@
                                         <label for="id" class="form-label">Admission Number</label>
                                         <input type="hidden" value="{{ $uniqueId }}" name="student_id">
                                         <input type="hidden" value="{{ env('ORGANIZATION_ID') }}" name="organization_id">
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_no">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_no" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
                                         <select class="form-select" name="sd_year_grade_class_id">
-                                            <option value="year1">Year 1</option>
-                                            <option value="year1">Year 2</option>
-                                            <option value="year1">Year 3</option>
+                                            <option value="2023">2023</option>
+                                            <option value="2024">2024</option>
+                                            <option value="2025">2025</option>
+                                            <option value="2026">2026</option>
                                         </select>
                                     </div>
                                 </div>
