@@ -181,7 +181,7 @@
                             <td>{{ $student['sd_telephone_mobile'] }}</td>
                             <td style="display: flex;">
                                 <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('students.edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('student_edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
                                 <form action="{{ route('student_delete', $student['student_id']) }}" method="POST">
                                     @csrf
                                     <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
