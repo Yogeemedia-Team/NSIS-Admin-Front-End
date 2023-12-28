@@ -354,22 +354,23 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                  @if(isset($studentDetails['parent_data']))
+
+                                  @if(isset($studentDetails['data']['parent_data']))
                                         <tr>
                                             <td><b>Father</b></td>
-                                            <td>{{ $studentDetails['parent_data']['sp_father_first_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_father_last_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_father_nic'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_father_contact_official'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_father_occupation'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
                                         </tr>
                                         <tr>
                                             <td><b>Mother</b></td>
-                                            <td>{{ $studentDetails['parent_data']['sp_mother_first_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_mother_last_name'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_mother_nic'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_mother_contact_official'] ?? '' }}</td>
-                                            <td>{{ $studentDetails['parent_data']['sp_mother_occupation'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
                                         </tr>
                                     @else
                                         <tr>
