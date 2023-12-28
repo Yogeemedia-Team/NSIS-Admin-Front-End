@@ -354,22 +354,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td><b>Father</b></td>
-                                        <td>Mark</td>
-                                        <td>Otto</td>
-                                        <td>123456789V</td>
-                                        <td>0123456789</td>
-                                        <td>Engineer</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Mother</b></td>
-                                        <td>Jacob</td>
-                                        <td>Thornton</td>
-                                        <td>112233445V</td>
-                                        <td>0234567891</td>
-                                        <td>Doctor</td>
-                                    </tr>
+                                  @if(isset($studentDetails['parent_data'][0]))
+                                        <tr>
+                                            <td><b>Father</b></td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Mother</b></td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
+                                        </tr>
+                                    @else
+                                        <tr>
+                                            <td colspan="6">No parent data available</td>
+                                        </tr>
+                                    @endif
 
                                 </tbody>
                             </table>
