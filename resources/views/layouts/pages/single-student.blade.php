@@ -204,7 +204,7 @@
                                 <p class="mb-0">Full Name</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_first_name'] ?? ''  .' '.$studentDetails['data']['sd_last_name'] ?? ''   }}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_name_in_full'] ?? ''}}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
