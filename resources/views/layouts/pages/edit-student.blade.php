@@ -697,7 +697,7 @@
                                     <div class="mb-3">
                                         <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_profile_picture'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_profile_picture'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'" name="sd_profile_picture"
@@ -711,7 +711,7 @@
                                     <div class="mb-3">
                                         <label for="sd_birth_certificate" class="form-label">Birth Certificate</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_birth_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_birth_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'" name="sd_birth_certificate"
@@ -724,7 +724,7 @@
                                     <div class="mb-3">
                                         <label for="sd_nic_fatherer" class="form-label">Father NIC</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_nic_father'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_father'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'"
@@ -738,7 +738,7 @@
                                     <div class="mb-3">
                                         <label for="sd_nic_motherer" class="form-label">Mother NIC</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_nic_mother'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_mother'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'"
@@ -753,7 +753,7 @@
                                         <label for="sd_marriage_certificate" class="form-label">Marriage
                                             Certificate</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_marriage_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_marriage_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'"
@@ -767,7 +767,7 @@
                                     <div class="mb-3">
                                         <label for="sd_permission_letter" class="form-label">Permission Letter</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_permission_letter'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_permission_letter'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'"
@@ -782,7 +782,7 @@
                                         <label for="sd_leaving_certificate" class="form-label">Leaving
                                             Certificate</label>
                                         <div class="d-flex align-items-center">
-                                            <img src="{{ asset($studentDetails['data']['documents'][0]['sd_leaving_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
+                                            <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_leaving_certificate'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3"
                                                 alt="user1">
                                             <input type="file" class="form-control"
                                                 oninput="this.className = 'form-control'"
