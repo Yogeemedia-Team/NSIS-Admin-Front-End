@@ -228,7 +228,7 @@
                                 <p class="mb-0">Address</p>
                             </div>
                             <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_address_line1'] ?? '' .', '.$studentDetails['data']['sd_address_line2'] ?? ''  }}</p>
+                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_address_line1'] .', '.$studentDetails['data']['sd_address_line2'] .', '.$studentDetails['data']['sd_address_city']  }}</p>
                             </div>
                         </div>
                         <div class="row mb-3">
