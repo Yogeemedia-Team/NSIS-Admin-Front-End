@@ -343,13 +343,13 @@
                     <div class="card-body">
                         <!-- Parent details -->
                         <div class="mb-4">
-                            <div class="bg-dark py-2 px-3">
-                                <h6 class="text-light mb-0">Parent Details</h6>
+                            <div class="py-2 px-3">
+                                <h6 class="text-light mb-0" style="color: black !important;" >Parent Details</h6>
                             </div>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col"></th>
+                                        <th scope="col">Parent</th>
                                         <th scope="col">First Name</th>
                                         <th scope="col">Last name</th>
                                         <th scope="col">NIC</th>
@@ -388,13 +388,13 @@
 
                         <!-- Attachments details -->
                         <div class="mb-3">
-                            <div class="bg-dark py-2 px-3">
-                                <h6 class="text-light mb-0">Attachments </h6>
+                            <div class="py-2 px-3">
+                                <h6 class="text-light mb-0" style="color: black !important;">Attachments </h6>
                             </div>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">ID</th>
+                                        
                                         <th scope="col">Name</th>
                                         <th scope="col">Action</th>
                                     </tr>
@@ -404,7 +404,7 @@
                                     @foreach($studentDetails['data']['documents'][0] as $key => $value)
                                     @if (strpos($key, 'sd_') === 0)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        
                                         <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
                                         <td>
                                             <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
