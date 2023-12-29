@@ -159,9 +159,10 @@
                 <div class="card mb-4">
                     <div class="card-body text-center">
                         <img src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
-                        <h5 class="my-3">{{ $studentDetails['data']['sd_first_name']  ?? '' .' '.$studentDetails['data']['sd_last_name']  ?? '' }}</h5>
-                        <p class="text-muted mb-1">{{ $studentDetails['data']['sd_year_grade_class_id']}}</p>
-                        <p class="text-muted mb-4">{{ $studentDetails['data']['organization_id']  ?? '' }}</p>
+                        <h5 class="my-3">Name : {{ $studentDetails['data']['sd_first_name']  ?? '' .' '.$studentDetails['data']['sd_last_name']  ?? '' }}</h5>
+                        <p class="text-muted mb-1">Year : {{ $studentDetails['data']['sd_year_grade_class_id']}}</p>
+                        <p class="text-muted mb-4">Grade : 6</p>
+                        <p class="text-muted mb-4">Class : 6A</p>
                         <div class="d-flex justify-content-center mb-2">
                             <a target="_blank" href="https://wa.me/{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" class="btn btn-primary" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
                             <a href="mailto:{{ $studentDetails['data']['sd_email_address']  }}" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-1"></i>Email</a>
