@@ -40,3 +40,43 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->parent('category', $post->category);
     $trail->push($post->title, route('post', $post->id));
 });
+
+// Grades
+Breadcrumbs::for('grades', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Grades', route('grades'));
+});
+Breadcrumbs::for('addgrade', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Grade', route('addgrade'));
+});
+
+// Classes
+Breadcrumbs::for('classes', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Classes', route('classes'));
+});
+Breadcrumbs::for('addclass', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Class', route('addclass'));
+});
+
+// Extracurriculars
+Breadcrumbs::for('extracurriculars', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Extracurriculars', route('extracurriculars'));
+});
+Breadcrumbs::for('addextracurricular', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Extracurricular', route('addextracurricular'));
+});
+
+// YearGradeClass
+Breadcrumbs::for('year_grade_class', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Relationships', route('year_grade_class'));
+});
+Breadcrumbs::for('add_year_grade_class', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Relationships', route('add_year_grade_class'));
+});

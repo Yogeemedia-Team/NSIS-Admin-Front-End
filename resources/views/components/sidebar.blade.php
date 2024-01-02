@@ -126,21 +126,27 @@
               <div class="collapse " id="sch">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="grades">
                       <span class="sidenav-mini-icon text-xs"> G </span>
                       <span class="sidenav-normal"> Grades </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="classes">
                       <span class="sidenav-mini-icon text-xs">C </span>
                       <span class="sidenav-normal"> Classes </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="extracurriculars">
                       <span class="sidenav-mini-icon text-xs">E </span>
                       <span class="sidenav-normal"> Extracurriculars </span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link " href="year_grade_class">
+                      <span class="sidenav-mini-icon text-xs">Y </span>
+                      <span class="sidenav-normal"> Year Grade Class Relationship </span>
                     </a>
                   </li>
                 </ul>

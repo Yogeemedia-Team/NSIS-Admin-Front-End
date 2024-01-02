@@ -52,4 +52,20 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students_update');
 
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
+
+    // Grades routes here
+    Route::get('/grades', [HomeController::class, 'grades'])->name('grades');
+    Route::get('/addgrade', [HomeController::class, 'addGrade'])->name('addgrade');
+
+    // Classes routes here
+    Route::get('/classes', [HomeController::class, 'classes'])->name('classes');
+    Route::get('/addclass', [HomeController::class, 'addClass'])->name('addclass');
+
+    //  Extracurriculars routes here
+    Route::get('/extracurriculars', [HomeController::class, 'extracurriculars'])->name('extracurriculars');
+    Route::get('/addextracurricular', [HomeController::class, 'addExtracurricular'])->name('addextracurricular');
+
+    //  year_grade_class routes here
+    Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
+    Route::get('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
 });
