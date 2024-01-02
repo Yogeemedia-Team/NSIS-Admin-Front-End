@@ -52,4 +52,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students_update');
 
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
+
+    // Grades routes here
+    Route::get('/grades', [HomeController::class, 'grades'])->name('grades');
+    Route::get('/addgrade', [HomeController::class, 'addGrade'])->name('addgrade');
 });

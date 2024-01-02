@@ -40,3 +40,13 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->parent('category', $post->category);
     $trail->push($post->title, route('post', $post->id));
 });
+
+// Home > All Grades
+Breadcrumbs::for('grades', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Grades', route('grades'));
+});
+Breadcrumbs::for('addgrade', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Grade', route('addgrade'));
+});
