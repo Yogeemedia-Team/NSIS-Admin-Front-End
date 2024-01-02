@@ -60,3 +60,13 @@ Breadcrumbs::for('addclass', function ($trail) {
     $trail->parent('home');
     $trail->push('Add Class', route('addclass'));
 });
+
+// Extracurriculars
+Breadcrumbs::for('extracurriculars', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Extracurriculars', route('extracurriculars'));
+});
+Breadcrumbs::for('addextracurricular', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Extracurricular', route('addextracurricular'));
+});
