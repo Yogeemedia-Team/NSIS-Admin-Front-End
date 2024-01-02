@@ -57,7 +57,12 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     // Classes routes here
     Route::get('/classes', [HomeController::class, 'classes'])->name('classes');
-    Route::post('/add_class', [HomeController::class, 'addClass'])->name('addclass');
+    Route::get('/add_class', [HomeController::class, 'addClass'])->name('add_class');
+    Route::post('/add_class', [HomeController::class, 'createClass'])->name('create_class');
+    Route::get('/class/{classId}/edit', [HomeController::class, 'editClass'])->name('class_edit');
+    Route::post('/class/{gradeId}', [HomeController::class, 'updateClass'])->name('class_update');
+    Route::post('/class_delete/{id}', [HomeController::class, 'deleteClass'])->name('class_delete');
+
 
     //  Extracurriculars routes here
     Route::get('/extracurriculars', [HomeController::class, 'extracurriculars'])->name('extracurriculars');

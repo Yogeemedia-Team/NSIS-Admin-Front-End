@@ -294,16 +294,100 @@ class HomeController extends Controller
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
-    // Classes Controllers Here
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Class Controllers Here
     public function classes()
     {
-        return view('layouts.pages.classes');
+        $response = $this->apiService->makeApiRequest('GET', 'class');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.class.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $classes = $response['data'];
+            return view('layouts.pages.class.index', compact('classes'));
+        }
     }
+
     public function addClass()
     {
-        return view('layouts.pages.addclass');
+        return view('layouts.pages.class.create');
     }
+
+    public function createClass(Request $request){
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $apiData['organization_id'] = env('ORGANIZATION_ID');
+        
+        $response = $this->apiService->makeApiRequest('POST', 'class', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('classes');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'Class create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('classes');
+        }
+    }
+
+    public function editClass($id)
+    {
+        $endpoint = 'class/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $class = $response;
+
+        // Pass the student details to the view
+        return view('layouts.pages.class.edit', compact('class'));
+    }
+
+    public function updateClass(Request $request, $classId)
+    {
+        // Validate the form data, including the file uploads
+
+        // Fetch existing student data from the API
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'class/' . $classId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('classes');
+        }
+
+        // Update the data with the new values
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        $updatedData['organization_id'] = env('ORGANIZATION_ID');
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'class/' . $classId, $updatedData);
+
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('classes');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Class update successful!')->showConfirmButton('OK');
+            return redirect()->route('classes');
+        }
+    }
+
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Extracurriculars Controllers Here
     public function extracurriculars()
