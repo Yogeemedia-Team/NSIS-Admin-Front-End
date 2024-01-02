@@ -39,33 +39,31 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     Route::get('/formpage', [HomeController::class, 'formpage'])->name('formpage');
     Route::post('/student_create', [HomeController::class, 'student_create'])->name('student_create');
-
     Route::get('/students', [HomeController::class, 'students'])->name('students');
-
-    // temp single student route
     Route::get('/single-student/{id}', [HomeController::class, 'singleStudent'])->name('single-student');
-
     Route::post('/student_delete/{id}', [HomeController::class, 'studentDelete'])->name('student_delete');
-
     Route::get('/students/{studentId}/edit', [HomeController::class, 'StudentEdit'])->name('student_edit');
-
     Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students_update');
-
+    
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 
     // Grades routes here
     Route::get('/grades', [HomeController::class, 'grades'])->name('grades');
-    Route::get('/addgrade', [HomeController::class, 'addGrade'])->name('addgrade');
+    Route::get('/add_grade', [HomeController::class, 'addGrade'])->name('add_grade');
+    Route::post('/add_grade', [HomeController::class, 'createGrade'])->name('create_grade');
+    Route::get('/grades/{gradeId}/edit', [HomeController::class, 'editGrade'])->name('grade_edit');
+    Route::post('/grades/{gradeId}', [HomeController::class, 'updateGrade'])->name('grade_update');
+    Route::post('/grades_delete/{id}', [HomeController::class, 'deleteGrade'])->name('grade_delete');
 
     // Classes routes here
     Route::get('/classes', [HomeController::class, 'classes'])->name('classes');
-    Route::get('/addclass', [HomeController::class, 'addClass'])->name('addclass');
+    Route::post('/add_class', [HomeController::class, 'addClass'])->name('addclass');
 
     //  Extracurriculars routes here
     Route::get('/extracurriculars', [HomeController::class, 'extracurriculars'])->name('extracurriculars');
-    Route::get('/addextracurricular', [HomeController::class, 'addExtracurricular'])->name('addextracurricular');
+    Route::post('/add_extracurricular', [HomeController::class, 'addExtracurricular'])->name('addextracurricular');
 
     //  year_grade_class routes here
     Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
-    Route::get('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
+    Route::post('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
 });
