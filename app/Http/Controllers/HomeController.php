@@ -208,4 +208,24 @@ class HomeController extends Controller
     {
         return view('layouts.pages.addgrade');
     }
+
+    // Classes Controllers Here
+    public function classes()
+    {
+        return view('layouts.pages.classes');
+    }
+    public function addClass()
+    {
+        return view('layouts.pages.addclass');
+    }
+
+    // Extracurriculars Controllers Here
+    public function extracurriculars()
+    {
+        return view('layouts.pages.extracurriculars');
+    }
+    public function addExtracurricular()
+    {
+        return view('layouts.pages.addextracurricular');
+    }
 }

@@ -41,7 +41,7 @@ Breadcrumbs::for('post', function ($trail, $post) {
     $trail->push($post->title, route('post', $post->id));
 });
 
-// Home > All Grades
+// Grades
 Breadcrumbs::for('grades', function ($trail) {
     $trail->parent('home');
     $trail->push('All Grades', route('grades'));
@@ -49,4 +49,14 @@ Breadcrumbs::for('grades', function ($trail) {
 Breadcrumbs::for('addgrade', function ($trail) {
     $trail->parent('home');
     $trail->push('Add Grade', route('addgrade'));
+});
+
+// Classes
+Breadcrumbs::for('classes', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Classes', route('classes'));
+});
+Breadcrumbs::for('addclass', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Class', route('addclass'));
 });

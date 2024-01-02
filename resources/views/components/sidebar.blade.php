@@ -132,7 +132,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="classes">
                       <span class="sidenav-mini-icon text-xs">C </span>
                       <span class="sidenav-normal"> Classes </span>
                     </a>
