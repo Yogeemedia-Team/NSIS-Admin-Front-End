@@ -160,7 +160,7 @@
                 Add New Grade
             </div>
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('add_grade') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->

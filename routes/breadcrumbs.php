@@ -48,7 +48,7 @@ Breadcrumbs::for('grades', function ($trail) {
 });
 Breadcrumbs::for('addgrade', function ($trail) {
     $trail->parent('home');
-    $trail->push('Add Grade', route('addgrade'));
+    $trail->push('Add Grade', route('add_grade'));
 });
 
 // Classes
