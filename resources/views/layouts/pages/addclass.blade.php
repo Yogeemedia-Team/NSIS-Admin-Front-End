@@ -156,7 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header pb-0">
                 Add New Class
             </div>
             <div class="card-body">

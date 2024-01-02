@@ -156,7 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
+            <div class="card-header pb-0">
                 <div class="row">
                     <div class="col-6 my-auto">
                         All Extracurriculars
