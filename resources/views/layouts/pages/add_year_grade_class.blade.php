@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('extracurriculars') }}
+                {{ Breadcrumbs::render('add_year_grade_class') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -157,42 +157,51 @@
 
         <div class="card">
             <div class="card-header">
-                <div class="row">
-                    <div class="col-6 my-auto">
-                        All Extracurriculars
-                    </div>
-                    <div class="col-6">
-                        <div class="text-end">
-                            <a href="/addextracurricular" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
-                        </div>
-                    </div>
-                </div>
+                Add New Year Grade & Class Relationships
             </div>
             <div class="card-body">
-                <div class="table-responsive">
-                    <table id="dataTable" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th class="px-2">Extracurriculars Name</th>
-                                <th class="px-2">Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <td>Sample Extracurriculars</td>
-                            <td class="d-flex">
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
+                <form action="" method="POST">
+                    @csrf
+                    <div class="row">
+                        <!-- First Name -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="year" class="form-label">Year</label>
+                                <input type="text" class="form-control" name="year">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="master_grade_id" class="form-label">Grade</label>
+                                <select class="form-select" name="master_grade_id">
+                                    <option value="grade_1">Grade 1</option>
+                                    <option value="grade_2">Grade 2</option>
+                                    <option value="grade_3">Grade 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="master_class_id" class="form-label">Class</label>
+                                <select class="form-select" name="master_class_id">
+                                    <option value="class_1">Class 1</option>
+                                    <option value="class_2">Class 2</option>
+                                    <option value="class_3">Class 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="total_number_of_students" class="form-label">No of Students</label>
+                                <input type="text" class="form-control" name="total_number_of_students">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3 text-end">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </div>
+                    </div>
 
-                            </td>
-                        </tbody>
-                    </table>
-                </div>
-
+                </form>
             </div>
         </div>
         <!-- Students table -->
@@ -207,23 +216,5 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    function confirmDelete(extracurricularsId) {
-        Swal.fire({
-            title: 'Are you sure?',
-            text: 'You won\'t be able to revert this!',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#d33',
-            cancelButtonColor: '#3085d6',
-            confirmButtonText: 'Yes, delete it!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // If the user clicks "Yes" in the confirmation dialog, submit the form
-                document.getElementById('deleteForm' + extracurricularsId).submit();
-            }
-            // If the user clicks "No" or closes the dialog, do nothing
-        });
-    }
-</script>
+
 @endsection

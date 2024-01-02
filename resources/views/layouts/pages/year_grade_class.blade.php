@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('extracurriculars') }}
+                {{ Breadcrumbs::render('year_grade_class') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -159,11 +159,11 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-6 my-auto">
-                        All Extracurriculars
+                        All Year Grade & Class Relationships
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <a href="/addextracurricular" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                            <a href="/add_year_grade_class" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
                         </div>
                     </div>
                 </div>
@@ -173,12 +173,22 @@
                     <table id="dataTable" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th class="px-2">Extracurriculars Name</th>
+                                <th class="px-2">Year</th>
+                                <th class="px-2">Grade</th>
+                                <th class="px-2">Class</th>
+                                <th class="px-2">No of Students</th>
+                                <th class="px-2">Status</th>
                                 <th class="px-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <td>Sample Extracurriculars</td>
+                            <td>2024</td>
+                            <td>Grade 1</td>
+                            <td>Class 1</td>
+                            <td>50</td>
+                            <td>
+                                <div class="badge badge-success">Active</div>
+                            </td>
                             <td class="d-flex">
                                 <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
                                 <form action="" method="POST">
@@ -208,7 +218,7 @@
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
-    function confirmDelete(extracurricularsId) {
+    function confirmDelete(add_year_grade_classId) {
         Swal.fire({
             title: 'Are you sure?',
             text: 'You won\'t be able to revert this!',
@@ -220,7 +230,7 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 // If the user clicks "Yes" in the confirmation dialog, submit the form
-                document.getElementById('deleteForm' + extracurricularsId).submit();
+                document.getElementById('deleteForm' + add_year_grade_classId).submit();
             }
             // If the user clicks "No" or closes the dialog, do nothing
         });

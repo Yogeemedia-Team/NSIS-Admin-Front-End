@@ -70,3 +70,13 @@ Breadcrumbs::for('addextracurricular', function ($trail) {
     $trail->parent('home');
     $trail->push('Add Extracurricular', route('addextracurricular'));
 });
+
+// YearGradeClass
+Breadcrumbs::for('year_grade_class', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Relationships', route('year_grade_class'));
+});
+Breadcrumbs::for('add_year_grade_class', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Add Relationships', route('add_year_grade_class'));
+});

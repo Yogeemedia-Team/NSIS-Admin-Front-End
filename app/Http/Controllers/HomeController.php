@@ -228,4 +228,14 @@ class HomeController extends Controller
     {
         return view('layouts.pages.addextracurricular');
     }
+
+      // year_grade_class  Controllers Here
+      public function YearGradeClass()
+      {
+          return view('layouts.pages.year_grade_class');
+      }
+      public function addYearGradeClass()
+      {
+          return view('layouts.pages.add_year_grade_class');
+      }
 }
