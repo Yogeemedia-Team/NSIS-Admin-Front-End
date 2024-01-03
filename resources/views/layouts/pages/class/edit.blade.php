@@ -171,7 +171,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 mt-auto text-end">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 
