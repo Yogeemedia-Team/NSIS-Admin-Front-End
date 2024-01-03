@@ -158,7 +158,7 @@
         <div class="card">
             <div class="card-body">
                 <div class="text-end">
-                    <a href="/formpage" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                    <a href="{{ route('formpage') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
                 </div>
                 <table id="dataTable" class="table table-striped" style="width:100%">
                     <thead>

@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <a href="/add_year_grade_class" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                            <a href="{{ route('add_year_grade_class') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
                         </div>
                     </div>
                 </div>

@@ -163,7 +163,7 @@
                     </div>
                     <div class="col-6">
                         <div class="text-end">
-                            <a href="{{ route('add_ extracurricular') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                            <a href="{{ route('add_extracurricular') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
                         </div>
                     </div>
                 </div>
