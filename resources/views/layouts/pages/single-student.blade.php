@@ -19,10 +19,10 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
+                    </div> -->
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
@@ -156,225 +156,120 @@
         <!-- Single Student View -->
         <div class="row">
             <div class="col-lg-4">
-                <div class="card mb-4">
+                <div class="card mb-4 move-on-hover">
                     <div class="card-body text-center">
-                        <img src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                        <div class="blur-shadow-avatar">
+                            <img class="avatar avatar-xxl shadow-lg" src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar">
+                        </div>
                         <h5 class="my-3">Name : {{ $studentDetails['data']['sd_first_name']  .' '.$studentDetails['data']['sd_last_name'] }}</h5>
                         @php
-                            $classes = ['4-A', '5-C', '6-D', '7-F'];
-                             $randomKey = $classes[array_rand($classes)];
-                        @endphp     
+                        $classes = ['4-A', '5-C', '6-D', '7-F'];
+                        $randomKey = $classes[array_rand($classes)];
+                        @endphp
                         <p class="text-muted mb-1">Class : {{ $randomKey }}</p>
                         <p class="text-muted mb-4">Admission No. : {{ $studentDetails['data']['sd_admission_no']}}</p>
                         <div class="d-flex justify-content-center mb-2">
-                            <a target="_blank" href="https://wa.me/{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" class="btn btn-primary" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
-                            <a href="mailto:{{ $studentDetails['data']['sd_email_address']  }}" class="btn btn-outline-primary ms-1"><i class="fa-solid fa-envelope me-1"></i>Email</a>
+                            <a target="_blank" href="https://wa.me/{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" class="btn btn-primary mb-0" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
+                            <a href="mailto:{{ $studentDetails['data']['sd_email_address']  }}" class="btn btn-outline-primary ms-1 mb-0"><i class="fa-solid fa-envelope me-1"></i>Email</a>
                         </div>
                     </div>
                 </div>
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <p class="mb-4"> Insights
+                <div class="card mb-4 move-on-hover">
+                    <div class="card-header pb-0">
+                        <div class="text-dark fw-bold">
+                            Insights
+                        </div>
+                    </div>
+                    <div class="card-body pt-2">
                         </p>
-                        <p class="mb-1" style="font-size: .77rem;">Attendance</p>
+                        <p class="mb-2">Attendance</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-1" style="font-size: .77rem;">Payments</p>
+                        <p class="mt-4 mb-2" >Payments</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-1" style="font-size: .77rem;">Marks Average</p>
+                        <p class="mt-4 mb-2" >Marks Average</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-1" style="font-size: .77rem;">Extra Curricular</p>
+                        <p class="mt-4 mb-2" >Extra Curricular</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <!-- <p class="mt-4 mb-1" style="font-size: .77rem;">Sample Text 5</p>
-                        <div class="progress rounded mb-2" style="height: 5px;">
-                            <div class="progress-bar" role="progressbar" style="width: 66%" aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div> -->
                     </div>
                 </div>
             </div>
             <div class="col-lg-8">
                 <div class="card mb-4">
-                    <div class="card-body">
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Full Name</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_name_in_full'] ?? ''}}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Name With Initials</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_name_with_initials'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Gender</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_gender'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Address</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_address_line1'] .', '.$studentDetails['data']['sd_address_line2'] .', '.$studentDetails['data']['sd_address_city']  }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Telephone</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_telephone_residence'] ?? '' }}</p>
-                            </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Mobile</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_telephone_mobile'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Watsapp Number</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_telephone_whatsapp'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Email</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_email_address'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Date of Birth</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_date_of_birth'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Religion</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_religion'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Ethnicity</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_ethnicity'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Birthcertificate No</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_birth_certificate_number'] ?? '' }}</p>
-                            </div>
-                        </div>
+                    <div class="card-header pb-0">
                         <div class="row">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Health Conditions</p>
+                            <div class="col-6">
+                                <div class="text-dark fw-bold">
+                                    Profile informations
+                                </div>
                             </div>
-                            <div class="col-sm-7">
-                                <p class="mb-0 text-muted"><span class="badge badge-success text-dark">{{ $studentDetails['data']['sd_health_conditions'] ?? '' }}</span></p>
+                            <div class="col-6 text-end">
+                                <button class="btn btn-secondary px-3 py-2 mb-0" onclick="history.back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                             </div>
                         </div>
 
-
-                        <!-- <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Admission Date</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_admission_date'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Payment Amount</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">LKR {{ $studentDetails['data']['sd_admission_payment_amount'] ?? '' }}</p>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col-sm-5">
-                                <p class="mb-0">Number of Installments</p>
-                            </div>
-                            <div class="col-sm-7">
-                                <p class="text-muted mb-0">{{ $studentDetails['data']['sd_no_of_installments'] ?? '' }}</p>
-                            </div>
-                        </div> -->
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="card">
-                    <div class="card-body">
+                    <div class="card-body pt-3">
+                        <ul class="list-group">
+                            <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; {{ $studentDetails['data']['sd_first_name'] ?? ''  .' '.$studentDetails['data']['sd_last_name'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Name With Initials:</strong> &nbsp; {{ $studentDetails['data']['sd_name_with_initials'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong> &nbsp; {{ $studentDetails['data']['sd_gender'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Address:</strong> &nbsp; {{ $studentDetails['data']['sd_address_line1'] ?? '' .', '.$studentDetails['data']['sd_address_line2'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telephone:</strong> &nbsp; {{ $studentDetails['data']['sd_telephone_residence'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; {{ $studentDetails['data']['sd_telephone_mobile'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">WhatsApp Number:</strong> &nbsp; {{ $studentDetails['data']['sd_telephone_whatsapp'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; {{ $studentDetails['data']['sd_email_address'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Date of Birth:</strong> &nbsp; {{ $studentDetails['data']['sd_date_of_birth'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Religion:</strong> &nbsp; {{ $studentDetails['data']['sd_religion'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Ethnicity:</strong> &nbsp; {{ $studentDetails['data']['sd_ethnicity'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Birth Certificate No:</strong> &nbsp; {{ $studentDetails['data']['sd_birth_certificate_number'] ?? '' }}</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Health Conditions:</strong> &nbsp; <span class="badge badge-success text-dark">{{ $studentDetails['data']['sd_health_conditions'] ?? '' }}</span></li>
+                        </ul>
+
+
+                    </div>
+                    <div class="card-header py-0">
+                        <div class="text-dark fw-bold">Parent Details</div>
+                    </div>
+                    <div class="card-body pt-1">
                         <!-- Parent details -->
-                        <div class="mb-4">
-                            <div class="py-2 px-3">
-                                <h6 class="text-light mb-0" style="color: black !important;" >Parent Details</h6>
-                            </div>
-                            <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Parent</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last name</th>
-                                        <th scope="col">NIC</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Occupation</th>
+                                        <th class="px-1 text-sm ps-0">Parent</th>
+                                        <th class="px-1 text-sm">First Name</th>
+                                        <th class="px-1 text-sm">Last name</th>
+                                        <th class="px-1 text-sm">NIC</th>
+                                        <th class="px-1 text-sm">Mobile</th>
+                                        <th class="px-1 text-sm">Occupation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     @if(isset($studentDetails['data']['parent_data']))
                                     <tr>
-                                        <td><b>Father</b></td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
+                                        <td class="text-sm ps-0"><b>Father</b></td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
                                     </tr>
                                     <tr>
-                                        <td><b>Mother</b></td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
+                                        <td class="text-sm ps-0"><b>Mother</b></td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
+                                        <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
                                     </tr>
                                     @else
                                     <tr>
@@ -385,18 +280,18 @@
                                 </tbody>
                             </table>
                         </div>
-
+                    </div>
+                    <div class="card-header py-0">
+                        <div class="text-dark fw-bold">Attachments</div>
+                    </div>
+                    <div class="card-body pt-1">
                         <!-- Attachments details -->
-                        <div class="mb-3">
-                            <div class="py-2 px-3">
-                                <h6 class="text-light mb-0" style="color: black !important;">Attachments </h6>
-                            </div>
-                            <table class="table">
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
                                 <thead>
                                     <tr>
-                                        
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Action</th>
+                                        <th class="px-1 text-sm ps-0">Name</th>
+                                        <th class="px-1 text-sm text-end">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -404,10 +299,9 @@
                                     @foreach($studentDetails['data']['documents'][0] as $key => $value)
                                     @if (strpos($key, 'sd_') === 0)
                                     <tr>
-                                        
-                                        <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
-                                        <td>
-                                            <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
+                                        <td class="text-sm ps-0">{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
+                                        <td class="text-sm text-end">
+                                            <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-warning m-0 py-1 px-2"><i class="fa-solid fa-eye"></i></a>
                                         </td>
                                     </tr>
                                     @endif
@@ -420,15 +314,12 @@
                                 </tbody>
                             </table>
                         </div>
+
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Single Student View -->
-        {{-- <div class="back_btn">
-            <button class="btn btn-secondary" onclick="history.back()"><i class="fa-solid fa-chevron-left me-2"></i> Back</button>
-        </div> --}}
     </div>
     <footer class="footer">
         <div class="container-fluid">

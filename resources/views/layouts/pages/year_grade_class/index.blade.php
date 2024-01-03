@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('add_class') }}
+                {{ Breadcrumbs::render('year_grade_class') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -156,23 +156,46 @@
         <!-- Students table -->
 
         <div class="card">
+            <div class="card-header pb-0">
+                <div class="text-end">
+                    <a href="{{ route('add_year_grade_class') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                </div>
+            </div>
             <div class="card-body">
-                <form action="" method="POST">
-                    @csrf
-                    <div class="row">
-                        <!-- First Name -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="class_name" class="form-label">Class Name</label>
-                                <input type="text" class="form-control" name="class_name">
-                            </div>
-                        </div>
-                        <div class="col-md-6 mt-auto text-end">
-                            <button type="submit" class="btn btn-primary">Update</button>
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table id="dataTable" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="px-2">Year</th>
+                                <th class="px-2">Grade</th>
+                                <th class="px-2">Class</th>
+                                <th class="px-2">No of Students</th>
+                                <th class="px-2">Status</th>
+                                <th class="px-2">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td>2024</td>
+                            <td>Grade 1</td>
+                            <td>Class 1</td>
+                            <td>50</td>
+                            <td>
+                                <div class="badge badge-success">Active</div>
+                            </td>
+                            <td class="d-flex">
+                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                <form action="" method="POST">
+                                    @csrf
+                                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </button>
+                                </form>
 
-                </form>
+                            </td>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
         </div>
         <!-- Students table -->
@@ -187,5 +210,23 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script>
+    function confirmDelete(add_year_grade_classId) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: 'You won\'t be able to revert this!',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // If the user clicks "Yes" in the confirmation dialog, submit the form
+                document.getElementById('deleteForm' + add_year_grade_classId).submit();
+            }
+            // If the user clicks "No" or closes the dialog, do nothing
+        });
+    }
+</script>
 @endsection

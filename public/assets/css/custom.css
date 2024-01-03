@@ -149,11 +149,11 @@
     display: none !important;
 }
 
-.text-sm {
+.dropdown-menu .text-sm {
     font-size: 0.775rem !important;
     line-height: 1.4;
 }
-.text-xs {
+.dropdown-menu .text-xs {
 	font-size: 0.65rem !important;
 	line-height: 1.1;
 }

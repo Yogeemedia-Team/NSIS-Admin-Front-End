@@ -68,7 +68,7 @@ Breadcrumbs::for('extracurriculars', function ($trail) {
 });
 Breadcrumbs::for('addextracurricular', function ($trail) {
     $trail->parent('home');
-    $trail->push('Add Extracurricular', route('addextracurricular'));
+    $trail->push('Add Extracurricular', route('add_extracurricular'));
 });
 
 // YearGradeClass

@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('add_class') }}
+                {{ Breadcrumbs::render('add_year_grade_class') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -156,6 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
+           
             <div class="card-body">
                 <form action="" method="POST">
                     @csrf
@@ -163,12 +164,38 @@
                         <!-- First Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="class_name" class="form-label">Class Name</label>
-                                <input type="text" class="form-control" name="class_name">
+                                <label for="year" class="form-label">Year</label>
+                                <input type="text" class="form-control" name="year">
                             </div>
                         </div>
-                        <div class="col-md-6 mt-auto text-end">
-                            <button type="submit" class="btn btn-primary">Update</button>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="master_grade_id" class="form-label">Grade</label>
+                                <select class="form-select" name="master_grade_id">
+                                    <option value="grade_1">Grade 1</option>
+                                    <option value="grade_2">Grade 2</option>
+                                    <option value="grade_3">Grade 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="master_class_id" class="form-label">Class</label>
+                                <select class="form-select" name="master_class_id">
+                                    <option value="class_1">Class 1</option>
+                                    <option value="class_2">Class 2</option>
+                                    <option value="class_3">Class 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="total_number_of_students" class="form-label">No of Students</label>
+                                <input type="text" class="form-control" name="total_number_of_students">
+                            </div>
+                        </div>
+                        <div class="col-md-12 mt-3 text-end">
+                            <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
 

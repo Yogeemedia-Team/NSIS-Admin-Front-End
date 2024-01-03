@@ -19,7 +19,7 @@
         <div class="collapse  show " id="students">
           <ul class="nav ms-4 ps-3">
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('students') }}">
                 <span class="sidenav-mini-icon"> S </span>
                 <span class="sidenav-normal"> Student Information </span>
               </a>
@@ -126,25 +126,25 @@
               <div class="collapse " id="sch">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a class="nav-link " href="grades">
+                    <a class="nav-link " href="{{ route('grades') }}">
                       <span class="sidenav-mini-icon text-xs"> G </span>
                       <span class="sidenav-normal"> Grades </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="classes">
+                    <a class="nav-link " href="{{ route('classes') }}">
                       <span class="sidenav-mini-icon text-xs">C </span>
                       <span class="sidenav-normal"> Classes </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="extracurriculars">
+                    <a class="nav-link " href="{{ route('extracurriculars') }}">
                       <span class="sidenav-mini-icon text-xs">E </span>
                       <span class="sidenav-normal"> Extracurriculars </span>
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="year_grade_class">
+                    <a class="nav-link " href="{{ route('year_grade_class') }}">
                       <span class="sidenav-mini-icon text-xs">Y </span>
                       <span class="sidenav-normal"> Year Grade Class Relationship </span>
                     </a>
