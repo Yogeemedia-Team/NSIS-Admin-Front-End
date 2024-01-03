@@ -484,33 +484,35 @@
                                 </div>
                             </div>
                             <h6 class="mt-4 mb-3">Student Siblings</h6>
-                            <table id="siblings_table" class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="px-2">First Name</th>
-                                        <th class="px-2">Last Name</th>
-                                        <th class="px-2">Gender</th>
-                                        <th class="px-2">Date of Birth</th>
-                                        <th class="px-2">School</th>
-                                        <th class="px-2">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="text" class="form-control" name="siblings[0][first_name]"></td>
-                                        <td><input type="text" class="form-control" name="siblings[0][last_name]"></td>
-                                        <td>
-                                            <select class="form-select" name="siblings[0][sex]">
-                                                <option value="male">Male</option>
-                                                <option value="female">Female</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="date" class="form-control" name="siblings[0][date_of_birth]"></td>
-                                        <td><input type="text" class="form-control" name="siblings[0][school]"></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                            <div class="table-responsive">
+                                <table id="siblings_table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-2">First Name</th>
+                                            <th class="px-2">Last Name</th>
+                                            <th class="px-2">Gender</th>
+                                            <th class="px-2">Date of Birth</th>
+                                            <th class="px-2">School</th>
+                                            <th class="px-2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input type="text" class="form-control" name="siblings[0][first_name]"></td>
+                                            <td><input type="text" class="form-control" name="siblings[0][last_name]"></td>
+                                            <td>
+                                                <select class="form-select" name="siblings[0][sex]">
+                                                    <option value="male">Male</option>
+                                                    <option value="female">Female</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control" name="siblings[0][date_of_birth]"></td>
+                                            <td><input type="text" class="form-control" name="siblings[0][school]"></td>
+                                            <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
                             <input type="hidden" name="ss_details" id="siblings_data">
                         </div>

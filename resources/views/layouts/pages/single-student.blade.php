@@ -346,44 +346,46 @@
                             <div class="py-2 px-3">
                                 <h6 class="text-light mb-0" style="color: black !important;">Parent Details</h6>
                             </div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="px-2">Parent</th>
-                                        <th class="px-2">First Name</th>
-                                        <th class="px-2">Last name</th>
-                                        <th class="px-2">NIC</th>
-                                        <th class="px-2">Mobile</th>
-                                        <th class="px-2">Occupation</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-2">Parent</th>
+                                            <th class="px-2">First Name</th>
+                                            <th class="px-2">Last name</th>
+                                            <th class="px-2">NIC</th>
+                                            <th class="px-2">Mobile</th>
+                                            <th class="px-2">Occupation</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                                    @if(isset($studentDetails['data']['parent_data']))
-                                    <tr>
-                                        <td><b>Father</b></td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td><b>Mother</b></td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
-                                        <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
-                                    </tr>
-                                    @else
-                                    <tr>
-                                        <td colspan="6">No parent data available</td>
-                                    </tr>
-                                    @endif
+                                        @if(isset($studentDetails['data']['parent_data']))
+                                        <tr>
+                                            <td><b>Father</b></td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Mother</b></td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}</td>
+                                            <td>{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}</td>
+                                        </tr>
+                                        @else
+                                        <tr>
+                                            <td colspan="6">No parent data available</td>
+                                        </tr>
+                                        @endif
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
 
                         <!-- Attachments details -->
@@ -391,34 +393,36 @@
                             <div class="py-2 px-3">
                                 <h6 class="text-light mb-0" style="color: black !important;">Attachments </h6>
                             </div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
 
-                                        <th class="px-2">Name</th>
-                                        <th class="px-2">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']))
-                                    @foreach($studentDetails['data']['documents'][0] as $key => $value)
-                                    @if (strpos($key, 'sd_') === 0)
-                                    <tr>
+                                            <th class="px-2">Name</th>
+                                            <th class="px-2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']))
+                                        @foreach($studentDetails['data']['documents'][0] as $key => $value)
+                                        @if (strpos($key, 'sd_') === 0)
+                                        <tr>
 
-                                        <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
-                                        <td>
-                                            <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
-                                        </td>
-                                    </tr>
-                                    @endif
-                                    @endforeach
-                                    @else
-                                    <tr>
-                                        <td colspan="3">No attachment data available</td>
-                                    </tr>
-                                    @endif
-                                </tbody>
-                            </table>
+                                            <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
+                                            <td>
+                                                <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
+                                            </td>
+                                        </tr>
+                                        @endif
+                                        @endforeach
+                                        @else
+                                        <tr>
+                                            <td colspan="3">No attachment data available</td>
+                                        </tr>
+                                        @endif
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

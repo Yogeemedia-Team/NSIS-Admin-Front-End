@@ -160,41 +160,43 @@
         <div class="text-end">
           <a href="{{ route('formpage') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
         </div>
-        <table id="dataTable" class="table table-striped" style="width:100%">
-          <thead>
-            <tr>
-              <th class="px-2">Admission No</th>
-              <th class="px-2">First Name</th>
-              <th class="px-2">Last Name</th>
-              <th class="px-2">Email</th>
-              <th class="px-2">Mobile</th>
-              <th class="px-2">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            @foreach($studentDetails as $student)
-            <tr>
-              <td>{{ $student['sd_admission_no'] }}</td>
-              <td>{{ $student['sd_first_name'] }}</td>
-              <td>{{ $student['sd_last_name'] }}</td>
-              <td>{{ $student['sd_email_address'] }}</td>
-              <td>{{ $student['sd_telephone_mobile'] }}</td>
-              <td style="display: flex;">
-                <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>
-                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('student_edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
-                <form action="{{ route('student_delete', $student['student_id']) }}" method="POST">
-                  @csrf
-                  <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
-                    <i class="fa-solid fa-trash"></i>
-                  </button>
-                </form>
+        <div class="table-responsive">
+          <table id="dataTable" class="table table-striped" style="width:100%">
+            <thead>
+              <tr>
+                <th class="px-2">Admission No</th>
+                <th class="px-2">First Name</th>
+                <th class="px-2">Last Name</th>
+                <th class="px-2">Email</th>
+                <th class="px-2">Mobile</th>
+                <th class="px-2">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              @foreach($studentDetails as $student)
+              <tr>
+                <td>{{ $student['sd_admission_no'] }}</td>
+                <td>{{ $student['sd_first_name'] }}</td>
+                <td>{{ $student['sd_last_name'] }}</td>
+                <td>{{ $student['sd_email_address'] }}</td>
+                <td>{{ $student['sd_telephone_mobile'] }}</td>
+                <td style="display: flex;">
+                  <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>
+                  <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('student_edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
+                  <form action="{{ route('student_delete', $student['student_id']) }}" method="POST">
+                    @csrf
+                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                      <i class="fa-solid fa-trash"></i>
+                    </button>
+                  </form>
 
-              </td>
-            </tr>
-            @endforeach
+                </td>
+              </tr>
+              @endforeach
 
-          </tbody>
-        </table>
+            </tbody>
+          </table>
+        </div>
 
       </div>
     </div>

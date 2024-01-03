@@ -501,47 +501,49 @@
                                 </div>
                             </div>
                             <h6 class="mt-4 mb-3">Student Siblings</h6>
-                            <table id="siblings_table" class="table">
-                                <thead>
-                                    <tr>
-                                        <th class="px-2">First Name</th>
-                                        <th class="px-2">Last Name</th>
-                                        <th class="px-2">Gender</th>
-                                        <th class="px-2">Date of Birth</th>
-                                        <th class="px-2">School</th>
-                                        <th class="px-2">Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {{-- Decode the JSON string into an array --}}
-                                    @php
-                                    $siblingData =
-                                    json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
+                            <div class="table-responsive">
+                                <table id="siblings_table" class="table">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-2">First Name</th>
+                                            <th class="px-2">Last Name</th>
+                                            <th class="px-2">Gender</th>
+                                            <th class="px-2">Date of Birth</th>
+                                            <th class="px-2">School</th>
+                                            <th class="px-2">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{-- Decode the JSON string into an array --}}
+                                        @php
+                                        $siblingData =
+                                        json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
 
-                                    @endphp
+                                        @endphp
 
-                                    {{-- Loop through sibling data --}}
-                                    @foreach($siblingData as $index => $sibling)
+                                        {{-- Loop through sibling data --}}
+                                        @foreach($siblingData as $index => $sibling)
 
-                                    <tr>
-                                        <td><input type="text" class="form-control" name="siblings[{{ $index }}][first_name]" value="{{ $sibling['first_name'] }}"></td>
-                                        <td><input type="text" class="form-control" name="siblings[{{ $index }}][last_name]" value="{{ $sibling['last_name'] }}"></td>
-                                        <td>
-                                            <select class="form-select" name="siblings[{{ $index }}][sex]">
-                                                <option value="male" {{ $sibling['sex'] === 'male' ? 'selected' : '' }}>
-                                                    Male</option>
-                                                <option value="female" {{ $sibling['sex'] === 'female' ? 'selected' : '' }}>
-                                                    Female</option>
-                                            </select>
-                                        </td>
-                                        <td><input type="date" class="form-control" name="siblings[{{ $index }}][date_of_birth]" value="{{ $sibling['date_of_birth'] }}">
-                                        </td>
-                                        <td><input type="text" class="form-control" name="siblings[{{ $index }}][school]" value="{{ $sibling['school'] }}"></td>
-                                        <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
-                                    </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                        <tr>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][first_name]" value="{{ $sibling['first_name'] }}"></td>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][last_name]" value="{{ $sibling['last_name'] }}"></td>
+                                            <td>
+                                                <select class="form-select" name="siblings[{{ $index }}][sex]">
+                                                    <option value="male" {{ $sibling['sex'] === 'male' ? 'selected' : '' }}>
+                                                        Male</option>
+                                                    <option value="female" {{ $sibling['sex'] === 'female' ? 'selected' : '' }}>
+                                                        Female</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control" name="siblings[{{ $index }}][date_of_birth]" value="{{ $sibling['date_of_birth'] }}">
+                                            </td>
+                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][school]" value="{{ $sibling['school'] }}"></td>
+                                            <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
                             <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
