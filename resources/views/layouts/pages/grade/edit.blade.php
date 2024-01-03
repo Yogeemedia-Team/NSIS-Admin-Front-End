@@ -156,9 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
-                Add New Grade
-            </div>
+           
             <div class="card-body">
                 <form action="{{ route('grade_update',['gradeId' => $grade['data']['id']]) }}" method="POST">
                     @csrf

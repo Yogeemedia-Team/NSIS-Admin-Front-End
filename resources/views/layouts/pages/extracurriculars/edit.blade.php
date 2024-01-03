@@ -156,9 +156,6 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
-                Add New Extracurricular
-            </div>
             <div class="card-body">
                 <form action="" method="POST">
                     @csrf

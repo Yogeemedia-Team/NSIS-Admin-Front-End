@@ -156,9 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
-                Add New Class
-            </div>
+            
             <div class="card-body">
                 <form action="" method="POST">
                     @csrf

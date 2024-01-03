@@ -156,17 +156,10 @@
         <!-- Students table -->
 
         <div class="card">
-            <div class="card-header">
-                <div class="row">
-                    <div class="col-6 my-auto">
-                        All Extracurriculars
-                    </div>
-                    <div class="col-6">
-                        <div class="text-end">
-                            <a href="{{ route('add_extracurricular') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+            <div class="card-header pb-0">
+            <div class="text-end">
+                            <a href="{{ route('add_extracurricular') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-plus me-2"></i> Add New</a>
                         </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">

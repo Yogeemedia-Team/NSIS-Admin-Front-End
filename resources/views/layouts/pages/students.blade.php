@@ -156,10 +156,13 @@
     <!-- Students table -->
 
     <div class="card">
-      <div class="card-body">
-        <div class="text-end">
-          <a href="{{ route('formpage') }}" class="btn btn-primary"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+      <div class="card-header pb-0">
+      <div class="text-end">
+          <a href="{{ route('formpage') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-plus me-2"></i> Add New</a>
         </div>
+      </div>
+      <div class="card-body">
+        
         <div class="table-responsive">
           <table id="dataTable" class="table table-striped" style="width:100%">
             <thead>
