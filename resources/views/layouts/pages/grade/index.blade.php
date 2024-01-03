@@ -19,10 +19,10 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <div class="input-group">
+                    <!-- <div class="input-group">
                         <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
                         <input type="text" class="form-control" placeholder="Type here...">
-                    </div>
+                    </div> -->
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
@@ -180,20 +180,20 @@
                         <tbody>
                             @foreach($grades as $grade)
                             <tr>
-                                 <td>{{ $grade['grade_name'] }}</td>
-                                  <td class="d-flex">
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('grade_edit', ['gradeId' => $grade['id']]) }}"><i class="fas fa-edit"></i></a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
+                                <td>{{ $grade['grade_name'] }}</td>
+                                <td class="d-flex">
+                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('grade_edit', ['gradeId' => $grade['id']]) }}"><i class="fas fa-edit"></i></a>
+                                    <form action="" method="POST">
+                                        @csrf
+                                        <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
 
-                            </td>
-                        </tr>
+                                </td>
+                            </tr>
                             @endforeach
-                           
+
                         </tbody>
                     </table>
                 </div>
