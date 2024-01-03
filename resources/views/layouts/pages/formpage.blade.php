@@ -487,12 +487,12 @@
                             <table id="siblings_table" class="table">
                                 <thead>
                                     <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Gender</th>
-                                        <th>Date of Birth</th>
-                                        <th>School</th>
-                                        <th>Action</th>
+                                        <th class="px-2">First Name</th>
+                                        <th class="px-2">Last Name</th>
+                                        <th class="px-2">Gender</th>
+                                        <th class="px-2">Date of Birth</th>
+                                        <th class="px-2">School</th>
+                                        <th class="px-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>

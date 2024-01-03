@@ -161,9 +161,9 @@
                         <img src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                         <h5 class="my-3">Name : {{ $studentDetails['data']['sd_first_name']  .' '.$studentDetails['data']['sd_last_name'] }}</h5>
                         @php
-                            $classes = ['4-A', '5-C', '6-D', '7-F'];
-                             $randomKey = $classes[array_rand($classes)];
-                        @endphp     
+                        $classes = ['4-A', '5-C', '6-D', '7-F'];
+                        $randomKey = $classes[array_rand($classes)];
+                        @endphp
                         <p class="text-muted mb-1">Class : {{ $randomKey }}</p>
                         <p class="text-muted mb-4">Admission No. : {{ $studentDetails['data']['sd_admission_no']}}</p>
                         <div class="d-flex justify-content-center mb-2">
@@ -344,17 +344,17 @@
                         <!-- Parent details -->
                         <div class="mb-4">
                             <div class="py-2 px-3">
-                                <h6 class="text-light mb-0" style="color: black !important;" >Parent Details</h6>
+                                <h6 class="text-light mb-0" style="color: black !important;">Parent Details</h6>
                             </div>
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th scope="col">Parent</th>
-                                        <th scope="col">First Name</th>
-                                        <th scope="col">Last name</th>
-                                        <th scope="col">NIC</th>
-                                        <th scope="col">Mobile</th>
-                                        <th scope="col">Occupation</th>
+                                        <th class="px-2">Parent</th>
+                                        <th class="px-2">First Name</th>
+                                        <th class="px-2">Last name</th>
+                                        <th class="px-2">NIC</th>
+                                        <th class="px-2">Mobile</th>
+                                        <th class="px-2">Occupation</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -394,9 +394,9 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Action</th>
+
+                                        <th class="px-2">Name</th>
+                                        <th class="px-2">Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -404,7 +404,7 @@
                                     @foreach($studentDetails['data']['documents'][0] as $key => $value)
                                     @if (strpos($key, 'sd_') === 0)
                                     <tr>
-                                        
+
                                         <td>{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</td>
                                         <td>
                                             <a target="_blank" href="{{ asset("storage/".$value) }}" class="btn btn-secondary btn-sm mb-0">View</a>
