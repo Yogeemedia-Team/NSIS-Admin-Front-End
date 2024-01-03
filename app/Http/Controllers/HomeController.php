@@ -402,10 +402,10 @@ class HomeController extends Controller
       // year_grade_class  Controllers Here
       public function YearGradeClass()
       {
-          return view('layouts.pages.year_grade_class');
+          return view('layouts.pages.year_grade_class.year_grade_class');
       }
       public function addYearGradeClass()
       {
-          return view('layouts.pages.add_year_grade_class');
+          return view('layouts.pages.year_grade_class.add_year_grade_class');
       }
 }
