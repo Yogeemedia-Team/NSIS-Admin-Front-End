@@ -392,20 +392,20 @@ class HomeController extends Controller
     // Extracurriculars Controllers Here
     public function extracurriculars()
     {
-        return view('layouts.pages.extracurriculars');
+        return view('layouts.pages.extracurriculars.index');
     }
     public function addExtracurricular()
     {
-        return view('layouts.pages.addextracurricular');
+        return view('layouts.pages.extracurriculars.create');
     }
 
       // year_grade_class  Controllers Here
       public function YearGradeClass()
       {
-          return view('layouts.pages.year_grade_class.year_grade_class');
+          return view('layouts.pages.year_grade_class.index');
       }
       public function addYearGradeClass()
       {
-          return view('layouts.pages.year_grade_class.add_year_grade_class');
+          return view('layouts.pages.year_grade_class.create');
       }
 }

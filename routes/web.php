@@ -66,9 +66,9 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     //  Extracurriculars routes here
     Route::get('/extracurriculars', [HomeController::class, 'extracurriculars'])->name('extracurriculars');
-    Route::post('/add_extracurricular', [HomeController::class, 'addExtracurricular'])->name('addextracurricular');
+    Route::get('/add_extracurricular', [HomeController::class, 'addExtracurricular'])->name('add_extracurricular');
 
     //  year_grade_class routes here
     Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
-    Route::post('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
+    Route::get('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
 });
