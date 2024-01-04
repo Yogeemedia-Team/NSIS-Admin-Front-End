@@ -395,13 +395,13 @@ class HomeController extends Controller
     public function extracurriculars()
     {
         $response = $this->apiService->makeApiRequest('GET', 'extra_curricular');
-
+     
         if ($response['status'] === false) {
 
             return view('layouts.pages.extracurriculars.index', ['errors' => $response['errors'], 'message' => $response['message']]);
         } else {
 
-            $classes = $response['data'];
+            $extracurriculars = $response['data'];
             return view('layouts.pages.extracurriculars.index', compact('extracurriculars'));
         }
     }

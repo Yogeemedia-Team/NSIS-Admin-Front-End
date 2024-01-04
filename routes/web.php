@@ -65,7 +65,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
 
     //  Extracurricular routes here
-    Route::get('/extracurricular', [HomeController::class, 'extracurricular'])->name('extracurriculars');
+    Route::get('/extracurricular', [HomeController::class, 'extracurriculars'])->name('extracurriculars');
     Route::get('/add_extracurricular', [HomeController::class, 'addExtracurricular'])->name('add_extracurricular');
     Route::post('/add_extracurricular', [HomeController::class, 'createExtracurricular'])->name('create_extracurricular');
     Route::get('/extracurricular/{extracurricularId}/edit', [HomeController::class, 'editExtracurricular'])->name('extracurricular_edit');
@@ -75,6 +75,10 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     //  year_grade_class routes here
     Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
     Route::get('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
+    Route::post('/add_year_grade_class', [HomeController::class, 'createYearGradeClass'])->name('create_year_grade_class');
+    Route::get('/extracurricular/{extracurricularId}/edit', [HomeController::class, 'editYearGradeClass'])->name('year_grade_class_edit');
+    Route::post('/extracurricular/{extracurricularId}', [HomeController::class, 'updateYearGradeClass'])->name('year_grade_class_update');
+    Route::post('/extracurricular_delete/{id}', [HomeController::class, 'deleteYearGradeClass'])->name('year_grade_class_delete');
 
     // User Accounts routes here
     Route::get('/user_accounts', [HomeController::class, 'userAccounts'])->name('user_accounts');

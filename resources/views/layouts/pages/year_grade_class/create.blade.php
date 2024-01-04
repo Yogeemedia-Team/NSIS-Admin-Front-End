@@ -158,7 +158,7 @@
         <div class="card">
            
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('add_year_grade_class') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
@@ -172,9 +172,10 @@
                             <div class="mb-3">
                                 <label for="master_grade_id" class="form-label">Grade</label>
                                 <select class="form-select" name="master_grade_id">
-                                    <option value="grade_1">Grade 1</option>
-                                    <option value="grade_2">Grade 2</option>
-                                    <option value="grade_3">Grade 3</option>
+                                   
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade['id'] }}">{{ $grade['grade_name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
@@ -182,9 +183,9 @@
                             <div class="mb-3">
                                 <label for="master_class_id" class="form-label">Class</label>
                                 <select class="form-select" name="master_class_id">
-                                    <option value="class_1">Class 1</option>
-                                    <option value="class_2">Class 2</option>
-                                    <option value="class_3">Class 3</option>
+                                    @foreach ( $classes as $class )
+                                        <option value="">{{ $class['class_name'] }}</option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
