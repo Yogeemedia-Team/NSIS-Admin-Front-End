@@ -514,6 +514,7 @@
                                 </table>
                             </div>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
+                            <button type="button" class="btn btn-primary" onclick="manualUpdate()">Update Siblings Data</button>
                             <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
                         <div class="tab">
@@ -663,11 +664,11 @@
         // Iterate through the table rows and collect sibling data
         $('#siblings_table tbody tr').each(function(index, row) {
             var sibling = {
-                first_name: $(row).find('[name^="siblings"]').eq(0).val(),
-                last_name: $(row).find('[name^="siblings"]').eq(1).val(),
-                sex: $(row).find('[name^="siblings"]').eq(2).val(),
-                date_of_birth: $(row).find('[name^="siblings"]').eq(3).val(),
-                school: $(row).find('[name^="siblings"]').eq(4).val(),
+                first_name: $(row).find('input[name^="siblings"][name$="[first_name]"]').val(),
+                last_name: $(row).find('input[name^="siblings"][name$="[last_name]"]').val(),
+                sex: $(row).find('select[name^="siblings"][name$="[sex]"]').val(),
+                date_of_birth: $(row).find('input[name^="siblings"][name$="[date_of_birth]"]').val(),
+                school: $(row).find('input[name^="siblings"][name$="[school]"]').val(),
             };
 
             siblingsData.push(sibling);
@@ -675,6 +676,20 @@
 
         // Update the hidden input with the serialized sibling data
         $('#siblings_data').val(JSON.stringify(siblingsData));
+    }
+
+    function manualUpdate() {
+        updateSiblingsData(); // Call the update function
+
+        // Show a SweetAlert message after the update
+        Swal.fire({
+            title: 'Success!',
+            text: 'Siblings data updated.',
+            icon: 'success',
+            timer: 2000, // Close the alert after 2 seconds
+            timerProgressBar: true,
+            showConfirmButton: false
+        });
     }
 </script>
 

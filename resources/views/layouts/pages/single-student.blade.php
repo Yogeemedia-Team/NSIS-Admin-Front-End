@@ -186,15 +186,15 @@
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-2" >Payments</p>
+                        <p class="mt-4 mb-2">Payments</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 72%" aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-2" >Marks Average</p>
+                        <p class="mt-4 mb-2">Marks Average</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 89%" aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
-                        <p class="mt-4 mb-2" >Extra Curricular</p>
+                        <p class="mt-4 mb-2">Extra Curricular</p>
                         <div class="progress rounded" style="height: 5px;">
                             <div class="progress-bar" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
@@ -232,8 +232,6 @@
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Birth Certificate No:</strong> &nbsp; {{ $studentDetails['data']['sd_birth_certificate_number'] ?? '' }}</li>
                             <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Health Conditions:</strong> &nbsp; <span class="badge badge-success text-dark">{{ $studentDetails['data']['sd_health_conditions'] ?? '' }}</span></li>
                         </ul>
-
-
                     </div>
                     <div class="card-header py-0">
                         <div class="text-dark fw-bold">Parent Details</div>
@@ -276,6 +274,47 @@
                                         <td colspan="6">No parent data available</td>
                                     </tr>
                                     @endif
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="card-header py-0">
+                        <div class="text-dark fw-bold">Siblings Details</div>
+                    </div>
+                    <div class="card-body pt-1">
+                        <!-- Parent details -->
+                        <div class="table-responsive">
+                            <table class="table table-sm mb-0">
+                                <thead>
+                                    <tr>
+                                        <th class="px-1 text-sm">First Name</th>
+                                        <th class="px-1 text-sm">Last name</th>
+                                        <th class="px-1 text-sm">Gender</th>
+                                        <th class="px-1 text-sm">Date of Birth</th>
+                                        <th class="px-1 text-sm">School</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                {{-- Decode the JSON string into an array --}}
+                                        @php
+                                        $siblingData =
+                                        json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
+
+                                        @endphp
+
+                                        {{-- Loop through sibling data --}}
+                                        @foreach($siblingData as $index => $sibling)
+                                    <tr>
+                                        <td class="text-sm ps-0">{{ $sibling['first_name'] }}</td>
+                                        <td class="text-sm">{{ $sibling['last_name'] }}</td>
+                                        <td class="text-sm">{{ $sibling['sex'] }}</td>
+                                        <td class="text-sm">{{ $sibling['date_of_birth'] }}</td>
+                                        <td class="text-sm">{{ $sibling['school'] }}</td>
+                                    </tr>
+                                    
+                                    @endforeach
 
                                 </tbody>
                             </table>
