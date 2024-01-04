@@ -220,10 +220,11 @@ class HomeController extends Controller
         return view('layouts.pages.grade.create');
     }
 
-    public function createGrade(Request $request){
+    public function createGrade(Request $request)
+    {
         $apiData = $request->all(); // You might need to modify this based on your API structure
         $apiData['organization_id'] = env('ORGANIZATION_ID');
-        
+
         $response = $this->apiService->makeApiRequest('POST', 'grade', $apiData);
         // Make the HTTP request with the access token in the headers
 
@@ -292,9 +293,9 @@ class HomeController extends Controller
         }
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Class Controllers Here
     public function classes()
     {
@@ -315,10 +316,11 @@ class HomeController extends Controller
         return view('layouts.pages.class.create');
     }
 
-    public function createClass(Request $request){
+    public function createClass(Request $request)
+    {
         $apiData = $request->all(); // You might need to modify this based on your API structure
         $apiData['organization_id'] = env('ORGANIZATION_ID');
-        
+
         $response = $this->apiService->makeApiRequest('POST', 'class', $apiData);
         // Make the HTTP request with the access token in the headers
 
@@ -387,7 +389,7 @@ class HomeController extends Controller
         }
     }
 
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Extracurriculars Controllers Here
     public function extracurriculars()
@@ -409,10 +411,11 @@ class HomeController extends Controller
         return view('layouts.pages.extracurriculars.create');
     }
 
-    public function createExtracurricular(Request $request){
+    public function createExtracurricular(Request $request)
+    {
         $apiData = $request->all(); // You might need to modify this based on your API structure
         $apiData['organization_id'] = env('ORGANIZATION_ID');
-        
+
         $response = $this->apiService->makeApiRequest('POST', 'extra_curricular', $apiData);
         // Make the HTTP request with the access token in the headers
 
@@ -481,15 +484,121 @@ class HomeController extends Controller
         }
     }
 
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
-      // year_grade_class  Controllers Here
-      public function YearGradeClass()
-      {
-          return view('layouts.pages.year_grade_class.index');
-      }
-      public function addYearGradeClass()
-      {
-          return view('layouts.pages.year_grade_class.create');
-      }
+    // year_grade_class  Controllers Here
+    public function YearGradeClass()
+    {
+        return view('layouts.pages.year_grade_class.index');
+    }
+    public function addYearGradeClass()
+    {
+        return view('layouts.pages.year_grade_class.create');
+    }
+
+    // User Accounts Controllers Here
+    public function userAccounts()
+    {
+        return view('layouts.pages.user.accounts.index');
+    }
+    public function addUserAccount()
+    {
+        return view('layouts.pages.user.accounts.create');
+    }
+    public function createUserAccount()
+    {
+    }
+    public function editUserAccount()
+    {
+    }
+    public function updateUserAccount()
+    {
+    }
+
+    // User Activities Controllers Here
+    public function userActivities()
+    {
+        return view('layouts.pages.user.activities.index');
+    }
+    public function addUserActivity()
+    {
+        return view('layouts.pages.user.activities.create');
+    }
+    public function createUserActivity()
+    {
+    }
+    public function editUserActivity($user_activityId)
+    {
+        // Fetch user activity with $user_activityId and pass it to the view for editing
+    }
+    public function updateUserActivity($user_activityId)
+    {
+        // Update user activity with $user_activityId
+    }
+
+
+    // User Assigning Controllers Here
+    public function userAssigning()
+    {
+        return view('layouts.pages.user.assigning.index');
+    }
+    public function addUserAssigning()
+    {
+        return view('layouts.pages.user.assigning.create');
+    }
+    public function createUserAssigning()
+    {
+    }
+    public function editUserAssigning($user_assigningId)
+    {
+        // Fetch user assigning with $user_assigningId and pass it to the view for editing
+    }
+    public function updateUserAssigning($user_assigningId)
+    {
+        // Update user assigning with $user_assigningId
+    }
+
+
+    // User Levels Controllers Here
+    public function userLevels()
+    {
+        return view('layouts.pages.user.levels.index');
+    }
+    public function addUserLevel()
+    {
+        return view('layouts.pages.user.levels.create');
+    }
+    public function createUserLevel()
+    {
+    }
+    public function editUserLevel($user_levelId)
+    {
+        // Fetch user level with $user_levelId and pass it to the view for editing
+    }
+    public function updateUserLevel($user_levelId)
+    {
+        // Update user level with $user_levelId
+    }
+
+
+    // User Roles Controllers Here
+    public function userRoles()
+    {
+        return view('layouts.pages.user.roles.index');
+    }
+    public function addUserRole()
+    {
+        return view('layouts.pages.user.roles.create');
+    }
+    public function createUserRole()
+    {
+    }
+    public function editUserRole($user_roleId)
+    {
+        // Fetch user role with $user_roleId and pass it to the view for editing
+    }
+    public function updateUserRole($user_roleId)
+    {
+        // Update user role with $user_roleId
+    }
 }

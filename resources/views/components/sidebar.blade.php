@@ -164,31 +164,31 @@
         <div class="collapse " id="usermanagement">
           <ul class="nav ms-4 ps-3">
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('user_accounts') }}">
                 <span class="sidenav-mini-icon"> U </span>
                 <span class="sidenav-normal"> User Accounts </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('user_levels') }}">
                 <span class="sidenav-mini-icon"> U </span>
                 <span class="sidenav-normal"> User Levels </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('user_roles') }}">
                 <span class="sidenav-mini-icon"> U </span>
                 <span class="sidenav-normal"> User Roles </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('user_activities') }}">
                 <span class="sidenav-mini-icon"> U </span>
                 <span class="sidenav-normal"> User Activities </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="/students">
+              <a class="nav-link " href="{{ route('user_assigning') }}">
                 <span class="sidenav-mini-icon"> U </span>
                 <span class="sidenav-normal"> User Assigning </span>
               </a>
