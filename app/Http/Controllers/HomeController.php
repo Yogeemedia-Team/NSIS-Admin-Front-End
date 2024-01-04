@@ -392,12 +392,96 @@ class HomeController extends Controller
     // Extracurriculars Controllers Here
     public function extracurriculars()
     {
-        return view('layouts.pages.extracurriculars.index');
+        $response = $this->apiService->makeApiRequest('GET', 'extra_curricular');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.extracurriculars.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $classes = $response['data'];
+            return view('layouts.pages.extracurriculars.index', compact('extracurriculars'));
+        }
     }
+
     public function addExtracurricular()
     {
         return view('layouts.pages.extracurriculars.create');
     }
+
+    public function createExtracurricular(Request $request){
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $apiData['organization_id'] = env('ORGANIZATION_ID');
+        
+        $response = $this->apiService->makeApiRequest('POST', 'extra_curricular', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('extracurriculars');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'Extra curricular create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('classes');
+        }
+    }
+
+    public function editExtracurricular($id)
+    {
+        $endpoint = 'extracurricular/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $extracurricular = $response;
+
+        // Pass the student details to the view
+        return view('layouts.pages.extracurriculars.edit', compact('extracurricular'));
+    }
+
+    public function updateExtracurricular(Request $request, $classId)
+    {
+        // Validate the form data, including the file uploads
+
+        // Fetch existing student data from the API
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'class/' . $classId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('extracurricular');
+        }
+
+        // Update the data with the new values
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        $updatedData['organization_id'] = env('ORGANIZATION_ID');
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'class/' . $classId, $updatedData);
+
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('extracurricular');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            return redirect()->route('extracurricular');
+        }
+    }
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
       // year_grade_class  Controllers Here
       public function YearGradeClass()
