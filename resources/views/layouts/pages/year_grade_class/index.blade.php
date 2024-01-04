@@ -175,15 +175,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>2024</td>
-                            <td>Grade 1</td>
-                            <td>Class 1</td>
-                            <td>50</td>
+                             @foreach($yeargradeclasses as $yeargradeclass)
+                             <tr>
+                            <td>{{ $yeargradeclass['year'] }}</td>
+                            <td>{{ $yeargradeclass['master_grade_id'] }}</td>
+                            <td>{{ $yeargradeclass['master_class_id'] }}</td>
+                            <td>{{ $yeargradeclass['Total_number_of_students'] }}</td>
                             <td>
-                                <div class="badge badge-success">Active</div>
+                                <div class="badge badge-success">{{ $yeargradeclass['active_status'] }}</div>
                             </td>
                             <td class="d-flex">
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('year_grade_class_edit', ['yeargradeclassId' => $yeargradeclass['id']]) }}"><i class="fas fa-edit"></i></a>
                                 <form action="" method="POST">
                                     @csrf
                                     <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
@@ -192,6 +194,9 @@
                                 </form>
 
                             </td>
+                        </tr>
+                            @endforeach
+
                         </tbody>
                     </table>
                 </div>
