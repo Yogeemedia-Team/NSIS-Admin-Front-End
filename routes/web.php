@@ -65,7 +65,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
 
     //  Extracurricular routes here
-    Route::get('/extracurricular', [HomeController::class, 'extracurricular'])->name('extracurricular');
+    Route::get('/extracurriculars', [HomeController::class, 'extracurricular'])->name('extracurricular');
     Route::get('/add_extracurricular', [HomeController::class, 'addExtracurricular'])->name('add_extracurricular');
     Route::post('/add_extracurricular', [HomeController::class, 'createExtracurricular'])->name('create_extracurricular');
     Route::get('/extracurricular/{extracurricularId}/edit', [HomeController::class, 'editExtracurricular'])->name('extracurricular_edit');
