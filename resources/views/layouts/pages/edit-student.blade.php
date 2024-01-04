@@ -252,7 +252,7 @@
                                     <div class="mb-3">
                                         <label for="sd_telephone_residence" class="form-label">Telephone
                                             Residence</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_residence'] }}" name="sd_telephone_residence" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_residence'] }}" name="sd_telephone_residence" required>
                                     </div>
                                 </div>
 
@@ -260,7 +260,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_telephone_mobile" class="form-label">Telephone Mobile</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_mobile'] }}" name="sd_telephone_mobile" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_mobile'] }}" name="sd_telephone_mobile" required>
                                     </div>
                                 </div>
 
@@ -268,7 +268,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" name="sd_telephone_whatsapp" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" name="sd_telephone_whatsapp" required>
                                     </div>
                                 </div>
 
@@ -276,7 +276,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sd_email_address" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_email_address'] }}" name="sd_email_address" required>
+                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'" value="{{ $studentDetails['data']['sd_email_address'] }}" name="sd_email_address" required>
                                     </div>
                                 </div>
                                 <!-- Sex -->
@@ -319,7 +319,7 @@
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate
                                             Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] }}" name="sd_birth_certificate_number" required>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] }}" name="sd_birth_certificate_number" required>
                                     </div>
                                 </div>
 
@@ -353,7 +353,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}" name="sp_father_nic" required>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}" name="sp_father_nic" required>
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
@@ -392,14 +392,14 @@
                                     <div class="mb-3">
                                         <label for="sp_father_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile" required>
                                     </div>
                                 </div>
 
@@ -424,7 +424,7 @@
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}" name="sp_mother_nic" required>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}" name="sp_mother_nic" required>
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
@@ -463,14 +463,14 @@
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-6">
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" required>
+                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" required>
                                     </div>
                                 </div>
                             </div>
@@ -488,7 +488,7 @@
                                     <div class="mb-3">
                                         <label for="sp_father_admission_payment_amount" class="form-label">Admission
                                             Payment Amount</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" required>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" required>
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
@@ -496,7 +496,7 @@
                                     <div class="mb-3">
                                         <label for="sp_father_no_of_installments" class="form-label">Number of
                                             Installments</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" required>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" required>
                                     </div>
                                 </div>
                             </div>
@@ -682,6 +682,55 @@
 @section('footer-scripts')
 
 <script>
+    // input validations
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInputs = document.querySelectorAll('.phone-input');
+        const emailInputs = document.querySelectorAll('.email-input');
+        const alphanumericInputs = document.querySelectorAll('.alphanumeric-input');
+
+        // Phone number validation
+        phoneInputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                const phoneNumber = input.value;
+                const phoneRegex = /^\d{10}$/; // Example regex for 10 digits
+
+                if (!phoneRegex.test(phoneNumber)) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        });
+
+        // Email validation
+        emailInputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                const email = input.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+
+                if (!emailRegex.test(email)) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        });
+
+        // Alphanumeric input validation
+        alphanumericInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                const alphanumeric = input.value;
+                const alphanumericRegex = /^[a-zA-Z0-9]*$/; // Only letters and numbers
+
+                if (!alphanumericRegex.test(alphanumeric)) {
+                    input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+                }
+            });
+        });
+    });
+</script>
+
+<script>
     var siblingIndex = 1;
 
     function addSiblingRow() {
@@ -736,7 +785,7 @@
     }
 
     // function manualUpdate() {
-       
+
 
     //     // Show a SweetAlert message after the update
     //     Swal.fire({
@@ -803,7 +852,7 @@
         for (i = 0; i < y.length; i++) {
             // Check if the field is required and its value is empty:
             if (y[i].hasAttribute("required") && y[i].value === "") {
-                y[i].classList.add("invalid"); // Add the "invalid" class
+                y[i].classList.add("is-invalid"); // Add the "invalid" class
                 valid = false; // Set the valid status to false
             }
         }

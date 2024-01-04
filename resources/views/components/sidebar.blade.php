@@ -138,7 +138,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link " href="{{ route('extracurricular') }}">
+                    <a class="nav-link " href="{{ route('extracurriculars') }}">
                       <span class="sidenav-mini-icon text-xs">E </span>
                       <span class="sidenav-normal"> Extracurriculars </span>
                     </a>
