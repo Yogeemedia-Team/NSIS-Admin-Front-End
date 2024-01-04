@@ -171,9 +171,11 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <td>Sample Extracurriculars</td>
+                           @foreach($extracurriculars as $extracurricular)
+                            <tr>
+                            <td>{{ $extracurricular['extracurricular_name'] }}</td>
                             <td class="d-flex">
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('extracurricular_edit', ['extracurricularId' => $extracurricular['id']]) }}"><i class="fas fa-edit"></i></a>
                                 <form action="" method="POST">
                                     @csrf
                                     <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
@@ -182,6 +184,8 @@
                                 </form>
 
                             </td>
+                            </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

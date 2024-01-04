@@ -157,14 +157,14 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('extracurricular_update',['extracurricularId' => $extracurricular['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="extracurricular_name" class="form-label">Extracurricular Name</label>
-                                <input type="text" class="form-control" name="extracurricular_name">
+                                <input type="text" class="form-control" value="{{ $extracurricular['data']['extracurricular_name'] }}" name="extracurricular_name">
                             </div>
                         </div>
                         <div class="col-md-6 mt-auto text-end">
