@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('add_class') }}
+                {{ Breadcrumbs::render('addclass') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -157,14 +157,14 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('class_update',['classId' => $class['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="class_name" class="form-label">Class Name</label>
-                                <input type="text" class="form-control" name="class_name">
+                                <input type="text" class="form-control" value="{{ $class['data']['class_name'] }}" name="class_name">
                             </div>
                         </div>
                         <div class="col-md-6 mt-auto text-end">
