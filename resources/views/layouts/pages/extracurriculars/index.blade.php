@@ -172,6 +172,7 @@
                         </thead>
                         <tbody>
                            @foreach($extracurriculars as $extracurricular)
+                           
                             <tr>
                             <td>{{ $extracurricular['extracurricular_name'] }}</td>
                             <td class="d-flex">
