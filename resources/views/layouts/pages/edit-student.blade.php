@@ -545,7 +545,6 @@
                                 </table>
                             </div>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <button type="button" class="btn btn-primary" onclick="manualUpdate()">Update Siblings Data</button>
                             <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
                         <div class="tab">
@@ -681,7 +680,6 @@
 
 @endsection
 @section('footer-scripts')
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     var siblingIndex = 1;
@@ -737,19 +735,19 @@
         $('#siblings_data').val(JSON.stringify(siblingsData));
     }
 
-    function manualUpdate() {
-        updateSiblingsData(); // Call the update function
+    // function manualUpdate() {
+       
 
-        // Show a SweetAlert message after the update
-        Swal.fire({
-            title: 'Success!',
-            text: 'Siblings data updated.',
-            icon: 'success',
-            timer: 2000, // Close the alert after 2 seconds
-            timerProgressBar: true,
-            showConfirmButton: false
-        });
-    }
+    //     // Show a SweetAlert message after the update
+    //     Swal.fire({
+    //         title: 'Success!',
+    //         text: 'Siblings data updated.',
+    //         icon: 'success',
+    //         timer: 2000, // Close the alert after 2 seconds
+    //         timerProgressBar: true,
+    //         showConfirmButton: false
+    //     });
+    // }
 </script>
 
 
@@ -793,6 +791,7 @@
         }
         // Otherwise, display the correct tab:
         showTab(currentTab);
+        updateSiblingsData(); // Call the update function
     }
 
     function validateForm() {

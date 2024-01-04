@@ -514,7 +514,6 @@
                                 </table>
                             </div>
                             <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <button type="button" class="btn btn-primary" onclick="manualUpdate()">Update Siblings Data</button>
                             <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
                         <div class="tab">
@@ -734,6 +733,8 @@
         }
         // Otherwise, display the correct tab:
         showTab(currentTab);
+        updateSiblingsData(); // Call the update function
+
     }
 
     function validateForm() {
