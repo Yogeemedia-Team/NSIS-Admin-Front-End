@@ -158,7 +158,7 @@
         <div class="card">
            
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('add_extracurricular') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
