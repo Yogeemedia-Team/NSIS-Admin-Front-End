@@ -168,11 +168,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Sample level</td>
-                                <td>Level Title</td>
+                            @foreach ($userlevels as $userlevel)
+                             <tr>
+                                <td>{{ $userlevel['level'] }}</td>
+                                <td>{{ $userlevel['title'] }}</td>
                                 <td class="d-flex">
-                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('user_level_edit', ['user_levelId' => $userlevel['id']]) }}"><i class="fas fa-edit"></i></a>
                                     <form action="" method="POST">
                                         @csrf
                                         <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
@@ -181,6 +182,8 @@
                                     </form>
                                 </td>
                             </tr>
+                            @endforeach
+                           
                         </tbody>
                     </table>
                 </div>

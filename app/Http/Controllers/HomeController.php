@@ -742,15 +742,46 @@ class HomeController extends Controller
     // User Levels Controllers Here
     public function userLevels()
     {
-        return view('layouts.pages.user.levels.index');
+       $response = $this->apiService->makeApiRequest('GET', 'user_levels');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.levels.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $userlevels = $response['data'];
+            return view('layouts.pages.user.levels.index', compact('userlevels'));
+        }
+
     }
     public function addUserLevel()
     {
         return view('layouts.pages.user.levels.create');
     }
-    public function createUserLevel()
+    
+    public function createUserLevel(Request $request)
     {
+         $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'user_levels', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_levels');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User level create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_levels');
+        }
     }
+
     public function editUserLevel($user_levelId)
     {
         // Fetch user level with $user_levelId and pass it to the view for editing
