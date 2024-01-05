@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Illuminate\Support\Str;
 class HomeController extends Controller
 {
 
@@ -602,15 +603,55 @@ class HomeController extends Controller
     // User Accounts Controllers Here
     public function userAccounts()
     {
-        return view('layouts.pages.user.accounts.index');
+        $response = $this->apiService->makeApiRequest('GET', 'users');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.accounts.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $users = $response['data'];
+            return view('layouts.pages.user.accounts.index', compact('users'));
+        }
+
     }
     public function addUserAccount()
     {
-        return view('layouts.pages.user.accounts.create');
+        $response = $this->apiService->makeApiRequest('GET', 'user_roles');
+        $roles = $response['data'];
+        return view('layouts.pages.user.accounts.create',compact('roles'));
     }
-    public function createUserAccount()
+
+    public function createUserAccount(Request $request)
     {
+         $clientSecret = Str::random(40);
+         $response = $this->apiService->makeApiRequest('POST', 'user', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'password_confirmation' => $request->password_confirmation,
+            'user_type'=> $request->user_type,
+            'client_secret' => $clientSecret,
+            // Add other parameters as needed
+            ]);
+            
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_accounts');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_accounts');
+        }
     }
+
     public function editUserAccount()
     {
     }
