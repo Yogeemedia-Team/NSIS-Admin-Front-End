@@ -599,7 +599,7 @@ class HomeController extends Controller
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
-
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Accounts Controllers Here
     public function userAccounts()
     {
@@ -694,29 +694,98 @@ class HomeController extends Controller
             return redirect()->route('user_accounts');
         }
     }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Activities Controllers Here
     public function userActivities()
     {
-        return view('layouts.pages.user.activities.index');
+        $response = $this->apiService->makeApiRequest('GET', 'user_activities');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.activities.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $user_activities = $response['data'];
+            return view('layouts.pages.user.activities.index', compact('user_activities'));
+        }
     }
+
     public function addUserActivity()
     {
         return view('layouts.pages.user.activities.create');
     }
-    public function createUserActivity()
+
+    public function createUserActivity(Request $request)
     {
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'user_activities', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_activities');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User level create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_activities');
+        }
     }
+    
     public function editUserActivity($user_activityId)
     {
         // Fetch user activity with $user_activityId and pass it to the view for editing
+        $endpoint = 'user_activities/' . $user_activityId;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user_activity = $response;
+        return view('layouts.pages.user.activities.edit',compact('user_activity'));
     }
-    public function updateUserActivity($user_activityId)
+    
+    public function updateUserActivity(Request $request, $user_activityId)
     {
         // Update user activity with $user_activityId
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_activities/' . $user_activityId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_activities');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'user_activities/' . $user_activityId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_activities');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'User role update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_activities');
+        }
     }
 
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Assigning Controllers Here
     public function userAssigning()
     {
@@ -761,7 +830,7 @@ class HomeController extends Controller
 
     public function createUserLevel(Request $request)
     {
-         $apiData = $request->all(); // You might need to modify this based on your API structure
+        $apiData = $request->all(); // You might need to modify this based on your API structure
         $response = $this->apiService->makeApiRequest('POST', 'user_levels', $apiData);
         // Make the HTTP request with the access token in the headers
 
@@ -823,7 +892,9 @@ class HomeController extends Controller
             return redirect()->route('user_levels');
         }
     }
+   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
     // User Roles Controllers Here
     public function userRoles()
@@ -871,7 +942,7 @@ class HomeController extends Controller
     public function editUserRole($user_roleId)
     {
         // Fetch user role with $user_roleId and pass it to the view for editing
-         // Fetch user level with $user_levelId and pass it to the view for editing
+
         $endpoint = 'user_roles/' . $user_roleId;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
         
@@ -911,6 +982,7 @@ class HomeController extends Controller
             return redirect()->route('user_roles');
         }
     }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
     // Enrollments Controllers Here
     public function enrollments()
