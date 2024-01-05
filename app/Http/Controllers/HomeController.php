@@ -683,7 +683,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'users/' . $userId, $updatedData);
-        dd($response);
+        
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -758,7 +758,7 @@ class HomeController extends Controller
     {
         return view('layouts.pages.user.levels.create');
     }
-    
+
     public function createUserLevel(Request $request)
     {
          $apiData = $request->all(); // You might need to modify this based on your API structure
@@ -785,10 +785,43 @@ class HomeController extends Controller
     public function editUserLevel($user_levelId)
     {
         // Fetch user level with $user_levelId and pass it to the view for editing
+        $endpoint = 'user_levels/' . $user_levelId;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user_level = $response;
+        return view('layouts.pages.user.levels.edit',compact('user_level'));
     }
-    public function updateUserLevel($user_levelId)
+    public function updateUserLevel(Request $request,$user_levelId)
     {
         // Update user level with $user_levelId
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_levels/' . $user_levelId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'user_levels/' . $user_levelId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        }
     }
 
 
