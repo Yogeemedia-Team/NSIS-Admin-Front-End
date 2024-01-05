@@ -58,7 +58,7 @@
                <li class="mb-2">
                  <a class="dropdown-item border-radius-md" href="javascript:;">
                    <div class="d-flex py-1">
-                   <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                     <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                          <title>credit-card</title>
                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -88,7 +88,7 @@
                <li class="mb-2">
                  <a class="dropdown-item border-radius-md" href="javascript:;">
                    <div class="d-flex py-1">
-                   <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
+                     <div class="avatar avatar-sm bg-gradient-secondary  me-3  my-auto">
                        <svg width="12px" height="12px" viewBox="0 0 43 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                          <title>credit-card</title>
                          <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -105,7 +105,7 @@
                      </div>
                      <div class="d-flex flex-column justify-content-center">
                        <h6 class="text-sm font-weight-normal mb-1">
-                       <span>Sample Notification 2</span>
+                         <span>Sample Notification 2</span>
                        </h6>
                        <p class="text-xs text-secondary mb-0">
                          <i class="fa fa-clock me-1"></i>
@@ -135,7 +135,7 @@
                      </div>
                      <div class="d-flex flex-column justify-content-center">
                        <h6 class="text-sm font-weight-normal mb-1">
-                       <span>Sample Notification 3</span>
+                         <span>Sample Notification 3</span>
                        </h6>
                        <p class="text-xs text-secondary mb-0">
                          <i class="fa fa-clock me-1"></i>
@@ -346,117 +346,125 @@
    gradientStroke2.addColorStop(1, 'rgba(20,23,39,0.2)');
    gradientStroke2.addColorStop(0.2, 'rgba(72,72,176,0.0)');
    gradientStroke2.addColorStop(0, 'rgba(20,23,39,0)'); //purple colors
-  const currentDate = new Date();
-const currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
-const currentDay = new Date(currentDate.getFullYear(), currentMonth, 0).getDate();
+   const currentDate = new Date();
+   const currentMonth = currentDate.getMonth() + 1; // Months are zero-indexed, so add 1
+   const currentDay = new Date(currentDate.getFullYear(), currentMonth, 0).getDate();
 
-const daysOfMonth = Array.from({ length: currentMonth === 1 ? 31 : currentDay }, (_, i) => (i + 1).toString());
-const daysOfJanuary = Array.from({ length: currentMonth === 1 ? currentDay : 31 }, (_, i) => (i + 1).toString());
+   const daysOfMonth = Array.from({
+     length: currentMonth === 1 ? 31 : currentDay
+   }, (_, i) => (i + 1).toString());
+   const daysOfJanuary = Array.from({
+     length: currentMonth === 1 ? currentDay : 31
+   }, (_, i) => (i + 1).toString());
 
-const generateRandomIncomes = () => {
-  return Array.from({ length: currentMonth === 1 ? currentDay : 31 }, () => Math.floor(Math.random() * 50000) + 5000);
-};
+   const generateRandomIncomes = () => {
+     return Array.from({
+       length: currentMonth === 1 ? currentDay : 31
+     }, () => Math.floor(Math.random() * 50000) + 5000);
+   };
 
-const mobileAppsData = generateRandomIncomes();
-const websitesData = generateRandomIncomes();
+   const mobileAppsData = generateRandomIncomes();
+   const websitesData = generateRandomIncomes();
 
-new Chart(ctx2, {
-  type: "line",
-  data: {
-    labels: currentMonth === 1 ? daysOfJanuary : daysOfMonth,
-    datasets: [
-      {
-        label: "Total Income",
-        tension: 0.4,
-        borderWidth: 0,
-        pointRadius: 0,
-        borderColor: "#82d616",
-        borderWidth: 3,
-       // backgroundColor: gradientStroke1,
-       // fill: true,
-        data: currentMonth === 1 ? generateRandomIncomes() : mobileAppsData,
-        maxBarThickness: 6
-      },
-      {
-        label: "Total Outstanding",
-        tension: 0.4,
-        borderWidth: 0,
-        pointRadius: 0,
-        borderColor: "#c1476e",
-        borderWidth: 3,
-       // backgroundColor: gradientStroke2,
-        //fill: true,
-        data: currentMonth === 1 ? generateRandomIncomes() : websitesData,
-        maxBarThickness: 6
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      centerTitle: {
-        display: true,
-        text: "December",
-        position: "bottom",
-      },
-    },
-    interaction: {
-      intersect: false,
-      mode: 'index',
-    },
-    scales: {
-      y: {
-        min: 0,
-        max: 100000,
-        ticks: {
-          stepSize: 10000,
-          callback: function (value, index, values) {
-            return value.toLocaleString(); // Format ticks as desired
-          }
-        }
-      },
-      x: {
-        grid: {
-          display: false,
-        },
-        ticks: {
-          display: true,
-          color: '#b2b9bf',
-          padding: 20,
-          font: {
-            size: 11,
-            family: "Open Sans",
-            style: 'normal',
-            lineHeight: 2
-          },
-        }
-      },
-    },
-  },
-  plugins: [{
-    id: 'centerTitle',
-    beforeDraw: (chart) => {
-      const ctx = chart.ctx;
-      const { chartArea, scales } = chart;
-      const xAxis = scales['x'];
-      const yPosition = chartArea.bottom + 65; // Adjust the y position as needed
+   new Chart(ctx2, {
+     type: "line",
+     data: {
+       labels: currentMonth === 1 ? daysOfJanuary : daysOfMonth,
+       datasets: [{
+           label: "Total Income",
+           tension: 0.4,
+           borderWidth: 0,
+           pointRadius: 0,
+           borderColor: "#82d616",
+           borderWidth: 3,
+           // backgroundColor: gradientStroke1,
+           // fill: true,
+           data: currentMonth === 1 ? generateRandomIncomes() : mobileAppsData,
+           maxBarThickness: 6
+         },
+         {
+           label: "Total Outstanding",
+           tension: 0.4,
+           borderWidth: 0,
+           pointRadius: 0,
+           borderColor: "#c1476e",
+           borderWidth: 3,
+           // backgroundColor: gradientStroke2,
+           //fill: true,
+           data: currentMonth === 1 ? generateRandomIncomes() : websitesData,
+           maxBarThickness: 6
+         },
+       ],
+     },
+     options: {
+       responsive: true,
+       maintainAspectRatio: false,
+       plugins: {
+         legend: {
+           display: false,
+         },
+         centerTitle: {
+           display: true,
+           text: "December",
+           position: "bottom",
+         },
+       },
+       interaction: {
+         intersect: false,
+         mode: 'index',
+       },
+       scales: {
+         y: {
+           min: 0,
+           max: 100000,
+           ticks: {
+             stepSize: 10000,
+             callback: function(value, index, values) {
+               return value.toLocaleString(); // Format ticks as desired
+             }
+           }
+         },
+         x: {
+           grid: {
+             display: false,
+           },
+           ticks: {
+             display: true,
+             color: '#b2b9bf',
+             padding: 20,
+             font: {
+               size: 11,
+               family: "Open Sans",
+               style: 'normal',
+               lineHeight: 2
+             },
+           }
+         },
+       },
+     },
+     plugins: [{
+       id: 'centerTitle',
+       beforeDraw: (chart) => {
+         const ctx = chart.ctx;
+         const {
+           chartArea,
+           scales
+         } = chart;
+         const xAxis = scales['x'];
+         const yPosition = chartArea.bottom + 65; // Adjust the y position as needed
 
-      ctx.save();
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#000'; // Set the color for the title
+         ctx.save();
+         ctx.textAlign = 'center';
+         ctx.textBaseline = 'middle';
+         ctx.fillStyle = '#000'; // Set the color for the title
 
-      // Calculate the x position based on the center of the x-axis
-      const xPosition = (xAxis.left + xAxis.right) / 2;
+         // Calculate the x position based on the center of the x-axis
+         const xPosition = (xAxis.left + xAxis.right) / 2;
 
-      ctx.fillText(chart.options.plugins.centerTitle.text, xPosition, yPosition);
-      ctx.restore();
-    }
-  }],
-})
+         ctx.fillText(chart.options.plugins.centerTitle.text, xPosition, yPosition);
+         ctx.restore();
+       }
+     }],
+   })
  </script>
  @endsection

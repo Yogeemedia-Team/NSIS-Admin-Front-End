@@ -191,12 +191,32 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="activity_ids" class="form-label">Activities</label>
-                                <select class="form-select" name="activity_ids" multiple>
-                                    <option value="1">Activity 1</option>
-                                    <option value="2">Activity 2</option>
-                                    <option value="2">Activity 3</option>
-                                    <option value="2">Activity 4</option>
-                                </select>
+                                <div style="height: 100px;" class="overflow-auto">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="activity1" id="activity1">
+                                        <label class="form-check-label mb-0" for="activity1">
+                                            Activity 1
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="activity2" id="activity2">
+                                        <label class="form-check-label mb-0" for="activity2">
+                                            Activity 2
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="activity3" id="activity3">
+                                        <label class="form-check-label mb-0" for="activity3">
+                                            Activity 3
+                                        </label>
+                                    </div>
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" value="activity4" id="activity4">
+                                        <label class="form-check-label mb-0" for="activity4">
+                                            Activity 4
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col text-end mt-auto">

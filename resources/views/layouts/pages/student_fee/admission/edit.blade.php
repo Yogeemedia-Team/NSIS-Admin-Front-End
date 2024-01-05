@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('addgrade') }}
+                {{ Breadcrumbs::render('add_admission_fee') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -158,14 +158,21 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="{{ route('add_grade') }}" method="POST">
+                <form action="" method="POST">
                     @csrf
                     <div class="row">
-                        <!-- First Name -->
+                        <!-- Admission Type -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="grade_name" class="form-label">Grade Name</label>
-                                <input type="text" class="form-control" name="grade_name">
+                                <label for="admission_type" class="form-label">Admission Type</label>
+                                <input type="text" class="form-control" name="admission_type">
+                            </div>
+                        </div>
+                        <!-- Fee -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="fee" class="form-label">Fee</label>
+                                <input type="text" class="form-control number-input" name="fee">
                             </div>
                         </div>
                         <div class="col mt-auto text-end">
@@ -187,6 +194,27 @@
 
 @endsection
 @section('footer-scripts')
+<script>
+    // input validations
+    document.addEventListener('DOMContentLoaded', function() {
+
+        const numberInputs = document.querySelectorAll('.number-input');
+
+        // Number input validation
+        numberInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                const numeric = input.value;
+                const numericRegex = /^[0-9]*$/; // Only numbers
+
+                if (!numericRegex.test(numeric)) {
+                    input.value = input.value.replace(/\D/g, '');
+                    // Replace non-digit characters with an empty string
+                }
+            });
+        });
+    });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @endsection

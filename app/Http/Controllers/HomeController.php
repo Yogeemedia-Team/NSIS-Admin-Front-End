@@ -31,10 +31,10 @@ class HomeController extends Controller
     }
     public function formpage()
     {
-         $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
-       
-         $year_grades = $response_year['data'];
-       
+        $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+        $year_grades = $response_year['data'];
+
         // Pass the student details to the view
         return view('layouts.pages.formpage', compact('year_grades'));
     }
@@ -154,11 +154,11 @@ class HomeController extends Controller
         // Extract student details from the response
         $studentDetails = $response;
         $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
-       
+
         $year_grades = $response_year['data'];
-       
+
         // Pass the student details to the view
-        return view('layouts.pages.edit-student', compact('studentDetails','year_grades'));
+        return view('layouts.pages.edit-student', compact('studentDetails', 'year_grades'));
     }
 
     public function student_update(Request $request, $studentId)
@@ -564,7 +564,7 @@ class HomeController extends Controller
         $grades = $response_grade['data'];
 
         // Pass the student details to the view
-        return view('layouts.pages.year_grade_class.edit', compact('yeargradeclasses','classes','grades'));
+        return view('layouts.pages.year_grade_class.edit', compact('yeargradeclasses', 'classes', 'grades'));
     }
 
     public function updateYearGradeClass(Request $request, $classId)
@@ -983,4 +983,60 @@ class HomeController extends Controller
         }
     }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+    // Enrollments Controllers Here
+    public function enrollments()
+    {
+        return view('layouts.pages.enrollments.index');
+    }
+    public function addEnrollment()
+    {
+        return view('layouts.pages.enrollments.create');
+    }
+    public function createEnrollment()
+    {
+    }
+    public function viewEnrollment()
+    {
+        return view('layouts.pages.enrollments.single_enrollment');
+    }
+    public function editEnrollment($enrollmentId)
+    {
+        // Fetch enrollment with $enrollmentId and pass it to the view for editing
+    }
+    public function updateEnrollment($enrollmentId)
+    {
+        // Update enrollment with $enrollmentId
+    }
+
+
+    // Admission Fee Controllers Here
+    public function admissionFee()
+    {
+        return view('layouts.pages.student_fee.admission.index');
+    }
+    public function addAdmissionFee()
+    {
+        return view('layouts.pages.student_fee.admission.create');
+    }
+
+    // Monthly Fee Controllers Here
+    public function monthlyFee()
+    {
+        return view('layouts.pages.student_fee.monthly.index');
+    }
+    public function addMonthlyFee()
+    {
+        return view('layouts.pages.student_fee.monthly.create');
+    }
+
+    // Surcharge Formula Controllers Here
+    public function surchargeFormula()
+    {
+        return view('layouts.pages.student_fee.surcharge_formula.index');
+    }
+    public function addSurchargeFormula()
+    {
+        return view('layouts.pages.student_fee.surcharge_formula.create');
+    }
 }

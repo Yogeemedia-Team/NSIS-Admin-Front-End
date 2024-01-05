@@ -119,4 +119,25 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/user_role/{user_roleId}/edit', [HomeController::class, 'editUserRole'])->name('user_role_edit');
     Route::post('/user_role/{user_roleId}', [HomeController::class, 'updateUserRole'])->name('user_role_update');
     Route::post('/user_role_delete/{id}', [HomeController::class, 'deleteUserRole'])->name('user_role_delete');
+
+    // Enrollments routes
+    Route::get('/enrollments', [HomeController::class, 'enrollments'])->name('enrollments');
+    Route::get('/single_enrollment', [HomeController::class, 'viewEnrollment'])->name('single_enrollment');
+    Route::get('/add_enrollment', [HomeController::class, 'addEnrollment'])->name('add_enrollment');
+    Route::post('/add_enrollment', [HomeController::class, 'createEnrollment'])->name('create_enrollment');
+    Route::get('/enrollment/{enrollmentId}/edit', [HomeController::class, 'editEnrollment'])->name('enrollment_edit');
+    Route::post('/enrollment/{enrollmentId}', [HomeController::class, 'updateEnrollment'])->name('enrollment_update');
+    Route::post('/enrollment_delete/{id}', [HomeController::class, 'deleteEnrollment'])->name('enrollment_delete');
+
+    // Admission Fee
+    Route::get('/admission_fee', [HomeController::class, 'admissionFee'])->name('admission_fee');
+    Route::get('/add_admission_fee', [HomeController::class, 'addAdmissionFee'])->name('add_admission_fee');
+
+    // Monthly Fee
+    Route::get('/monthly_fee', [HomeController::class, 'monthlyFee'])->name('monthly_fee');
+    Route::get('/add_monthly_fee', [HomeController::class, 'addMonthlyFee'])->name('add_monthly_fee');
+
+    // Surcharge Formula 
+    Route::get('/surcharge_formula', [HomeController::class, 'surchargeFormula'])->name('surcharge_formula');
+    Route::get('/add_surcharge_formula', [HomeController::class, 'addSurchargeFormula'])->name('add_surcharge_formula');
 });

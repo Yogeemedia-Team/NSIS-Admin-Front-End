@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('addgrade') }}
+                {{ Breadcrumbs::render('add_enrollment') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -158,14 +158,183 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="{{ route('add_grade') }}" method="POST">
+                <form action="{{ route('add_enrollment') }}" method="POST">
                     @csrf
                     <div class="row">
+                        <!-- Student ID -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="student_id" class="form-label">Student ID</label>
+                                <input type="text" class="form-control alphanumeric-input" name="student_id" required>
+                            </div>
+                        </div>
+                        <!-- Grade/Class -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="grade_class_id" class="form-label">Grade/Class</label>
+                                <select class="form-select" name="grade_class_id" required>
+                                    <option value="1">Grade/Class 1</option>
+                                    <option value="2">Grade/Class 2</option>
+                                    <option value="3">Grade/Class 3</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <!-- First Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="grade_name" class="form-label">Grade Name</label>
-                                <input type="text" class="form-control" name="grade_name">
+                                <label for="first_name" class="form-label">First Name</label>
+                                <input type="text" class="form-control" name="first_name" required>
+                            </div>
+                        </div>
+                        <!-- Last Name -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="last_name" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" name="last_name">
+                            </div>
+                        </div>
+
+                        <!-- Name with Initials -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name_with_initials" class="form-label">Name with Initials</label>
+                                <input type="text" class="form-control" name="name_with_initials" required>
+                            </div>
+                        </div>
+                        <!-- Name in Full -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="name_in_full" class="form-label">Name in Full</label>
+                                <input type="text" class="form-control" name="name_in_full" required>
+                            </div>
+                        </div>
+
+                        <!-- Address Line 1 -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="address_line1" class="form-label">Address Line 1</label>
+                                <input type="text" class="form-control" name="address_line1" required>
+                            </div>
+                        </div>
+                        <!-- Address Line 2 -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="address_line2" class="form-label">Address Line 2</label>
+                                <input type="text" class="form-control" name="address_line2">
+                            </div>
+                        </div>
+
+                        <!-- City -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="address_city" class="form-label">City</label>
+                                <input type="text" class="form-control" name="address_city" required>
+                            </div>
+                        </div>
+                        <!-- Telephone (Residence) -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="telephone_residence" class="form-label">Telephone (Residence)</label>
+                                <input type="tel" class="form-control phone-input" name="telephone_residence">
+                            </div>
+                        </div>
+
+                        <!-- Mobile Number -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="telephone_mobile" class="form-label">Mobile Number</label>
+                                <input type="tel" class="form-control phone-input" name="telephone_mobile" required>
+                            </div>
+                        </div>
+                        <!-- WhatsApp Number -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="telephone_whatsapp" class="form-label">WhatsApp Number</label>
+                                <input type="tel" class="form-control phone-input" name="telephone_whatsapp">
+                            </div>
+                        </div>
+
+                        <!-- Email Address -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="email_address" class="form-label">Email Address</label>
+                                <input type="email" class="form-control email-input" name="email_address" required>
+                            </div>
+                        </div>
+                        <!-- Sex/Gender -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="sex" class="form-label">Sex/Gender</label>
+                                <select class="form-select" name="sex">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Date of Birth -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="date_of_birth" class="form-label">Date of Birth</label>
+                                <input type="date" class="form-control" name="date_of_birth" required>
+                            </div>
+                        </div>
+                        <!-- Religion -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="religion" class="form-label">Religion</label>
+                                <input type="text" class="form-control" name="religion">
+                            </div>
+                        </div>
+
+                        <!-- Ethnicity -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="ethnicity" class="form-label">Ethnicity</label>
+                                <input type="text" class="form-control" name="ethnicity">
+                            </div>
+                        </div>
+                        <!-- Birth Certificate Number -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="birthcertificate_number" class="form-label">Birth Certificate Number</label>
+                                <input type="text" class="form-control alphanumeric-input" name="birthcertificate_number" required>
+                            </div>
+                        </div>
+
+                        <!-- Profile Picture -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="profle_picture_path" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" name="profle_picture_path">
+                            </div>
+                        </div>
+                        <!-- Health Conditions -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="health_conditions" class="form-label">Health Conditions</label>
+                                <textarea class="form-control" name="health_conditions" rows="3"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Applied Date -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="applied_date" class="form-label">Applied Date</label>
+                                <input type="date" class="form-control" name="applied_date" required>
+                            </div>
+                        </div>
+                        <!-- Admission Status -->
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="admission_status" class="form-label">Admission Status</label>
+                                <select class="form-select" name="admission_status">
+                                    <option value="pending">Pending</option>
+                                    <option value="approved">Approved</option>
+                                    <option value="rejected">Rejected</option>
+                                </select>
                             </div>
                         </div>
                         <div class="col mt-auto text-end">
@@ -187,6 +356,54 @@
 
 @endsection
 @section('footer-scripts')
+<script>
+    // input validations
+    document.addEventListener('DOMContentLoaded', function() {
+        const phoneInputs = document.querySelectorAll('.phone-input');
+        const emailInputs = document.querySelectorAll('.email-input');
+        const alphanumericInputs = document.querySelectorAll('.alphanumeric-input');
+
+        // Phone number validation
+        phoneInputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                const phoneNumber = input.value;
+                const phoneRegex = /^\d{10}$/; // Example regex for 10 digits
+
+                if (!phoneRegex.test(phoneNumber)) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        });
+
+        // Email validation
+        emailInputs.forEach(function(input) {
+            input.addEventListener('blur', function() {
+                const email = input.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Basic email regex
+
+                if (!emailRegex.test(email)) {
+                    input.classList.add('is-invalid');
+                } else {
+                    input.classList.remove('is-invalid');
+                }
+            });
+        });
+
+        // Alphanumeric input validation
+        alphanumericInputs.forEach(function(input) {
+            input.addEventListener('input', function() {
+                const alphanumeric = input.value;
+                const alphanumericRegex = /^[a-zA-Z0-9]*$/; // Only letters and numbers
+
+                if (!alphanumericRegex.test(alphanumeric)) {
+                    input.value = input.value.replace(/[^a-zA-Z0-9]/g, '');
+                }
+            });
+        });
+    });
+</script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 @endsection

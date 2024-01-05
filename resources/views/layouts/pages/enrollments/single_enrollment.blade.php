@@ -5,7 +5,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('addgrade') }}
+                {{ Breadcrumbs::render('single_enrollment') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
@@ -19,10 +19,6 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-                    <!-- <div class="input-group">
-                        <span class="input-group-text text-body"><i class="fas fa-search" aria-hidden="true"></i></span>
-                        <input type="text" class="form-control" placeholder="Type here...">
-                    </div> -->
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
@@ -154,26 +150,54 @@
     <!-- End Navbar -->
     <div class="container-fluid body_content py-4">
         <!-- Students table -->
-
         <div class="card">
-
             <div class="card-body">
-                <form action="{{ route('add_grade') }}" method="POST">
-                    @csrf
+                <div class="card card-profile card-plain">
+
                     <div class="row">
-                        <!-- First Name -->
-                        <div class="col-md-6">
-                            <div class="mb-3">
-                                <label for="grade_name" class="form-label">Grade Name</label>
-                                <input type="text" class="form-control" name="grade_name">
+                        <div class="col">
+                            <div class="z-index-1">
+                                <div class="position-relative w-25">
+                                    <div class="blur-shadow-avatar">
+                                        <img class="avatar avatar-xxl shadow-lg" src="https://demos.creative-tim.com/soft-ui-design-system-pro/assets/img/team-4.jpg">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body ps-0">
+                                <h5 class="mb-0">Alec Thompson</h5>
+                                <p class="text-muted">CEO / Co-Founder</p>
                             </div>
                         </div>
-                        <div class="col mt-auto text-end">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                        <div class="col-auto">
+                            <button class="btn btn-secondary px-3 py-2 mb-0" onclick="history.back()"><i class="fa fa-chevron-left" aria-hidden="true"></i></button>
                         </div>
                     </div>
+                </div>
+                <ul class="list-group">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Full Name:</strong> &nbsp; John Doe</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Name With Initials:</strong> &nbsp; J. D.</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong> &nbsp; Male</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Address:</strong> &nbsp; 123 Sample Street, Sample City</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telephone:</strong> &nbsp; 123-456-7890</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Mobile:</strong> &nbsp; 987-654-3210</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">WhatsApp Number:</strong> &nbsp; 987-654-3210</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Email:</strong> &nbsp; johndoe@example.com</li>
 
-                </form>
+                        </div>
+                        <div class="col-md-6">
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Gender:</strong> &nbsp; Male</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Date of Birth:</strong> &nbsp; January 1, 1990</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Religion:</strong> &nbsp; Christianity</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Ethnicity:</strong> &nbsp; Caucasian</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Birth Certificate No:</strong> &nbsp; 123456789</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Health Conditions:</strong> &nbsp; <span class="badge badge-success text-dark">Good</span></li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Applied Date:</strong> &nbsp; 2024/01/01</li>
+                            <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Admission Status:</strong> &nbsp; <span class="badge badge-warning text-dark">Pending</span></li>
+                        </div>
+                    </div>
+                </ul>
             </div>
         </div>
         <!-- Students table -->
