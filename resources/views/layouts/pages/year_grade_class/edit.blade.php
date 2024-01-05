@@ -158,44 +158,60 @@
         <div class="card">
             
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('year_grade_class_update',['yeargradeclassId' => $yeargradeclasses['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- First Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="year" class="form-label">Year</label>
-                                <input type="text" class="form-control" name="year">
+                                <input type="text" value="{{ $yeargradeclasses['data']['year'] }}" class="form-control" name="year">
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="master_grade_id" class="form-label">Grade</label>
                                 <select class="form-select" name="master_grade_id">
-                                    <option value="grade_1">Grade 1</option>
-                                    <option value="grade_2">Grade 2</option>
-                                    <option value="grade_3">Grade 3</option>
+                                    @foreach ($grades as $grade)
+                                        <option value="{{ $grade['id'] }}" {{ $yeargradeclasses['data']['master_grade_id'] == $grade['id'] ? 'selected' : '' }}>
+                                            {{ $grade['grade_name'] }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="master_class_id" class="form-label">Class</label>
                                 <select class="form-select" name="master_class_id">
-                                    <option value="class_1">Class 1</option>
-                                    <option value="class_2">Class 2</option>
-                                    <option value="class_3">Class 3</option>
+                                    @foreach ($classes as $class)
+                                        <option value="{{ $class['id'] }}" {{ $yeargradeclasses['data']['master_class_id'] == $class['id'] ? 'selected' : '' }}>
+                                            {{ $class['class_name'] }}
+                                        </option>
+                                    @endforeach
                                 </select>
                             </div>
                         </div>
+
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="total_number_of_students" class="form-label">No of Students</label>
                                 <input type="text" class="form-control" name="total_number_of_students">
                             </div>
                         </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-check-label">Status</label>
+                                <select class="form-select" name="status">
+                                    <option value="1" {{ $yeargradeclasses['status'] == '1' ? 'selected' : '' }}>Active</option>
+                                    <option value="0" {{ $yeargradeclasses['status'] == '0' ? 'selected' : '' }}>Deactive</option>
+                                </select>
+                            </div>
+                        </div>
+
                         <div class="col-md-12 mt-3 text-end">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 
