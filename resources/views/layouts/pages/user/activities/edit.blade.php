@@ -154,19 +154,19 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('user_activity_update',['user_activityId' => $user_activity['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- Activity -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="activity" class="form-label">Activity</label>
-                                <input type="text" class="form-control" name="activity">
+                                <input type="text" class="form-control" name="activity" value="{{ $user_activity['data']['activity'] }}">
                             </div>
                         </div>
                        
                         <div class="col text-end mt-auto">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 
