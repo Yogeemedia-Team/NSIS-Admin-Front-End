@@ -80,3 +80,59 @@ Breadcrumbs::for('add_year_grade_class', function ($trail) {
     $trail->parent('home');
     $trail->push('Add Relationships', route('add_year_grade_class'));
 });
+
+// User sections
+// User Accounts
+Breadcrumbs::for('user_accounts', function ($trail) {
+    $trail->parent('home');
+    $trail->push('User Accounts', route('user_accounts'));
+});
+
+Breadcrumbs::for('add_user_account', function ($trail) {
+    $trail->parent('user_accounts');
+    $trail->push('Add User Account', route('add_user_account'));
+});
+
+// User Activities
+Breadcrumbs::for('user_activities', function ($trail) {
+    $trail->parent('home');
+    $trail->push('User Activities', route('user_activities'));
+});
+
+Breadcrumbs::for('add_user_activity', function ($trail) {
+    $trail->parent('user_activities');
+    $trail->push('Add User Activity', route('add_user_activity'));
+});
+
+// User Assigning
+Breadcrumbs::for('user_assigning', function ($trail) {
+    $trail->parent('home');
+    $trail->push('User Assigning', route('user_assigning'));
+});
+
+Breadcrumbs::for('add_user_assigning', function ($trail) {
+    $trail->parent('user_assigning');
+    $trail->push('Add User Assigning', route('add_user_assigning'));
+});
+
+// User Levels
+Breadcrumbs::for('user_levels', function ($trail) {
+    $trail->parent('home');
+    $trail->push('User Levels', route('user_levels'));
+});
+
+Breadcrumbs::for('add_user_level', function ($trail) {
+    $trail->parent('user_levels');
+    $trail->push('Add User Level', route('add_user_level'));
+});
+
+// User Roles
+Breadcrumbs::for('user_roles', function ($trail) {
+    $trail->parent('home');
+    $trail->push('User Roles', route('user_roles'));
+});
+
+Breadcrumbs::for('add_user_role', function ($trail) {
+    $trail->parent('user_roles');
+    $trail->push('Add User Role', route('add_user_role'));
+});
