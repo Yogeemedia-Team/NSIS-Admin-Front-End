@@ -30,7 +30,12 @@ class HomeController extends Controller
     }
     public function formpage()
     {
-        return view('layouts.pages.formpage');
+         $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+       
+         $year_grades = $response_year['data'];
+       
+        // Pass the student details to the view
+        return view('layouts.pages.formpage', compact('year_grades'));
     }
 
     public function students(Request $request)
@@ -147,9 +152,12 @@ class HomeController extends Controller
 
         // Extract student details from the response
         $studentDetails = $response;
-
+        $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+       
+        $year_grades = $response_year['data'];
+       
         // Pass the student details to the view
-        return view('layouts.pages.edit-student', compact('studentDetails'));
+        return view('layouts.pages.edit-student', compact('studentDetails','year_grades'));
     }
 
     public function student_update(Request $request, $studentId)
@@ -529,7 +537,7 @@ class HomeController extends Controller
             return redirect()->route('year_grade_class');
         } else {
             // Use SweetAlert to display a success message.
-            Alert::success('Success', 'Extra curricular create successful!')->showConfirmButton('OK');
+            Alert::success('Success', 'Year grade class relation create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the classes.
             return redirect()->route('year_grade_class');
@@ -548,10 +556,14 @@ class HomeController extends Controller
         }
 
         // Extract student details from the response
-        $extracurricular = $response;
+        $yeargradeclasses = $response;
+        $response_class = $this->apiService->makeApiRequest('GET', 'class');
+        $response_grade = $this->apiService->makeApiRequest('GET', 'grade');
+        $classes = $response_class['data'];
+        $grades = $response_grade['data'];
 
         // Pass the student details to the view
-        return view('layouts.pages.extracurriculars.edit', compact('yeargradeclasses'));
+        return view('layouts.pages.year_grade_class.edit', compact('yeargradeclasses','classes','grades'));
     }
 
     public function updateYearGradeClass(Request $request, $classId)
