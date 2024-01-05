@@ -152,3 +152,36 @@ Breadcrumbs::for('single_enrollment', function ($trail) {
     $trail->parent('enrollments');
     $trail->push('Single Enrollment', route('single_enrollment'));
 });
+
+// Admission Fee Routs
+Breadcrumbs::for('admission_fee', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Admission Fee', route('admission_fee'));
+});
+
+Breadcrumbs::for('add_admission_fee', function ($trail) {
+    $trail->parent('admission_fee');
+    $trail->push('Add Admission Fee', route('add_admission_fee'));
+});
+
+// Monthly Fee Routs
+Breadcrumbs::for('monthly_fee', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Monthly Fee', route('monthly_fee'));
+});
+
+Breadcrumbs::for('add_monthly_fee', function ($trail) {
+    $trail->parent('monthly_fee');
+    $trail->push('Add Monthly Fee', route('add_monthly_fee'));
+});
+
+// Surcharge Formula
+Breadcrumbs::for('surcharge_formula', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Surcharge Formula', route('surcharge_formula'));
+});
+
+Breadcrumbs::for('add_surcharge_formula', function ($trail) {
+    $trail->parent('surcharge_formula');
+    $trail->push('Add Surcharge Formula', route('add_surcharge_formula'));
+});

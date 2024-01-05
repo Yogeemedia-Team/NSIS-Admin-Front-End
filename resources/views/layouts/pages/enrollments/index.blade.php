@@ -167,7 +167,7 @@
                                 <th class="px-2">City</th>
                                 <th class="px-2">Mobile</th>
                                 <th class="px-2">Birthday</th>
-                                <th class="px-2">Addmision Status</th>
+                                <th class="px-2">Admision Status</th>
                                 <th class="px-2">Action</th>
                             </tr>
                         </thead>
