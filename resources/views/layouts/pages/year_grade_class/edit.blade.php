@@ -203,7 +203,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-check-label">Status</label>
-                                <select class="form-select" name="status">
+                                <select class="form-select" name="active_status">
                                     <option value="1" {{ $yeargradeclasses['status'] == '1' ? 'selected' : '' }}>Active</option>
                                     <option value="0" {{ $yeargradeclasses['status'] == '0' ? 'selected' : '' }}>Deactive</option>
                                 </select>
