@@ -652,11 +652,47 @@ class HomeController extends Controller
         }
     }
 
-    public function editUserAccount()
+    public function editUserAccount($id)
     {
+        $endpoint = 'users/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        $response_role = $this->apiService->makeApiRequest('GET', 'user_roles');
+        $roles = $response_role['data'];
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user = $response;
+        return view('layouts.pages.user.accounts.edit',compact('user','roles'));
     }
-    public function updateUserAccount()
+
+    public function updateUserAccount(Request $request , $userId)
     {
+        // Fetch existing student data from the API
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'users/' . $userId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'users/' . $userId, $updatedData);
+        dd($response);
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        }
     }
 
     // User Activities Controllers Here
