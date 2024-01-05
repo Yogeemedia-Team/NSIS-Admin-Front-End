@@ -165,7 +165,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="year" class="form-label">Year</label>
-                                <input type="date" class="form-control datepicker" name="year" placeholder="Select year">
+                                <input type="text" class="form-control" name="year" placeholder="Select year" value="{{ now()->year }}">
                             </div>
                         </div>
                         <div class="col-md-6">
