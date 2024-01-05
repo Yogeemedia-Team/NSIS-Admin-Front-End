@@ -165,7 +165,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="year" class="form-label">Year</label>
-                                <input type="text" class="form-control" name="year">
+                                <input type="date" class="form-control datepicker" name="year" placeholder="Select year">
                             </div>
                         </div>
                         <div class="col-md-6">
@@ -184,7 +184,7 @@
                                 <label for="master_class_id" class="form-label">Class</label>
                                 <select class="form-select" name="master_class_id">
                                     @foreach ( $classes as $class )
-                                        <option value="">{{ $class['class_name'] }}</option>
+                                        <option value="{{ $class['id'] }}">{{ $class['class_name'] }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -195,6 +195,17 @@
                                 <input type="text" class="form-control" name="total_number_of_students">
                             </div>
                         </div>
+                       <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-check-label">Status</label>
+                                <select class="form-select" name="status">
+                                    <option value="1">Active</option>
+                                    <option value="0">Deactive</option>
+                                </select>            
+                            </div>
+                        </div>
+
+
                         <div class="col-md-12 mt-3 text-end">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
@@ -215,5 +226,6 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 @endsection

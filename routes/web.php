@@ -76,9 +76,9 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
     Route::get('/add_year_grade_class', [HomeController::class, 'addYearGradeClass'])->name('add_year_grade_class');
     Route::post('/add_year_grade_class', [HomeController::class, 'createYearGradeClass'])->name('create_year_grade_class');
-    Route::get('/extracurricular/{extracurricularId}/edit', [HomeController::class, 'editYearGradeClass'])->name('year_grade_class_edit');
-    Route::post('/extracurricular/{extracurricularId}', [HomeController::class, 'updateYearGradeClass'])->name('year_grade_class_update');
-    Route::post('/extracurricular_delete/{id}', [HomeController::class, 'deleteYearGradeClass'])->name('year_grade_class_delete');
+    Route::get('/year_grade_class/{yeargradeclassId}/edit', [HomeController::class, 'editYearGradeClass'])->name('year_grade_class_edit');
+    Route::post('/year_grade_class/{yeargradeclassId}', [HomeController::class, 'updateYearGradeClass'])->name('year_grade_class_update');
+    Route::post('/year_grade_class_delete/{id}', [HomeController::class, 'deleteYearGradeClass'])->name('year_grade_class_delete');
 
     // User Accounts routes here
     Route::get('/user_accounts', [HomeController::class, 'userAccounts'])->name('user_accounts');

@@ -182,10 +182,9 @@
                                     <div class="mb-3">
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
                                         <select class="form-select" name="sd_year_grade_class_id">
-                                            <option value="2023">2023</option>
-                                            <option value="2024">2024</option>
-                                            <option value="2025">2025</option>
-                                            <option value="2026">2026</option>
+                                            @foreach ( $year_grades as $year_grade)
+                                                    <option value="{{ $year_grade['id'] }}">{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
