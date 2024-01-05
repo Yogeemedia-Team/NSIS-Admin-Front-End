@@ -526,7 +526,7 @@ class HomeController extends Controller
 
         $response = $this->apiService->makeApiRequest('POST', 'year_grade_class', $apiData);
         // Make the HTTP request with the access token in the headers
-  
+
         if ($response['status'] === false) {
             // If the status in the response is false, there's an error.
 
