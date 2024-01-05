@@ -136,3 +136,19 @@ Breadcrumbs::for('add_user_role', function ($trail) {
     $trail->parent('user_roles');
     $trail->push('Add User Role', route('add_user_role'));
 });
+
+// Enrollments
+Breadcrumbs::for('enrollments', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Enrollments', route('enrollments'));
+});
+
+Breadcrumbs::for('add_enrollment', function ($trail) {
+    $trail->parent('enrollments');
+    $trail->push('Add Enrollment', route('add_enrollment'));
+});
+
+Breadcrumbs::for('single_enrollment', function ($trail) {
+    $trail->parent('enrollments');
+    $trail->push('Single Enrollment', route('single_enrollment'));
+});

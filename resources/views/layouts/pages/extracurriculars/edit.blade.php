@@ -167,7 +167,7 @@
                                 <input type="text" class="form-control" value="{{ $extracurricular['data']['extracurricular_name'] }}" name="extracurricular_name">
                             </div>
                         </div>
-                        <div class="col-md-6 mt-auto text-end">
+                        <div class="col mt-auto text-end">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>

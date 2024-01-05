@@ -156,7 +156,7 @@
         <!-- Students table -->
 
         <div class="card">
-            
+
             <div class="card-body">
                 <form action="{{ route('add_class') }}" method="POST">
                     @csrf
@@ -168,7 +168,7 @@
                                 <input type="text" class="form-control" name="class_name">
                             </div>
                         </div>
-                        <div class="col-md-6 mt-auto text-end">
+                        <div class="col mt-auto text-end">
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>

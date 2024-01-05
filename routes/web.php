@@ -119,4 +119,13 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/user_role/{user_roleId}/edit', [HomeController::class, 'editUserRole'])->name('user_role_edit');
     Route::post('/user_role/{user_roleId}', [HomeController::class, 'updateUserRole'])->name('user_role_update');
     Route::post('/user_role_delete/{id}', [HomeController::class, 'deleteUserRole'])->name('user_role_delete');
+
+    // Enrollments routes
+    Route::get('/enrollments', [HomeController::class, 'enrollments'])->name('enrollments');
+    Route::get('/single_enrollment', [HomeController::class, 'viewEnrollment'])->name('single_enrollment');
+    Route::get('/add_enrollment', [HomeController::class, 'addEnrollment'])->name('add_enrollment');
+    Route::post('/add_enrollment', [HomeController::class, 'createEnrollment'])->name('create_enrollment');
+    Route::get('/enrollment/{enrollmentId}/edit', [HomeController::class, 'editEnrollment'])->name('enrollment_edit');
+    Route::post('/enrollment/{enrollmentId}', [HomeController::class, 'updateEnrollment'])->name('enrollment_update');
+    Route::post('/enrollment_delete/{id}', [HomeController::class, 'deleteEnrollment'])->name('enrollment_delete');
 });

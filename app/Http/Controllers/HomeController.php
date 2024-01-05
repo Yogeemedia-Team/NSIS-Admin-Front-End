@@ -692,4 +692,29 @@ class HomeController extends Controller
     {
         // Update user role with $user_roleId
     }
+
+    // Enrollments Controllers Here
+    public function enrollments()
+    {
+        return view('layouts.pages.enrollments.index');
+    }
+    public function addEnrollment()
+    {
+        return view('layouts.pages.enrollments.create');
+    }
+    public function createEnrollment()
+    {
+    }
+    public function viewEnrollment()
+    {
+        return view('layouts.pages.enrollments.single_enrollment');
+    }
+    public function editEnrollment($enrollmentId)
+    {
+        // Fetch enrollment with $enrollmentId and pass it to the view for editing
+    }
+    public function updateEnrollment($enrollmentId)
+    {
+        // Update enrollment with $enrollmentId
+    }
 }

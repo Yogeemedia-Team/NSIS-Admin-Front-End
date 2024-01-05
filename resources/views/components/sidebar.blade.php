@@ -66,13 +66,13 @@
         <div class="collapse " id="enrollments">
           <ul class="nav ms-4 ps-3">
             <li class="nav-item ">
-              <a class="nav-link " href="#">
+              <a class="nav-link " href="{{ route('add_enrollment') }}">
                 <span class="sidenav-mini-icon"> N </span>
                 <span class="sidenav-normal"> New Registrations </span>
               </a>
             </li>
             <li class="nav-item ">
-              <a class="nav-link " href="#">
+              <a class="nav-link " href="{{ route('enrollments') }}">
                 <span class="sidenav-mini-icon"> A </span>
                 <span class="sidenav-normal"> Admissions </span>
               </a>
