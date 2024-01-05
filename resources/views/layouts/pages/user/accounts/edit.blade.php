@@ -154,32 +154,52 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('user_account_update',['user_accountId' => $user['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- User Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="name" class="form-label">User Name</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="name" value="{{ $user['data']['name'] }}">
                             </div>
                         </div>
                         <!-- User Email -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email" class="form-label">User Email</label>
-                                <input type="text" class="form-control" name="email">
+                                <input type="text" class="form-control" name="email" value="{{ $user['data']['email'] }}">
                             </div>
                         </div>
                         <!-- User Password -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="password" class="form-label">User Password</label>
-                                <input type="text" class="form-control" name="password">
+                                <input type="text" class="form-control" name="password" >
                             </div>
                         </div>
+                        <div class="col-md-6">
+                    <div class="mb-3">
+                        <label for="password_confirmation">Confirm Password:</label>
+                       <input type="password" class="form-control" name="password_confirmation" placeholder="Confirm Password" aria-label="Confirm Password" required>
+                    </div> 
+                </div>
+                       <div class="col-md-6">
+                        <div class="mb-3">
+                        <label>User type</label>
+                      <select class="form-control" id="exampleFormControlSelect1" name="user_type">
+                        
+                        @foreach ($roles as $user_role)
+                        <option value="{{ $user_role['id'] }}" {{ $user['data']['user_type'] == $user_role['id'] ? 'selected' : '' }}>
+                                            {{ $user_role['role'] }}
+                                        </option>
+
+                        @endforeach
+                        </select>
+                    </div>
+                    </div>
                         <div class="col text-end mt-auto">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 

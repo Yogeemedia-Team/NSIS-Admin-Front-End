@@ -154,25 +154,25 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('user_level_update',['user_levelId' => $user_level['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- Level -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="level" class="form-label">Level</label>
-                                <input type="text" class="form-control" name="level">
+                                <input type="text" class="form-control" name="level" value="{{ $user_level['data']['level'] }}">
                             </div>
                         </div>
                         <!-- Title -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" value="{{ $user_level['data']['title'] }}">
                             </div>
                         </div>
                         <div class="col text-end mt-auto">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 

@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Services\ApiService;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
-
+use Illuminate\Support\Str;
 class HomeController extends Controller
 {
 
@@ -602,20 +603,96 @@ class HomeController extends Controller
     // User Accounts Controllers Here
     public function userAccounts()
     {
-        return view('layouts.pages.user.accounts.index');
+        $response = $this->apiService->makeApiRequest('GET', 'users');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.accounts.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $users = $response['data'];
+            return view('layouts.pages.user.accounts.index', compact('users'));
+        }
+
     }
     public function addUserAccount()
     {
-        return view('layouts.pages.user.accounts.create');
+        $response = $this->apiService->makeApiRequest('GET', 'user_roles');
+        $roles = $response['data'];
+        return view('layouts.pages.user.accounts.create',compact('roles'));
     }
-    public function createUserAccount()
+
+    public function createUserAccount(Request $request)
     {
+         $clientSecret = Str::random(40);
+         $response = $this->apiService->makeApiRequest('POST', 'user', [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            'password_confirmation' => $request->password_confirmation,
+            'user_type'=> $request->user_type,
+            'client_secret' => $clientSecret,
+            // Add other parameters as needed
+            ]);
+            
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_accounts');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_accounts');
+        }
     }
-    public function editUserAccount()
+
+    public function editUserAccount($id)
     {
+        $endpoint = 'users/' . $id;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        $response_role = $this->apiService->makeApiRequest('GET', 'user_roles');
+        $roles = $response_role['data'];
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user = $response;
+        return view('layouts.pages.user.accounts.edit',compact('user','roles'));
     }
-    public function updateUserAccount()
+
+    public function updateUserAccount(Request $request , $userId)
     {
+        // Fetch existing student data from the API
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'users/' . $userId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'users/' . $userId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_accounts');
+        }
     }
 
     // User Activities Controllers Here
@@ -665,44 +742,174 @@ class HomeController extends Controller
     // User Levels Controllers Here
     public function userLevels()
     {
-        return view('layouts.pages.user.levels.index');
+       $response = $this->apiService->makeApiRequest('GET', 'user_levels');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.levels.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $userlevels = $response['data'];
+            return view('layouts.pages.user.levels.index', compact('userlevels'));
+        }
+
     }
     public function addUserLevel()
     {
         return view('layouts.pages.user.levels.create');
     }
-    public function createUserLevel()
+
+    public function createUserLevel(Request $request)
     {
+         $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'user_levels', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_levels');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User level create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_levels');
+        }
     }
+
     public function editUserLevel($user_levelId)
     {
         // Fetch user level with $user_levelId and pass it to the view for editing
+        $endpoint = 'user_levels/' . $user_levelId;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user_level = $response;
+        return view('layouts.pages.user.levels.edit',compact('user_level'));
     }
-    public function updateUserLevel($user_levelId)
+    public function updateUserLevel(Request $request,$user_levelId)
     {
         // Update user level with $user_levelId
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_levels/' . $user_levelId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'user_levels/' . $user_levelId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_levels');
+        }
     }
 
 
     // User Roles Controllers Here
     public function userRoles()
     {
+        $response = $this->apiService->makeApiRequest('GET', 'user_roles');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.roles.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $user_roles = $response['data'];
+            return view('layouts.pages.user.roles.index', compact('user_roles'));
+        }
+
         return view('layouts.pages.user.roles.index');
     }
     public function addUserRole()
     {
         return view('layouts.pages.user.roles.create');
     }
-    public function createUserRole()
+    public function createUserRole(Request $request)
     {
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'user_roles', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_roles');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User role create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_roles');
+        }
     }
+
     public function editUserRole($user_roleId)
     {
         // Fetch user role with $user_roleId and pass it to the view for editing
+         // Fetch user level with $user_levelId and pass it to the view for editing
+        $endpoint = 'user_roles/' . $user_roleId;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user_role = $response;
+        return view('layouts.pages.user.roles.edit',compact('user_role'));
     }
-    public function updateUserRole($user_roleId)
+
+    public function updateUserRole(Request $request,$user_roleId)
     {
         // Update user role with $user_roleId
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_roles/' . $user_roleId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'user_roles/' . $user_roleId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'User role update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        }
     }
 
     // Enrollments Controllers Here

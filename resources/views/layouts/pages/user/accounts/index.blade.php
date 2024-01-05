@@ -164,14 +164,18 @@
                             <tr>
                                 <th class="px-2">User Name</th>
                                 <th class="px-2">User Email</th>
+                                <th class="px-2">Type</th>
+                                <th class="px-2">Action</th>
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach ( $users as $user)
                             <tr>
-                                <td>Sample Name</td>
-                                <td>Sample email</td>
+                                <td>{{ $user['name'] }}</td>
+                                <td>{{  $user['email'] }}</td>
+                                <td>{{  $user['user_type']['role'] }}</td>
                                 <td class="d-flex">
-                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('user_account_edit', ['user_accountId' => $user['id']]) }}"><i class="fas fa-edit"></i></a>
                                     <form action="" method="POST">
                                         @csrf
                                         <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
@@ -180,6 +184,7 @@
                                     </form>
                                 </td>
                             </tr>
+                        @endforeach    
                         </tbody>
                     </table>
                 </div>
