@@ -154,7 +154,7 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('create_user_role') }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- Role -->

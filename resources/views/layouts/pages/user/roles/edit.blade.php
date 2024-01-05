@@ -154,18 +154,18 @@
         <div class="card">
 
             <div class="card-body">
-                <form action="" method="POST">
+                <form action="{{ route('user_role_update',['user_roleId' => $user_role['data']['id']]) }}" method="POST">
                     @csrf
                     <div class="row">
                         <!-- Role -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="role" class="form-label">Role</label>
-                                <input type="text" class="form-control" name="role">
+                                <input type="text" class="form-control" name="role" value="{{ $user_role['data']['role'] }}">
                             </div>
                         </div>
                         <div class="col text-end mt-auto">
-                            <button type="submit" class="btn btn-primary">Add</button>
+                            <button type="submit" class="btn btn-primary">Update</button>
                         </div>
                     </div>
 

@@ -828,21 +828,87 @@ class HomeController extends Controller
     // User Roles Controllers Here
     public function userRoles()
     {
+        $response = $this->apiService->makeApiRequest('GET', 'user_roles');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.roles.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $user_roles = $response['data'];
+            return view('layouts.pages.user.roles.index', compact('user_roles'));
+        }
+
         return view('layouts.pages.user.roles.index');
     }
     public function addUserRole()
     {
         return view('layouts.pages.user.roles.create');
     }
-    public function createUserRole()
+    public function createUserRole(Request $request)
     {
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'user_roles', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('user_roles');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User role create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('user_roles');
+        }
     }
+
     public function editUserRole($user_roleId)
     {
         // Fetch user role with $user_roleId and pass it to the view for editing
+         // Fetch user level with $user_levelId and pass it to the view for editing
+        $endpoint = 'user_roles/' . $user_roleId;
+        $response = $this->apiService->makeApiRequest('GET', $endpoint);
+        
+        // Check if the API request was successful
+        if ($response['status'] === false) {
+            // Handle error (you might want to redirect or show an error page)
+            return redirect()->route('error')->with('message', $response['message']);
+        }
+
+        // Extract student details from the response
+        $user_role = $response;
+        return view('layouts.pages.user.roles.edit',compact('user_role'));
     }
-    public function updateUserRole($user_roleId)
+
+    public function updateUserRole(Request $request,$user_roleId)
     {
         // Update user role with $user_roleId
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_roles/' . $user_roleId);
+
+        if ($existingStudentData['status'] === false) {
+            // Handle error if the student data cannot be fetched
+            Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        }
+
+        $updatedData = $request->all(); // You might need to modify this based on your form fields
+        // Make the API request to update the student record
+        $response = $this->apiService->makeApiRequest('PUT', 'user_roles/' . $user_roleId, $updatedData);
+        
+        if ($response['status'] === false) {
+            // If the update request fails, display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        } else {
+            // If the update is successful, display a success message.
+            Alert::success('Success', 'User role update successful!')->showConfirmButton('OK');
+            return redirect()->route('user_roles');
+        }
     }
 }
