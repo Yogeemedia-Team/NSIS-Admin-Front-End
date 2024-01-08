@@ -171,19 +171,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                          @foreach($classes as $class)
+                            @foreach($classes as $class)
                             <tr>
-                            <td>{{ $class['class_name'] }}</td>
-                            <td class="d-flex">
-                                <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('class_edit', ['classId' => $class['id']]) }}"><i class="fas fa-edit"></i></a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
+                                <td>{{ $class['class_name'] }}</td>
+                                <td class="d-flex">
+                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('class_edit', ['classId' => $class['id']]) }}"><i class="fas fa-edit"></i></a>
+                                    <form id="deleteForm{{ $class['id'] }}" action="{{ route('class_delete', ['id' => $class['id']]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $class['id'] }}')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
 
-                            </td>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

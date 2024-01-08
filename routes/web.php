@@ -53,7 +53,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_grade', [HomeController::class, 'createGrade'])->name('create_grade');
     Route::get('/grades/{gradeId}/edit', [HomeController::class, 'editGrade'])->name('grade_edit');
     Route::post('/grades/{gradeId}', [HomeController::class, 'updateGrade'])->name('grade_update');
-    Route::post('/grades_delete/{id}', [HomeController::class, 'deleteGrade'])->name('grade_delete');
+    Route::delete('/grades_delete/{id}', [HomeController::class, 'deleteGrade'])->name('grade_delete');
 
     // Classes routes here
     Route::get('/classes', [HomeController::class, 'classes'])->name('classes');
@@ -61,7 +61,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_class', [HomeController::class, 'createClass'])->name('create_class');
     Route::get('/class/{classId}/edit', [HomeController::class, 'editClass'])->name('class_edit');
     Route::post('/class/{classId}', [HomeController::class, 'updateClass'])->name('class_update');
-    Route::post('/class_delete/{id}', [HomeController::class, 'deleteClass'])->name('class_delete');
+    Route::delete('/class_delete/{id}', [HomeController::class, 'deleteClass'])->name('class_delete');
+    
 
 
     //  Extracurricular routes here
@@ -70,7 +71,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_extracurricular', [HomeController::class, 'createExtracurricular'])->name('create_extracurricular');
     Route::get('/extracurricular/{extracurricularId}/edit', [HomeController::class, 'editExtracurricular'])->name('extracurricular_edit');
     Route::post('/extracurricular/{extracurricularId}', [HomeController::class, 'updateExtracurricular'])->name('extracurricular_update');
-    Route::post('/extracurricular_delete/{id}', [HomeController::class, 'deleteExtracurricular'])->name('extracurricular_delete');
+    Route::delete('/extracurricular_delete/{id}', [HomeController::class, 'deleteExtracurricular'])->name('extracurricular_delete');
 
     //  year_grade_class routes here
     Route::get('/year_grade_class', [HomeController::class, 'YearGradeClass'])->name('year_grade_class');
@@ -78,7 +79,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_year_grade_class', [HomeController::class, 'createYearGradeClass'])->name('create_year_grade_class');
     Route::get('/year_grade_class/{yeargradeclassId}/edit', [HomeController::class, 'editYearGradeClass'])->name('year_grade_class_edit');
     Route::post('/year_grade_class/{yeargradeclassId}', [HomeController::class, 'updateYearGradeClass'])->name('year_grade_class_update');
-    Route::post('/year_grade_class_delete/{id}', [HomeController::class, 'deleteYearGradeClass'])->name('year_grade_class_delete');
+    Route::delete('/year_grade_class_delete/{id}', [HomeController::class, 'deleteYearGradeClass'])->name('year_grade_class_delete');
 
     // User Accounts routes here
     Route::get('/user_accounts', [HomeController::class, 'userAccounts'])->name('user_accounts');
@@ -86,7 +87,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_user_account', [HomeController::class, 'createUserAccount'])->name('create_user_account');
     Route::get('/user_account/{user_accountId}/edit', [HomeController::class, 'editUserAccount'])->name('user_account_edit');
     Route::post('/user_account/{user_accountId}', [HomeController::class, 'updateUserAccount'])->name('user_account_update');
-    Route::post('/user_account_delete/{id}', [HomeController::class, 'deleteUserAccount'])->name('user_account_delete');
+    Route::delete('/user_account_delete/{id}', [HomeController::class, 'deleteUserAccount'])->name('user_account_delete');
 
     // User Activities routes
     Route::get('/user_activities', [HomeController::class, 'userActivities'])->name('user_activities');
@@ -94,7 +95,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_user_activity', [HomeController::class, 'createUserActivity'])->name('create_user_activity');
     Route::get('/user_activity/{user_activityId}/edit', [HomeController::class, 'editUserActivity'])->name('user_activity_edit');
     Route::post('/user_activity/{user_activityId}', [HomeController::class, 'updateUserActivity'])->name('user_activity_update');
-    Route::post('/user_activity_delete/{id}', [HomeController::class, 'deleteUserActivity'])->name('user_activity_delete');
+    Route::delete('/user_activity_delete/{id}', [HomeController::class, 'deleteUserActivity'])->name('user_activity_delete');
 
     // User Assigning routes
     Route::get('/user_assigning', [HomeController::class, 'userAssigning'])->name('user_assigning');
@@ -102,7 +103,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_user_assigning', [HomeController::class, 'createUserAssigning'])->name('create_user_assigning');
     Route::get('/user_assigning/{user_assigningId}/edit', [HomeController::class, 'editUserAssigning'])->name('user_assigning_edit');
     Route::post('/user_assigning/{user_assigningId}', [HomeController::class, 'updateUserAssigning'])->name('user_assigning_update');
-    Route::post('/user_assigning_delete/{id}', [HomeController::class, 'deleteUserAssigning'])->name('user_assigning_delete');
+    Route::delete('/user_assigning_delete/{id}', [HomeController::class, 'deleteUserAssigning'])->name('user_assigning_delete');
 
     // User Levels routes
     Route::get('/user_levels', [HomeController::class, 'userLevels'])->name('user_levels');
@@ -110,7 +111,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_user_level', [HomeController::class, 'createUserLevel'])->name('create_user_level');
     Route::get('/user_level/{user_levelId}/edit', [HomeController::class, 'editUserLevel'])->name('user_level_edit');
     Route::post('/user_level/{user_levelId}', [HomeController::class, 'updateUserLevel'])->name('user_level_update');
-    Route::post('/user_level_delete/{id}', [HomeController::class, 'deleteUserLevel'])->name('user_level_delete');
+    Route::delete('/user_level_delete/{id}', [HomeController::class, 'deleteUserLevel'])->name('user_level_delete');
 
     // User Roles routes
     Route::get('/user_roles', [HomeController::class, 'userRoles'])->name('user_roles');
@@ -118,7 +119,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_user_role', [HomeController::class, 'createUserRole'])->name('create_user_role');
     Route::get('/user_role/{user_roleId}/edit', [HomeController::class, 'editUserRole'])->name('user_role_edit');
     Route::post('/user_role/{user_roleId}', [HomeController::class, 'updateUserRole'])->name('user_role_update');
-    Route::post('/user_role_delete/{id}', [HomeController::class, 'deleteUserRole'])->name('user_role_delete');
+    Route::delete('/user_role_delete/{id}', [HomeController::class, 'deleteUserRole'])->name('user_role_delete');
 
     // Enrollments routes
     Route::get('/enrollments', [HomeController::class, 'enrollments'])->name('enrollments');
@@ -127,17 +128,21 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/add_enrollment', [HomeController::class, 'createEnrollment'])->name('create_enrollment');
     Route::get('/enrollment/{enrollmentId}/edit', [HomeController::class, 'editEnrollment'])->name('enrollment_edit');
     Route::post('/enrollment/{enrollmentId}', [HomeController::class, 'updateEnrollment'])->name('enrollment_update');
-    Route::post('/enrollment_delete/{id}', [HomeController::class, 'deleteEnrollment'])->name('enrollment_delete');
-
+    Route::delete('/enrollment_delete/{id}', [HomeController::class, 'deleteEnrollment'])->name('enrollment_delete');
+    
     // Admission Fee
     Route::get('/admission_fee', [HomeController::class, 'admissionFee'])->name('admission_fee');
     Route::get('/add_admission_fee', [HomeController::class, 'addAdmissionFee'])->name('add_admission_fee');
+    Route::delete('/admission_fee_delete/{id}', [HomeController::class, 'deleteAdmissionFee'])->name('admission_fee_delete');
 
     // Monthly Fee
     Route::get('/monthly_fee', [HomeController::class, 'monthlyFee'])->name('monthly_fee');
     Route::get('/add_monthly_fee', [HomeController::class, 'addMonthlyFee'])->name('add_monthly_fee');
+    Route::delete('/monthly_fee_delete/{id}', [HomeController::class, 'deleteMonthlyFee'])->name('monthly_fee_delete');
 
     // Surcharge Formula 
     Route::get('/surcharge_formula', [HomeController::class, 'surchargeFormula'])->name('surcharge_formula');
     Route::get('/add_surcharge_formula', [HomeController::class, 'addSurchargeFormula'])->name('add_surcharge_formula');
+    Route::delete('/surcharge_formula_delete/{id}', [HomeController::class, 'deleteSurchargeFormula'])->name('surcharge_formula_delete');
+
 });
