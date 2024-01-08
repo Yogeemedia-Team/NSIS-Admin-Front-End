@@ -193,7 +193,12 @@
                                 </select>
                             </div>
                         </div>
-
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="monthly_fee" class="form-label">Monthly Fee</label>
+                                <input type="number" min="100"  class="form-control" value="{{ $yeargradeclasses['data']['monthly_fee'] }}" name="monthly_fee">
+                            </div>
+                        </div>
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="total_number_of_students" class="form-label">No of Students</label>
