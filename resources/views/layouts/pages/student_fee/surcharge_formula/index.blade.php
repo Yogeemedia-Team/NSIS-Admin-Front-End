@@ -181,9 +181,10 @@
                                 <td>30</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
-                                    <form action="" method="POST">
+                                    <form id="deleteForm{{ $surcharge_formula['id'] }}" action="{{ route('surcharge_formula_delete', ['id' => $surcharge_formula['id']]) }}" method="POST">
                                         @csrf
-                                        <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                                        @method('DELETE')
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $surcharge_formula['id'] }}')">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

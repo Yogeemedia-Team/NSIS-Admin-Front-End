@@ -8,6 +8,7 @@ use App\Services\ApiService;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+
 class HomeController extends Controller
 {
 
@@ -302,6 +303,27 @@ class HomeController extends Controller
         }
     }
 
+    public function deleteGrade($id)
+    {
+        // Endpoint to delete a grade by ID
+        $endpoint = 'grade/' . $id;
+
+        // Make the API request to delete the grade
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'Grade deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect back to the grades page
+        return redirect()->route('grades');
+    }
+
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -398,6 +420,25 @@ class HomeController extends Controller
         }
     }
 
+    public function deleteClass($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'class/' . $id;
+
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'Class deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('classes');
+    }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     // Extracurriculars Controllers Here
@@ -441,7 +482,7 @@ class HomeController extends Controller
             Alert::success('Success', 'Extra curricular create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the classes.
-            return redirect()->route('classes');
+            return redirect()->route('extracurricular');
         }
     }
 
@@ -493,6 +534,25 @@ class HomeController extends Controller
         }
     }
 
+    public function deleteExtracurricular($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'extracurricular/' . $id;
+
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'Extra curricular deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('extracurricular');
+    }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
     // year_grade_class  Controllers Here
@@ -592,14 +652,33 @@ class HomeController extends Controller
             return redirect()->route('year_grade_class');
         } else {
             // If the update is successful, display a success message.
-            Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
+            Alert::success('Success', 'Year Grade Class update successful!')->showConfirmButton('OK');
             return redirect()->route('year_grade_class');
         }
+    }
+    public function deleteYearGradeClass($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'year_grade_class/' . $id;
+
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'Year Grade Class deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('year_grade_class');
     }
 
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Accounts Controllers Here
     public function userAccounts()
     {
@@ -613,28 +692,27 @@ class HomeController extends Controller
             $users = $response['data'];
             return view('layouts.pages.user.accounts.index', compact('users'));
         }
-
     }
     public function addUserAccount()
     {
         $response = $this->apiService->makeApiRequest('GET', 'user_roles');
         $roles = $response['data'];
-        return view('layouts.pages.user.accounts.create',compact('roles'));
+        return view('layouts.pages.user.accounts.create', compact('roles'));
     }
 
     public function createUserAccount(Request $request)
     {
-         $clientSecret = Str::random(40);
-         $response = $this->apiService->makeApiRequest('POST', 'user', [
+        $clientSecret = Str::random(40);
+        $response = $this->apiService->makeApiRequest('POST', 'user', [
             'name' => $request->name,
             'email' => $request->email,
             'password' => $request->password,
             'password_confirmation' => $request->password_confirmation,
-            'user_type'=> $request->user_type,
+            'user_type' => $request->user_type,
             'client_secret' => $clientSecret,
             // Add other parameters as needed
-            ]);
-            
+        ]);
+
         if ($response['status'] === false) {
             // If the status in the response is false, there's an error.
 
@@ -666,10 +744,10 @@ class HomeController extends Controller
 
         // Extract student details from the response
         $user = $response;
-        return view('layouts.pages.user.accounts.edit',compact('user','roles'));
+        return view('layouts.pages.user.accounts.edit', compact('user', 'roles'));
     }
 
-    public function updateUserAccount(Request $request , $userId)
+    public function updateUserAccount(Request $request, $userId)
     {
         // Fetch existing student data from the API
         $existingStudentData = $this->apiService->makeApiRequest('GET', 'users/' . $userId);
@@ -683,7 +761,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'users/' . $userId, $updatedData);
-        
+
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -694,9 +772,29 @@ class HomeController extends Controller
             return redirect()->route('user_accounts');
         }
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    public function deleteUserAccount($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'users/' . $id;
+
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'User deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('user_accounts');
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Activities Controllers Here
     public function userActivities()
     {
@@ -739,13 +837,13 @@ class HomeController extends Controller
             return redirect()->route('user_activities');
         }
     }
-    
+
     public function editUserActivity($user_activityId)
     {
         // Fetch user activity with $user_activityId and pass it to the view for editing
         $endpoint = 'user_activities/' . $user_activityId;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
-        
+
         // Check if the API request was successful
         if ($response['status'] === false) {
             // Handle error (you might want to redirect or show an error page)
@@ -754,9 +852,9 @@ class HomeController extends Controller
 
         // Extract student details from the response
         $user_activity = $response;
-        return view('layouts.pages.user.activities.edit',compact('user_activity'));
+        return view('layouts.pages.user.activities.edit', compact('user_activity'));
     }
-    
+
     public function updateUserActivity(Request $request, $user_activityId)
     {
         // Update user activity with $user_activityId
@@ -771,7 +869,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'user_activities/' . $user_activityId, $updatedData);
-        
+
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -782,10 +880,28 @@ class HomeController extends Controller
             return redirect()->route('user_activities');
         }
     }
+    public function deleteUserActivity($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'user_activities/' . $id;
 
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
 
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'User activity deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('user_activities');
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
     // User Assigning Controllers Here
     public function userAssigning()
     {
@@ -806,12 +922,15 @@ class HomeController extends Controller
     {
         // Update user assigning with $user_assigningId
     }
+    public function deleteUserAssigning($id)
+    {
+    }
 
 
     // User Levels Controllers Here
     public function userLevels()
     {
-       $response = $this->apiService->makeApiRequest('GET', 'user_levels');
+        $response = $this->apiService->makeApiRequest('GET', 'user_levels');
 
         if ($response['status'] === false) {
 
@@ -821,7 +940,6 @@ class HomeController extends Controller
             $userlevels = $response['data'];
             return view('layouts.pages.user.levels.index', compact('userlevels'));
         }
-
     }
     public function addUserLevel()
     {
@@ -856,7 +974,7 @@ class HomeController extends Controller
         // Fetch user level with $user_levelId and pass it to the view for editing
         $endpoint = 'user_levels/' . $user_levelId;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
-        
+
         // Check if the API request was successful
         if ($response['status'] === false) {
             // Handle error (you might want to redirect or show an error page)
@@ -865,9 +983,9 @@ class HomeController extends Controller
 
         // Extract student details from the response
         $user_level = $response;
-        return view('layouts.pages.user.levels.edit',compact('user_level'));
+        return view('layouts.pages.user.levels.edit', compact('user_level'));
     }
-    public function updateUserLevel(Request $request,$user_levelId)
+    public function updateUserLevel(Request $request, $user_levelId)
     {
         // Update user level with $user_levelId
         $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_levels/' . $user_levelId);
@@ -881,7 +999,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'user_levels/' . $user_levelId, $updatedData);
-        
+
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -892,9 +1010,28 @@ class HomeController extends Controller
             return redirect()->route('user_levels');
         }
     }
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    public function deleteUserLevel($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'user_levels/' . $id;
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'User level deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('user_levels');
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
     // User Roles Controllers Here
     public function userRoles()
@@ -945,7 +1082,7 @@ class HomeController extends Controller
 
         $endpoint = 'user_roles/' . $user_roleId;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
-        
+
         // Check if the API request was successful
         if ($response['status'] === false) {
             // Handle error (you might want to redirect or show an error page)
@@ -954,10 +1091,10 @@ class HomeController extends Controller
 
         // Extract student details from the response
         $user_role = $response;
-        return view('layouts.pages.user.roles.edit',compact('user_role'));
+        return view('layouts.pages.user.roles.edit', compact('user_role'));
     }
 
-    public function updateUserRole(Request $request,$user_roleId)
+    public function updateUserRole(Request $request, $user_roleId)
     {
         // Update user role with $user_roleId
         $existingStudentData = $this->apiService->makeApiRequest('GET', 'user_roles/' . $user_roleId);
@@ -971,7 +1108,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'user_roles/' . $user_roleId, $updatedData);
-        
+
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -982,7 +1119,26 @@ class HomeController extends Controller
             return redirect()->route('user_roles');
         }
     }
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
+    public function deleteUserRole($id)
+    {
+        // Endpoint to delete by ID
+        $endpoint = 'user_roles/' . $id;
+
+        // Make the API request to delete
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'User role deleted successfully!')->showConfirmButton('OK');
+        }
+
+        // Redirect
+        return redirect()->route('user_roles');
+    }
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////// 
 
     // Enrollments Controllers Here
     public function enrollments()
@@ -1008,6 +1164,10 @@ class HomeController extends Controller
     {
         // Update enrollment with $enrollmentId
     }
+    public function deleteEnrollment($enrollmentId)
+    {
+        // Delete enrollment with $enrollmentId
+    }
 
 
     // Admission Fee Controllers Here
@@ -1019,6 +1179,10 @@ class HomeController extends Controller
     {
         return view('layouts.pages.student_fee.admission.create');
     }
+    public function deleteAdmissionFee($enrollmentId)
+    {
+        // Delete enrollment with $enrollmentId
+    }
 
     // Monthly Fee Controllers Here
     public function monthlyFee()
@@ -1029,6 +1193,10 @@ class HomeController extends Controller
     {
         return view('layouts.pages.student_fee.monthly.create');
     }
+    public function deleteMonthlyFee($enrollmentId)
+    {
+        // Delete enrollment with $enrollmentId
+    }
 
     // Surcharge Formula Controllers Here
     public function surchargeFormula()
@@ -1038,5 +1206,9 @@ class HomeController extends Controller
     public function addSurchargeFormula()
     {
         return view('layouts.pages.student_fee.surcharge_formula.create');
+    }
+    public function deleteSurchargeFormula($enrollmentId)
+    {
+        // Delete enrollment with $enrollmentId
     }
 }

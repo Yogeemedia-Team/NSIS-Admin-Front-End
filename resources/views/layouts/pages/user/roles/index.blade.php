@@ -172,9 +172,10 @@
                                 <td>{{ $user_role['role'] }}</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('user_role_edit', ['user_roleId' => $user_role['id']]) }}"><i class="fas fa-edit"></i></a>
-                                    <form action="" method="POST">
+                                    <form id="deleteForm{{ $user_role['id'] }}" action="{{ route('user_role_delete', ['id' => $user_role['id']]) }}" method="POST">
                                         @csrf
-                                        <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                                        @method('DELETE')
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $user_role['id'] }}')">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

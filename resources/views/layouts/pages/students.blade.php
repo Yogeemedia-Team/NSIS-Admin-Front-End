@@ -157,12 +157,12 @@
 
     <div class="card">
       <div class="card-header pb-0">
-      <div class="text-end">
+        <div class="text-end">
           <a href="{{ route('formpage') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-plus me-2"></i> Add New</a>
         </div>
       </div>
       <div class="card-body">
-        
+
         <div class="table-responsive">
           <table id="dataTable" class="table table-striped" style="width:100%">
             <thead>
@@ -186,9 +186,10 @@
                 <td style="display: flex;">
                   <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>
                   <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('student_edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
-                  <form action="{{ route('student_delete', $student['student_id']) }}" method="POST">
+                  <form id="deleteForm{{ $student_id['id'] }}" action="{{ route('student_id_delete', ['id' => $student_id['id']]) }}" method="POST">
                     @csrf
-                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
+                    @method('DELETE')
+                    <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $student_id['id'] }}')">
                       <i class="fa-solid fa-trash"></i>
                     </button>
                   </form>

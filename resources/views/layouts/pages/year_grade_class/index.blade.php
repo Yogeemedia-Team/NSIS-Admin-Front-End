@@ -188,12 +188,13 @@
                             </td>
                             <td class="d-flex">
                                 <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('year_grade_class_edit', ['yeargradeclassId' => $yeargradeclass['id']]) }}"><i class="fas fa-edit"></i></a>
-                                <form action="" method="POST">
-                                    @csrf
-                                    <button style="border:2px solid #c1476e" type="submit" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete(event)">
-                                        <i class="fa-solid fa-trash"></i>
-                                    </button>
-                                </form>
+                                <form id="deleteForm{{ $yeargradeclass['id'] }}" action="{{ route('yeargradeclass_delete', ['id' => $yeargradeclass['id']]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $yeargradeclass['id'] }}')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
 
                             </td>
                         </tr>
