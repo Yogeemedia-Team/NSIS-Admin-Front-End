@@ -180,3 +180,9 @@
 	border: 3px solid #405189;
 	box-shadow: none;
 }
+
+.dropdown-toggle::after {
+	border-top: 0.5em solid;
+	border-right: 0.5em solid transparent;
+	border-left: 0.5em solid transparent;
+}
