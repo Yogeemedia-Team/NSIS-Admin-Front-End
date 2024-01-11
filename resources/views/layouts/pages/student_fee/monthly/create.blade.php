@@ -165,14 +165,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="fee_type" class="form-label">Fee Type</label>
-                                <input type="text" class="form-control" name="fee_type">
+                                <input type="text" class="form-control" name="fee_type" placeholder="Enter Monthly Fee Type" required>
                             </div>
                         </div>
                         <!-- Fee -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="fee" class="form-label">Fee</label>
-                                <input type="text" class="form-control number-input" name="fee">
+                                <input type="text" class="form-control number-input" name="fee" placeholder="Enter Monthly Fee" required>
                             </div>
                         </div>
                         <div class="col mt-auto text-end">

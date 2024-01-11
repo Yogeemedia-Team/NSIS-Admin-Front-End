@@ -182,7 +182,7 @@
                                             <label for="admission_no" class="col-form-label">Addmission No : </label>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="text" class="form-control" name="admission_no" required>
+                                            <input type="text" class="form-control" name="admission_no" placeholder="Enter Admission Number" required>
                                         </div>
                                     </div>
                                 </div>

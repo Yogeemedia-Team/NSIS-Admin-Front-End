@@ -165,28 +165,28 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="surcharge_type" class="form-label">Surcharge Type</label>
-                                <input type="text" class="form-control" name="surcharge_type">
+                                <input type="text" class="form-control" name="surcharge_type" placeholder="Enter Surcharge Type" required>
                             </div>
                         </div>
                         <!-- Penalty 1 -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="penalty_1" class="form-label">Penalty 1</label>
-                                <input type="text" class="form-control number-input" name="penalty_1">
+                                <input type="text" class="form-control number-input" name="penalty_1" placeholder="Enter Penalty 1 Percentage">
                             </div>
                         </div>
                         <!-- Penalty 2 -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="penalty_2" class="form-label">Penalty 2</label>
-                                <input type="text" class="form-control number-input" name="penalty_2">
+                                <input type="text" class="form-control number-input" name="penalty_2" placeholder="Enter Penalty 2 Percentage">
                             </div>
                         </div>
                         <!-- Penalty 3 -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="penalty_3" class="form-label">Penalty 3</label>
-                                <input type="text" class="form-control number-input" name="penalty_3">
+                                <input type="text" class="form-control number-input" name="penalty_3" placeholder="Enter Penalty 3 Percentage">
                             </div>
                         </div>
                         <div class="col mt-auto text-end">

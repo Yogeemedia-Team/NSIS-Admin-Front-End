@@ -161,7 +161,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="role" class="form-label">Role</label>
-                                <input type="text" class="form-control" name="role">
+                                <input type="text" class="form-control" name="role" placeholder="Enter Role" required>
                             </div>
                         </div>
                         <div class="col text-end mt-auto">
