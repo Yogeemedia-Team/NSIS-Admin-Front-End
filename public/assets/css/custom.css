@@ -177,7 +177,7 @@
 }
 .form-control:focus,
 .form-select:focus {
-	border-color: #405189;
+	border-color:    #405189;
 	box-shadow: none;
 }
 
@@ -186,3 +186,15 @@
 	border-right: 0.5em solid transparent;
 	border-left: 0.5em solid transparent;
 }
+
+.form_img {
+	background-size: 100px;
+	background-position: bottom right 10%;
+	background-repeat: no-repeat;
+}
+/* Mobile sizes rsponsive*/
+@media only screen and (max-width: 576px) {
+    .form_img {
+        background-position: bottom right;
+    }
+  }

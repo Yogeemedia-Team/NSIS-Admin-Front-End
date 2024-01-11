@@ -159,22 +159,22 @@
             <div class="card-header">
                 <h6>Add New Student Payment</h6>
             </div>
-            <div class="card-body">
+            <div class="card-body pt-0">
                 <form action="" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-auto">
-                            <div class="row g-3 align-items-center">
+                            <div class="row mt-2 g-3 align-items-center">
                                 <div class="col-auto">
                                     <label for="admission_no" class="col-form-label">Admission No : </label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="admission_no" required>
+                                    <input type="text" class="form-control" name="admission_no" placeholder="Enter Admission Number" required>
                                 </div>
                             </div>
                         </div>
                         <div class="col-auto">
-                            <div class="row g-3 align-items-center">
+                            <div class="row mt-2 g-3 align-items-center">
                                 <div class="col-auto">
                                     <label for="payment_date" class="col-form-label">Paid Date : </label>
                                 </div>
@@ -184,7 +184,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <div class="row g-3 align-items-center">
+                            <div class="row mt-2 g-3 align-items-center">
                                 <div class="col-auto">
                                     <label for="payment_term" class="col-form-label">Payment Term : </label>
                                 </div>
@@ -198,7 +198,7 @@
                             </div>
                         </div>
                         <div class="col-auto">
-                            <div class="row g-3 align-items-center">
+                            <div class="row mt-2 g-3 align-items-center">
                                 <div class="col-auto">
                                     <label for="payment_amount" class="col-form-label">Paid Amount : </label>
                                 </div>
