@@ -1227,6 +1227,8 @@ class HomeController extends Controller
     }
     public function addStudentPayment()
     {
-        return view('layouts.pages.student.transaction.payment.create');
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+        return view('layouts.pages.student.transaction.payment.create',compact('token'));
     }
 }
