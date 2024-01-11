@@ -165,7 +165,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="student_id" class="form-label">Student ID</label>
-                                <input type="text" class="form-control alphanumeric-input" name="student_id" required>
+                                <input type="text" class="form-control alphanumeric-input" name="student_id" placeholder="Enter Student ID" required>
                             </div>
                         </div>
                         <!-- Grade/Class -->
@@ -173,6 +173,7 @@
                             <div class="mb-3">
                                 <label for="grade_class_id" class="form-label">Grade/Class</label>
                                 <select class="form-select" name="grade_class_id" required>
+                                    <option value="" disabled selected>Select Grade/Class</option>
                                     <option value="1">Grade/Class 1</option>
                                     <option value="2">Grade/Class 2</option>
                                     <option value="3">Grade/Class 3</option>
@@ -184,14 +185,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="first_name" class="form-label">First Name</label>
-                                <input type="text" class="form-control" name="first_name" required>
+                                <input type="text" class="form-control" name="first_name" placeholder="Enter First Name" required>
                             </div>
                         </div>
                         <!-- Last Name -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="last_name" class="form-label">Last Name</label>
-                                <input type="text" class="form-control" name="last_name">
+                                <input type="text" class="form-control" name="last_name" placeholder="Enter Last Name">
                             </div>
                         </div>
 
@@ -199,14 +200,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="name_with_initials" class="form-label">Name with Initials</label>
-                                <input type="text" class="form-control" name="name_with_initials" required>
+                                <input type="text" class="form-control" name="name_with_initials" placeholder="Enter Name with Initials" required>
                             </div>
                         </div>
                         <!-- Name in Full -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="name_in_full" class="form-label">Name in Full</label>
-                                <input type="text" class="form-control" name="name_in_full" required>
+                                <input type="text" class="form-control" name="name_in_full" placeholder="Enter Full Name" required>
                             </div>
                         </div>
 
@@ -214,14 +215,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="address_line1" class="form-label">Address Line 1</label>
-                                <input type="text" class="form-control" name="address_line1" required>
+                                <input type="text" class="form-control" name="address_line1" placeholder="Enter Address Line 1" required>
                             </div>
                         </div>
                         <!-- Address Line 2 -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="address_line2" class="form-label">Address Line 2</label>
-                                <input type="text" class="form-control" name="address_line2">
+                                <input type="text" class="form-control" name="address_line2" placeholder="Enter Address Line 2">
                             </div>
                         </div>
 
@@ -229,14 +230,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="address_city" class="form-label">City</label>
-                                <input type="text" class="form-control" name="address_city" required>
+                                <input type="text" class="form-control" name="address_city" placeholder="Enter City" required>
                             </div>
                         </div>
                         <!-- Telephone (Residence) -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="telephone_residence" class="form-label">Telephone (Residence)</label>
-                                <input type="tel" class="form-control phone-input" name="telephone_residence">
+                                <input type="tel" class="form-control phone-input" name="telephone_residence" placeholder="Enter Residence Telephone">
                             </div>
                         </div>
 
@@ -244,14 +245,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="telephone_mobile" class="form-label">Mobile Number</label>
-                                <input type="tel" class="form-control phone-input" name="telephone_mobile" required>
+                                <input type="tel" class="form-control phone-input" name="telephone_mobile" placeholder="Enter Mobile Number" required>
                             </div>
                         </div>
                         <!-- WhatsApp Number -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="telephone_whatsapp" class="form-label">WhatsApp Number</label>
-                                <input type="tel" class="form-control phone-input" name="telephone_whatsapp">
+                                <input type="tel" class="form-control phone-input" name="telephone_whatsapp" placeholder="Enter WhatsApp Number">
                             </div>
                         </div>
 
@@ -259,7 +260,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="email_address" class="form-label">Email Address</label>
-                                <input type="email" class="form-control email-input" name="email_address" required>
+                                <input type="email" class="form-control email-input" name="email_address" placeholder="Enter Email Address" required>
                             </div>
                         </div>
                         <!-- Sex/Gender -->
@@ -267,6 +268,7 @@
                             <div class="mb-3">
                                 <label for="sex" class="form-label">Sex/Gender</label>
                                 <select class="form-select" name="sex">
+                                    <option value="" disabled selected>Select Sex/Gender</option>
                                     <option value="male">Male</option>
                                     <option value="female">Female</option>
                                     <option value="other">Other</option>
@@ -278,14 +280,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="date_of_birth" class="form-label">Date of Birth</label>
-                                <input type="date" class="form-control" name="date_of_birth" required>
+                                <input type="date" class="form-control" name="date_of_birth" placeholder="Select Date of Birth" required>
                             </div>
                         </div>
                         <!-- Religion -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="religion" class="form-label">Religion</label>
-                                <input type="text" class="form-control" name="religion">
+                                <input type="text" class="form-control" name="religion" placeholder="Enter Religion">
                             </div>
                         </div>
 
@@ -293,29 +295,29 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="ethnicity" class="form-label">Ethnicity</label>
-                                <input type="text" class="form-control" name="ethnicity">
+                                <input type="text" class="form-control" name="ethnicity" placeholder="Enter Ethnicity">
                             </div>
                         </div>
                         <!-- Birth Certificate Number -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="birthcertificate_number" class="form-label">Birth Certificate Number</label>
-                                <input type="text" class="form-control alphanumeric-input" name="birthcertificate_number" required>
+                                <input type="text" class="form-control alphanumeric-input" name="birthcertificate_number" placeholder="Enter Birth Certificate Number" required>
                             </div>
                         </div>
 
                         <!-- Profile Picture -->
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="profle_picture_path" class="form-label">Profile Picture</label>
-                                <input type="file" class="form-control" name="profle_picture_path">
+                                <label for="profile_picture_path" class="form-label">Profile Picture</label>
+                                <input type="file" class="form-control" name="profile_picture_path" placeholder="Choose Profile Picture">
                             </div>
                         </div>
                         <!-- Health Conditions -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="health_conditions" class="form-label">Health Conditions</label>
-                                <textarea class="form-control" name="health_conditions" rows="3"></textarea>
+                                <textarea class="form-control" name="health_conditions" placeholder="Enter Health Conditions" rows="3"></textarea>
                             </div>
                         </div>
 
@@ -323,7 +325,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="applied_date" class="form-label">Applied Date</label>
-                                <input type="date" class="form-control" name="applied_date" required>
+                                <input type="date" class="form-control" name="applied_date" placeholder="Select Applied Date" required>
                             </div>
                         </div>
                         <!-- Admission Status -->
@@ -331,6 +333,7 @@
                             <div class="mb-3">
                                 <label for="admission_status" class="form-label">Admission Status</label>
                                 <select class="form-select" name="admission_status">
+                                    <option value="" disabled selected>Select Admission Status</option>
                                     <option value="pending">Pending</option>
                                     <option value="approved">Approved</option>
                                     <option value="rejected">Rejected</option>
@@ -341,8 +344,10 @@
                             <button type="submit" class="btn btn-primary">Add</button>
                         </div>
                     </div>
-
                 </form>
+
+
+
             </div>
         </div>
         <!-- Students table -->
