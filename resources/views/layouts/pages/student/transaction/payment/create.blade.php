@@ -160,94 +160,81 @@
                 <h6>Add New Student Payment</h6>
             </div>
             <div class="card-body">
-                <form action="" method="POST">
-                    @csrf
-                    <div class="row">
-                        <div class="col-auto">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-auto">
-                                    <label for="payment_date" class="col-form-label">Paid Date : </label>
-                                </div>
-                                <div class="col-auto">
-                                    <input type="date" class="form-control" name="payment_date" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-auto">
-                                    <label for="payment_term" class="col-form-label">Payment Term : </label>
-                                </div>
-                                <div class="col-auto">
-                                    <select class="form-select pe-5" name="payment_term" required>
-                                        <option value="class1">Bank Transfer</option>
-                                        <option value="class2">Card Payment</option>
-                                        <option value="class3">Manual</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-auto">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-auto">
-                                    <label for="payment_amount" class="col-form-label">Paid Amount : </label>
-                                </div>
-                                <div class="col-auto">
-                                    <input type="text" class="form-control number-input" name="payment_amount" required>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+               
+                   
+                    <form id="paymentForm">
+    <!-- CSRF token for Laravel -->
+    @csrf
+           
+    <div class="row">
+        <div class="col-auto">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="admission_id" class="col-form-label">Admission No : </label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control" name="admission_id" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="payment_date" class="col-form-label">Paid Date : </label>
+                </div>
+                <div class="col-auto">
+                    <input type="date" class="form-control" name="payment_date" required>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="payment_term" class="col-form-label">Payment Term : </label>
+                </div>
+                <div class="col-auto">
+                    <select class="form-select pe-5" name="payment_term" required>
+                        <option value="class1">Bank Transfer</option>
+                        <option value="class2">Card Payment</option>
+                        <option value="class3">Manual</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-auto">
+            <div class="row g-3 align-items-center">
+                <div class="col-auto">
+                    <label for="payment_amount" class="col-form-label">Paid Amount : </label>
+                </div>
+                <div class="col-auto">
+                    <input type="text" class="form-control number-input" name="payment_amount" required>
+                </div>
+            </div>
+        </div>
+    
+
+    <!-- Add a submit button -->
+    <div class="col-auto">
+    <div class="text-end">
+        <button type="button" class="btn btn-primary" id="submitBtn">Get Invoices</button>
+    </div>
+    </div>
+    </div>
+</form>
+
+                    
                     <h6 class="mt-4">Pending Invoices</h6>
+                    <form id="paymentForm">
+                         @csrf
                     <div class="card shadow-none border mt-3">
                         <div class="card-body">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                                <label class="form-check-label" for="flexCheckDefault">
-                                    <div class="row">
-                                        <div class="col-auto text-sm">Invoice No: 12345678</div>
-                                        <div class="col-auto text-sm">Date: 2023/02/15</div>
-                                        <div class="col-auto text-sm">Due Date: 2023/02/15</div>
-                                        <div class="col-auto text-sm">Invoice Total: 12500.00</div>
-                                        <div class="col-auto text-sm">Total Paid: 6500.00</div>
-                                        <div class="col-auto text-sm">Total Due: 6000.00</div>
-                                        <div class="col-auto text-sm">Invoice Status: Partially Paid</div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    <div class="row">
-                                        <div class="col-auto text-sm">Invoice No: 87654321</div>
-                                        <div class="col-auto text-sm">Date: 2023/05/20</div>
-                                        <div class="col-auto text-sm">Due Date: 2023/05/20</div>
-                                        <div class="col-auto text-sm">Invoice Total: 18500.00</div>
-                                        <div class="col-auto text-sm">Total Paid: 12000.00</div>
-                                        <div class="col-auto text-sm">Total Due: 6500.00</div>
-                                        <div class="col-auto text-sm">Invoice Status: Partially Paid</div>
-                                    </div>
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                                <label class="form-check-label" for="flexCheckDefault3">
-                                    <div class="row">
-                                        <div class="col-auto text-sm">Invoice No: 56789012</div>
-                                        <div class="col-auto text-sm">Date: 2023/08/10</div>
-                                        <div class="col-auto text-sm">Due Date: 2023/08/10</div>
-                                        <div class="col-auto text-sm">Invoice Total: 9500.00</div>
-                                        <div class="col-auto text-sm">Total Paid: 9500.00</div>
-                                        <div class="col-auto text-sm">Total Due: 0.00</div>
-                                        <div class="col-auto text-sm">Invoice Status: Fully Paid</div>
-                                    </div>
-                                </label>
-                            </div>
-
+                           <div class="invoices-container">
+                                <!-- Invoices will be dynamically added here -->
+                            </div> 
                         </div>
                     </div>
                     <div class="text-end">
-                        <button type="submit" class="btn btn-primary mt-3">Submit</button>
+                        <button type="button" id="submitSelectedBtn" class="btn btn-primary mt-3">Submit</button>
                     </div>
 
                 </form>
@@ -285,5 +272,134 @@
     });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function () {
+        $('#submitBtn').click(function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get values from the form
+            var paymentDate = $('[name="payment_date"]').val();
+            var admissionId = $('[name="admission_id"]').val();
+            var paymentAmount = $('[name="payment_amount"]').val();
+
+            // Set your Bearer token
+            var token = {!! json_encode($token) !!};
+            var endpoint = 'user_invoices';
+            var api = '{{ env('API_URL') }}';
+
+            // Make an Ajax request with the Bearer token
+            $.ajax({
+                type: 'GET',
+                url: api + '/' + endpoint,
+                data: {
+                    admission_id: admissionId,
+                    amount: paymentAmount,
+                    date: paymentDate
+                },
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function (response) {
+                    // Handle the response data and update the UI as needed
+                    console.log(response);
+                    updateUI(response);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        // Function to update the UI with invoice data
+        function updateUI(response) {
+            var invoicesContainer = $(".invoices-container");
+
+            // Clear existing data in the container
+            invoicesContainer.empty();
+
+            if (response && response.data && response.data.invoice_data) {
+                var invoicesData = response.data.invoice_data;
+
+                // Loop through each invoice in the response and create/update the HTML
+                $.each(invoicesData, function (index, invoice) {
+                    var invoiceHtml = '<div class="form-check">';
+            invoiceHtml += '<input class="form-check-input" type="checkbox" value="' + invoice.invoice_id + '" id="flexCheckDefault' + (index + 1) + '"';
+
+            // Add data attributes to store additional data
+            invoiceHtml += ' data-invoice-id="' + invoice.invoice_id + '"';
+            invoiceHtml += ' data-date="' + invoice.current_date + '"';
+            invoiceHtml += ' data-due-date="' + invoice.due_date + '"';
+            invoiceHtml += ' data-outstanding_balance="' + invoice.outstanding_balance + '"';
+            invoiceHtml += ' data-total="' + invoice.total + '"';
+            // Add more attributes as needed
+
+            // Check if the invoice status is unpaid, and disable the checkbox accordingly
+            if (invoice.invoice_status.toLowerCase() === 'unpaid') {
+                invoiceHtml += ' disabled';
+            }
+            invoiceHtml += '>';
+            invoiceHtml += '<label class="form-check-label" for="flexCheckDefault' + (index + 1) + '">';
+            invoiceHtml += '<div class="row">';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_id + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Date: ' + invoice.current_date + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Due Date: ' + invoice.due_date + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice Total: ' + invoice.total + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Total Paid: ' + invoice.total + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Total Outstanding: ' + invoice.outstanding_balance + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice Status: ' + invoice.invoice_status + '</div>';
+            invoiceHtml += '</div>';
+            invoiceHtml += '</label>';
+            invoiceHtml += '</div>';
+
+                    // Append the invoice HTML to the container
+                    invoicesContainer.append(invoiceHtml);
+                });
+            }
+        }
+
+        // Function to handle the submission of selected checkboxes
+        $('#submitSelectedBtn').click(function () {
+            var selectedInvoices = [];
+            // Iterate over each checked checkbox and add its value (invoice_id) to the array
+            $('.form-check-input:checked').each(function () {
+                    var invoiceData = {
+                        invoiceId: $(this).data('invoice-id'),
+                        date: $(this).data('date'),
+                        dueDate: $(this).data('due-date'),
+                        outstandingBalance:$(this).data('outstanding_balance'),
+                        total: $(this).data('total'),
+                        // Retrieve more attributes as needed
+                    };
+
+                    selectedInvoices.push(invoiceData);
+                });
+            // console.log(selectedInvoices);
+            // Post the selected invoice IDs to another URL
+            var token = {!! json_encode($token) !!};
+            var api = '{{ env('API_URL') }}';
+            var endpoint = 'user_payments';
+            
+            $.ajax({
+                type: 'POST',
+                url: api + '/' + endpoint,
+                data: { selectedInvoices: selectedInvoices },
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function (response) {
+                    console.log('Selected invoices posted successfully:', response);
+                    // Handle the response as needed
+                },
+                error: function (error) {
+                    console.error('Error posting selected invoices:', error);
+                }
+            });
+        });
+    });
+</script>
+
 
 @endsection
