@@ -177,7 +177,7 @@
 }
 .form-control:focus,
 .form-select:focus {
-	border: 3px solid #405189;
+	border-color: #405189;
 	box-shadow: none;
 }
 
