@@ -1211,4 +1211,14 @@ class HomeController extends Controller
     {
         // Delete enrollment with $enrollmentId
     }
+
+    // Student Payments Controllers Here
+    public function studentPayments()
+    {
+        return view('layouts.pages.student.transaction.payment.index');
+    }
+    public function addStudentPayment()
+    {
+        return view('layouts.pages.student.transaction.payment.create');
+    }
 }

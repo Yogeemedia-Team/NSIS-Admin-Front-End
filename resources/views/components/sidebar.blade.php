@@ -32,7 +32,7 @@
               <div class="collapse " id="stinfo">
                 <ul class="nav nav-sm flex-column">
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
+                    <a class="nav-link " href="{{ route('student_payments') }}">
                       <span class="sidenav-mini-icon text-xs"> S </span>
                       <span class="sidenav-normal"> Student Payments </span>
                     </a>

@@ -47,7 +47,7 @@ Breadcrumbs::for('grades', function ($trail) {
     $trail->push('All Grades', route('grades'));
 });
 Breadcrumbs::for('addgrade', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('grades');
     $trail->push('Add Grade', route('add_grade'));
 });
 
@@ -57,7 +57,7 @@ Breadcrumbs::for('classes', function ($trail) {
     $trail->push('All Classes', route('classes'));
 });
 Breadcrumbs::for('addclass', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('classes');
     $trail->push('Add Class', route('add_class'));
 });
 
@@ -67,7 +67,7 @@ Breadcrumbs::for('extracurriculars', function ($trail) {
     $trail->push('All Extracurriculars', route('extracurriculars'));
 });
 Breadcrumbs::for('addextracurricular', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('extracurriculars');
     $trail->push('Add Extracurricular', route('add_extracurricular'));
 });
 
@@ -77,7 +77,7 @@ Breadcrumbs::for('year_grade_class', function ($trail) {
     $trail->push('All Relationships', route('year_grade_class'));
 });
 Breadcrumbs::for('add_year_grade_class', function ($trail) {
-    $trail->parent('home');
+    $trail->parent('year_grade_class');
     $trail->push('Add Relationships', route('add_year_grade_class'));
 });
 
@@ -184,4 +184,14 @@ Breadcrumbs::for('surcharge_formula', function ($trail) {
 Breadcrumbs::for('add_surcharge_formula', function ($trail) {
     $trail->parent('surcharge_formula');
     $trail->push('Add Surcharge Formula', route('add_surcharge_formula'));
+});
+// Student Transactions 
+Breadcrumbs::for('student_payments', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Student Transactions', route('student_payments'));
+});
+
+Breadcrumbs::for('add_student_payment', function ($trail) {
+    $trail->parent('student_payments');
+    $trail->push('Add Student Transaction', route('add_student_payment'));
 });

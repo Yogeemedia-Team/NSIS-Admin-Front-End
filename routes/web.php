@@ -145,4 +145,9 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/add_surcharge_formula', [HomeController::class, 'addSurchargeFormula'])->name('add_surcharge_formula');
     Route::delete('/surcharge_formula_delete/{id}', [HomeController::class, 'deleteSurchargeFormula'])->name('surcharge_formula_delete');
 
+    // Student payments
+    Route::get('/student_payments', [HomeController::class, 'studentPayments'])->name('student_payments');
+    Route::get('/add_student_payment', [HomeController::class, 'addStudentPayment'])->name('add_student_payment');
+    Route::delete('/student_payment_delete/{id}', [HomeController::class, 'deleteStudentPayment'])->name('student_payment_delete');
+
 });
