@@ -166,6 +166,16 @@
                         <div class="col-auto">
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
+                                    <label for="payment_date" class="col-form-label">Admission No : </label>
+                                </div>
+                                <div class="col-auto">
+                                    <input type="text" class="form-control" name="payment_date" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="row g-3 align-items-center">
+                                <div class="col-auto">
                                     <label for="payment_date" class="col-form-label">Paid Date : </label>
                                 </div>
                                 <div class="col-auto">
