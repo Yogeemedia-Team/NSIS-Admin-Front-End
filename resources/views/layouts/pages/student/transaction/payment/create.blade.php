@@ -166,10 +166,10 @@
                         <div class="col-auto">
                             <div class="row g-3 align-items-center">
                                 <div class="col-auto">
-                                    <label for="payment_date" class="col-form-label">Admission No : </label>
+                                    <label for="admission_no" class="col-form-label">Admission No : </label>
                                 </div>
                                 <div class="col-auto">
-                                    <input type="text" class="form-control" name="payment_date" required>
+                                    <input type="text" class="form-control" name="admission_no" required>
                                 </div>
                             </div>
                         </div>
