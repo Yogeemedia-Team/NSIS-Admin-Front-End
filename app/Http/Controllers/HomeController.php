@@ -1223,7 +1223,9 @@ class HomeController extends Controller
     // Student Payments Controllers Here
     public function studentPayments()
     {
-        return view('layouts.pages.student.transaction.payment.index');
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+        return view('layouts.pages.student.transaction.payment.index',compact('token'));
     }
     public function addStudentPayment()
     {

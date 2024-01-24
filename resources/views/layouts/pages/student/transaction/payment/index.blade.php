@@ -159,7 +159,7 @@
             <div class="card-header pb-0">
                 <div class="row">
                     <div class="col">
-                        <form action="" method="POST">
+                        <form id="searchForm" method="POST">
                             @csrf
                             <div class="row">
                                 <div class="col-auto">
@@ -168,8 +168,8 @@
                                             <label for="class" class="col-form-label">Class : </label>
                                         </div>
                                         <div class="col-auto">
-                                            <select class="form-select pe-5" name="class" required>
-                                                <option value="class1">Class 1</option>
+                                            <select class="form-select pe-5" name="sd_year_grade_class_id" required>
+                                                <option value="1">Class 1</option>
                                                 <option value="class2">Class 2</option>
                                                 <option value="class3">Class 3</option>
                                             </select>
@@ -179,10 +179,12 @@
                                 <div class="col-auto">
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto">
-                                            <label for="admission_no" class="col-form-label">Addmission No : </label>
+                                            <label for="admission_id" class="col-form-label">Addmission No : </label>
                                         </div>
                                         <div class="col-auto">
-                                            <input type="text" class="form-control" name="admission_no" placeholder="Enter Admission Number" required>
+
+                                            <input type="text" class="form-control" name="admission_id" required>
+
                                         </div>
                                     </div>
                                 </div>
@@ -198,146 +200,22 @@
                 </div>
             </div>
             <div class="card-body">
-                <span class="border-0"><strong class="text-dark">Addmission No :</strong> &nbsp; 12345678</span>
-                <span class="border-0 ps-3"><strong class="text-dark">Name:</strong> &nbsp; Tharaka Dissanayake</span>
-                <span class="border-0 ps-3"><strong class="text-dark">Class:</strong> &nbsp; Grade 8 - A</span>
+            <span class="border-0"><strong class="text-dark">Admission No :</strong> &nbsp; <span id="admissionNo"></span></span>
+            <span class="border-0 ps-3"><strong class="text-dark">Name:</strong> &nbsp; <span id="studentName"></span></span>
+            <span class="border-0 ps-3"><strong class="text-dark">Class:</strong> &nbsp; <span id="gradeClass"></span></span>
 
-                <div class="card shadow-none border mt-3">
-                    <div class="card-body">
-                        <span class="text-dark"><strong>Payment Details - Payment ID -12345678</strong></span>
-                        <div class="accordion" id="transactionAccordion">
-                            <div class="accordion-item">
-                                <h6 class="accordion-header" id="transactionOne">
-                                    <button class="accordion-button dropdown-toggle pb-2 border-bottom fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#transactionCollapseOne" aria-expanded="true" aria-controls="transactionCollapseOne" role="button" tabindex="0">
-                                        <div class="row">
-                                            <div class="col-auto text-sm">Invoice No: 12345678</div>
-                                            <div class="col-auto text-sm">Date: 2023/02/15</div>
-                                            <div class="col-auto text-sm">Due Date: 2023/02/15</div>
-                                            <div class="col-auto text-sm">Invoice Total: 12500.00</div>
-                                            <div class="col-auto text-sm">Total Paid: 6500.00</div>
-                                            <div class="col-auto text-sm">Total Due: 6000.00</div>
-                                            <div class="col-auto text-sm">Invoice Status: Partially Paid</div>
-                                        </div>
-                                    </button>
-
-
-                                </h6>
-                                <div id="transactionCollapseOne" class="accordion-collapse collapse show" aria-labelledby="transactionOne">
-                                    <div class="accordion-body">
-                                        <div class="table-responsive">
-                                            <table class="table align-items-center mb-0 table-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-secondary text-sm px-1">ID</th>
-                                                        <th class="text-secondary text-sm px-1">Date</th>
-                                                        <th class="text-secondary text-sm px-1">Due Date</th>
-                                                        <th class="text-secondary text-sm px-1">Description</th>
-                                                        <th class="text-secondary text-sm px-1">Category</th>
-                                                        <th class="text-secondary text-sm px-1">Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Paid Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Due Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Status</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-sm">1</td>
-                                                        <td class="text-sm">2023-01-01</td>
-                                                        <td class="text-sm">2023-01-15</td>
-                                                        <td class="text-sm">Sample Description 1</td>
-                                                        <td class="text-sm">Monthly Fee</td>
-                                                        <td class="text-sm">$100.00</td>
-                                                        <td class="text-sm">$50.00</td>
-                                                        <td class="text-sm">$50.00</td>
-                                                        <td class="text-sm">Paid</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-sm">2</td>
-                                                        <td class="text-sm">2023-02-01</td>
-                                                        <td class="text-sm">2023-02-15</td>
-                                                        <td class="text-sm">Sample Description 2</td>
-                                                        <td class="text-sm">Surcharge</td>
-                                                        <td class="text-sm">$150.00</td>
-                                                        <td class="text-sm">$100.00</td>
-                                                        <td class="text-sm">$50.00</td>
-                                                        <td class="text-sm">Partially Paid</td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="accordion-item">
-                                <h6 class="accordion-header" id="transactionTwo">
-                                    <button class="accordion-button dropdown-toggle pb-2 border-bottom fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#transactionCollapseTwo" aria-expanded="true" aria-controls="transactionCollapseTwo" role="button" tabindex="0">
-                                        <div class="row">
-                                            <div class="col-auto text-sm">Invoice No: 87654321</div>
-                                            <div class="col-auto text-sm">Date: 2023/03/15</div>
-                                            <div class="col-auto text-sm">Due Date: 2023/03/15</div>
-                                            <div class="col-auto text-sm">Invoice Total: 13500.00</div>
-                                            <div class="col-auto text-sm">Total Paid: 7000.00</div>
-                                            <div class="col-auto text-sm">Total Due: 6500.00</div>
-                                            <div class="col-auto text-sm">Invoice Status: Unpaid</div>
-                                        </div>
-                                    </button>
-                                </h6>
-                                <div id="transactionCollapseTwo" class="accordion-collapse collapse" aria-labelledby="transactionTwo">
-                                    <div class="accordion-body">
-                                        <div class="table-responsive">
-                                            <table class="table align-items-center mb-0 table-sm">
-                                                <thead>
-                                                    <tr>
-                                                        <th class="text-secondary text-sm px-1">ID</th>
-                                                        <th class="text-secondary text-sm px-1">Date</th>
-                                                        <th class="text-secondary text-sm px-1">Due Date</th>
-                                                        <th class="text-secondary text-sm px-1">Description</th>
-                                                        <th class="text-secondary text-sm px-1">Category</th>
-                                                        <th class="text-secondary text-sm px-1">Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Paid Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Due Amount</th>
-                                                        <th class="text-secondary text-sm px-1">Status</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <tr>
-                                                        <td class="text-sm">3</td>
-                                                        <td class="text-sm">2023-03-01</td>
-                                                        <td class="text-sm">2023-03-15</td>
-                                                        <td class="text-sm">Sample Description 3</td>
-                                                        <td class="text-sm">Monthly Fee</td>
-                                                        <td class="text-sm">$200.00</td>
-                                                        <td class="text-sm">$150.00</td>
-                                                        <td class="text-sm">$50.00</td>
-                                                        <td class="text-sm">Partially Paid</td>
-                                                        <td></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="text-sm">4</td>
-                                                        <td class="text-sm">2023-04-01</td>
-                                                        <td class="text-sm">2023-04-15</td>
-                                                        <td class="text-sm">Sample Description 4</td>
-                                                        <td class="text-sm">Surcharge</td>
-                                                        <td class="text-sm">$180.00</td>
-                                                        <td class="text-sm">$100.00</td>
-                                                        <td class="text-sm">$80.00</td>
-                                                        <td class="text-sm">Unpaid</td>
-                                                        <td></td>
-                                                    </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
+            <!-- Payment Details -->
+            <div class="card shadow-none border mt-3">
+                <div class="card-body">
+                    <span class="text-dark"><strong>Payment Details - Payment ID -<span id="invoiceNo"></span></strong></span>
+                    <div class="accordion" id="transactionAccordion">
+                        <!-- Accordion Item will be dynamically added here -->
                     </div>
+                </div>
+            </div>
+            
+        </div>
+
                 </div>
 
 
@@ -374,4 +252,162 @@
         });
     }
 </script>
+<script>
+    $(document).ready(function () {
+        $('#searchForm').click(function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Get values from the form
+            var sd_year_grade_class_id = $('[name="sd_year_grade_class_id"]').val();
+            var admission_id = $('[name="admission_id"]').val();
+
+            // Set your Bearer token
+            var token = {!! json_encode($token) !!};
+            var endpoint = 'all_user_payments';
+            var api = '{{ env('API_URL') }}';
+
+            // Make an Ajax request with the Bearer token
+            $.ajax({
+                type: 'POST',
+                url: api + '/' + endpoint,
+                data: {
+                    admission_id: admission_id,
+                    sd_year_grade_class_id: sd_year_grade_class_id,
+                },
+                dataType: 'json',
+                headers: {
+                    'Authorization': 'Bearer ' + token
+                },
+                success: function (response) {
+                    // Handle the response data and update the UI as needed
+                    console.log(response);
+                    updateUI(response);
+                },
+                error: function (error) {
+                    console.error('Error:', error);
+                }
+            });
+        });
+
+        function updateUI(response) {
+    var studentData = response.data[0];
+    var paymentDetails = studentData.student_payment[0];
+
+    // Update admission details
+    $('#admissionNo').text(studentData.sd_admission_no);
+    $('#studentName').text(studentData.sd_name_in_full);
+    $('#gradeClass').text('Grade ' + studentData.sd_year_grade_class_id + ' - ' + studentData.sd_admission_status);
+
+    // Update payment details
+    $('#invoiceNo').text(paymentDetails.invoice_id);
+    $('#invoiceDate').text(paymentDetails.date);
+    $('#dueDate').text(paymentDetails.due_date);
+    $('#invoiceTotal').text(paymentDetails.total);
+    $('#totalPaid').text(paymentDetails.total - paymentDetails.outstanding_balance);
+    $('#totalDue').text(paymentDetails.outstanding_balance);
+
+    // Update invoice status
+    var invoiceStatus = paymentDetails.status === 1 ? 'Partially Paid' : 'Not Paid';
+    $('#invoiceStatus').text('Invoice Status: ' + invoiceStatus);
+
+    // Clear existing data in the container
+    $('#transactionAccordion').empty();
+
+    // Create and append the accordion item
+   $.each(studentData.student_payment, function (index, invoice) {
+            var invoiceStatus;
+            
+            // Determine the invoice status based on the status value
+            switch (invoice.status) {
+                case 0:
+                    invoiceStatus = 'Not Paid';
+                    break;
+                case 1:
+                    invoiceStatus = 'Paid';
+                    break;
+                case 2:
+                    invoiceStatus = 'Partially Paid';
+                    break;
+                default:
+                    invoiceStatus = 'Unknown Status';
+            }
+
+    // Create and append the accordion item for each invoice
+    var accordionItem = '<div class="accordion-item">' +
+        '<h6 class="accordion-header" id="transactionOne">' +
+        '<button class="accordion-button dropdown-toggle pb-2 border-bottom fw-bold ajax-trigger" type="button" data-bs-toggle="collapse" data-bs-target="#transactionCollapse' + index + '" aria-expanded="true" aria-controls="transactionCollapse' + index + '" role="button" tabindex="0" data-invoice-id="' + invoice.invoice_id + '">' +
+        '<div class="row">' +
+        '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_id + '</div>' +
+        '<div class="col-auto text-sm">Date: ' + invoice.date + '</div>' +
+        '<div class="col-auto text-sm">Due Date: ' + invoice.due_date + '</div>' +
+        '<div class="col-auto text-sm">Invoice Total: ' + invoice.total + '</div>' +
+        '<div class="col-auto text-sm">Total Paid: ' + (invoice.total - invoice.outstanding_balance) + '</div>' +
+        '<div class="col-auto text-sm">Total Due: ' + invoice.outstanding_balance + '</div>' +
+        '<div class="col-auto text-sm">Invoice Status: ' + invoiceStatus + '</div>' +
+        '</div>' +
+        '</button>' +
+        '</h6>' +
+        '</div>';
+
+    $('#transactionAccordion').append(accordionItem);
+});
+}
+    });
+
+    $(document).on('click', '.ajax-trigger', function () {
+    var invoiceId = $(this).data('invoice-id');
+    var token = {!! json_encode($token) !!};
+    var endpoint = 'user_single_invoice';
+    var api = '{{ env('API_URL') }}';
+             $.ajax({
+                    type: 'GET',
+                    url: api + '/' + endpoint + '/' + invoiceId,
+                    dataType: 'json',
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    },
+                    success: function (response) {
+                        updateSubData(response);
+                        console.log(response);   
+                    },
+                    error: function (error) {
+                        console.error('Error:', error);
+                    }
+                 });
+
+    function updateSubData(response) {
+    var accordionBody = $("#transactionCollapseTwo .accordion-body tbody");
+
+    // Clear existing data in the table body
+    accordionBody.empty();
+
+    if (response && response.data && response.data.student_payment) {
+        var studentPayments = response.data.student_payment;
+
+        // Loop through each payment in the response and create/update the HTML
+        $.each(studentPayments, function (index, payment) {
+            var paymentStatus = (payment.status === 1) ? 'Paid' : 'Not Paid';
+
+            // Append a new row to the table body
+            accordionBody.append(
+                '<tr>' +
+                '<td class="text-sm">' + payment.id + '</td>' +
+                '<td class="text-sm">' + payment.date + '</td>' +
+                '<td class="text-sm">' + payment.due_date + '</td>' +
+                '<td class="text-sm">' + payment.describe + '</td>' +
+                '<td class="text-sm">' + payment.category + '</td>' +
+                '<td class="text-sm">$' + payment.total + '</td>' +
+                '<td class="text-sm">$' + payment.total_paid + '</td>' +
+                '<td class="text-sm">$' + payment.outstanding_balance + '</td>' +
+                '<td class="text-sm">' + paymentStatus + '</td>' +
+                '<td></td>' +
+                '</tr>'
+            );
+        });
+    }
+}
+             });
+</script>
+
 @endsection

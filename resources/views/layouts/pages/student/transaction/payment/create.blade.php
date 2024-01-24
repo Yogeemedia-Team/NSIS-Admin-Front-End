@@ -331,10 +331,12 @@
 
             // Add data attributes to store additional data
             invoiceHtml += ' data-invoice-id="' + invoice.invoice_id + '"';
+            invoiceHtml += ' data-admission-no="' + invoice.admission_no + '"';
             invoiceHtml += ' data-date="' + invoice.current_date + '"';
             invoiceHtml += ' data-due-date="' + invoice.due_date + '"';
             invoiceHtml += ' data-outstanding_balance="' + invoice.outstanding_balance + '"';
             invoiceHtml += ' data-total="' + invoice.total + '"';
+            invoiceHtml += ' data-describe="' + encodeURIComponent(JSON.stringify(invoice.describe)) + '"';
             // Add more attributes as needed
 
             // Check if the invoice status is unpaid, and disable the checkbox accordingly
@@ -367,11 +369,13 @@
             // Iterate over each checked checkbox and add its value (invoice_id) to the array
             $('.form-check-input:checked').each(function () {
                     var invoiceData = {
-                        invoiceId: $(this).data('invoice-id'),
+                        invoice_id: $(this).data('invoice-id'),
+                        admission_id: $(this).data('admission-no'),
                         date: $(this).data('date'),
-                        dueDate: $(this).data('due-date'),
-                        outstandingBalance:$(this).data('outstanding_balance'),
-                        total: $(this).data('total'),
+                        due_date: $(this).data('due-date'),
+                        outstanding_balance: $(this).data('outstanding_balance'),
+                        describe: JSON.parse(decodeURIComponent($(this).data('describe'))), 
+                        total: $('input[name="payment_amount"]').val(),
                         // Retrieve more attributes as needed
                     };
 
@@ -392,7 +396,23 @@
                     'Authorization': 'Bearer ' + token
                 },
                 success: function (response) {
-                    console.log('Selected invoices posted successfully:', response);
+
+                     updateUI(response);
+                     Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: response.message,
+                    });
+
+                    // Use toast to display a notification
+                    Swal.fire({
+                        icon: 'success',
+                        title: response.message,
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000  // Adjust the timer as needed
+                    });
                     // Handle the response as needed
                 },
                 error: function (error) {
