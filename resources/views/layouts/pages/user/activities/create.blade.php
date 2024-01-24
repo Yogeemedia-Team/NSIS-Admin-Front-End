@@ -161,7 +161,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="activity" class="form-label">Activity</label>
-                                <input type="text" class="form-control" name="activity">
+                                <input type="text" class="form-control" name="activity" placeholder="Enter Activity" required>
                             </div>
                         </div>
                        

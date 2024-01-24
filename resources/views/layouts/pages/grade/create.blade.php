@@ -165,7 +165,7 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="grade_name" class="form-label">Grade Name</label>
-                                <input type="text" class="form-control" name="grade_name">
+                                <input type="text" class="form-control" name="grade_name" placeholder="Enter Grade Name" required>
                             </div>
                         </div>
                         <div class="col mt-auto text-end">

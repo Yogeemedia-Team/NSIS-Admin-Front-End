@@ -82,16 +82,24 @@ class HomeController extends Controller
 
     public function studentDelete($id)
     {
+        // Endpoint to delete by ID
         $endpoint = 'students/' . $id;
+
+        // Make the API request to delete
         $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
-        // Check if the API request was successful
+
         if ($response['status'] === false) {
-            // Handle error (you might want to redirect or show an error page)
-            return redirect()->route('error')->with('message', $response['message']);
+            // If the deletion fails, display an error message
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            // If the deletion is successful, display a success message
+            Alert::success('Success', 'Student deleted successfully!')->showConfirmButton('OK');
         }
-        // Pass the student details to the view
+
+        // If the deletion is successful, redirect to the 'students' route
         return redirect()->route('students');
     }
+
 
 
     public function student_create(Request $request)

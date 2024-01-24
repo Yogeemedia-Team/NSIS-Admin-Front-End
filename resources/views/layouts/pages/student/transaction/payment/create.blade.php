@@ -159,6 +159,7 @@
             <div class="card-header">
                 <h6>Add New Student Payment</h6>
             </div>
+
             <div class="card-body">
                
                    
@@ -223,6 +224,7 @@
 </form>
 
                     
+
                     <h6 class="mt-4">Pending Invoices</h6>
                     <form id="paymentForm">
                          @csrf
