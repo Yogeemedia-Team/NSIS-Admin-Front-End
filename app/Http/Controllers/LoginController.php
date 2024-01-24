@@ -7,6 +7,7 @@ use App\Services\ApiService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use GuzzleHttp\Client;
+use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 class LoginController extends Controller
@@ -38,6 +39,7 @@ class LoginController extends Controller
     if ($response['status'] === true) {
         // Logout was successful, clear the session
         session()->forget('api_access_token');
+        Cache::forget('userType');
         return view('layouts.auth.login', ['message' => $response['message']]);
     }
 }
@@ -48,6 +50,7 @@ class LoginController extends Controller
         public function loginApi (Request $request){
         
         // Call makeApiRequest method with email and password as params
+        $userType = null; 
         $response = $this->apiService->makeApiRequest('POST', 'login', [
             'email' => $request->email,
             'password' => $request->password,
@@ -59,7 +62,24 @@ class LoginController extends Controller
         return view('layouts.auth.login', ['errors' => $response['errors'], 'message' => $response['message']]);
     } else {
         // Store the access token in the session
-        Cache::put('api_access_token', $response['data']['access_token'], now()->addMinutes(60));
+       Cache::put('api_access_token', $response['data']['access_token'], now()->addMinutes(60));
+        
+        $accessToken = $response['data']['access_token'];
+
+        // Make the HTTP request with the access token in the headers
+        $response = $this->apiService->makeApiRequest('GET', 'logged_user');
+        $data = $response['data'];
+       
+
+       
+         // Adjust based on your API response structure
+        $userType = $data['user_type'];
+        Cache::put('userType', $userType, now()->addMinutes(60));
+
+        $dataToCache = compact('accessToken', 'userType');
+
+        config(['app.userType' => $userType]);
+        
         return redirect()->route('dashboard');
     }
 
