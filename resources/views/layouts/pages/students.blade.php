@@ -186,7 +186,9 @@
                 <td style="display: flex;">
                   <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>
                   <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('student_edit', ['studentId' => $student['student_id']]) }}"><i class="fas fa-edit"></i></a>
-                  <form id="deleteForm{{ $student['id'] }}" action="{{ route('student_delete', ['id' => $student['student_id']]) }}" method="POST">
+
+                  <form id="deleteForm{{ $student['id'] }}" action="{{ route('user_account_delete', ['id' => $student_id['id']]) }}" method="POST">
+
                     @csrf
                     @method('DELETE')
                     <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $student['id'] }}')">

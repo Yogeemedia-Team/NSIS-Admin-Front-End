@@ -305,8 +305,8 @@
                 },
                 success: function (response) {
                     // Handle the response data and update the UI as needed
-                    console.log(response);
-                    updateUI(response);
+                    //console.log(response);
+                    updateUI(response,paymentAmount);
                 },
                 error: function (error) {
                     console.error('Error:', error);
@@ -315,73 +315,81 @@
         });
 
         // Function to update the UI with invoice data
-        function updateUI(response) {
-            var invoicesContainer = $(".invoices-container");
+        function updateUI(response, paymentAmount) {
+    var invoicesContainer = $(".invoices-container");
 
-            // Clear existing data in the container
-            invoicesContainer.empty();
+    // Clear existing data in the container
+    invoicesContainer.empty();
 
-            if (response && response.data && response.data.invoice_data) {
-                var invoicesData = response.data.invoice_data;
+    if (response && response.data) {
+        var invoicesData = response.data;
 
-                // Loop through each invoice in the response and create/update the HTML
-                $.each(invoicesData, function (index, invoice) {
-                    var invoiceHtml = '<div class="form-check">';
-            invoiceHtml += '<input class="form-check-input" type="checkbox" value="' + invoice.invoice_id + '" id="flexCheckDefault' + (index + 1) + '"';
+        // Calculate the total sum of invoice totals
+        var totalInvoiceSum = invoicesData.reduce(function (sum, invoice) {
+            return sum + parseFloat(invoice.invoice_total);
+        }, 0);
+
+        // Loop through each invoice in the response and create/update the HTML
+        $.each(invoicesData, function (index, invoice) {
+            var invoiceHtml = '<div class="form-check">';
 
             // Add data attributes to store additional data
-            invoiceHtml += ' data-invoice-id="' + invoice.invoice_id + '"';
-            invoiceHtml += ' data-admission-no="' + invoice.admission_no + '"';
-            invoiceHtml += ' data-date="' + invoice.current_date + '"';
-            invoiceHtml += ' data-due-date="' + invoice.due_date + '"';
-            invoiceHtml += ' data-outstanding_balance="' + invoice.outstanding_balance + '"';
-            invoiceHtml += ' data-total="' + invoice.total + '"';
-            invoiceHtml += ' data-describe="' + encodeURIComponent(JSON.stringify(invoice.describe)) + '"';
-            // Add more attributes as needed
+            
+           
+            // Check if the total sum of invoice totals is greater than or equal to the paymentAmount, and enable/disable the checkbox accordingly
+            
 
-            // Check if the invoice status is unpaid, and disable the checkbox accordingly
-            if (invoice.invoice_status.toLowerCase() === 'unpaid') {
-                invoiceHtml += ' disabled';
-            }
-            invoiceHtml += '>';
+            
             invoiceHtml += '<label class="form-check-label" for="flexCheckDefault' + (index + 1) + '">';
             invoiceHtml += '<div class="row">';
-            invoiceHtml += '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_id + '</div>';
-            invoiceHtml += '<div class="col-auto text-sm">Date: ' + invoice.current_date + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_number + '</div>';
             invoiceHtml += '<div class="col-auto text-sm">Due Date: ' + invoice.due_date + '</div>';
-            invoiceHtml += '<div class="col-auto text-sm">Invoice Total: ' + invoice.total + '</div>';
-            invoiceHtml += '<div class="col-auto text-sm">Total Paid: ' + invoice.total + '</div>';
-            invoiceHtml += '<div class="col-auto text-sm">Total Outstanding: ' + invoice.outstanding_balance + '</div>';
-            invoiceHtml += '<div class="col-auto text-sm">Invoice Status: ' + invoice.invoice_status + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice Total: ' + invoice.invoice_total + '</div>';
+            invoiceHtml += '<div class="col-auto text-sm">Invoice Status: ';
+
+                switch (invoice.status) {
+                    case 0:
+                        invoiceHtml += 'Unpaid';
+                        break;
+                    case 1:
+                        invoiceHtml += 'Paid';
+                        break;
+                    case 2:
+                        invoiceHtml += 'Partially Paid';
+                        break;
+                    // Add more cases if needed
+
+                    default:
+                        // Handle any unexpected status values
+                        break;
+                }
+
+            invoiceHtml += '</div>';
             invoiceHtml += '</div>';
             invoiceHtml += '</label>';
             invoiceHtml += '</div>';
 
-                    // Append the invoice HTML to the container
-                    invoicesContainer.append(invoiceHtml);
-                });
-            }
-        }
+            // Append the invoice HTML to the container
+            invoicesContainer.append(invoiceHtml);
+        });
+    }
+}
 
         // Function to handle the submission of selected checkboxes
         $('#submitSelectedBtn').click(function () {
             var selectedInvoices = [];
             // Iterate over each checked checkbox and add its value (invoice_id) to the array
-            $('.form-check-input:checked').each(function () {
+           
                     var invoiceData = {
-                        invoice_id: $(this).data('invoice-id'),
-                        admission_id: $(this).data('admission-no'),
-                        date: $(this).data('date'),
-                        due_date: $(this).data('due-date'),
-                        outstanding_balance: $(this).data('outstanding_balance'),
-                        describe: JSON.parse(decodeURIComponent($(this).data('describe'))), 
-                        total: $('input[name="payment_amount"]').val(),
+                        admission_id: $('input[name="admission_id"]').val(),
+                        payment_amount: $('[name="payment_amount"]').val(),
+                        
                         // Retrieve more attributes as needed
                     };
 
-                    selectedInvoices.push(invoiceData);
-                });
-            // console.log(selectedInvoices);
+            selectedInvoices.push(invoiceData);
+               
+            //console.log(invoiceData);
             // Post the selected invoice IDs to another URL
             var token = {!! json_encode($token) !!};
             var api = '{{ env('API_URL') }}';

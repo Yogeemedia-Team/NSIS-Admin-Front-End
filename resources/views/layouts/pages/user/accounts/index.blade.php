@@ -171,12 +171,12 @@
                         <tbody>
                         @foreach ( $users as $user)
                             <tr>
-                                <td>{{ $user['name'] }}</td>
-                                <td>{{  $user['email'] }}</td>
-                                <td>{{  $user['user_type']['role'] }}</td>
+                                <td>{{ $user['name'] ?? 'N/A'}}</td>
+                                <td>{{  $user['email'] ?? 'N/A'}}</td>
+                                <td>{{  $user['user_type']['role'] ?? 'N/A'}}</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('user_account_edit', ['user_accountId' => $user['id']]) }}"><i class="fas fa-edit"></i></a>
-                                    <form id="deleteForm{{ $user['id'] }}" action="{{ route('user_delete', ['id' => $user['id']]) }}" method="POST">
+                                    <form id="deleteForm{{ $user['id'] }}" action="{{ route('user_account_delete', ['id' => $user['id']]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $user['id'] }}')">

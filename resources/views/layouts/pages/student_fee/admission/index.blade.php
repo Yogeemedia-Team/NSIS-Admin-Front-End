@@ -177,10 +177,10 @@
                             <td>1000</td>
                             <td class="d-flex">
                                 <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
-                                <form id="deleteForm{{ $admission_fee['id'] }}" action="{{ route('admission_fee_delete', ['id' => $admission_fee['id']]) }}" method="POST">
+                                <form id="deleteForm" action="" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $admission_fee['id'] }}')">
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="')">
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>

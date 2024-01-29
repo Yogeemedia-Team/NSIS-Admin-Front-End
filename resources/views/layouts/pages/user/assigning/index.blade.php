@@ -170,6 +170,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach($user_assigning as $user_assigning)
                             <tr>
                                 <td>Sample User</td>
                                 <td>Sample level</td>
@@ -177,6 +178,7 @@
                                 <td>Sample Activity</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href=""><i class="fas fa-edit"></i></a>
+                                    @if($user_assigning['id'] !== null)
                                     <form id="deleteForm{{ $user_assigning['id'] }}" action="{{ route('user_assigning_delete', ['id' => $user_assigning['id']]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
@@ -184,8 +186,10 @@
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
+                                    @endif
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>

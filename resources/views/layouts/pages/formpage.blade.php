@@ -179,30 +179,16 @@
                                             <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_admission_no" placeholder="Enter Admission Number" required>
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <div class="mb-3">
-                                            <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
-                                            <select class="form-select" name="sd_year_grade_class_id">
-                                                @foreach ($year_grades as $year_grade)
-                                                <option value="{{ $year_grade['id'] }}">
-                                                    {{ $year_grade['year'] }} -
 
-                                                    @if ($year_grade['grade'])
-                                                    {{ $year_grade['grade']['grade_name'] }} -
-                                                    @else
-                                                    Grade N/A -
-                                                    @endif
-
-                                                    @if ($year_grade['class'])
-                                                    {{ $year_grade['class']['class_name'] }}
-                                                    @else
-                                                    Class N/A
-                                                    @endif
-                                                </option>
-                                                @endforeach
-
-                                            </select>
-                                        </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
+                                        <select class="form-select" name="sd_year_grade_class_id">
+                                            @foreach ( $year_grades as $year_grade)
+                                                    <option value="">{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <!-- First Name -->
                                     <div class="col-md-6">
