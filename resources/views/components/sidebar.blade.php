@@ -109,12 +109,6 @@
                       <span class="sidenav-normal"> Monthly Fees </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('surcharge_formula') }}">
-                      <span class="sidenav-mini-icon text-xs"> S </span>
-                      <span class="sidenav-normal"> Surcharge Formula </span>
-                    </a>
-                  </li>
                 </ul>
               </div>
             </li>

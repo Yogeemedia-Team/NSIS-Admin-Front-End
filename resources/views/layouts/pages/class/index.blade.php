@@ -173,7 +173,7 @@
                         <tbody>
                             @foreach($classes as $class)
                             <tr>
-                                <td>{{ $class['class_name'] }}</td>
+                                <td>{{ $class['class_name'] ?? 'N/A'}}</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('class_edit', ['classId' => $class['id']]) }}"><i class="fas fa-edit"></i></a>
                                     <form id="deleteForm{{ $class['id'] }}" action="{{ route('class_delete', ['id' => $class['id']]) }}" method="POST">

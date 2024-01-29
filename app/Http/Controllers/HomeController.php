@@ -905,7 +905,17 @@ class HomeController extends Controller
     // User Assigning Controllers Here
     public function userAssigning()
     {
-        return view('layouts.pages.user.assigning.index');
+        $response = $this->apiService->makeApiRequest('GET', 'user_assignees');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.user.assigning.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $user_assigning = $response['data'];
+            return view('layouts.pages.user.assigning.index', compact('user_assigning'));
+        }
+        
     }
     public function addUserAssigning()
     {
@@ -1149,8 +1159,27 @@ class HomeController extends Controller
     {
         return view('layouts.pages.enrollments.create');
     }
-    public function createEnrollment()
+    public function createEnrollment(Request $request)
     {
+        $apiData = $request->all(); // You might need to modify this based on your API structure
+        $response = $this->apiService->makeApiRequest('POST', 'enrollments', $apiData);
+        // Make the HTTP request with the access token in the headers
+
+        if ($response['status'] === false) {
+            // If the status in the response is false, there's an error.
+
+            // Use SweetAlert to display an error message.
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+
+            // Redirect back to the login page.
+            return redirect()->route('enrollments');
+        } else {
+            // Use SweetAlert to display a success message.
+            Alert::success('Success', 'User enrollment create successful!')->showConfirmButton('OK');
+
+            // Redirect the user to the classes.
+            return redirect()->route('enrollments');
+        }
     }
     public function viewEnrollment()
     {
@@ -1173,7 +1202,17 @@ class HomeController extends Controller
     // Admission Fee Controllers Here
     public function admissionFee()
     {
-        return view('layouts.pages.student_fee.admission.index');
+        $response = $this->apiService->makeApiRequest('GET', 'user_levels');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.student_fee.admission.index', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $userlevels = $response['data'];
+            return view('layouts.pages.student_fee.admission.index', compact('userlevels'));
+        }
+       
     }
     public function addAdmissionFee()
     {

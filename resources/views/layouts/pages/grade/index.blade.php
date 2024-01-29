@@ -176,7 +176,7 @@
                         <tbody>
                             @foreach($grades as $grade)
                             <tr>
-                                <td>{{ $grade['grade_name'] }}</td>
+                                <td>{{ $grade['grade_name'] ?? 'N/A'}}</td>
                                 <td class="d-flex">
                                     <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('grade_edit', ['gradeId' => $grade['id']]) }}"><i class="fas fa-edit"></i></a>
                                     <form id="deleteForm{{ $grade['id'] }}" action="{{ route('grade_delete', ['id' => $grade['id']]) }}" method="POST">
