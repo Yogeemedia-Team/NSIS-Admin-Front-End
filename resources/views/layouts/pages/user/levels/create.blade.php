@@ -161,14 +161,14 @@
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="level" class="form-label">Level</label>
-                                <input type="text" class="form-control" name="level">
+                                <input type="text" class="form-control" name="level" placeholder="Enter Level" required>
                             </div>
                         </div>
                         <!-- Title -->
                         <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="title" class="form-label">Title</label>
-                                <input type="text" class="form-control" name="title">
+                                <input type="text" class="form-control" name="title" placeholder="Enter Title" required>
                             </div>
                         </div>
                         <div class="col text-end mt-auto">

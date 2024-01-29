@@ -41,7 +41,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/student_create', [HomeController::class, 'student_create'])->name('student_create');
     Route::get('/students', [HomeController::class, 'students'])->name('students');
     Route::get('/single-student/{id}', [HomeController::class, 'singleStudent'])->name('single-student');
-    Route::post('/student_delete/{id}', [HomeController::class, 'studentDelete'])->name('student_delete');
+    Route::delete('/student_delete/{id}', [HomeController::class, 'studentDelete'])->name('student_delete');
     Route::get('/students/{studentId}/edit', [HomeController::class, 'StudentEdit'])->name('student_edit');
     Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students_update');
 
