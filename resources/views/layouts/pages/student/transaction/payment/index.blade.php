@@ -179,11 +179,24 @@
                                 <div class="col-auto">
                                     <div class="row g-3 align-items-center">
                                         <div class="col-auto">
-                                            <label for="admission_id" class="col-form-label">Addmission No : </label>
+                                            <label for="admission_id" class="col-form-label">Admission No : </label>
                                         </div>
                                         <div class="col-auto">
 
                                             <input type="text" class="form-control" name="admission_id" required>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- due_date -->
+                                <div class="col-auto">
+                                    <div class="row g-3 align-items-center">
+                                        <div class="col-auto">
+                                            <label for="admission_id" class="col-form-label">Due Date : </label>
+                                        </div>
+                                        <div class="col-auto">
+
+                                            <input type="date" class="form-control" name="due_date" id="due_date" required>
 
                                         </div>
                                     </div>
@@ -233,6 +246,17 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+  $( function() {
+    $("#due_date" ).datepicker({
+        dateFormat: 'yy-mm-dd', 
+        onSelect: function(dateText, inst) {
+        $('#'+inst.id).attr('value',dateText);
+    }
+    });
+  } );
+  </script>
 <script>
     function confirmDelete(classId) {
         Swal.fire({
@@ -254,6 +278,7 @@
 </script>
 <script>
     $(document).ready(function () {
+        var accordionItem = '';
         $('#searchForm').click(function (event) {
             // Prevent the default form submission
             event.preventDefault();
@@ -261,6 +286,7 @@
             // Get values from the form
             var sd_year_grade_class_id = $('[name="sd_year_grade_class_id"]').val();
             var admission_id = $('[name="admission_id"]').val();
+            var due_date = $("#due_date").val();
 
             // Set your Bearer token
             var token = {!! json_encode($token) !!};
@@ -274,6 +300,7 @@
                 data: {
                     admission_id: admission_id,
                     sd_year_grade_class_id: sd_year_grade_class_id,
+                    date : due_date
                 },
                 dataType: 'json',
                 headers: {
@@ -281,7 +308,7 @@
                 },
                 success: function (response) {
                     // Handle the response data and update the UI as needed
-                    console.log(response);
+                    //console.log(response);
                     updateUI(response);
                 },
                 error: function (error) {
@@ -293,6 +320,8 @@
         function updateUI(response) {
     var studentData = response.data[0];
     var paymentDetails = studentData.student_payment[0];
+    //console.log(studentData.student_payment[0]);
+   
 
     // Update admission details
     $('#admissionNo').text(studentData.sd_admission_no);
@@ -300,23 +329,32 @@
     $('#gradeClass').text('Grade ' + studentData.sd_year_grade_class_id + ' - ' + studentData.sd_admission_status);
 
     // Update payment details
-    $('#invoiceNo').text(paymentDetails.invoice_id);
-    $('#invoiceDate').text(paymentDetails.date);
-    $('#dueDate').text(paymentDetails.due_date);
-    $('#invoiceTotal').text(paymentDetails.total);
-    $('#totalPaid').text(paymentDetails.total - paymentDetails.outstanding_balance);
-    $('#totalDue').text(paymentDetails.outstanding_balance);
+   // $('#invoiceNo').text(paymentDetails.invoice_id);
+    //$('#invoiceDate').text(paymentDetails.date);
+   // $('#dueDate').text(paymentDetails.due_date);
+   // $('#invoiceTotal').text(paymentDetails.total);
+   // $('#totalPaid').text(paymentDetails.total - paymentDetails.outstanding_balance);
+    //$('#totalDue').text(paymentDetails.outstanding_balance);
 
     // Update invoice status
     var invoiceStatus = paymentDetails.status === 1 ? 'Partially Paid' : 'Not Paid';
     $('#invoiceStatus').text('Invoice Status: ' + invoiceStatus);
 
     // Clear existing data in the container
+  
     $('#transactionAccordion').empty();
-
+    var accordionItem = '';
+    
+    //console.log(paymentDetails.invoices);
     // Create and append the accordion item
-   $.each(studentData.student_payment, function (index, invoice) {
+   //$.each(paymentDetails.invoices, function (index, invoice) {
+    $.each(paymentDetails.invoices, function (index,invoice) {
+    $('#transactionAccordion').empty();
             var invoiceStatus;
+           
+           //console.log(invoice.id);
+
+           
             
             // Determine the invoice status based on the status value
             switch (invoice.status) {
@@ -334,25 +372,79 @@
             }
 
     // Create and append the accordion item for each invoice
-    var accordionItem = '<div class="accordion-item">' +
-        '<h6 class="accordion-header" id="transactionOne">' +
-        '<button class="accordion-button dropdown-toggle pb-2 border-bottom fw-bold ajax-trigger" type="button" data-bs-toggle="collapse" data-bs-target="#transactionCollapse' + index + '" aria-expanded="true" aria-controls="transactionCollapse' + index + '" role="button" tabindex="0" data-invoice-id="' + invoice.invoice_id + '">' +
-        '<div class="row">' +
-        '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_id + '</div>' +
-        '<div class="col-auto text-sm">Date: ' + invoice.date + '</div>' +
-        '<div class="col-auto text-sm">Due Date: ' + invoice.due_date + '</div>' +
-        '<div class="col-auto text-sm">Invoice Total: ' + invoice.total + '</div>' +
-        '<div class="col-auto text-sm">Total Paid: ' + (invoice.total - invoice.outstanding_balance) + '</div>' +
-        '<div class="col-auto text-sm">Total Due: ' + invoice.outstanding_balance + '</div>' +
-        '<div class="col-auto text-sm">Invoice Status: ' + invoiceStatus + '</div>' +
-        '</div>' +
-        '</button>' +
+    //get invoice numbers and create each record
+
+      // var result =  JSON.parse(invoice.invoices);
+        
+
+      //  for(var i=0; i<result.length; i++){
+            
+            accordionItem += '<div class="accordion-item">' +
+        '<h6 class="accordion-header" id="transactionOne'+invoice.id+'">' +
+        '<button class="accordion-button dropdown-toggle pb-2 border-bottom fw-bold ajax-trigger" type="button" data-bs-toggle="collapse" data-bs-target="#transactionCollapse' + invoice.id + '" aria-expanded="true" aria-controls="transactionCollapse' + invoice.id + '" role="button" tabindex="0" data-invoice-id="' + invoice.id+ '">';
+
+
+        accordionItem += '</button>' +
         '</h6>' +
         '</div>';
 
-    $('#transactionAccordion').append(accordionItem);
+        accordionItem += '<div id="transactionCollapse' + invoice.id + '" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="transactionOne'+invoice.id+'">';
+        accordionItem += '<div class="accordion-body">';
+        accordionItem += '<div class="row">' +
+        '<div class="col-auto text-sm">Invoice No: ' + invoice.invoice_number + '</div>' +
+        //'<div class="col-auto text-sm">Date: ' + invoice.date + '</div>' +
+        '<div class="col-auto text-sm">Due Date: ' + invoice.due_date + '</div>' +
+        '<div class="col-auto text-sm">Invoice Total: ' + invoice.invoice_total + ' </div>' +
+        '<div class="col-auto text-sm">payment_id : ' + invoice.payment_id + '</div>' +
+        '<div class="col-auto text-sm">Total Due: ' + invoice.total_due + '</div>' +
+        '<div class="col-auto text-sm">Invoice Status: ' + invoiceStatus + '</div>' +
+        '</div>';
+        
+        
+        var result =  invoice.invoice_items;
+
+        $.each(result, function (index,result) {
+            var invoiceState;
+            switch (result.status) {
+                case 0:
+                    invoiceState = 'Not Paid';
+                    break;
+                case 1:
+                    invoiceState = 'Paid';
+                    break;
+                case 2:
+                    invoiceState = 'Partially Paid';
+                    break;
+                default:
+                    invoiceState = 'Unknown Status';
+            }
+            //print invoice item list
+
+                accordionItem += '<div class="row col-md-8 right">' +
+            '<div class="col-auto text-sm">Invoice No: ' + result.invoice_number + '</div>' +
+            //'<div class="col-auto text-sm">Date: ' + invoice.date + '</div>' +
+            '<div class="col-auto text-sm">Due Date: ' +  result.due_date + '</div>' +
+            '<div class="col-auto text-sm">Invoice Total: ' +  result.invoice_total + ' </div>' +
+            '<div class="col-auto text-sm">payment_id : ' +  result.payment_id + '</div>' +
+            '<div class="col-auto text-sm">Total Due: ' +  result.total_due + '</div>' +
+            '<div class="col-auto text-sm">Invoice Status: ' + invoiceState  + '</div>' +
+            '</div>';
+
+
+        });
+
+        accordionItem += '</div>';
+        accordionItem += '</div>';
+            
+       
+        //}
+   
 });
+console.log(accordionItem);
+$('#transactionAccordion').append(accordionItem);
 }
+
+
     });
 
     $(document).on('click', '.ajax-trigger', function () {

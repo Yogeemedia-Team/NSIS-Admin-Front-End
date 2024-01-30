@@ -28,6 +28,9 @@
   <script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
 
+  <!-- Jquery UI date picker style  -->
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('assets/css/soft-ui-dashboard.css?v=1.1.1') }}" rel="stylesheet" />
   <!-- Custom css file -->

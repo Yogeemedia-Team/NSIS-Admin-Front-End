@@ -6,6 +6,7 @@
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/perfect-scrollbar.min.js') }}"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
   <script src="{{ asset('assets/js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script src="{{ asset('assets/js/plugins/fullcalendar.min.js')}}"></script>
   <!-- Kanban scripts -->
