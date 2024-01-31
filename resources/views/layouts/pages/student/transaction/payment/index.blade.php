@@ -286,7 +286,7 @@
             // Get values from the form
             var sd_year_grade_class_id = $('[name="sd_year_grade_class_id"]').val();
             var admission_id = $('[name="admission_id"]').val();
-            var due_dates = $("#due_date").val();
+            var due_date = $("#due_date").val();
 
             // Set your Bearer token
             var token = {!! json_encode($token) !!};
@@ -300,7 +300,7 @@
                 data: {
                     admission_id: admission_id,
                     sd_year_grade_class_id: sd_year_grade_class_id,
-                    date : due_dates
+                    date : due_date
                 },
                 dataType: 'json',
                 headers: {
