@@ -286,7 +286,7 @@
             // Get values from the form
             var sd_year_grade_class_id = $('[name="sd_year_grade_class_id"]').val();
             var admission_id = $('[name="admission_id"]').val();
-            var due_date = $("#due_date").val();
+            var due_dates = $("#due_date").val();
 
             // Set your Bearer token
             var token = {!! json_encode($token) !!};
@@ -300,7 +300,7 @@
                 data: {
                     admission_id: admission_id,
                     sd_year_grade_class_id: sd_year_grade_class_id,
-                    date : due_date
+                    date : due_dates
                 },
                 dataType: 'json',
                 headers: {
@@ -308,7 +308,7 @@
                 },
                 success: function (response) {
                     // Handle the response data and update the UI as needed
-                    //console.log(response);
+                    console.log(response);
                     updateUI(response);
                 },
                 error: function (error) {
@@ -320,21 +320,13 @@
         function updateUI(response) {
     var studentData = response.data[0];
     var paymentDetails = studentData.student_payment[0];
-    //console.log(studentData.student_payment[0]);
-   
 
     // Update admission details
     $('#admissionNo').text(studentData.sd_admission_no);
     $('#studentName').text(studentData.sd_name_in_full);
     $('#gradeClass').text('Grade ' + studentData.sd_year_grade_class_id + ' - ' + studentData.sd_admission_status);
+    
 
-    // Update payment details
-   // $('#invoiceNo').text(paymentDetails.invoice_id);
-    //$('#invoiceDate').text(paymentDetails.date);
-   // $('#dueDate').text(paymentDetails.due_date);
-   // $('#invoiceTotal').text(paymentDetails.total);
-   // $('#totalPaid').text(paymentDetails.total - paymentDetails.outstanding_balance);
-    //$('#totalDue').text(paymentDetails.outstanding_balance);
 
     // Update invoice status
     var invoiceStatus = paymentDetails.status === 1 ? 'Partially Paid' : 'Not Paid';
