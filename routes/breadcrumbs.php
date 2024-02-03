@@ -23,10 +23,18 @@ Breadcrumbs::for('formpage', function ($trail) {
 
 // Home > All Students > View Student
 Breadcrumbs::for('single-student', function ($trail) {
-    
+
     $trail->parent('home');
     $trail->push('All Students', route('students'));
     $trail->push('View Student');
+});
+
+// Home > All Students > edit Student
+Breadcrumbs::for('student_edit', function ($trail) {
+
+    $trail->parent('home');
+    $trail->push('All Students', route('students'));
+    $trail->push('Edit Student');
 });
 
 // Home > Blog > [Category]

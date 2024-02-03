@@ -6,7 +6,7 @@
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-2 top-1 px-0 mx-2 shadow-none border-radius-xl z-index-sticky side-bar-bg" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
             <nav aria-label="breadcrumb">
-                {{ Breadcrumbs::render('formpage') }}
+                {{ Breadcrumbs::render('student_edit') }}
                 <h6 class="font-weight-bolder mb-0"></h6>
             </nav>
             <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
