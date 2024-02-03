@@ -1,7 +1,7 @@
 @extends('main.app')
 @section('content')
 <link href="{{ asset('assets/css/cropper.min.css') }}" rel="stylesheet" />
-<main class="main-content position-relative max-height-vh-100 side-bar-bg h-100 border-radius-lg ">
+<main class="main-content position-relative max-height-vh-100 side-bar-bg  h-100 ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-2 top-1 px-0 mx-2 shadow-none border-radius-xl z-index-sticky side-bar-bg" id="navbarBlur" data-scroll="true">
         <div class="container-fluid py-1 px-3">
@@ -20,7 +20,7 @@
             </div>
             <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
                 <div class="ms-md-auto pe-md-3 d-flex align-items-center">
- 
+
                 </div>
                 <ul class="navbar-nav  justify-content-end">
                     <li class="nav-item d-flex align-items-center">
@@ -33,7 +33,7 @@
                             <span class="btn-inner--text">Logout</span>
                         </button>
                     </li>
-                  
+
                 </ul>
             </div>
         </div>
@@ -42,7 +42,7 @@
     <div class="container-fluid body_content py-4">
         <!-- step form -->
         <div class="card">
-        <div class="card-header pt-1 px-3">
+            <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
                         <h5 class="font-weight-bolder text-white mb-0">Student Update Form</h5>
@@ -69,14 +69,14 @@
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_no'] }}" name="sd_admission_no" required>
                                     </div>
                                 </div>
-                                 <div class="col-md-4 align-self-center">
+                                <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
                                         <select class="form-select" name="sd_year_grade_class_id">
                                             @foreach ($year_grades as $year_grade)
-                                                <option value="{{ $year_grade['id'] }}" {{ $studentDetails['data']['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : '' }}>
-                                                    {{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'] .' - '.$year_grade['class']['class_name'] }}
-                                                </option>
+                                            <option value="{{ $year_grade['id'] }}" {{ $studentDetails['data']['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : '' }}>
+                                                {{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'] .' - '.$year_grade['class']['class_name'] }}
+                                            </option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -259,7 +259,7 @@
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}" name="sp_father_occupation" required>
                                     </div>
                                 </div>
-                                
+
                                 <!-- Official Contact Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
@@ -331,7 +331,7 @@
                                         <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}" name="sp_mother_occupation" required>
                                     </div>
                                 </div>
-                             
+
                                 <!-- Official Contact Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
@@ -347,8 +347,8 @@
                                         <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" required>
                                     </div>
                                 </div>
-                                 <!-- Official Address -->
-                                 <div class="col-md-4 align-self-center">
+                                <!-- Official Address -->
+                                <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_official_address" class="form-label">Official
                                             Address</label>
@@ -440,20 +440,20 @@
                         <div class="tab">
                             <h6 class="mt-4 mb-3">Attachments</h6>
                             <div class="row">
-                               
+
                                 <!-- Profile Picture Path -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
                                         <div class="d-flex align-items-center">
                                             <img src="{{ asset("storage/".$studentDetails['data']['documents'][0]['sd_profile_picture'] ?? 'assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                             <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" value="{{ $studentDetails['data']['documents'][0]['sd_profile_picture'] ?? '' }}">
-                                            
+                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" value="{{ $studentDetails['data']['documents'][0]['sd_profile_picture'] ?? '' }}">
+
 
                                             <!-- Hidden input for cropped image data -->
                                             <input type="hidden" name="croppedImage" id="croppedImage">
                                         </div>
-                                     </div>
+                                    </div>
                                 </div>
 
                                 <!-- Birth Certificate -->
@@ -542,8 +542,8 @@
         <!-- step form -->
     </div>
 
-     <!-- Modal -->
-     <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
+    <!-- Modal -->
+    <div class="modal fade" id="imagePreviewModal" tabindex="-1" aria-labelledby="imagePreviewModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
                 <div class="modal-header">
@@ -581,7 +581,7 @@
     var cropImageBtn = document.getElementById('cropImageBtn');
     var croppedImageInput = document.getElementById('croppedImage');
 
-    imageInput.addEventListener('change', function (e) {
+    imageInput.addEventListener('change', function(e) {
 
         if (cropper) {
             cropper.destroy();
@@ -597,14 +597,14 @@
         if (file) {
             var reader = new FileReader();
 
-            reader.onload = function (event) {
+            reader.onload = function(event) {
                 // Update image preview
                 imagePreview.src = event.target.result;
 
                 // Initialize Cropper.js
                 cropper = new Cropper(imagePreview, {
                     aspectRatio: 1, // You can set your desired aspect ratio
-                    viewMode: 1,    // You can set the view mode as needed
+                    viewMode: 1, // You can set the view mode as needed
                 });
 
                 // Show the image preview container
@@ -622,10 +622,10 @@
     });
 
     // Handle the crop button click
-    cropImageBtn.addEventListener('click', function () {
+    cropImageBtn.addEventListener('click', function() {
         // Get cropped data URL
         var croppedDataUrl = cropper.getCroppedCanvas().toDataURL();
-        
+
         // Update the hidden input with cropped image data
         croppedImageInput.value = croppedDataUrl;
 
@@ -827,6 +827,6 @@
         x[n].className += " active";
 
     }
-</script> 
+</script>
 
 @endsection
