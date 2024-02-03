@@ -27,15 +27,15 @@
       </li>
       <hr class="bg-white my-1">
       <li class="nav-item">
-        <a data-bs-toggle="collapse" href="#students" class="nav-link mx-2 {{ request()->routeIs('students') || request()->routeIs('student_payments') ? 'active' : 'text-white' }}" aria-controls="students" role="button" aria-expanded="false">
+        <a data-bs-toggle="collapse" href="#students" class="nav-link mx-2 {{ request()->routeIs('students') || request()->routeIs('formpage') ||  request()->routeIs('student_payments') ? 'active' : 'text-white' }}" aria-controls="students" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-users"></i>
           </div>
           <span class="nav-link-text ms-1">Students</span>
         </a>
-        <div class="collapse {{ request()->routeIs('students') || request()->routeIs('student_payments') ? 'show' : '' }} " id="students">
+        <div class="collapse {{ request()->routeIs('students') || request()->routeIs('formpage') ||  request()->routeIs('student_payments') ? 'show' : '' }} " id="students">
           <ul class="nav px-4">
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('students') ? 'active' : '' }} ">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('students') || request()->routeIs('formpage') ? 'active' : '' }} ">
               <a class="nav-link mx-0" href="{{ route('students') }}">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Student Information </span>
