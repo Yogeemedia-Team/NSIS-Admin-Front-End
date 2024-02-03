@@ -189,7 +189,7 @@
                                         <select class="form-select" name="sd_year_grade_class_id">
                                             @foreach ($year_grades as $year_grade)
                                                 <option value="{{ $year_grade['id'] }}" {{ $studentDetails['data']['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : '' }}>
-                                                    {{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name'] }}
+                                                    {{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'] .' - '.$year_grade['class']['class_name'] }}
                                                 </option>
                                             @endforeach
                                         </select>

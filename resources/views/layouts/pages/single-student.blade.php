@@ -162,7 +162,9 @@
                             <img class="avatar avatar-xxl shadow-lg" src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar">
                         </div>
                         <h5 class="my-3">Name : {{ $studentDetails['data']['sd_first_name']  .' '.$studentDetails['data']['sd_last_name'] }}</h5>
-                        <p class="text-muted mb-1">Class : {{ $studentDetails['data']['year_class_data']['class']['class_name']  }}</p>
+                        <p class="text-muted mb-1">Class : {{ $studentDetails['data']['year_class_data'] != null 
+                            &&  $studentDetails['data']['year_class_data']['class'] != null 
+                            && $studentDetails['data']['year_class_data']['class']['class_name'] != null ? $studentDetails['data']['year_class_data']['class']['class_name'] : ''  }}</p>
                         <p class="text-muted mb-4">Admission No. : {{ $studentDetails['data']['sd_admission_no']}}</p>
                         <div class="d-flex justify-content-center mb-2">
                             <a target="_blank" href="https://wa.me/{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" class="btn btn-primary mb-0" style="background-color: #25D366 !important;border-color:#25D366 !important;"><i class="fa-brands fa-whatsapp me-1"></i> Watsapp</a>
