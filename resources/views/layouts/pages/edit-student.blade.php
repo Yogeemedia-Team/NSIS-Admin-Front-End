@@ -947,6 +947,8 @@
         }
         //... and adds the "active" class on the current step:
         x[n].className += " active";
+
     }
-</script>
+</script> 
+
 @endsection
