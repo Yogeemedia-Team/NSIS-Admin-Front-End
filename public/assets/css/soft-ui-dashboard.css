@@ -23246,11 +23246,11 @@ html {
   }
 
   .sidenav.fixed-start~.main-content {
-    margin-left: 17.125rem;
+    margin-left: 15.6rem;
   }
 
   .sidenav.fixed-end~.main-content {
-    margin-right: 17.125rem;
+    margin-right: 15.6rem;
   }
 }
 
@@ -23399,7 +23399,7 @@ html {
   margin-left: 1.35rem;
 }
 
-.navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link:before,
+/* .navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link:before,
 .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link:before {
   content: "";
   position: absolute;
@@ -23410,7 +23410,7 @@ html {
   width: 5px;
   border-radius: 1.5rem;
   background: rgba(58, 65, 111, 0.5);
-}
+} */
 
 .navbar-vertical .navbar-nav .nav-item .collapse .nav .nav-item .nav-link.active,
 .navbar-vertical .navbar-nav .nav-item .collapsing .nav .nav-item .nav-link.active {

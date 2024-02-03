@@ -22,7 +22,8 @@
     background-color: #35ab58 !important;
     border-color: #35ab58 !important;
 }
-.badge-success{
+
+.badge-success {
     background-color: #35ab58 !important;
     color: #fff !important;
 }
@@ -35,7 +36,8 @@
     background-color: #7A818E !important;
     border-color: #7A818E !important;
 }
-.badge-secondary{
+
+.badge-secondary {
     background-color: #7A818E !important;
     color: #fff !important;
 }
@@ -48,7 +50,8 @@
     background-color: #cba544 !important;
     border-color: #cba544 !important;
 }
-.badge-warning{
+
+.badge-warning {
     background-color: #cba544 !important;
     color: #fff !important;
 }
@@ -61,7 +64,8 @@
     background-color: #c1476e !important;
     border-color: #c1476e !important;
 }
-.badge-danger{
+
+.badge-danger {
     background-color: #c1476e !important;
     color: #fff !important;
 }
@@ -79,6 +83,32 @@
     background-image: linear-gradient(310deg, #2c3593 0%, #DC354530 100%);
 
 }
+
+/* custom bg colors */
+
+.side-bar-bg {
+    background-color: #030d29 !important;
+}
+
+.side-bar-log-bg {
+    background-color: #585b63;
+}
+
+/* custom bg colors */
+
+.sub-menu-line {
+    background-color: white;
+}
+
+.sub-menu-line.active {
+    background-color: rgb(78 171 241);
+}
+
+.sub-menu-line.active span {
+    color: black;
+    font-weight: 600;
+}
+
 
 .body_content {
     background-color: #f2f2f2;
@@ -125,6 +155,40 @@
     background-color: #04AA6D;
 }
 
+/* Apply styles to the DataTable */
+table.dataTable {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+/* Style for DataTable header */
+table.dataTable thead th {
+    background-color: #f2f2f2;
+}
+
+/* Style for DataTable header cells */
+table.dataTable thead th,
+table.dataTable thead td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style for DataTable body cells */
+table.dataTable tbody td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+}
+
+/* Style for DataTable striped rows */
+table.dataTable tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
 /* Data table styles*/
 .dataTables_wrapper .paginate_button .page-link {
     width: 100%;
@@ -153,9 +217,10 @@
     font-size: 0.775rem !important;
     line-height: 1.4;
 }
+
 .dropdown-menu .text-xs {
-	font-size: 0.65rem !important;
-	line-height: 1.1;
+    font-size: 0.65rem !important;
+    line-height: 1.1;
 }
 
 .sidenav-footer .card.card-background::after {
@@ -163,38 +228,41 @@
 }
 
 /* back button */
-.body_content{
+.body_content {
     position: relative;
 }
+
 .back_btn {
-	position: absolute;
-	top: 30px;
-	right: 30px;
+    position: absolute;
+    top: 30px;
+    right: 30px;
 }
 
 .body_content .progress-bar {
-	background-image: linear-gradient(to right, rgb(0, 167, 8) , rgb(130, 255, 119));
+    background-image: linear-gradient(to right, rgb(0, 167, 8), rgb(130, 255, 119));
 }
+
 .form-control:focus,
 .form-select:focus {
-	border-color:    #405189;
-	box-shadow: none;
+    border-color: #405189;
+    box-shadow: none;
 }
 
 .dropdown-toggle::after {
-	border-top: 0.5em solid;
-	border-right: 0.5em solid transparent;
-	border-left: 0.5em solid transparent;
+    border-top: 0.5em solid;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid transparent;
 }
 
 .form_img {
-	background-size: 100px;
-	background-position: bottom right 10%;
-	background-repeat: no-repeat;
+    background-size: 100px;
+    background-position: bottom right 10%;
+    background-repeat: no-repeat;
 }
+
 /* Mobile sizes rsponsive*/
 @media only screen and (max-width: 576px) {
     .form_img {
         background-position: bottom right;
     }
-  }
+}

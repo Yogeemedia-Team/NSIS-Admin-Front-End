@@ -1,13 +1,9 @@
  @extends('main.app')
  @section('content')
- <main class="main-content position-relative max-height-vh-100 h-100 border-radius-lg ">
+ <main class="main-content position-relative max-height-vh-100 side-bar-bg">
    <!-- Navbar -->
-   <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-4 top-1 px-0 mx-4 shadow-none border-radius-xl z-index-sticky" id="navbarBlur" data-scroll="true">
+   <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-2 top-1 px-0 mx-2 shadow-none border-radius-xl z-index-sticky side-bar-bg side-bar-bg" id="navbarBlur" data-scroll="true">
      <div class="container-fluid py-1 px-3">
-       <nav aria-label="breadcrumb">
-         {{ Breadcrumbs::render('home') }}
-         <h6 class="font-weight-bolder mb-0"></h6>
-       </nav>
        <div class="sidenav-toggler sidenav-toggler-inner d-xl-block d-none ">
          <a href="javascript:;" class="nav-link text-body p-0">
            <div class="sidenav-toggler-inner">
@@ -35,7 +31,7 @@
                <span class="btn-inner--text">Logout</span>
              </button>
            </li>
-           <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
+           <!-- <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
              <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
                <div class="sidenav-toggler-inner">
                  <i class="sidenav-toggler-line"></i>
@@ -43,14 +39,9 @@
                  <i class="sidenav-toggler-line"></i>
                </div>
              </a>
-           </li>
-           <li class="nav-item px-3 d-flex align-items-center">
-             <a href="javascript:;" class="nav-link text-body p-0">
-               <!-- Hide gear icon -->
-               <!-- <i class="fa fa-cog fixed-plugin-button-nav cursor-pointer"></i> -->
-             </a>
-           </li>
-           <li class="nav-item dropdown pe-2 d-flex align-items-center">
+           </li> -->
+
+           <!-- <li class="nav-item dropdown pe-2 d-flex align-items-center">
              <a href="javascript:;" class="nav-link text-body p-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                <i class="fa fa-bell cursor-pointer"></i>
              </a>
@@ -146,7 +137,7 @@
                  </a>
                </li>
              </ul>
-           </li>
+           </li> -->
          </ul>
        </div>
      </div>
@@ -162,10 +153,6 @@
                  <div class="d-flex flex-column h-100">
                    <h2 class="font-weight-bold">Dashboard</h2>
                    <p class="mb-5">NSIS - School Management System</p>
-                   <a class="text-body text-sm font-weight-bold mb-0 icon-move-right mt-auto" href="javascript:;">
-                     Read More
-                     <i class="fas fa-arrow-right text-sm ms-1" aria-hidden="true"></i>
-                   </a>
                  </div>
                </div>
                <div class="col-md-5 col-lg-4 ms-auto text-center mt-5 mt-lg-0">
@@ -182,6 +169,8 @@
        </div>
 
      </div>
+     {{--
+
      <div class="row mt-4">
        <div class="col-md-12">
          <div class="card z-index-2">
@@ -200,6 +189,7 @@
          </div>
        </div>
      </div>
+     
      <!-- Cards section  -->
      <div class="row mt-4">
        <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
@@ -295,35 +285,19 @@
          </div>
        </div>
      </div>
+     --}}
    </div>
    <footer class="footer">
      <div class="container-fluid">
-       <!-- <div class="row align-items-center justify-content-lg-between">
-         <div class="col-lg-6 mb-lg-0 mb-4">
-           <div class="copyright text-center text-sm text-muted text-lg-start">
-             © <script>
-               document.write(new Date().getFullYear())
-             </script>,
-             made with <i class="fa fa-heart"></i> by
-             <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Yogeemedia</a>
-             for a better web.
-           </div>
-         </div>
-         <div class="col-lg-6">
+       <div class="row align-items-center justify-content-lg-between">
+         <div class="col-lg-6 offset-6">
            <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-
              <li class="nav-item">
-               <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-             </li>
-             <li class="nav-item">
-               <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-             </li>
-             <li class="nav-item">
-               <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
+               <p class="text-white fw-bold mb-0">Version 1.0.0</p>
              </li>
            </ul>
          </div>
-       </div> -->
+       </div>
      </div>
    </footer>
  </main>
