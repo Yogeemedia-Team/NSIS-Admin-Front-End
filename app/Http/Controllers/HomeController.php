@@ -117,10 +117,24 @@ class HomeController extends Controller
 
             // Create a temporary file to store the decoded image data
             $tempFileName = 'cropped_image_' . time() . '.png';
-            $tempFilePath = storage_path('app/public/student_documents/' . $tempFileName);
+            $tempFilePath = storage_path('app/temp/' . $tempFileName);
+    
 
-            file_put_contents($tempFilePath, $croppedImageBinary);
-            $profilePicturePath =  $tempFilePath;
+                file_put_contents($tempFilePath, $croppedImageBinary);
+
+                // Create an UploadedFile instance from the temporary file
+                $uploadedFile = new UploadedFile(
+                    $tempFilePath,
+                    $tempFileName,
+                    mime_content_type($tempFilePath),
+                    null,
+                    true
+                );
+            
+                $profilePicturePath = $uploadedFile->store('cropped_images', 'public');
+                
+                // Optionally, delete the temporary file
+                unlink($tempFilePath);
        
         }else{
             $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
@@ -204,8 +218,42 @@ class HomeController extends Controller
             Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
             return redirect()->route('students');
         }
+        if($request->hasFile('sd_profile_picture') ){
+            if ($request->filled('croppedImage')) {
+                // Get the cropped image data
+                $croppedImageData = $request->input('croppedImage');
+                // Decode the base64 string to get the binary image data
+                $croppedImageBinary = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $croppedImageData));
+    
+                // Create a temporary file to store the decoded image data
+                $tempFileName = 'cropped_image_' . time() . '.png';
+                $tempFilePath = storage_path('app/temp/' . $tempFileName);
+    
 
-        $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_profile_picture'];
+                file_put_contents($tempFilePath, $croppedImageBinary);
+
+                // Create an UploadedFile instance from the temporary file
+                $uploadedFile = new UploadedFile(
+                    $tempFilePath,
+                    $tempFileName,
+                    mime_content_type($tempFilePath),
+                    null,
+                    true
+                );
+            
+                $profilePicturePath = $uploadedFile->store('cropped_images', 'public');
+
+                // Optionally, delete the temporary file
+                unlink($tempFilePath);
+            }else{
+                $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
+            }
+        }else{
+            $profilePicturePath = $existingStudentData['data']['documents'][0]['sd_profile_picture'];
+        }
+        
+
+
         $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_birth_certificate'];
         $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_father'];
         $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_mother'];
@@ -215,15 +263,15 @@ class HomeController extends Controller
 
         // Update the data with the new values
         $updatedData = $request->all(); // You might need to modify this based on your form fields
-        $updatedData['data']['documents'][0]['sd_profile_picture'] = $profilePicturePath;
-        $updatedData['data']['documents'][0]['sd_birth_certificate'] = $birthCertificatePath;
-        $updatedData['data']['documents'][0]['sd_nic_father'] = $nicFatherPath;
-        $updatedData['data']['documents'][0]['sd_nic_mother'] = $nicMotherPath;
-        $updatedData['data']['documents'][0]['sd_marriage_certificate'] = $marriageCertificatePath;
-        $updatedData['data']['documents'][0]['sd_permission_letter'] = $permissionLetterPath;
-        $updatedData['data']['documents'][0]['sd_leaving_certificate'] = $leavingCertificatePath;
+        $updatedData['sd_profile_picture'] = $profilePicturePath;
+        $updatedData['sd_birth_certificate'] = $birthCertificatePath;
+        $updatedData['sd_nic_father'] = $nicFatherPath;
+        $updatedData['sd_nic_mother'] = $nicMotherPath;
+        $updatedData['sd_marriage_certificate'] = $marriageCertificatePath;
+        $updatedData['sd_permission_letter'] = $permissionLetterPath;
+        $updatedData['sd_leaving_certificate'] = $leavingCertificatePath;
 
-
+    
 
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'students/' . $studentId, $updatedData);
