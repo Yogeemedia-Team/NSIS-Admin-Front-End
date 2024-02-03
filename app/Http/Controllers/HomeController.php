@@ -8,6 +8,8 @@ use App\Services\ApiService;
 use Illuminate\Support\Facades\Http;
 use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -105,10 +107,30 @@ class HomeController extends Controller
     public function student_create(Request $request)
     {
         // Validate the form data, including the file uploads
+        
+       
+        if ($request->filled('croppedImage')) {
+            // Get the cropped image data
+            $croppedImageData = $request->input('croppedImage');
+            // Decode the base64 string to get the binary image data
+            $croppedImageBinary = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $croppedImageData));
 
+            // Create a temporary file to store the decoded image data
+            $tempFileName = 'cropped_image_' . time() . '.png';
+            $tempFilePath = storage_path('app/public/student_documents/' . $tempFileName);
+
+            file_put_contents($tempFilePath, $croppedImageBinary);
+            $profilePicturePath =  $tempFilePath;
+       
+        }else{
+            $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
+        }
+
+        
+
+        
 
         // Upload and store each document only if it exists
-        $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
         $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : null;
         $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents', 'public') : null;
         $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents', 'public') : null;

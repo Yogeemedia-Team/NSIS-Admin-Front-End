@@ -1,5 +1,6 @@
 @extends('main.app')
 @section('content')
+<link href="{{ asset('assets/css/cropper.min.css') }}" rel="stylesheet" />
 <main class="main-content position-relative max-height-vh-100 side-bar-bg  h-100 ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg position-sticky mt-2 top-1 px-0 mx-2 shadow-none border-radius-xl z-index-sticky side-bar-bg" id="navbarBlur" data-scroll="true">
@@ -186,7 +187,7 @@
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
                                         <select class="form-select" name="sd_year_grade_class_id">
                                             @foreach ( $year_grades as $year_grade)
-                                                    <option value="">{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                                    <option value="{{$year_grade['id']}}">{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -534,8 +535,19 @@
                                     <div class="col-md-6">
                                         <div class="mb-3">
                                             <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_profile_picture" required>
+                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" required>
+                                         <!-- Image preview container -->
+                                         <div id="imagePreviewContainer">
+                                                <img id="imagePreview" src="#" alt="Image Preview">
+                                            </div>
+
+                                        <!-- Crop button -->
+                                        <button type="button" id="cropImageBtn">Crop Image</button>
+
+                                        <!-- Hidden input for cropped image data -->
+                                        <input type="hidden" name="croppedImage" id="croppedImage">
                                         </div>
+                                        
                                     </div>
                                     <!-- Birth Certificate -->
                                     <div class="col-md-6">
@@ -637,8 +649,64 @@
 
 @endsection
 @section('footer-scripts')
-
+<script src="{{ asset('assets/js/plugins/cropper.min.js') }}"></script>
 <script>
+    var cropper;
+    var imageInput = document.getElementById('sd_profile_picture');
+    var imagePreview = document.getElementById('imagePreview');
+    var imagePreviewContainer = document.getElementById('imagePreviewContainer');
+    var cropImageBtn = document.getElementById('cropImageBtn');
+    var croppedImageInput = document.getElementById('croppedImage');
+
+    imageInput.addEventListener('change', function (e) {
+
+        if (cropper) {
+            cropper.destroy();
+        }
+        imagePreview.src = '';
+        imagePreviewContainer.style.display = 'none';
+        imagePreview.style.display = 'none';
+        cropImageBtn.style.display = 'none';
+        croppedImageInput.style.display = 'none';
+
+        var file = e.target.files[0];
+
+        if (file) {
+            var reader = new FileReader();
+
+            reader.onload = function (event) {
+                // Update image preview
+                imagePreview.src = event.target.result;
+
+                // Initialize Cropper.js
+                cropper = new Cropper(imagePreview, {
+                    aspectRatio: 1, // You can set your desired aspect ratio
+                    viewMode: 1,    // You can set the view mode as needed
+                });
+
+                // Show the image preview container
+                imagePreviewContainer.style.display = 'block';
+                imagePreview.style.display = 'block';
+                cropImageBtn.style.display = 'block';
+                croppedImageInput.style.display = 'block';
+            };
+
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Handle the crop button click
+    cropImageBtn.addEventListener('click', function () {
+        // Get cropped data URL
+        var croppedDataUrl = cropper.getCroppedCanvas().toDataURL();
+        
+        // Update the hidden input with cropped image data
+        croppedImageInput.value = croppedDataUrl;
+
+        // Optionally, hide the image preview container
+        imagePreviewContainer.style.display = 'none';
+    });
+
     // input validations
     document.addEventListener('DOMContentLoaded', function() {
         const phoneInputs = document.querySelectorAll('.phone-input');
@@ -759,6 +827,10 @@
         } else {
             document.getElementById("nextBtn").innerHTML = "Next";
         }
+
+        $('html, body').animate({
+                scrollTop: $('#regForm').offset().top
+            }, 'slow');
         //... and run a function that will display the correct step indicator:
         fixStepIndicator(n)
     }
