@@ -372,7 +372,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_no_of_installments" class="form-label">Number of Installments</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_no_of_installments" placeholder="Enter Number of Installments" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_no_of_installments" placeholder="Enter Number of Installments" required>
                                     </div>
                                 </div>
                             </div>

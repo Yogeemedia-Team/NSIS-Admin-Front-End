@@ -140,7 +140,7 @@
                                     <div class="mb-3">
                                         <label for="sd_telephone_residence" class="form-label">Telephone
                                             Residence</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_residence'] }}" name="sd_telephone_residence" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_residence'] }}" name="sd_telephone_residence" required>
                                     </div>
                                 </div>
 
@@ -148,7 +148,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_mobile" class="form-label">Telephone Mobile</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_mobile'] }}" name="sd_telephone_mobile" required>
+                                        <input type="tnumberext" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_mobile'] }}" name="sd_telephone_mobile" required>
                                     </div>
                                 </div>
 
@@ -156,7 +156,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" name="sd_telephone_whatsapp" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['sd_telephone_whatsapp'] }}" name="sd_telephone_whatsapp" required>
                                     </div>
                                 </div>
 
@@ -207,7 +207,7 @@
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate
                                             Number</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] }}" name="sd_birth_certificate_number" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] }}" name="sd_birth_certificate_number" required>
                                     </div>
                                 </div>
 
@@ -265,14 +265,14 @@
                                     <div class="mb-3">
                                         <label for="sp_father_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile" required>
                                     </div>
                                 </div>
                                 <!-- Official Address -->
@@ -337,14 +337,14 @@
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official" required>
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="text" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" required>
                                     </div>
                                 </div>
                                  <!-- Official Address -->
@@ -378,7 +378,7 @@
                                     <div class="mb-3">
                                         <label for="sp_father_admission_payment_amount" class="form-label">Admission
                                             Payment Amount</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" required>
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
@@ -386,7 +386,7 @@
                                     <div class="mb-3">
                                         <label for="sp_father_no_of_installments" class="form-label">Number of
                                             Installments</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" required>
                                     </div>
                                 </div>
                             </div>
