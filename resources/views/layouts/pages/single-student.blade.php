@@ -177,7 +177,7 @@
                 <div class="col-md-4 offset-1 align-self-center">
                     <div class="card-body text-center">
                         <div class="blur-shadow-avatar">
-                            <img class="avatar shadow-lg w-100" src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar">
+                            <img class="avatar shadow-lg w-100 h-100" src="{{ asset("storage/".$studentDetails['data']['sd_profile_picture']) }}" alt="avatar">
                         </div>
                         <h5 class="my-3">Name : {{ $studentDetails['data']['sd_first_name']  .' '.$studentDetails['data']['sd_last_name'] }}</h5>
                         <p class="text-muted mb-1">Class : {{ $studentDetails['data']['year_class_data'] != null 

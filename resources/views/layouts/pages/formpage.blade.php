@@ -72,7 +72,7 @@
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade</label>
                                         <select class="form-select" name="sd_year_grade_class_id">
                                             @foreach ( $year_grades as $year_grade)
-                                            <option value="{{$year_grade['id']}}">{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                            <option value="{{$year_grade['id']}}" {{ old('sd_year_grade_class_id') == $year_grade['id'] ? 'selected' : ''}} >{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -82,21 +82,21 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_first_name" placeholder="Enter First Name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_first_name')}}" name="sd_first_name" placeholder="Enter First Name" required>
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_last_name" placeholder="Enter Last Name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_last_name')}}" name="sd_last_name" placeholder="Enter Last Name" required>
                                     </div>
                                 </div>
                                 <!-- Name with Initials -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_name_with_initials" class="form-label">Name with Initials</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_name_with_initials" placeholder="Enter Name with Initials" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_name_with_initials')}}"name="sd_name_with_initials" placeholder="Enter Name with Initials" required>
                                     </div>
                                 </div>
 
@@ -104,14 +104,14 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_name_in_full" class="form-label">Name in Full</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_name_in_full" placeholder="Enter Full Name" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_in_full')}}" name="sd_name_in_full" placeholder="Enter Full Name" required>
                                     </div>
                                 </div>
                                 <!-- Address Line 1 -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_address_line1" class="form-label">Address Line 1</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_line1" placeholder="Enter Address Line 1" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_address_line1')}}" name="sd_address_line1" placeholder="Enter Address Line 1" required>
                                     </div>
                                 </div>
 
@@ -119,7 +119,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_address_line2" class="form-label">Address Line 2</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_line2" placeholder="Enter Address Line 2">
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_address_line2')}}" name="sd_address_line2" placeholder="Enter Address Line 2">
                                     </div>
                                 </div>
 
@@ -127,7 +127,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_address_city" class="form-label">Address City</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_address_city" placeholder="Enter City" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_address_city')}}"  name="sd_address_city" placeholder="Enter City" required>
                                     </div>
                                 </div>
 
@@ -135,7 +135,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_residence" class="form-label">Telephone Residence</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sd_telephone_residence" placeholder="Enter Residence Telephone">
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"   value="{{old('sd_telephone_residence')}}" name="sd_telephone_residence" placeholder="Enter Residence Telephone">
                                     </div>
                                 </div>
 
@@ -143,7 +143,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_mobile" class="form-label">Telephone Mobile</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sd_telephone_mobile" placeholder="Enter Mobile Telephone" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"  value="{{old('sd_telephone_mobile')}}"  name="sd_telephone_mobile" placeholder="Enter Mobile Telephone" required>
                                     </div>
                                 </div>
 
@@ -151,7 +151,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_whatsapp" class="form-label">Telephone WhatsApp</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sd_telephone_whatsapp" placeholder="Enter WhatsApp Telephone" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"  value="{{old('sd_telephone_whatsapp')}}"  name="sd_telephone_whatsapp" placeholder="Enter WhatsApp Telephone" required>
                                     </div>
                                 </div>
 
@@ -159,8 +159,8 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_email_address" class="form-label">Email Address</label>
-                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'" name="sd_email_address" placeholder="Enter Email Address" required>
-                                    </div>
+                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'"   value="{{old('sd_email_address')}}"  name="sd_email_address" placeholder="Enter Email Address" required>
+                                    </div>'
                                 </div>
                                 <!-- Sex -->
                                 <div class="col-md-4 align-self-center">
@@ -177,7 +177,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_date_of_birth" class="form-label">Date of Birth</label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_date_of_birth" placeholder="Select Date of Birth" required>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'"   value="{{old('sd_date_of_birth')}}"  name="sd_date_of_birth" placeholder="Select Date of Birth" required>
                                     </div>
                                 </div>
 
@@ -185,15 +185,15 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_religion" class="form-label">Religion</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_religion" placeholder="Enter Religion" required>
-                                    </div>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_religion')}}"  name="sd_religion" placeholder="Enter Religion" required>
+                                    </div>'
                                 </div>
 
                                 <!-- Ethnicity -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_ethnicity" class="form-label">Ethnicity</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sd_ethnicity" placeholder="Enter Ethnicity" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_ethnicity')}}"  name="sd_ethnicity" placeholder="Enter Ethnicity" required>
                                     </div>
                                 </div>
 
@@ -201,7 +201,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number</label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'"  value="{{old('sd_birth_certificate_number')}}"  name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number" required>
                                     </div>
                                 </div>
 
@@ -209,7 +209,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_health_conditions" class="form-label">Health Conditions</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="sd_health_conditions" placeholder="Enter Health Conditions"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'"   value="{{old('sd_health_conditions')}}"  name="sd_health_conditions" placeholder="Enter Health Conditions"></textarea>
                                     </div>
                                 </div>
                             </div>

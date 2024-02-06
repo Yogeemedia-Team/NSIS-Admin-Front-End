@@ -166,12 +166,15 @@ class HomeController extends Controller
         // Make the HTTP request with the access token in the headers
 
         if ($response['status'] === false) {
-            // If the status in the response is false, there's an error.
 
-            // Use SweetAlert to display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
 
-            // Redirect back to the login page.
+            if($response['errors'] == "validation_error"){// You can pass the response data to the view to display errors
+                return redirect()->back()
+                             ->withErrors()
+                             ->withInput();
+            }
+
             return redirect()->route('students');
         } else {
 
