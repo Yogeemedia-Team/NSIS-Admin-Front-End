@@ -189,6 +189,10 @@ table.dataTable tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
+.sub-title{
+    background: rgb(193, 175, 238);
+}
+
 /* Data table styles*/
 .dataTables_wrapper .paginate_button .page-link {
     width: 100%;
