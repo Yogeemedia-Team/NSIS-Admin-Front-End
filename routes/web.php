@@ -150,4 +150,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/add_student_payment', [HomeController::class, 'addStudentPayment'])->name('add_student_payment');
     Route::delete('/student_payment_delete/{id}', [HomeController::class, 'deleteStudentPayment'])->name('student_payment_delete');
 
+    Route::get('/account_payable', [HomeController::class, 'accountPayable'])->name('account_payable');
+    Route::get('/invoices', [HomeController::class, 'invoices'])->name('invoices');
+
+
 });

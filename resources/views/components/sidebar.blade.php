@@ -29,7 +29,7 @@
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#students" class="nav-link mx-2 {{ request()->routeIs('students') || request()->routeIs('formpage') ||
             request()->routeIs('student_payments' ) || request()->routeIs('single-student') || request()->routeIs('single-student') 
-            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment')
+            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable')  || request()->routeIs('invoices') 
              ? 'active' : 'text-white' }}" aria-controls="students" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-users"></i>
@@ -38,7 +38,7 @@
         </a>
         <div class="collapse {{ request()->routeIs('students') || request()->routeIs('formpage') ||
             request()->routeIs('student_payments') || request()->routeIs('single-student') || request()->routeIs('single-student') ||
-             request()->routeIs('student_edit') || request()->routeIs('add_student_payment') ? 'show' : '' }} " id="students">
+             request()->routeIs('student_edit') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable')  || request()->routeIs('invoices')  ? 'show' : '' }} " id="students">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('students') || request()->routeIs('formpage') || request()->routeIs('single-student') || request()->routeIs('student_edit') ? 'active' : '' }} ">
               <a class="nav-link mx-0" href="{{ route('students') }}">
@@ -46,12 +46,12 @@
                 <span class="sidenav-normal"> Student Information </span>
               </a>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments')  ? 'active' : '' }} ">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments') || request()->routeIs('account_payable')  || request()->routeIs('invoices')   ? 'active' : '' }} ">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#stinfo">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Student Transaction <b class="caret"></b></span>
               </a>
-              <div class="collapse {{request()->routeIs('add_student_payment') || request()->routeIs('student_payments')  ? 'show' : ''}} " id="stinfo">
+              <div class="collapse {{request()->routeIs('add_student_payment') || request()->routeIs('student_payments') || request()->routeIs('account_payable') || request()->routeIs('invoices')  ? 'show' : ''}} " id="stinfo">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
                   <li class="nav-item {{request()->routeIs('add_student_payment') || request()->routeIs('student_payments') ? 'active sub-title' : ''}} ">
@@ -61,15 +61,15 @@
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-                  <li class="nav-item {{request()->routeIs('student_payments') ? 'active sub-title' : ''}}">
-                    <a class="nav-link " href="#">
+                  <li class="nav-item {{request()->routeIs('invoices') ? 'active sub-title' : ''}}">
+                    <a class="nav-link " href="{{ route('invoices') }}">
                       <span class="sidenav-mini-icon  pe-4"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Invoices </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-                  <li class="nav-item ">
-                    <a class="nav-link " href="#" disable>
+                  <li class="nav-item {{request()->routeIs('account_payable') ? 'active sub-title' : ''}}">
+                    <a class="nav-link " href="{{ route('account_payable') }}" disable>
                       <span class="sidenav-mini-icon pe-4"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Account Payable </span>
                     </a>
