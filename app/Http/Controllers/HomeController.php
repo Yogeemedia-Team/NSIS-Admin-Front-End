@@ -171,7 +171,7 @@ class HomeController extends Controller
 
             if($response['errors'] == "validation_error"){// You can pass the response data to the view to display errors
                 return redirect()->back()
-                             ->withErrors()
+                             ->withErrors($response['message'])
                              ->withInput();
             }
 
