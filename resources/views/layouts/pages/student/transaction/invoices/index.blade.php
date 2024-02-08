@@ -11,10 +11,7 @@
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
-                        <h5 class="font-weight-bolder text-white mb-0">Student Transactions</h5>
-                    </div>
-                    <div class="col-md-6 align-self-center text-end">
-                        <a href="{{ route('add_student_payment') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-plus me-2"></i> Add New</a>
+                        <h5 class="font-weight-bolder text-white mb-0">Invoices</h5>
                     </div>
                 </div>
             </div>
@@ -26,7 +23,7 @@
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="mb-3">
-                                        <label for="class" class="col-form-label">Class : </label>
+                                        <label for="class" class="col-form-label">Class </label>
                                         <select class="form-select pe-5" name="sd_year_grade_class_id" required>
                                             <option value="1">Class 1</option>
                                             <option value="class2">Class 2</option>
@@ -41,14 +38,21 @@
                                     </div>
                                 </div>
                                 <!-- due_date -->
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                     <div class="mb-3">
-                                        <label for="admission_id" class="col-form-label">Due Date</label>
-                                        <input type="date" class="form-control" name="due_date" id="due_date" required>
+                                        <label for="admission_id" class="col-form-label">From Date</label>
+                                        <input type="date" class="form-control" name="from_date" id="from_date" required>
                                     </div>
                                 </div>
-                                <div class="col-md-1 align-self-center">
-                                    <button type="submit" class="btn btn-primary mb-0">Search</button>
+                                <!-- due_date -->
+                                <div class="col-md-2">
+                                    <div class="mb-3">
+                                        <label for="admission_id" class="col-form-label">To Date</label>
+                                        <input type="date" class="form-control" name="to_date" id="to_date" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-end align-self-center">
+                                    <button type="submit" class="btn btn-primary w-100 mb-0">Search</button>
                                 </div>
 
                             </div>
@@ -56,19 +60,37 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <span class="border-0"><strong class="text-dark">Admission No :</strong> &nbsp; <span id="admissionNo"></span></span>
-                <span class="border-0 ps-3"><strong class="text-dark">Name:</strong> &nbsp; <span id="studentName"></span></span>
-                <span class="border-0 ps-3"><strong class="text-dark">Class:</strong> &nbsp; <span id="gradeClass"></span></span>
+            <div class="card-body pt-0">
 
-                <!-- Payment Details -->
-                <div class="card shadow-none border mt-3">
-                    <div class="card-body">
-                        <span class="text-dark"><strong>Payment Details - Payment ID -<span id="invoiceNo"></span></strong></span>
-                        <div class="accordion" id="transactionAccordion">
-                            <!-- Accordion Item will be dynamically added here -->
-                        </div>
-                    </div>
+                <div class="table-responsive">
+                    <table id="dataTable" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="px-2">Admission No</th>
+                                <th class="px-2">Invoices No</th>
+                                <th class="px-2">Amount</th>
+                                <th class="px-2">Type</th>
+                                <th class="px-2">Deu Date</th>
+                                <th class="px-2 text-center">Status</th>
+                                <th class="px-2 text-center">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="justify-content-center" style="display: flex;">
+                                    <a class="btn btn-warning m-0 py-1 px-2 me-2" href="#"><i class="fa-solid fa-eye"></i></a>
+
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
                 </div>
 
             </div>

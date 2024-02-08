@@ -203,3 +203,14 @@ Breadcrumbs::for('add_student_payment', function ($trail) {
     $trail->parent('student_payments');
     $trail->push('Add Student Transaction', route('add_student_payment'));
 });
+
+// Student Transactions 
+Breadcrumbs::for('account_payable', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Account Payable', route('account_payable'));
+});
+
+Breadcrumbs::for('invoices', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Invoices', route('invoices'));
+});

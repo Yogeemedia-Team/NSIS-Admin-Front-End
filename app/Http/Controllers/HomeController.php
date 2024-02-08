@@ -107,8 +107,8 @@ class HomeController extends Controller
     public function student_create(Request $request)
     {
         // Validate the form data, including the file uploads
-        
-       
+
+
         if ($request->filled('croppedImage')) {
             // Get the cropped image data
             $croppedImageData = $request->input('croppedImage');
@@ -118,31 +118,30 @@ class HomeController extends Controller
             // Create a temporary file to store the decoded image data
             $tempFileName = 'cropped_image_' . time() . '.png';
             $tempFilePath = storage_path('app/temp/' . $tempFileName);
-    
 
-                file_put_contents($tempFilePath, $croppedImageBinary);
 
-                // Create an UploadedFile instance from the temporary file
-                $uploadedFile = new UploadedFile(
-                    $tempFilePath,
-                    $tempFileName,
-                    mime_content_type($tempFilePath),
-                    null,
-                    true
-                );
-            
-                $profilePicturePath = $uploadedFile->store('cropped_images', 'public');
-                
-                // Optionally, delete the temporary file
-                unlink($tempFilePath);
-       
-        }else{
+            file_put_contents($tempFilePath, $croppedImageBinary);
+
+            // Create an UploadedFile instance from the temporary file
+            $uploadedFile = new UploadedFile(
+                $tempFilePath,
+                $tempFileName,
+                mime_content_type($tempFilePath),
+                null,
+                true
+            );
+
+            $profilePicturePath = $uploadedFile->store('cropped_images', 'public');
+
+            // Optionally, delete the temporary file
+            unlink($tempFilePath);
+        } else {
             $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
         }
 
-        
 
-        
+
+
 
         // Upload and store each document only if it exists
         $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : null;
@@ -169,7 +168,7 @@ class HomeController extends Controller
 
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
 
-            if($response['errors'] == "validation_error"){// You can pass the response data to the view to display errors
+            if ($response['errors'] == "validation_error") { // You can pass the response data to the view to display errors
                 return redirect()->back()
                              ->withErrors($response['message'])
                              ->withInput();
@@ -221,17 +220,17 @@ class HomeController extends Controller
             Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
             return redirect()->route('students');
         }
-        if($request->hasFile('sd_profile_picture') ){
+        if ($request->hasFile('sd_profile_picture')) {
             if ($request->filled('croppedImage')) {
                 // Get the cropped image data
                 $croppedImageData = $request->input('croppedImage');
                 // Decode the base64 string to get the binary image data
                 $croppedImageBinary = base64_decode(preg_replace('#^data:image/\w+;base64,#i', '', $croppedImageData));
-    
+
                 // Create a temporary file to store the decoded image data
                 $tempFileName = 'cropped_image_' . time() . '.png';
                 $tempFilePath = storage_path('app/temp/' . $tempFileName);
-    
+
 
                 file_put_contents($tempFilePath, $croppedImageBinary);
 
@@ -243,18 +242,18 @@ class HomeController extends Controller
                     null,
                     true
                 );
-            
+
                 $profilePicturePath = $uploadedFile->store('cropped_images', 'public');
 
                 // Optionally, delete the temporary file
                 unlink($tempFilePath);
-            }else{
+            } else {
                 $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
             }
-        }else{
+        } else {
             $profilePicturePath = $existingStudentData['data']['documents'][0]['sd_profile_picture'];
         }
-        
+
 
 
         $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_birth_certificate'];
@@ -274,7 +273,7 @@ class HomeController extends Controller
         $updatedData['sd_permission_letter'] = $permissionLetterPath;
         $updatedData['sd_leaving_certificate'] = $leavingCertificatePath;
 
-    
+
 
         // Make the API request to update the student record
         $response = $this->apiService->makeApiRequest('PUT', 'students/' . $studentId, $updatedData);
@@ -996,7 +995,6 @@ class HomeController extends Controller
             $user_assigning = $response['data'];
             return view('layouts.pages.user.assigning.index', compact('user_assigning'));
         }
-        
     }
     public function addUserAssigning()
     {
@@ -1293,7 +1291,6 @@ class HomeController extends Controller
             $userlevels = $response['data'];
             return view('layouts.pages.student_fee.admission.index', compact('userlevels'));
         }
-       
     }
     public function addAdmissionFee()
     {
@@ -1337,12 +1334,25 @@ class HomeController extends Controller
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.payment.index',compact('token'));
+        return view('layouts.pages.student.transaction.payment.index', compact('token'));
     }
     public function addStudentPayment()
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.payment.create',compact('token'));
+        return view('layouts.pages.student.transaction.payment.create', compact('token'));
+    }
+
+    public function accountPayable()
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+        return view('layouts.pages.student.transaction.account-payable.index', compact('token'));
+    }
+    public function invoices()
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+        return view('layouts.pages.student.transaction.invoices.index', compact('token'));
     }
 }
