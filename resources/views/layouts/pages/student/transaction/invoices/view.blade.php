@@ -7,79 +7,96 @@
     <div class="container-fluid body_content py-4">
         <!-- Students table -->
         @include('components/session-section')
+
         <div class="card">
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
-                        <h5 class="font-weight-bolder text-white mb-0">Account Payable</h5>
+                        <h5 class="font-weight-bolder text-white mb-0">Invoices View</h5>
                     </div>
                 </div>
             </div>
-            <div class="card-header">
-                <div class="row">
-                    <div class="col">
-                        <form id="searchForm" method="POST" action="{{ route('account_payable_search')}}">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label for="class" class="col-form-label">Year/Class/Grade</label>
-                                    <select class="form-select pe-5" name="sd_year_grade_class_id">
-                                        <option selected value="">All</option>
-                                        @foreach($year_grades as $year_grade)
-                                        <option value="{{$year_grade['id']}}" {{ $apiData['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : ''}}>{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-3">
-                                    <label for="admission_id" class="col-form-label">Admission No</label>
-                                    <input type="text" class="form-control" name="admission_id" value="{{ $apiData['admission_id'] ?? '' }}">
-                                </div>
-                                <!-- due_date -->
-                                <div class="col-md-2">
-                                    <label for="admission_id" class="col-form-label">From Date</label>
-                                    <input type="date" class="form-control" value="{{ $apiData['from_date'] ?? '' }}" name="from_date" id="from_date">
-                                </div>
-                                <!-- due_date -->
-                                <div class="col-md-2">
-                                    <label for="admission_id" class="col-form-label">To Date</label>
-                                    <input type="date" class="form-control" value="{{ $apiData['to_date'] ?? '' }}" name="to_date" id="to_date">
-                                </div>
-                                <div class="col-md-2 text-end align-self-end">
-                                    <button type="submit" class="btn btn-primary w-100 mb-0">Search</button>
-                                </div>
-                            </div>
-                        </form>
-
+            <div class="card-body">
+                <div id="InvoicesForDownload" class="p-2 shadow col-sm-12">
+                    <div class="row px-1 invoice-header py-2">
+                        <div class="col-md-2 text-center align-self-center">
+                            <img src="{{ asset('assets/img/nsis.png') }}" class="w-50 shadow rounded-circle " alt="logo">
+                        </div>
+                        <div class="col-md-6 align-self-center">
+                            <p class="text-black fs-5 fw-bolder mb-0">Invoice <span class="fs-5 fw-bold">{{ $details[0]['invoice_number']}}</span></p>
+                            <small class="fw-light">(Renewal)</small>
+                        </div>
+                        <div class="col-md-2 offset-2 align-self-center">
+                            <button id="downloadButton" type="button" class="btn btn-transparent shadow border text-black mb-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-cloud-download" viewBox="0 0 16 16">
+                                    <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383" />
+                                    <path d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z" />
+                                </svg> Download
+                            </button>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="card-body pt-0">
+                    <hr class="bg-black my-1">
+                    <div class="row px-1 invoice-address py-1">
+                        <div class="col-md-6 text-start">
+                            <p class="mb-0 fs-5 text-black fw-bold">Tharaka Dissanaye (Axicey)</p>
+                            <p class="mb-0 fs-6 text-black fw-light">430, Gamameda Road,<br>ja-Ela,<br>11350,<br>Sri Lanka</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">{{ $details[0]['sd_name_with_initials']}}</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_line1']}}{{ $details[0]['sd_address_line1'] == ''? '':',' }}</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_line2']}}{{ $details[0]['sd_address_line2'] == ''? '':',' }}</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_city']}}</p>
+                        </div>
+                    </div>
+                    <div class="row px-1 issued-date text-end py-1">
+                        <p class="mb-0 fs-5 text-black fw-light">Issued {{ \Carbon\Carbon::parse($details[0]['created_at'])->format('M d Y') }}</p>
+                        <p class="mb-0 fs-5 text-success fw-bolder">Paid {{ \Carbon\Carbon::parse($details[0]['updated_at'])->format('M d Y') }}</p>
+                    </div>
+                    <div class="row px-1 issued-date py-1">
+                        <div class="table-responsive">
+                            <table class="table table-borderless">
+                                <thead>
+                                    <tr>
+                                        <th class="col px-2">#</th>
+                                        <th class="col-5 px-2">Admission No</th>
+                                        <th class="col-2 px-2">Due Date</th>
+                                        <th class="col-2 px-2">Amount</th>
+                                        <th class="col-2 px-2">Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach( $details[0]['accountPayables'] as $key => $data)
+                                    <tr>
+                                        <th scope="row">{{ $key+1 }}</th>
+                                        <td>{{ $data['admission_no'] }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($data['due_date'])->format('M d Y') }}</td>
+                                        <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>
+                                        <td>{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
+                                    </tr>
+                                    @endforeach
 
-                <div class="table-responsive">
-                    <table id="dataTable" class="table table-striped" style="width:100%">
-                        <thead>
-                            <tr>
-                                <th class="px-2">Admission No</th>
-                                <th class="px-2">Invoices No</th>
-                                <th class="px-2">Amount</th>
-                                <th class="px-2">Type</th>
-                                <th class="px-2">Due Date</th>
-                                <th class="px-2 text-center">Status</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($accountPayableData as $data)
-                            <tr>
-                                <td>{{ $data['admission_no']}}</td>
-                                <td>{{ $data['invoice_number']}}</td>
-                                <td>{{ $data['amount']}}</td>
-                                <td>{{ $data['type']}}</td>
-                                <td>{{ $data['due_date']}}</td>
-                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
-                            </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="row amount-details text-end">
+                        <div class="col-md-10 text-end">
+                            <p class="fw-bold mb-0 fs-5">Total Amount :</p>
+                            <p class="fw-bold mb-0 fs-5">Current Outstanding Amount :</p>
+                            <p class="fw-bold mb-0 fs-5">Paid Amount :</p>
+                            <p class="fw-bold mb-0 fs-5">Due Amount :</p>
+                            <p class="fw-bold mb-0 fs-5">New Total Outstanding :</p>
+                        </div>
+                        <div class="col-md-2 text-center">
+                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['invoice_total']),2) }}</p>
+                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['current_total_outstanding']),2) }}</p>
+                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_paid']),2) }}</p>
+                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_due']),2) }}</p>
+                            <hr class="bg-black my-1">
+                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['new_total_due']),2) }}</p>
+
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -97,6 +114,32 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- print pdf -->
+<script>
+    $(document).ready(function() {
+        $("#downloadButton").click(function() {
+            $("#downloadButton").addClass('d-none');
+            html2canvas(document.getElementById("InvoicesForDownload"), {
+                scale: 2,
+                onrendered: function(canvas) {
+                    var imgData = canvas.toDataURL('image/png');
+                    var pdf = new jsPDF({
+                        orientation: 'portrait', // 'portrait' or 'landscape'
+                        unit: 'mm', // measurement unit: 'pt' (points), 'mm', 'cm', 'in'
+                        format: 'a4', // page format: 'a3', 'a4', 'a5', 'letter', 'legal'
+                        putOnlyUsedFonts: false // optimize PDF file size by embedding only used fonts
+                    })
+                    pdf.addImage(imgData, 'JPEG', 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
+
+                    pdf.save("invoice.pdf");
+                    $("#downloadButton").removeClass('d-none');
+                }
+            });
+        });
+
+    });
+</script>
 
 <script>
     $(function() {

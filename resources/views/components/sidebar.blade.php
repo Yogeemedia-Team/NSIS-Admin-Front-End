@@ -28,8 +28,8 @@
       <hr class="bg-white my-1">
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#students" class="nav-link mx-2 {{ request()->routeIs('students') || request()->routeIs('formpage') ||
-            request()->routeIs('student_payments' ) || request()->routeIs('single-student') || request()->routeIs('single-student') 
-            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable')  || request()->routeIs('invoices') 
+            request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('single-student') || request()->routeIs('single-student') 
+            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view') 
              ? 'active' : 'text-white' }}" aria-controls="students" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-users"></i>
@@ -37,8 +37,8 @@
           <span class="nav-link-text ms-1">Students</span>
         </a>
         <div class="collapse {{ request()->routeIs('students') || request()->routeIs('formpage') ||
-            request()->routeIs('student_payments') || request()->routeIs('single-student') || request()->routeIs('single-student') ||
-             request()->routeIs('student_edit') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable')  || request()->routeIs('invoices')  ? 'show' : '' }} " id="students">
+            request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('single-student') || request()->routeIs('single-student') ||
+             request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : '' }} " id="students">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('students') || request()->routeIs('formpage') || request()->routeIs('single-student') || request()->routeIs('student_edit') ? 'active' : '' }} ">
               <a class="nav-link mx-0" href="{{ route('students') }}">
@@ -46,31 +46,31 @@
                 <span class="sidenav-normal"> Student Information </span>
               </a>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments') || request()->routeIs('account_payable')  || request()->routeIs('invoices')   ? 'active' : '' }} ">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')   ? 'active' : '' }} ">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#stinfo">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Student Transaction <b class="caret"></b></span>
               </a>
-              <div class="collapse {{request()->routeIs('add_student_payment') || request()->routeIs('student_payments') || request()->routeIs('account_payable') || request()->routeIs('invoices')  ? 'show' : ''}} " id="stinfo">
+              <div class="collapse {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search') || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : ''}} " id="stinfo">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
-                  <li class="nav-item {{request()->routeIs('add_student_payment') || request()->routeIs('student_payments') ? 'active sub-title' : ''}} ">
-                    <a class="nav-link " href="{{ route('student_payments') }}">
-                      <span class="sidenav-mini-icon pe-4"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) ? 'active sub-title' : ''}} ">
+                    <a class="nav-link mx-2 px-0" href="{{ route('student_payments') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Student Payments </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-                  <li class="nav-item {{request()->routeIs('invoices') ? 'active sub-title' : ''}}">
-                    <a class="nav-link " href="{{ route('invoices') }}">
-                      <span class="sidenav-mini-icon  pe-4"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{request()->routeIs('invoices')|| request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'active sub-title' : ''}}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('invoices') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Invoices </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-                  <li class="nav-item {{request()->routeIs('account_payable') ? 'active sub-title' : ''}}">
-                    <a class="nav-link " href="{{ route('account_payable') }}" disable>
-                      <span class="sidenav-mini-icon pe-4"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{request()->routeIs('account_payable') || request()->routeIs('account_payable_search') ? 'active sub-title' : ''}}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('account_payable') }}" disable>
+                      <span class="sidenav-mini-icon pe-3"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Account Payable </span>
                     </a>
                   </li>
@@ -93,14 +93,14 @@
         <div class="collapse {{ request()->routeIs('add_enrollment') || request()->routeIs('enrollments') ? 'show' : '' }}" id="enrollments">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('add_enrollment') ? 'active' : '' }} ">
-              <a class="nav-link " href="{{ route('add_enrollment') }}">
-                <span class="sidenav-mini-icon"> N </span>
+              <a class="nav-link mx-0  " href="{{ route('add_enrollment') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> New Registrations </span>
               </a>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('enrollments') ? 'active' : '' }}">
-              <a class="nav-link " href="{{ route('enrollments') }}">
-                <span class="sidenav-mini-icon"> A </span>
+              <a class="nav-link mx-0  " href="{{ route('enrollments') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Admissions </span>
               </a>
             </li>
@@ -110,67 +110,83 @@
       </li>
       <hr class="bg-white my-1">
       <li class="nav-item">
-        <a data-bs-toggle="collapse" href="#masterfiles" class="nav-link mx-2 {{ request()->routeIs('admission_fee') ? 'active' : 'text-white' }}" aria-controls="masterfiles" role="button" aria-expanded="false">
+        <a data-bs-toggle="collapse" href="#masterfiles" class="nav-link mx-2 {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : 'text-white' }}" aria-controls="masterfiles" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-file-word"></i>
           </div>
           <span class="nav-link-text ms-1">Masterfiles</span>
         </a>
-        <div class="collapse {{ request()->routeIs('admission_fee') ? 'show' : '' }}" id="masterfiles">
+        <div class="collapse  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="masterfiles">
           <ul class="nav px-4">
-            <li class="nav-item sub-menu-line mt-1 rounded">
-              <a class="nav-link {{ request()->routeIs('admission_fee') ? 'active' : '' }} " data-bs-toggle="collapse" aria-expanded="false" href="#stdfee">
-                <span class="sidenav-mini-icon"> S </span>
+            <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
+              <a class="nav-link mx-0 " data-bs-toggle="collapse" aria-expanded="false" href="#stdfee">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Students <b class="caret"></b></span>
               </a>
-              <div class="collapse {{ request()->routeIs('admission_fee') ? 'show' : '' }} " id="stdfee">
+              <div class="collapse {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'show' : '' }} " id="stdfee">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('admission_fee') ? 'active' : '' }} ">
-                    <a class="nav-link " href="{{ route('admission_fee') }}">
-                      <span class="sidenav-mini-icon text-xs"> A </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item mt-1 rounded {{ request()->routeIs('admission_fee') ? 'active sub-title' : '' }} ">
+                    <a class="nav-link mx-2 px-0" href="{{ route('admission_fee') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Admission Fees </span>
                     </a>
                   </li>
-                  <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('monthly_fee') ? 'active' : '' }} ">
-                    <a class="nav-link " href="{{ route('monthly_fee') }}">
-                      <span class="sidenav-mini-icon text-xs"> M </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item mt-1 rounded {{ request()->routeIs('monthly_fee') ? 'active sub-title' : '' }} ">
+                    <a class="nav-link mx-2 px-0" href="{{ route('monthly_fee') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Monthly Fees </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
+
                 </ul>
               </div>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded">
-              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#sch">
-                <span class="sidenav-mini-icon"> S </span>
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
+              <a class="nav-link mx-0  " data-bs-toggle="collapse" aria-expanded="false" href="#sch">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> School <b class="caret"></b></span>
               </a>
-              <div class="collapse " id="sch">
+              <div class="collapse {{ request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="sch">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('grades') }}">
-                      <span class="sidenav-mini-icon text-xs"> G </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('grades') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('grades') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Grades </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('classes') }}">
-                      <span class="sidenav-mini-icon text-xs">C </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('classes') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('classes') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Classes </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('extracurriculars') }}">
-                      <span class="sidenav-mini-icon text-xs">E </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('extracurriculars') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('extracurriculars') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Extracurriculars </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="{{ route('year_grade_class') }}">
-                      <span class="sidenav-mini-icon text-xs">Y </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('year_grade_class') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('year_grade_class') }}">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Year Grade Class Relationship </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
+
                 </ul>
               </div>
             </li>
@@ -187,32 +203,32 @@
         <div class="collapse {{ request()->routeIs('user_accounts') || request()->routeIs('user_levels') || request()->routeIs('user_roles')|| request()->routeIs('user_activities')|| request()->routeIs('user_assigning') ? 'show' : '' }} " id="usermanagement">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_accounts') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('user_accounts') }}">
-                <span class="sidenav-mini-icon"> U </span>
+              <a class="nav-link mx-0" href="{{ route('user_accounts') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Accounts </span>
               </a>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_levels') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('user_levels') }}">
-                <span class="sidenav-mini-icon"> U </span>
+              <a class="nav-link mx-0" href="{{ route('user_levels') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Levels </span>
               </a>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_roles') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('user_roles') }}">
-                <span class="sidenav-mini-icon"> U </span>
+              <a class="nav-link mx-0" href="{{ route('user_roles') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Roles </span>
               </a>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_activities') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('user_activities') }}">
-                <span class="sidenav-mini-icon"> U </span>
+              <a class="nav-link mx-0" href="{{ route('user_activities') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Activities </span>
               </a>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_assigning') ? 'active' : '' }}">
-              <a class="nav-link" href="{{ route('user_assigning') }}">
-                <span class="sidenav-mini-icon"> U </span>
+              <a class="nav-link mx-0" href="{{ route('user_assigning') }}">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Assigning </span>
               </a>
             </li>
@@ -230,74 +246,91 @@
         <div class="collapse {{ request()->routeIs('add_enrollment') ? '' : '' }}" id="reports">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded">
-              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#payreports">
-                <span class="sidenav-mini-icon"> P </span>
+              <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#payreports">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Payment Reports <b class="caret"></b></span>
               </a>
-              <div class="collapse " id="payreports">
+              <div class="collapse {{ request()->routeIs('add_enrollment') ? '' : '' }} " id="payreports">
                 <ul class="nav nav-sm flex-column">
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> O </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Outstanding List </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> P </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Payment Summary </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> T </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Transaction Detailed Report </span>
                     </a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> P </span>
+                  <hr class="bg-black my-1">
+
+                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Payment Delayed List </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
+
                 </ul>
               </div>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded">
-              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#lists">
-                <span class="sidenav-mini-icon"> L </span>
+              <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#lists">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Lists <b class="caret"></b></span>
               </a>
               <div class="collapse " id="lists">
                 <ul class="nav nav-sm flex-column">
+                  <hr class="bg-black my-1">
+
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> S </span>
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Student Lists </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
+
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs">E </span>
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Extracurriculars </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
                 </ul>
               </div>
             </li>
             <li class="nav-item sub-menu-line mt-1 rounded">
-              <a class="nav-link " data-bs-toggle="collapse" aria-expanded="false" href="#finance">
-                <span class="sidenav-mini-icon"> F </span>
+              <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#finance">
+                <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Finance Reports <b class="caret"></b></span>
               </a>
               <div class="collapse " id="finance">
                 <ul class="nav nav-sm flex-column">
+                  <hr class="bg-black my-1">
                   <li class="nav-item">
-                    <a class="nav-link " href="#">
-                      <span class="sidenav-mini-icon text-xs"> I </span>
+                    <a class="nav-link mx-2 px-0" href="#">
+                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Income Summary </span>
                     </a>
                   </li>
+                  <hr class="bg-black my-1">
                 </ul>
               </div>
             </li>

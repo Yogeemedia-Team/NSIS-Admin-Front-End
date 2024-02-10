@@ -62,7 +62,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/class/{classId}/edit', [HomeController::class, 'editClass'])->name('class_edit');
     Route::post('/class/{classId}', [HomeController::class, 'updateClass'])->name('class_update');
     Route::delete('/class_delete/{id}', [HomeController::class, 'deleteClass'])->name('class_delete');
-    
+
 
 
     //  Extracurricular routes here
@@ -129,7 +129,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/enrollment/{enrollmentId}/edit', [HomeController::class, 'editEnrollment'])->name('enrollment_edit');
     Route::post('/enrollment/{enrollmentId}', [HomeController::class, 'updateEnrollment'])->name('enrollment_update');
     Route::delete('/enrollment_delete/{id}', [HomeController::class, 'deleteEnrollment'])->name('enrollment_delete');
-    
+
     // Admission Fee
     Route::get('/admission_fee', [HomeController::class, 'admissionFee'])->name('admission_fee');
     Route::get('/add_admission_fee', [HomeController::class, 'addAdmissionFee'])->name('add_admission_fee');
@@ -147,11 +147,19 @@ Route::group(['middleware' => 'checkRoutes'], function () {
 
     // Student payments
     Route::get('/student_payments', [HomeController::class, 'studentPayments'])->name('student_payments');
+    Route::post('/add_student_payment/get_invoices', [HomeController::class, 'studentPaymentsGetInvoices'])->name('add_student_payment_get_invoices');
+    Route::post('/student_payments/submit_invoices', [HomeController::class, 'studentPaymentsSubmitInvoices'])->name('student_payments_submit_invoices');
+    Route::post('/student_payments/search', [HomeController::class, 'searchStudentPayments'])->name('student_payments_search');
     Route::get('/add_student_payment', [HomeController::class, 'addStudentPayment'])->name('add_student_payment');
     Route::delete('/student_payment_delete/{id}', [HomeController::class, 'deleteStudentPayment'])->name('student_payment_delete');
 
+    // account_payable
     Route::get('/account_payable', [HomeController::class, 'accountPayable'])->name('account_payable');
+    Route::post('/account_payable/search', [HomeController::class, 'searchAccountPayable'])->name('account_payable_search');
+
+
+
     Route::get('/invoices', [HomeController::class, 'invoices'])->name('invoices');
-
-
+    Route::post('/invoices/search', [HomeController::class, 'searchInvoices'])->name('invoices_search');
+    Route::get('/invoices_view/{id}', [HomeController::class, 'invoicesView'])->name('invoices_view');
 });

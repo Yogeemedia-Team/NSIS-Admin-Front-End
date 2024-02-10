@@ -1324,35 +1324,262 @@ class HomeController extends Controller
     {
         return view('layouts.pages.student_fee.surcharge_formula.create');
     }
+
     public function deleteSurchargeFormula($enrollmentId)
     {
         // Delete enrollment with $enrollmentId
     }
 
     // Student Payments Controllers Here
-    public function studentPayments()
+    public function studentPayments(Request $request)
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.payment.index', compact('token'));
+
+        $apiData = [
+            'sd_year_grade_class_id' => '',
+            'admission_id' => '',
+            'from_date' => '',
+            'date' => ''
+        ];
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+        $allPaymentsResponse = $this->apiService->makeApiRequest('POST', 'all_user_payments', $apiData);
+
+
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.student.transaction.payment.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        if ($allPaymentsResponse['status'] === false) {
+
+            return view('layouts.pages.student.transaction.payment.index', ['errors' => $allPaymentsResponse['errors'], 'message' => $allPaymentsResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $year_grades = $classResponse['data'];
+        $allPayments = $allPaymentsResponse['data'];
+
+        return view('layouts.pages.student.transaction.payment.index', compact('token', 'year_grades', 'allPayments', 'apiData'));
     }
+
+    public function searchStudentPayments(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = $request->all();
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+        $allPaymentsResponse = $this->apiService->makeApiRequest('POST', 'all_user_payments', $apiData);
+
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.student.transaction.payment.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        if ($allPaymentsResponse['status'] === false) {
+
+            return view('layouts.pages.student.transaction.payment.index', ['errors' => $allPaymentsResponse['errors'], 'message' => $allPaymentsResponse['message'], 'apiData' => $apiData]);
+        }
+        $year_grades = $classResponse['data'];
+        $allPayments = $allPaymentsResponse['data'];
+
+        return view('layouts.pages.student.transaction.payment.index', compact('token', 'year_grades', 'allPayments', 'apiData'));
+    }
+
     public function addStudentPayment()
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.payment.create', compact('token'));
+        $apiData = [
+            'admission_id' => '',
+            'payment_date' => '',
+            'payment_amount' => '',
+            'payment_term' => ''
+        ];
+        return view('layouts.pages.student.transaction.payment.create', compact('token', 'apiData'));
     }
 
-    public function accountPayable()
+    public function studentPaymentsGetInvoices(Request $request)
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.account-payable.index', compact('token'));
+        $apiData = $request->all();
+
+        $endpoint = 'user_invoices?admission_id=' . $apiData['admission_id'] . '&date=' . $apiData['payment_date'] . '&paid_from=' . $apiData['payment_term'] . '&payment_amount=' . $apiData['payment_amount'];
+        $getPaymentsInvoicesResponse = $this->apiService->makeApiRequest('GET', $endpoint);
+
+        if ($getPaymentsInvoicesResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.payment.create', ['errors' => $getPaymentsInvoicesResponse['errors'], 'message' => $getPaymentsInvoicesResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $getInvoice = $getPaymentsInvoicesResponse['data'];
+        return view('layouts.pages.student.transaction.payment.create', compact('token', 'apiData', 'getInvoice'));
     }
-    public function invoices()
+
+    public function studentPaymentsSubmitInvoices(Request $request)
     {
         $apiService = new ApiService();
         $token = $apiService->getAccessToken();
-        return view('layouts.pages.student.transaction.invoices.index', compact('token'));
+        $apiData = $request->all();
+
+        $endpoint = 'user_payments';
+        $paymentResponse = $this->apiService->makeApiRequest('POST', $endpoint, $apiData);
+
+        if ($paymentResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.payment.create', ['errors' => $paymentResponse['errors'], 'message' => $paymentResponse['message'], 'apiData' => $apiData]);
+        }
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+
+        $apiData = [
+            'admission_id' => '',
+            'payment_date' => '',
+            'payment_amount' => '',
+            'payment_term' => ''
+        ];
+        $payment = $paymentResponse['data'];
+
+        $successMessage = 'Payment Successfully';
+
+        if ($classResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.payment.index', ['successMessage' => $successMessage, 'errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        $allPaymentsResponse = $this->apiService->makeApiRequest('POST', 'all_user_payments', $apiData);
+        if ($allPaymentsResponse['status'] === false) {
+
+            return view('layouts.pages.student.transaction.payment.index', ['successMessage' => $successMessage, 'errors' => $allPaymentsResponse['errors'], 'message' => $allPaymentsResponse['message'], 'apiData' => $apiData]);
+        }
+        $allPayments = $allPaymentsResponse['data'];
+
+        $year_grades = $classResponse['data'];
+
+        return redirect()->route('student_payments')->with(compact('token', 'year_grades', 'allPayments', 'apiData', 'successMessage'));
+    }
+
+    public function accountPayable(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = [
+            'sd_year_grade_class_id' => '',
+            'admission_id' => '',
+            'from_date' => '',
+            'to_date' => ''
+        ]; // default set data
+
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', 'account_payables'); // get table data
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class'); // get master data
+
+        if ($classResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.account-payable.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.account-payable.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $year_grades = $classResponse['data'];
+        $accountPayableData = $tableDataResponse['data'];
+
+        return view('layouts.pages.student.transaction.account-payable.index', compact('token', 'year_grades', 'accountPayableData', 'apiData'));
+    }
+
+    public function searchAccountPayable(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = $request->all();
+
+        $endPoint = 'account_payables?sd_year_grade_class_id=' . ($apiData['sd_year_grade_class_id'] ?? '') . '&admission_id=' . ($apiData['admission_id'] ?? '') . '&from_date=' . ($apiData['from_date'] ?? '') . '&to_date=' . ($apiData['to_date'] ?? '');
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', $endPoint);
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.account-payable.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.account-payable.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $year_grades = $classResponse['data'];
+        $accountPayableData = $tableDataResponse['data'];
+
+        return view('layouts.pages.student.transaction.account-payable.index', compact('token', 'year_grades', 'accountPayableData', 'apiData'));
+    }
+
+    public function invoices(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = [
+            'sd_year_grade_class_id' => '',
+            'admission_id' => '',
+            'from_date' => '',
+            'to_date' => ''
+        ];
+
+        $endPoint = 'invoice_list?sd_year_grade_class_id=' . ($apiData['sd_year_grade_class_id'] ?? '') . '&admission_id=' . ($apiData['admission_id'] ?? '') . '&from_date=' . ($apiData['from_date'] ?? '') . '&to_date=' . ($apiData['to_date'] ?? '');
+
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', $endPoint);
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+        if ($classResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.invoices.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.invoices.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $year_grades = $classResponse['data'];
+        $accountPayableData = $tableDataResponse['data'];
+        return view('layouts.pages.student.transaction.invoices.index', compact('token', 'year_grades', 'accountPayableData', 'apiData'));
+    }
+
+    public function searchInvoices(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = $request->all();
+
+        $endPoint = 'invoice_list?sd_year_grade_class_id=' . ($apiData['sd_year_grade_class_id'] ?? '') . '&admission_id=' . ($apiData['admission_id'] ?? '') . '&from_date=' . ($apiData['from_date'] ?? '') . '&to_date=' . ($apiData['to_date'] ?? '');
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', $endPoint);
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.invoices.index', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.invoices.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $year_grades = $classResponse['data'];
+
+        $accountPayableData = $tableDataResponse['data'];
+
+        return view('layouts.pages.student.transaction.invoices.index', compact('token', 'year_grades', 'accountPayableData', 'apiData'));
+    }
+
+    public function invoicesView($id)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $invoicesResponse = $this->apiService->makeApiRequest('GET', 'invoice_details?invoice_number=' . $id);
+
+        if ($invoicesResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.invoices.view', ['errors' => $invoicesResponse['errors'], 'message' => $invoicesResponse['message']]);
+        }
+
+        $details = $invoicesResponse['data'];
+
+        return view('layouts.pages.student.transaction.invoices.view', compact('token', 'details'));
     }
 }

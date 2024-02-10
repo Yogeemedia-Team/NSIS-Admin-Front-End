@@ -25,7 +25,13 @@
   <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/soft-ui-dashboard.min.js?v=1.1.1') }}"></script>
-  @yield('footer-scripts')
-</body>
 
-</html>
+  <!-- Place your script at the end of the body to ensure it's executed after the libraries are loaded -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+
+
+  @yield('footer-scripts')
+  </body>
+
+  </html>

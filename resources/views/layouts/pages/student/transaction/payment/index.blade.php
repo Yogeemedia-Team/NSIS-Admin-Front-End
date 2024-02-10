@@ -6,7 +6,7 @@
     <!-- End Navbar -->
     <div class="container-fluid body_content py-4">
         <!-- Students table -->
-
+        @include('components/session-section')
         <div class="card">
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
@@ -18,57 +18,71 @@
                     </div>
                 </div>
             </div>
-            <div class="card-header pb-0">
+            <div class="card-header">
                 <div class="row">
                     <div class="col">
-                        <form id="searchForm" method="POST">
+                        <form id="searchForm" method="POST" action="{{ route('student_payments_search')}}">
                             @csrf
                             <div class="row">
                                 <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label for="class" class="col-form-label">Class : </label>
-                                        <select class="form-select pe-5" name="sd_year_grade_class_id" required>
-                                            <option value="1">Class 1</option>
-                                            <option value="class2">Class 2</option>
-                                            <option value="class3">Class 3</option>
-                                        </select>
-                                    </div>
+                                    <label for="class" class="col-form-label">Year/Class/Grade</label>
+                                    <select class="form-select pe-5" name="sd_year_grade_class_id">
+                                        <option selected value="">All</option>
+                                        @if(isset($year_grades))
+                                        @foreach($year_grades as $year_grade)
+                                        <option value="{{$year_grade['id']}}" {{ $apiData['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : ''}}>{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                        @endforeach
+                                        @endif
+                                    </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label for="admission_id" class="col-form-label">Admission No</label>
-                                        <input type="text" class="form-control" name="admission_id" required>
-                                    </div>
+                                    <label for="admission_id" class="col-form-label">Admission No</label>
+                                    <input type="text" class="form-control" value="{{ $apiData['admission_id'] ?? '' }}" name="admission_id">
                                 </div>
                                 <!-- due_date -->
                                 <div class="col-md-3">
-                                    <div class="mb-3">
-                                        <label for="admission_id" class="col-form-label">Due Date</label>
-                                        <input type="date" class="form-control" name="due_date" id="due_date" required>
-                                    </div>
+
+                                    <label for="date" class="col-form-label">Due Date</label>
+                                    <input type="date" class="form-control" name="date" value="{{ $apiData['date'] ?? '' }}" id="date">
                                 </div>
-                                <div class="col-md-1 align-self-center">
+                                <div class="col-md-1 align-self-end">
                                     <button type="submit" class="btn btn-primary mb-0">Search</button>
                                 </div>
-
                             </div>
                         </form>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <span class="border-0"><strong class="text-dark">Admission No :</strong> &nbsp; <span id="admissionNo"></span></span>
-                <span class="border-0 ps-3"><strong class="text-dark">Name:</strong> &nbsp; <span id="studentName"></span></span>
-                <span class="border-0 ps-3"><strong class="text-dark">Class:</strong> &nbsp; <span id="gradeClass"></span></span>
-
-                <!-- Payment Details -->
-                <div class="card shadow-none border mt-3">
-                    <div class="card-body">
-                        <span class="text-dark"><strong>Payment Details - Payment ID -<span id="invoiceNo"></span></strong></span>
-                        <div class="accordion" id="transactionAccordion">
-                            <!-- Accordion Item will be dynamically added here -->
-                        </div>
-                    </div>
+            <div class="card-body pt-0">
+                <div class="table-responsive">
+                    <table id="dataTable" class="table table-striped" style="width:100%">
+                        <thead>
+                            <tr>
+                                <th class="px-2">Admission No</th>
+                                <th class="px-2">Invoices No</th>
+                                <th class="px-2">Paid Date</th>
+                                <th class="px-2">Due Date</th>
+                                <th class="px-2">Paid From</th>
+                                <th class="px-2">Paid Amount</th>
+                                <th class="px-2 text-center">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if(isset($allPayments))
+                            @foreach($allPayments as $data)
+                            <tr>
+                                <td>{{ $data['admission_no']}}</td>
+                                <td>{{ preg_replace('/\D/', '', $data['invoice_id'])}}</td>
+                                <td>{{ $data['date']}}</td>
+                                <td>{{ $data['due_date']}}</td>
+                                <td>{{ $data['paid_from']}}</td>
+                                <td>Rs. {{ $data['total_due']}}</td>
+                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
+                            </tr>
+                            @endforeach
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
 
             </div>
@@ -87,16 +101,7 @@
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-<script>
-    $(function() {
-        $("#due_date").datepicker({
-            dateFormat: 'yy-mm-dd',
-            onSelect: function(dateText, inst) {
-                $('#' + inst.id).attr('value', dateText);
-            }
-        });
-    });
-</script>
+
 <script>
     function confirmDelete(classId) {
         Swal.fire({

@@ -199,7 +199,20 @@ Breadcrumbs::for('student_payments', function ($trail) {
     $trail->push('Student Transactions', route('student_payments'));
 });
 
+Breadcrumbs::for('add_student_payment_get_invoices', function ($trail) {
+    $trail->parent('student_payments');
+    $trail->push('Add Student Transaction', route('add_student_payment'));
+});
+Breadcrumbs::for('student_payments_submit_invoices', function ($trail) {
+    $trail->parent('student_payments');
+    $trail->push('Add Student Transaction', route('add_student_payment'));
+});
 Breadcrumbs::for('add_student_payment', function ($trail) {
+    $trail->parent('student_payments');
+    $trail->push('Add Student Transaction', route('add_student_payment'));
+});
+
+Breadcrumbs::for('student_payments_search', function ($trail) {
     $trail->parent('student_payments');
     $trail->push('Add Student Transaction', route('add_student_payment'));
 });
@@ -209,8 +222,23 @@ Breadcrumbs::for('account_payable', function ($trail) {
     $trail->parent('home');
     $trail->push('Account Payable', route('account_payable'));
 });
+Breadcrumbs::for('account_payable_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Account Payable', route('account_payable'));
+});
 
 Breadcrumbs::for('invoices', function ($trail) {
     $trail->parent('home');
     $trail->push('Invoices', route('invoices'));
+});
+
+Breadcrumbs::for('invoices_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Invoices', route('invoices'));
+});
+
+Breadcrumbs::for('invoices_view', function ($trail, $invoiceId) {
+    $trail->parent('home');
+    $trail->push('Invoices', route('invoices'));
+    $trail->push('Invoices View', route('invoices_view', $invoiceId));
 });
