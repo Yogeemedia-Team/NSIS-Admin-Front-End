@@ -260,7 +260,7 @@
                     @if (strpos($key, 'sd_') === 0)
                     <div class="col-md-3 bg-white">
                         <a href="{{ asset("storage/".$value) }}" class="btn bg-white">
-                            <img src="{{ asset('assets/img/form_img/attachments.png') }}" class="w-25" alt="...">
+                            <img src="{{ asset('assets/img/form_img/attachments.png') }}" class="w-15" alt="...">
 
                             <p class="pt-2">{{ ucwords(str_replace('_', ' ', str_replace('sd_', '', $key))) }}</p>
                         </a>

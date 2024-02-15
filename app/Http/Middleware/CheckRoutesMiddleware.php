@@ -32,8 +32,9 @@ class CheckRoutesMiddleware
         if (isset($response['status']) && $response['status'] === true) {
             return $next($request);
         } else {
+            return redirect()->route('user.login-form');
             // API request failed, you can handle it here
-             return response()->view('errors.401', ['exception' => new \Exception($response['message'])], 401);
+            //  return response()->view('errors.401', ['exception' => new \Exception($response['message'])], 401);
         }
     }
 }
