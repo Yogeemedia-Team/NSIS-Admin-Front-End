@@ -6,13 +6,13 @@
     @include('components/header-ui')
     <!-- End Navbar -->
     <div class="container-fluid body_content py-4">
-    @include('components/session-section')
+        @include('components/session-section')
         <!-- step form -->
         <div class="card">
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
-                        <h5 class="font-weight-bolder text-white mb-0">Student Register Form</h5>
+                        <h5 id="scrollTop" class="font-weight-bolder text-white mb-0">Student Register Form</h5>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                                         <label for="sd_year_grade_class_id" class="form-label">Year/Class/Grade<span style="color:red;"> *</span></label>
                                         <select class="form-select" name="sd_year_grade_class_id">
                                             @foreach ( $year_grades as $year_grade)
-                                            <option value="{{$year_grade['id']}}" {{ old('sd_year_grade_class_id') == $year_grade['id'] ? 'selected' : ''}} >{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                                            <option value="{{$year_grade['id']}}" {{ old('sd_year_grade_class_id') == $year_grade['id'] ? 'selected' : ''}}>{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -64,7 +64,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_name_with_initials" class="form-label">Name with Initials<span style="color:red;"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_name_with_initials')}}"name="sd_name_with_initials" placeholder="Enter Name with Initials" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_with_initials')}}" name="sd_name_with_initials" placeholder="Enter Name with Initials" required>
                                     </div>
                                 </div>
 
@@ -95,7 +95,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_address_city" class="form-label">Address City<span style="color:red;"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_address_city')}}"  name="sd_address_city" placeholder="Enter City" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_address_city')}}" name="sd_address_city" placeholder="Enter City" required>
                                     </div>
                                 </div>
 
@@ -103,7 +103,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_residence" class="form-label">Telephone Residence<span style="color:red;"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"   value="{{old('sd_telephone_residence')}}" name="sd_telephone_residence" placeholder="Enter Residence Telephone">
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{old('sd_telephone_residence')}}" name="sd_telephone_residence" placeholder="Enter Residence Telephone">
                                     </div>
                                 </div>
 
@@ -111,7 +111,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_mobile" class="form-label">Telephone Mobile<span style="color:red;"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"  value="{{old('sd_telephone_mobile')}}"  name="sd_telephone_mobile" placeholder="Enter Mobile Telephone" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{old('sd_telephone_mobile')}}" name="sd_telephone_mobile" placeholder="Enter Mobile Telephone" required>
                                     </div>
                                 </div>
 
@@ -119,7 +119,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_telephone_whatsapp" class="form-label">Telephone WhatsApp<span style="color:red;"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'"  value="{{old('sd_telephone_whatsapp')}}"  name="sd_telephone_whatsapp" placeholder="Enter WhatsApp Telephone" required>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{old('sd_telephone_whatsapp')}}" name="sd_telephone_whatsapp" placeholder="Enter WhatsApp Telephone" required>
                                     </div>
                                 </div>
 
@@ -127,7 +127,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_email_address" class="form-label">Email Address<span style="color:red;"> *</span></label>
-                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'"   value="{{old('sd_email_address')}}"  name="sd_email_address" placeholder="Enter Email Address" required>
+                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'" value="{{old('sd_email_address')}}" name="sd_email_address" placeholder="Enter Email Address" required>
                                     </div>
                                 </div>
                                 <!-- Sex -->
@@ -145,7 +145,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_date_of_birth" class="form-label">Date of Birth<span style="color:red;"> *</span></label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'"   value="{{old('sd_date_of_birth')}}"  name="sd_date_of_birth" placeholder="Select Date of Birth" required>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_date_of_birth')}}" name="sd_date_of_birth" placeholder="Select Date of Birth" required>
                                     </div>
                                 </div>
 
@@ -153,7 +153,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_religion" class="form-label">Religion<span style="color:red;"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_religion')}}"  name="sd_religion" placeholder="Enter Religion" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_religion')}}" name="sd_religion" placeholder="Enter Religion" required>
                                     </div>
                                 </div>
 
@@ -161,7 +161,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_ethnicity" class="form-label">Ethnicity<span style="color:red;"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'"  value="{{old('sd_ethnicity')}}"  name="sd_ethnicity" placeholder="Enter Ethnicity" required>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_ethnicity')}}" name="sd_ethnicity" placeholder="Enter Ethnicity" required>
                                     </div>
                                 </div>
 
@@ -169,7 +169,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number<span style="color:red;"> *</span></label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'"  value="{{old('sd_birth_certificate_number')}}"  name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{old('sd_birth_certificate_number')}}" name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number" required>
                                     </div>
                                 </div>
 
@@ -177,7 +177,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sd_health_conditions" class="form-label">Health Conditions</label>
-                                        <textarea class="form-control" oninput="this.className = 'form-control'"   value="{{old('sd_health_conditions')}}"  name="sd_health_conditions" placeholder="Enter Health Conditions"></textarea>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_health_conditions')}}" name="sd_health_conditions" placeholder="Enter Health Conditions"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -494,7 +494,9 @@
 
 @endsection
 @section('footer-scripts')
+
 <script src="{{ asset('assets/js/plugins/cropper.min.js') }}"></script>
+
 <script>
     var cropper;
     var imageInput = document.getElementById('sd_profile_picture');
@@ -661,6 +663,7 @@
     showTab(currentTab); // Display the current tab
 
     function showTab(n) {
+
         // This function will display the specified tab of the form...
         var x = document.getElementsByClassName("tab");
 
@@ -677,14 +680,13 @@
             document.getElementById("nextBtn").innerHTML = "Next";
         }
 
-        $('html, body').animate({
-            scrollTop: $('#regForm').offset().top
-        }, 'slow');
+        document.location.href = "#scrollTop";
         //... and run a function that will display the correct step indicator:
         fixStepIndicator(n)
     }
 
     function nextPrev(n) {
+        document.location.href = "#scrollTop";
 
         // This function will figure out which tab to display
         var x = document.getElementsByClassName("tab");
@@ -703,8 +705,8 @@
         // Otherwise, display the correct tab:
         showTab(currentTab);
         updateSiblingsData(); // Call the update function
-
     }
+
 
     function validateForm() {
         var x, y, i, valid = true;
@@ -732,7 +734,7 @@
     function fixStepIndicator(n) {
         // This function removes the "active" class of all steps...
         var i, x = document.getElementsByClassName("step");
-        for (i = 0; i < x.length-1; i++) {
+        for (i = 0; i < x.length - 1; i++) {
             x[i].className = x[i].className.replace(" active", "");
         }
         //... and adds the "active" class on the current step:
