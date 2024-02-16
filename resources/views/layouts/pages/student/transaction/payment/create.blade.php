@@ -21,16 +21,16 @@
                     @csrf
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="admission_id" class="col-form-label">Admission No</label>
+                            <label for="admission_id" class="col-form-label">Admission No<span class="text-danger"> *</span></label>
 
                             <input type="text" class="form-control" name="admission_id" value="{{ $apiData['admission_id'] ?? '' }}" required>
                         </div>
                         <div class="col-md-2">
-                            <label for="payment_date" class="col-form-label">Paid Date</label>
+                            <label for="payment_date" class="col-form-label">Paid Date<span class="text-danger"> *</span></label>
                             <input type="date" class="form-control" value="{{ $apiData['payment_date'] ?? '' }}" name="payment_date" required>
                         </div>
                         <div class="col-md-3">
-                            <label for="payment_term" class="col-form-label">Payment Term</label>
+                            <label for="payment_term" class="col-form-label">Payment Term<span class="text-danger"> *</span></label>
                             <select class="form-select pe-5" name="payment_term" required>
                                 <option selected disabled value="">Select</option>
                                 @if(isset($apiData))
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                         <div class="col-md-2">
-                            <label for="payment_amount" class="col-form-label">Paid Amount</label>
+                            <label for="payment_amount" class="col-form-label">Paid Amount<span class="text-danger"> *</span></label>
                             <input type="number" class="form-control number-input" value="{{ $apiData['payment_amount'] ?? '' }}" name="payment_amount" required>
                         </div>
 

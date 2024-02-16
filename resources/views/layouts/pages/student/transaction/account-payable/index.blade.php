@@ -59,23 +59,27 @@
                     <table id="dataTable" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
+                                <th class="px-2">Index</th>
+                                <th class="px-2">Account Payables No</th>
                                 <th class="px-2">Admission No</th>
-                                <th class="px-2">Invoices No</th>
-                                <th class="px-2">Amount</th>
-                                <th class="px-2">Type</th>
+                                <th class="px-2">Description</th>
+                                <th class="px-2">Date</th>
                                 <th class="px-2">Due Date</th>
+                                <th class="px-2">Amoount</th>
                                 <th class="px-2 text-center">Status</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($accountPayableData as $data)
+                            @foreach($accountPayableData as $key => $data)
                             <tr>
+                                <td>{{ $key+1}}</td>
+                                <td>{{ $data['id']}}</td>
                                 <td>{{ $data['admission_no']}}</td>
-                                <td>{{ $data['invoice_number']}}</td>
-                                <td>{{ $data['amount']}}</td>
-                                <td>{{ $data['type']}}</td>
+                                <td>{{ $data['type']}} date</td>
+                                <td>{{ date('Y-m-d' , strtotime($data['created_at']))}}</td>
                                 <td>{{ $data['due_date']}}</td>
-                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
+                                <td>{{ $data['amount']}}</td>
+                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Completed" : "Partial Paid")) : "Unknown" }}</td>
                             </tr>
                             @endforeach
                         </tbody>

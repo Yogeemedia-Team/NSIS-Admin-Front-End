@@ -39,11 +39,16 @@
                                     <label for="admission_id" class="col-form-label">Admission No</label>
                                     <input type="text" class="form-control" value="{{ $apiData['admission_id'] ?? '' }}" name="admission_id">
                                 </div>
+                
                                 <!-- due_date -->
-                                <div class="col-md-3">
-
-                                    <label for="date" class="col-form-label">Due Date</label>
-                                    <input type="date" class="form-control" name="date" value="{{ $apiData['date'] ?? '' }}" id="date">
+                                <div class="col-md-2">
+                                    <label for="admission_id" class="col-form-label">From Date</label>
+                                    <input type="date" class="form-control" value="{{ $apiData['from_date'] ?? '' }}" name="from_date" id="from_date">
+                                </div>
+                                <!-- due_date -->
+                                <div class="col-md-2">
+                                    <label for="admission_id" class="col-form-label">To Date</label>
+                                    <input type="date" class="form-control" value="{{ $apiData['to_date'] ?? '' }}" name="to_date" id="to_date">
                                 </div>
                                 <div class="col-md-1 align-self-end">
                                     <button type="submit" class="btn btn-primary mb-0">Search</button>
@@ -58,26 +63,28 @@
                     <table id="dataTable" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th class="px-2">Admission No</th>
-                                <th class="px-2">Invoices No</th>
-                                <th class="px-2">Paid Date</th>
-                                <th class="px-2">Due Date</th>
-                                <th class="px-2">Paid From</th>
+                                <th class="px-2">Transaction Id</th>
+                                <!-- <th class="px-2">Admission No</th> -->
+                                <th class="px-2">Payment Date</th>
+                                <th class="px-2">Payment Term</th>
                                 <th class="px-2">Paid Amount</th>
-                                <th class="px-2 text-center">Status</th>
+                                <th class="px-2 text-center">Payment Status</th>
+                                <th class="px-2 text-center">View</th>
                             </tr>
                         </thead>
                         <tbody>
                             @if(isset($allPayments))
                             @foreach($allPayments as $data)
                             <tr>
-                                <td>{{ $data['admission_no']}}</td>
-                                <td>{{ preg_replace('/\D/', '', $data['invoice_id'])}}</td>
+                                <td>{{ $data['payment_id']}}</td>
+                                <!-- <td>{{ $data['admission_no']}}</td> -->
                                 <td>{{ $data['date']}}</td>
-                                <td>{{ $data['due_date']}}</td>
                                 <td>{{ $data['paid_from']}}</td>
                                 <td>Rs. {{ $data['total_due']}}</td>
-                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
+                                <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Confirmed" : "Partial Paid")) : "Unknown" }}</td>
+                                <td class="justify-content-center" style="display: flex;">
+                                    <a class="btn btn-warning m-0 py-1 px-2 me-2" href="{{ route('student_paymet_view', ['payment_id' => $data['payment_id']]) }}"><i class="fa-solid fa-eye"></i></a>
+                                </td>
                             </tr>
                             @endforeach
                             @endif

@@ -1582,4 +1582,20 @@ class HomeController extends Controller
 
         return view('layouts.pages.student.transaction.invoices.view', compact('token', 'details'));
     }
+
+    public function studentPaymetView($payment_id)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $invoicesResponse = $this->apiService->makeApiRequest('GET', 'payment_detail?payment_id=' . $payment_id);
+
+        if ($invoicesResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.payment.view', ['errors' => $invoicesResponse['errors'], 'message' => $invoicesResponse['message']]);
+        }
+
+        $details = $invoicesResponse['data'];
+
+        return view('layouts.pages.student.transaction.payment.view', compact('token', 'details'));
+    }
 }
