@@ -212,6 +212,12 @@ Breadcrumbs::for('add_student_payment', function ($trail) {
     $trail->push('Add Student Transaction', route('add_student_payment'));
 });
 
+// 
+Breadcrumbs::for('student_paymet_view', function ($trail, $invoiceId) {
+    $trail->parent('student_payments');
+    $trail->push('Student Transaction View', route('student_paymet_view', $invoiceId));
+});
+
 Breadcrumbs::for('student_payments_search', function ($trail) {
     $trail->parent('student_payments');
     $trail->push('Add Student Transaction', route('add_student_payment'));

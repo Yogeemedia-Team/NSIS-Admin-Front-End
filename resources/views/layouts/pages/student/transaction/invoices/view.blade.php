@@ -24,7 +24,6 @@
                         </div>
                         <div class="col-md-6 align-self-center">
                             <p class="text-black fs-5 fw-bolder mb-0">Invoice <span class="fs-5 fw-bold">{{ $details[0]['invoice_number']}}</span></p>
-                            <small class="fw-light">(Renewal)</small>
                         </div>
                         <div class="col-md-2 offset-2 align-self-center">
                             <button id="downloadButton" type="button" class="btn btn-transparent shadow border text-black mb-0">
@@ -38,19 +37,19 @@
                     <hr class="bg-black my-1">
                     <div class="row px-1 invoice-address py-1">
                         <div class="col-md-6 text-start">
-                            <p class="mb-0 fs-5 text-black fw-bold">Tharaka Dissanaye (Axicey)</p>
-                            <p class="mb-0 fs-6 text-black fw-light">430, Gamameda Road,<br>ja-Ela,<br>11350,<br>Sri Lanka</p>
-                        </div>
-                        <div class="col-md-6 text-end">
-                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">{{ $details[0]['sd_name_with_initials']}}</p>
+                            <p class="mb-0 fs-5 text-black fw-bold">Admission No : {{ $details[0]['admission_no']}}</p>
+                            <p class="mb-0 fs-5 text-black fw-bold">Student Name : {{ $details[0]['sd_name_with_initials']}}</p>
                             <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_line1']}}{{ $details[0]['sd_address_line1'] == ''? '':',' }}</p>
                             <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_line2']}}{{ $details[0]['sd_address_line2'] == ''? '':',' }}</p>
-                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">{{ $details[0]['sd_address_city']}}</p>
+                        </div>
+                        <div class="col-md-6 text-end">
+                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">negombo south international school</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">nittambuwa branch</p>
                         </div>
                     </div>
                     <div class="row px-1 issued-date text-end py-1">
                         <p class="mb-0 fs-5 text-black fw-light">Issued {{ \Carbon\Carbon::parse($details[0]['created_at'])->format('M d Y') }}</p>
-                        <p class="mb-0 fs-5 text-success fw-bolder">Paid {{ \Carbon\Carbon::parse($details[0]['updated_at'])->format('M d Y') }}</p>
+                        <p class="mb-0 fs-5 text-success fw-bolder">Invoice Status : {{ isset($details[0]['status']) ? ($details[0]['status'] == 0 ? "New" : ($details[0]['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</p>
                     </div>
                     <div class="row px-1 issued-date py-1">
                         <div class="table-responsive">
@@ -59,6 +58,7 @@
                                     <tr>
                                         <th class="col px-2">#</th>
                                         <th class="col-5 px-2">Admission No</th>
+                                        <!-- <th class="col-2 px-2">Date</th> -->
                                         <th class="col-2 px-2">Due Date</th>
                                         <th class="col-2 px-2">Amount</th>
                                         <th class="col-2 px-2">Status</th>
@@ -82,14 +82,12 @@
                     <div class="row amount-details text-end">
                         <div class="col-md-10 text-end">
                             <p class="fw-bold mb-0 fs-5">Total Amount :</p>
-                            <p class="fw-bold mb-0 fs-5">Current Outstanding Amount :</p>
                             <p class="fw-bold mb-0 fs-5">Paid Amount :</p>
                             <p class="fw-bold mb-0 fs-5">Due Amount :</p>
                             <p class="fw-bold mb-0 fs-5">New Total Outstanding :</p>
                         </div>
-                        <div class="col-md-2 text-center">
+                        <div class="col-md-2 text-end">
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['invoice_total']),2) }}</p>
-                            <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['current_total_outstanding']),2) }}</p>
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_paid']),2) }}</p>
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_due']),2) }}</p>
                             <hr class="bg-black my-1">

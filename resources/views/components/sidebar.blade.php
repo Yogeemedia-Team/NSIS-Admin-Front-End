@@ -29,7 +29,7 @@
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#students" class="nav-link mx-2 {{ request()->routeIs('students') || request()->routeIs('formpage') ||
             request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('single-student') || request()->routeIs('single-student') 
-            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view') 
+            || request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('student_paymet_view') || request()->routeIs('add_student_payment')  || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view') 
              ? 'active' : 'text-white' }}" aria-controls="students" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-users"></i>
@@ -38,7 +38,7 @@
         </a>
         <div class="collapse {{ request()->routeIs('students') || request()->routeIs('formpage') ||
             request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('single-student') || request()->routeIs('single-student') ||
-             request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : '' }} " id="students">
+             request()->routeIs('student_edit') || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('student_paymet_view') || request()->routeIs('add_student_payment')  || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : '' }} " id="students">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('students') || request()->routeIs('formpage') || request()->routeIs('single-student') || request()->routeIs('student_edit') ? 'active' : '' }} ">
               <a class="nav-link mx-0" href="{{ route('students') }}">
@@ -46,15 +46,15 @@
                 <span class="sidenav-normal"> Student Information </span>
               </a>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')   ? 'active' : '' }} ">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('student_paymet_view') || request()->routeIs('add_student_payment')  || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search')  || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')   ? 'active' : '' }} ">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#stinfo">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Student Transaction <b class="caret"></b></span>
               </a>
-              <div class="collapse {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search') || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : ''}} " id="stinfo">
+              <div class="collapse {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('student_paymet_view') || request()->routeIs('add_student_payment')  || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) || request()->routeIs('account_payable') || request()->routeIs('account_payable_search') || request()->routeIs('invoices') || request()->routeIs('invoices_search') || request()->routeIs('invoices_view')  ? 'show' : ''}} " id="stinfo">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
-                  <li class="nav-item {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('add_student_payment') || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) ? 'active sub-title' : ''}} ">
+                  <li class="nav-item {{request()->routeIs('add_student_payment_get_invoices') || request()->routeIs('student_paymet_view') || request()->routeIs('add_student_payment')  || request()->routeIs('student_payments' ) || request()->routeIs('student_payments_get_invoices' ) || request()->routeIs('student_payments_search' ) ? 'active sub-title' : ''}} ">
                     <a class="nav-link mx-2 px-0" href="{{ route('student_payments') }}">
                       <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Student Payments </span>
