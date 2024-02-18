@@ -80,13 +80,13 @@
                         </div>
                     </div>
                     <div class="row amount-details text-end">
-                        <div class="col-md-10 text-end">
+                        <div class="col-md-9 text-end">
                             <p class="fw-bold mb-0 fs-5">Total Amount :</p>
                             <p class="fw-bold mb-0 fs-5">Paid Amount :</p>
                             <p class="fw-bold mb-0 fs-5">Due Amount :</p>
                             <p class="fw-bold mb-0 fs-5">New Total Outstanding :</p>
                         </div>
-                        <div class="col-md-2 text-end">
+                        <div class="col-md-3 text-end">
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['invoice_total']),2) }}</p>
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_paid']),2) }}</p>
                             <p class="fw-light mb-0 fs-5">Rs. {{number_format(doubleval($details[0]['total_due']),2) }}</p>
@@ -112,32 +112,45 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
 
 <!-- print pdf -->
 <script>
     $(document).ready(function() {
         $("#downloadButton").click(function() {
             $("#downloadButton").addClass('d-none');
-            html2canvas(document.getElementById("InvoicesForDownload"), {
-                scale: 2,
-                onrendered: function(canvas) {
-                    var imgData = canvas.toDataURL('image/png');
-                    var pdf = new jsPDF({
-                        orientation: 'portrait', // 'portrait' or 'landscape'
-                        unit: 'mm', // measurement unit: 'pt' (points), 'mm', 'cm', 'in'
-                        format: 'a4', // page format: 'a3', 'a4', 'a5', 'letter', 'legal'
-                        putOnlyUsedFonts: false // optimize PDF file size by embedding only used fonts
-                    })
-                    pdf.addImage(imgData, 'JPEG', 0, 0, pdf.internal.pageSize.width, pdf.internal.pageSize.height);
 
-                    pdf.save("invoice.pdf");
-                    $("#downloadButton").removeClass('d-none');
+            // Get the HTML content of the element to be converted to PDF
+            var content = document.getElementById("InvoicesForDownload");
+
+            // Use html2pdf to convert HTML content to PDF
+            html2pdf(content, {
+                margin: 10,
+                filename: 'invoice.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    dpi: 192,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                },
+                pagebreak: {
+                    mode: ['avoid-all', 'css', 'legacy']
                 }
+            }).then(function() {
+                $("#downloadButton").removeClass('d-none');
             });
         });
-
     });
 </script>
+
+
 
 <script>
     $(function() {
