@@ -172,7 +172,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
+                        {{-- <tr>
                                 <td>Sample Grade</td>
                                 <td>Sample Name</td>
                                 <td>Sample City</td>
@@ -189,8 +189,10 @@
                                             <i class="fa-solid fa-trash"></i>
                                         </button>
                                     </form>
+                                   
                                 </td>
                             </tr>
+                            --}}
                         </tbody>
                     </table>
                 </div>
