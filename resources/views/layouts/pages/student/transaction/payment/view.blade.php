@@ -57,29 +57,29 @@
                                         <table id="dataTable" class="table table-striped" style="width:100%">
                                             <thead>
                                                 <tr>
-                                                    <th class="col px-2">#</th>
-                                                    <th class="col-5 px-2">Payable No</th>
-                                                    <th class="col-2 px-2">Description</th>
-                                                    <th class="col-2 px-2">Date</th>
-                                                    <th class="col-2 px-2">Due Date</th>
-                                                    <th class="col-2 px-2">Amount</th>
-                                                    <th class="col-2 px-2">Status</th>
+                                                    <th class="px-2">#</th>
+                                                    <th class="px-2">Payables No</th>
+                                                    <th class="px-2">Description</th>
+                                                    <th class="px-2">Date</th>
+                                                    <th class="px-2">Due Date</th>
+                                                    <th class="px-2">Amoount</th>
+                                                    <th class="px-2 text-center">Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                                 @foreach( $header['accountPayables'] as $key => $data)
                                                 <tr>
-                                                    <th scope="row">{{ $key+1 }}</th>
-                                                    <td>{{ $data['invoice_number'] }}</td>
-                                                    <td>{{ $data['type'] }}</td>
-                                                    <td>{{ \Carbon\Carbon::parse($data['created_at'])->format('M d Y') }}</td>
+                                                    <td scope="row">{{ $key+1}}</td>
+                                                    <td>{{ $data['id']}}</td>
+                                                    <td>{{ $data['type']}} date</td>
+                                                    <td>{{ \Carbon\Carbon::parse($data['updated_at'])->format('M d Y') }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($data['due_date'])->format('M d Y') }}</td>
                                                     <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>
-                                                    <td>{{ isset($data['status']) ? ($data['status'] == 0 ? "New" : ($data['status'] == 1 ? "Paid" : "Partial Paid")) : "Unknown" }}</td>
+                                                    <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Completed" : "Partial Paid")) : "Unknown" }}</td>
                                                 </tr>
                                                 @endforeach
-
                                             </tbody>
+                                            
                                         </table>
                                     </div>
                                 </div>

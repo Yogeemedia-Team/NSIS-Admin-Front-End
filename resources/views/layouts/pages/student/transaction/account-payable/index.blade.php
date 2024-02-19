@@ -59,7 +59,7 @@
                     <table id="dataTable" class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
-                                <th class="px-2">Index</th>
+                                <th class="px-2">#</th>
                                 <th class="px-2">Account Payables No</th>
                                 <th class="px-2">Admission No</th>
                                 <th class="px-2">Description</th>
@@ -76,9 +76,9 @@
                                 <td>{{ $data['id']}}</td>
                                 <td>{{ $data['admission_no']}}</td>
                                 <td>{{ $data['type']}} date</td>
-                                <td>{{ date('Y-m-d' , strtotime($data['created_at']))}}</td>
+                                <td>{{ date('Y-m-d' , strtotime($data['updated_at']))}}</td>
                                 <td>{{ $data['due_date']}}</td>
-                                <td>{{ $data['amount']}}</td>
+                                <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>
                                 <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Completed" : "Partial Paid")) : "Unknown" }}</td>
                             </tr>
                             @endforeach
