@@ -44,6 +44,22 @@ class HomeController extends Controller
 
     public function students(Request $request)
     {
+
+
+
+        $apiData = [
+            'sd_year_grade_class_id' => $request->get('sd_year_grade_class_id') ?? '',
+            'admission_id' => $request->get('admission_id') ?? '',
+        ];
+
+
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.students', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+
         $response = $this->apiService->makeApiRequest('GET', 'students');
 
         if ($response['status'] === false) {
@@ -52,7 +68,35 @@ class HomeController extends Controller
         } else {
 
             $studentDetails = $response['data'];
-            return view('layouts.pages.students', compact('studentDetails'));
+            $year_grades = $classResponse['data'];
+            return view('layouts.pages.students', compact('studentDetails', 'year_grades', 'apiData'));
+        }
+    }
+
+    public function studentsSearch(Request $request)
+    {
+
+        $apiData = [
+            'sd_year_grade_class_id' => $request->get('sd_year_grade_class_id') ?? '',
+            'admission_id' => $request->get('admission_id') ?? '',
+        ];
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.students', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $response = $this->apiService->makeApiRequest('GET', 'students');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.students', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $studentDetails = $response['data'];
+            $year_grades = $classResponse['data'];
+            return view('layouts.pages.students', compact('studentDetails', 'year_grades', 'apiData'));
         }
     }
 
@@ -170,8 +214,8 @@ class HomeController extends Controller
 
             if ($response['errors'] == "validation_error") { // You can pass the response data to the view to display errors
                 return redirect()->back()
-                             ->withErrors($response['message'])
-                             ->withInput();
+                    ->withErrors($response['message'])
+                    ->withInput();
             }
 
             return redirect()->route('students');
@@ -248,30 +292,30 @@ class HomeController extends Controller
                 // Optionally, delete the temporary file
                 unlink($tempFilePath);
             } else {
-                $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : null;
+                $profilePicturePath = $request->hasFile('sd_profile_picture') ? $request->file('sd_profile_picture')->store('student_documents', 'public') : ''; // empty string instead of null
             }
         } else {
-            $profilePicturePath = $existingStudentData['data']['documents'][0]['sd_profile_picture'];
+            $profilePicturePath = $existingStudentData['data']['documents'][0]['sd_profile_picture'] ?? ''; // null coalescing operator to prevent possible null exception
         }
 
 
 
-        $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_birth_certificate'];
-        $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_father'];
-        $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_nic_mother'];
-        $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_marriage_certificate'];
-        $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_permission_letter'];
-        $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents', 'public') : $existingStudentData['data']['documents'][0]['sd_leaving_certificate'];
+        $birthCertificatePath = $request->hasFile('sd_birth_certificate') ? $request->file('sd_birth_certificate')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_birth_certificate'] ?? '');
+        $nicFatherPath = $request->hasFile('sd_nic_father') ? $request->file('sd_nic_father')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_nic_father'] ?? '');
+        $nicMotherPath = $request->hasFile('sd_nic_mother') ? $request->file('sd_nic_mother')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_nic_mother'] ?? '');
+        $marriageCertificatePath = $request->hasFile('sd_marriage_certificate') ? $request->file('sd_marriage_certificate')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_marriage_certificate'] ?? '');
+        $permissionLetterPath = $request->hasFile('sd_permission_letter') ? $request->file('sd_permission_letter')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_permission_letter'] ?? '');
+        $leavingCertificatePath = $request->hasFile('sd_leaving_certificate') ? $request->file('sd_leaving_certificate')->store('student_documents', 'public') : ($existingStudentData['data']['documents'][0]['sd_leaving_certificate'] ?? '');
 
         // Update the data with the new values
         $updatedData = $request->all(); // You might need to modify this based on your form fields
-        $updatedData['sd_profile_picture'] = $profilePicturePath;
-        $updatedData['sd_birth_certificate'] = $birthCertificatePath;
-        $updatedData['sd_nic_father'] = $nicFatherPath;
-        $updatedData['sd_nic_mother'] = $nicMotherPath;
-        $updatedData['sd_marriage_certificate'] = $marriageCertificatePath;
-        $updatedData['sd_permission_letter'] = $permissionLetterPath;
-        $updatedData['sd_leaving_certificate'] = $leavingCertificatePath;
+        $updatedData['sd_profile_picture'] = $profilePicturePath ?: '';
+        $updatedData['sd_birth_certificate'] = $birthCertificatePath ?: '';
+        $updatedData['sd_nic_father'] = $nicFatherPath ?: '';
+        $updatedData['sd_nic_mother'] = $nicMotherPath ?: '';
+        $updatedData['sd_marriage_certificate'] = $marriageCertificatePath ?: '';
+        $updatedData['sd_permission_letter'] = $permissionLetterPath ?: '';
+        $updatedData['sd_leaving_certificate'] = $leavingCertificatePath ?: '';
 
 
 
@@ -287,6 +331,102 @@ class HomeController extends Controller
             Alert::success('Success', 'Student update successful!')->showConfirmButton('OK');
             return redirect()->route('students');
         }
+    }
+
+    // student upgrade to next year
+    public function studentUpgradeUI(Request $request)
+    {
+
+        $apiData = [
+            'sd_year_grade_class_id' => '',
+            'promote_sd_year_grade_class_id' => '',
+            'default_monthly_fee' => '',
+        ];
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $response = $this->apiService->makeApiRequest('GET', 'students');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $studentDetails = $response['data'];
+            $year_grades = $classResponse['data'];
+            return view('layouts.pages.student.upgrade.upgrade', compact('studentDetails', 'year_grades', 'apiData'));
+        }
+    }
+    public function studentUpgradeUISearch(Request $request)
+    {
+        $apiData = [
+            'sd_year_grade_class_id' =>  $request->sd_year_grade_class_id ?? '',
+            'promote_sd_year_grade_class_id' =>  $request->promote_sd_year_grade_class_id ?? '',
+            'default_monthly_fee' =>  $request->default_monthly_fee ?? '',
+        ];
+
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        if ($classResponse['status'] === false) {
+
+            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $response = $this->apiService->makeApiRequest('GET', 'students');
+
+        if ($response['status'] === false) {
+
+            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $response['errors'], 'message' => $response['message']]);
+        } else {
+
+            $studentDetails = $response['data'];
+            $year_grades = $classResponse['data'];
+            return view('layouts.pages.student.upgrade.upgrade', compact('studentDetails', 'year_grades', 'apiData'));
+        }
+    }
+
+    public function studentUpgradeForme(Request $request)
+    {
+
+        $data = $request;
+
+        // Extracting relevant data
+        $promoted_sd_year_grade_class_id = $data['promote_sd_year_grade_class_id'];
+
+        $studentData = collect($data)
+            ->filter(function ($value, $key) {
+                return strpos($key, 'student_id_') !== false;
+            })
+            ->map(function ($studentId, $key) use ($data) {
+                $studentKey = str_replace('student_id_', '', $key);
+                $monthlyFeeKey = 'default_monthly_fee_' . $studentKey;
+                return [
+                    'student_id' => $studentId,
+                    'monthly_fee' => $data[$monthlyFeeKey]
+                ];
+            })
+            ->values()
+            ->toArray();
+
+        // Constructing final result
+        $result = [
+            'prev_sd_year_grade_class_id' => $data['sd_year_grade_class_id'],
+            'promoted_sd_year_grade_class_id' => $promoted_sd_year_grade_class_id,
+            'student_data' => $studentData
+        ];
+
+        $response =  $this->apiService->makeApiRequest('POST', 'promote', $result);
+
+        if ($response['status'] === false) {
+            Alert::error('Error', $response['message'])->showConfirmButton('OK');
+        } else {
+            Alert::success('Success', 'Student promote successful!')->showConfirmButton('OK');
+        }
+
+        return redirect('/student_promotion')->withInput();
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

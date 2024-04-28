@@ -63,16 +63,16 @@
                                 <!-- Name with Initials -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_name_with_initials" class="form-label">Name with Initials<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_with_initials')}}" name="sd_name_with_initials" placeholder="Enter Name with Initials" required>
+                                        <label for="sd_name_with_initials" class="form-label">Name with Initials</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_with_initials')}}" name="sd_name_with_initials" placeholder="Enter Name with Initials" >
                                     </div>
                                 </div>
 
                                 <!-- Name in Full -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_name_in_full" class="form-label">Name in Full<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_in_full')}}" name="sd_name_in_full" placeholder="Enter Full Name" required>
+                                        <label for="sd_name_in_full" class="form-label">Name in Full</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_name_in_full')}}" name="sd_name_in_full" placeholder="Enter Full Name" >
                                     </div>
                                 </div>
                                 <!-- Address Line 1 -->
@@ -102,7 +102,7 @@
                                 <!-- Telephone Residence -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_telephone_residence" class="form-label">Telephone Residence<span class="text-danger"> *</span></label>
+                                        <label for="sd_telephone_residence" class="form-label">Telephone Residence</label>
                                         <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{old('sd_telephone_residence')}}" name="sd_telephone_residence" placeholder="Enter Residence Telephone">
                                     </div>
                                 </div>
@@ -126,14 +126,14 @@
                                 <!-- Email Address -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_email_address" class="form-label">Email Address<span class="text-danger"> *</span></label>
-                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'" value="{{old('sd_email_address')}}" name="sd_email_address" placeholder="Enter Email Address" required>
+                                        <label for="sd_email_address" class="form-label">Email Address</label>
+                                        <input type="email" class="form-control email-input" oninput="this.className = 'form-control email-input'" value="{{old('sd_email_address')}}" name="sd_email_address" placeholder="Enter Email Address">
                                     </div>
                                 </div>
                                 <!-- Sex -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_sex" class="form-label">Gender<span class="text-danger"> *</span></label>
+                                        <label for="sd_sex" class="form-label">Gender</label>
                                         <select class="form-select" name="sd_gender">
                                             <option value="male">Male</option>
                                             <option value="female">Female</option>
@@ -144,32 +144,40 @@
                                 <!-- Date of Birth -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_date_of_birth" class="form-label">Date of Birth<span class="text-danger"> *</span></label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_date_of_birth')}}" name="sd_date_of_birth" placeholder="Select Date of Birth" required>
+                                        <label for="sd_date_of_birth" class="form-label">Date of Birth</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_date_of_birth')}}" name="sd_date_of_birth" placeholder="Select Date of Birth">
                                     </div>
                                 </div>
 
                                 <!-- Religion -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_religion" class="form-label">Religion<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_religion')}}" name="sd_religion" placeholder="Enter Religion" required>
+                                        <label for="sd_religion" class="form-label">Religion</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_religion')}}" name="sd_religion" placeholder="Enter Religion">
                                     </div>
                                 </div>
 
                                 <!-- Ethnicity -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_ethnicity" class="form-label">Ethnicity<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_ethnicity')}}" name="sd_ethnicity" placeholder="Enter Ethnicity" required>
+                                        <label for="sd_ethnicity" class="form-label">Ethnicity</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{old('sd_ethnicity')}}" name="sd_ethnicity" placeholder="Enter Ethnicity">
                                     </div>
                                 </div>
 
                                 <!-- Number of Birth Certificate -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{old('sd_birth_certificate_number')}}" name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number" required>
+                                        <label for="sd_birthcertificate_number" class="form-label">Birth Certificate Number</label>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{old('sd_birth_certificate_number')}}" name="sd_birth_certificate_number" placeholder="Enter Birth Certificate Number">
+                                    </div>
+                                </div>
+
+                                 <!-- Number of Monthly Fee -->
+                                 <div class="col-md-4 align-self-center">
+                                    <div class="mb-3">
+                                        <label for="monthly_fee" class="form-label">Monthly Fee <span class="text-danger"> *</span></label>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{old('monthly_fee')}}" name="monthly_fee" placeholder="Enter Monthly Fee" required>
                                     </div>
                                 </div>
 
@@ -182,6 +190,7 @@
                                 </div>
                             </div>
                         </div>
+                        
                         <div class="tab">
 
                             <h6 class="mb-3">Father’s Information</h6>
@@ -189,50 +198,50 @@
                                 <!-- First Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_first_name" class="form-label">First Name<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_first_name" placeholder="Enter Father's First Name" required>
+                                        <label for="sp_father_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_first_name" placeholder="Enter Father's First Name" >
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_last_name" class="form-label">Last Name<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_last_name" placeholder="Enter Father's Last Name" required>
+                                        <label for="sp_father_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_last_name" placeholder="Enter Father's Last Name" >
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_nic" class="form-label">NIC Number<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sp_father_nic" placeholder="Enter Father's NIC Number" required>
+                                        <label for="sp_father_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sp_father_nic" placeholder="Enter Father's NIC Number" >
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_higher_education_qualification" class="form-label">Higher Education Qualification<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_higher_education_qualification" placeholder="Enter Father's Higher Education Qualification" required>
+                                        <label for="sp_father_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_higher_education_qualification" placeholder="Enter Father's Higher Education Qualification" >
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_occupation" class="form-label">Occupation<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_occupation" placeholder="Enter Father's Occupation" required>
+                                        <label for="sp_father_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_father_occupation" placeholder="Enter Father's Occupation" >
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_contact_official" class="form-label">Official Contact Number<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_father_contact_official" placeholder="Enter Father's Official Contact Number" required>
+                                        <label for="sp_father_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_father_contact_official" placeholder="Enter Father's Official Contact Number" >
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_contact_mobile" class="form-label">Mobile Number<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_father_contact_mobile" placeholder="Enter Father's Mobile Number" required>
+                                        <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_father_contact_mobile" placeholder="Enter Father's Mobile Number" >
                                     </div>
                                 </div>
                                 <!-- Official Address -->
@@ -258,50 +267,50 @@
                                 <!-- First Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_first_name" class="form-label">First Name<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_first_name" placeholder="Enter Mother's First Name" required>
+                                        <label for="sp_mother_first_name" class="form-label">First Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_first_name" placeholder="Enter Mother's First Name" >
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_last_name" class="form-label">Last Name<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_last_name" placeholder="Enter Mother's Last Name" required>
+                                        <label for="sp_mother_last_name" class="form-label">Last Name</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_last_name" placeholder="Enter Mother's Last Name" >
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_nic" class="form-label">NIC Number<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sp_mother_nic" placeholder="Enter Mother's NIC Number" required>
+                                        <label for="sp_mother_nic" class="form-label">NIC Number</label>
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sp_mother_nic" placeholder="Enter Mother's NIC Number" >
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_higher_education_qualification" class="form-label">Higher Education Qualification<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_higher_education_qualification" placeholder="Enter Mother's Higher Education Qualification" required>
+                                        <label for="sp_mother_higher_education_qualification" class="form-label">Higher Education Qualification</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_higher_education_qualification" placeholder="Enter Mother's Higher Education Qualification" >
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_occupation" class="form-label">Occupation<span class="text-danger"> *</span></label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_occupation" placeholder="Enter Mother's Occupation" required>
+                                        <label for="sp_mother_occupation" class="form-label">Occupation</label>
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" name="sp_mother_occupation" placeholder="Enter Mother's Occupation" >
                                     </div>
                                 </div>
                                 <!-- Official Contact Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_contact_official" class="form-label">Official Contact Number<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_mother_contact_official" placeholder="Enter Mother's Official Contact Number" required>
+                                        <label for="sp_mother_contact_official" class="form-label">Official Contact Number</label>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_mother_contact_official" placeholder="Enter Mother's Official Contact Number" >
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_mother_contact_mobile" class="form-label">Mobile Number<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_mother_contact_mobile" placeholder="Enter Mother's Mobile Number" required>
+                                        <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" name="sp_mother_contact_mobile" placeholder="Enter Mother's Mobile Number" >
                                     </div>
                                 </div>
                                 <!-- Official Address -->
@@ -325,22 +334,22 @@
                                 <!-- Admission Date -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_admission_date" class="form-label">Admission Date<span class="text-danger"> *</span></label>
-                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_date" placeholder="Select Admission Date" required>
+                                        <label for="sp_father_admission_date" class="form-label">Admission Date</label>
+                                        <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_date" placeholder="Select Admission Date" >
                                     </div>
                                 </div>
                                 <!-- Admission Payment Amount -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_admission_payment_amount" class="form-label">Admission Payment Amount<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_admission_payment_amount" placeholder="Enter Admission Payment Amount" required>
+                                        <label for="sp_father_admission_payment_amount" class="form-label">Admission Payment Amount</label>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_admission_payment_amount" placeholder="Enter Admission Payment Amount" >
                                     </div>
                                 </div>
                                 <!-- Number of Installments -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sp_father_no_of_installments" class="form-label">Number of Installments<span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_no_of_installments" placeholder="Enter Number of Installments" required>
+                                        <label for="sp_father_no_of_installments" class="form-label">Number of Installments</label>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_no_of_installments" placeholder="Enter Number of Installments" >
                                     </div>
                                 </div>
                             </div>
@@ -385,8 +394,8 @@
                                 <!-- Profile Picture Path -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_profle_picture_path" class="form-label">Profile Picture<span class="text-danger"> *</span></label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" required>
+                                        <label for="sd_profle_picture_path" class="form-label">Profile Picture</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" >
 
 
                                         <!-- Hidden input for cropped image data -->
@@ -397,8 +406,8 @@
                                 <!-- Birth Certificate -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
-                                        <label for="sd_birth_certificate" class="form-label">Birth Certificate<span class="text-danger"> *</span></label>
-                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" required>
+                                        <label for="sd_birth_certificate" class="form-label">Birth Certificate</label>
+                                        <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" >
                                     </div>
                                 </div>
                                 <!-- Father NIC -->

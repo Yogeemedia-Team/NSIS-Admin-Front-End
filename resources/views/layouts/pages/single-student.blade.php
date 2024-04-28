@@ -165,6 +165,7 @@
             <div class="card-header py-0">
                 <div class="text-dark fw-bold">Parent Details</div>
             </div>
+
             <div class="card-body pt-1">
                 <!-- Parent details -->
                 <div class="table-responsive">
@@ -181,7 +182,7 @@
                         </thead>
                         <tbody>
 
-                            @if(isset($studentDetails['data']['parent_data']))
+                            @if(isset($studentDetails['data']['parent_data']) && isset($studentDetails['data']['parent_data'][0]))
                             <tr>
                                 <td class="text-sm ps-0"><b>Father</b></td>
                                 <td class="text-sm">{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}</td>
@@ -208,11 +209,16 @@
                     </table>
                 </div>
             </div>
+
             <div class="card-header py-0">
                 <div class="text-dark fw-bold">Siblings Details</div>
             </div>
+
             <div class="card-body pt-1">
                 <!-- Parent details -->
+                @if(isset($studentDetails['data']['sibling_data'][0]) &&
+                isset($studentDetails['data']['sibling_data'][0]['ss_details']) &&
+                !empty($studentDetails['data']['sibling_data'][0]['ss_details']))
                 <div class="table-responsive">
                     <table class="table table-sm mb-0">
                         <thead>
@@ -228,13 +234,17 @@
 
                             {{-- Decode the JSON string into an array --}}
                             @php
-                            $siblingData =
-                            json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
+                            $siblingData = json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
 
                             @endphp
 
                             {{-- Loop through sibling data --}}
                             @foreach($siblingData as $index => $sibling)
+                            @if(isset($sibling['first_name']) &&
+                            isset($sibling['last_name']) &&
+                            isset($sibling['sex']) &&
+                            isset($sibling['date_of_birth']) &&
+                            isset($sibling['school']))
                             <tr>
                                 <td class="text-sm ps-0">{{ $sibling['first_name'] }}</td>
                                 <td class="text-sm">{{ $sibling['last_name'] }}</td>
@@ -242,20 +252,24 @@
                                 <td class="text-sm">{{ $sibling['date_of_birth'] }}</td>
                                 <td class="text-sm">{{ $sibling['school'] }}</td>
                             </tr>
+                            @endif
 
                             @endforeach
 
                         </tbody>
                     </table>
                 </div>
+                @endif
             </div>
+
             <div class="card-header py-0">
                 <div class="text-dark fw-bold">Attachments</div>
             </div>
+
             <div class="card-body pt-1">
                 <!-- Attachments details -->
+                @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']) && !empty($studentDetails['data']['documents'][0]))
                 <div class="row">
-                    @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']))
                     @foreach($studentDetails['data']['documents'][0] as $key => $value)
                     @if (strpos($key, 'sd_') === 0)
                     <div class="col-md-3 bg-white">
@@ -267,45 +281,17 @@
                     </div>
                     @endif
                     @endforeach
-                    @else
-                    <p colspan="3">No attachment data available</p>
-                    @endif
-
-
                 </div>
-
+                @else
+                <p colspan="3">No attachment data available</p>
+                @endif
             </div>
         </div>
     </div>
 
     <footer class="footer">
         <div class="container-fluid">
-            <!-- <div class="row align-items-center justify-content-lg-between">
-                <div class="col-lg-6 mb-lg-0 mb-4">
-                    <div class="copyright text-center text-sm text-muted text-lg-start">
-                        © <script>
-                            document.write(new Date().getFullYear())
-                        </script>,
-                        made with <i class="fa fa-heart"></i> by
-                        <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Yogeemedia</a>
-                        for a better web.
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <ul class="nav nav-footer justify-content-center justify-content-lg-end">
 
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About Us</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted" target="_blank">License</a>
-                        </li>
-                    </ul>
-                </div>
-            </div> -->
         </div>
     </footer>
 </main>

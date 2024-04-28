@@ -18,6 +18,35 @@
           </div>
         </div>
       </div>
+      <div class="card-header">
+        <div class="row">
+          <div class="col">
+            <form id="searchForm" method="POST" action="{{route('students_search')}}">
+              @csrf
+              <div class="row">
+                <div class="col-md-3">
+                  <label for="class" class="col-form-label">Year/Class/Grade</label>
+                  <select class="form-select pe-5" name="sd_year_grade_class_id">
+                    <option selected value="">All</option>
+                    @if(isset($year_grades))
+                    @foreach($year_grades as $year_grade)
+                    <option value="{{$year_grade['id']}}" {{ $apiData['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : ''}}>{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
+                    @endforeach
+                    @endif
+                  </select>
+                </div>
+                <div class="col-md-3">
+                  <label for="admission_id" class="col-form-label">Admission No</label>
+                  <input type="text" class="form-control" value="{{ $apiData['admission_id'] ?? '' }}" name="admission_id">
+                </div>
+                <div class="col-md-1 align-self-end">
+                  <button type="submit" class="btn btn-primary mb-0">Search</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
       <div class="card-body pt-0">
 
         <div class="table-responsive">
@@ -27,7 +56,7 @@
                 <th class="px-2">Admission No</th>
                 <th class="px-2">First Name</th>
                 <th class="px-2">Last Name</th>
-                <th class="px-2">Email</th>
+                <th class="px-2">Whatapp No</th>
                 <th class="px-2">Mobile</th>
                 <th class="px-2 text-center">Action</th>
               </tr>
@@ -38,7 +67,7 @@
                 <td>{{ $student['sd_admission_no'] }}</td>
                 <td>{{ $student['sd_first_name'] }}</td>
                 <td>{{ $student['sd_last_name'] }}</td>
-                <td>{{ $student['sd_email_address'] }}</td>
+                <td>{{ $student['sd_telephone_whatsapp'] }}</td>
                 <td>{{ $student['sd_telephone_mobile'] }}</td>
                 <td class="justify-content-center" style="display: flex;">
                   <a class="btn btn-warning m-0 py-1 px-2 me-2" href="/single-student/{{ $student['student_id'] }}"><i class="fa-solid fa-eye"></i></a>

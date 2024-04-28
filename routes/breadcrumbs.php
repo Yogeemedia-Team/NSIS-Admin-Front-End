@@ -14,6 +14,23 @@ Breadcrumbs::for('students', function ($trail) {
     $trail->push('All Students', route('students'));
 });
 
+Breadcrumbs::for('students_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('All Students', route('students_search'));
+});
+
+
+
+Breadcrumbs::for('student-upgrade-ui', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Promote', route('student-upgrade-ui'));
+});
+
+Breadcrumbs::for('student-upgrade-ui-search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Promote', route('student-upgrade-ui'));
+});
+
 // Home > All Students > Add Student
 Breadcrumbs::for('formpage', function ($trail) {
     $trail->parent('home');

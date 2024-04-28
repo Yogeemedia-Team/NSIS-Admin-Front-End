@@ -40,10 +40,17 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/formpage', [HomeController::class, 'formpage'])->name('formpage');
     Route::post('/student_create', [HomeController::class, 'student_create'])->name('student_create');
     Route::get('/students', [HomeController::class, 'students'])->name('students');
+    Route::post('/students_search', [HomeController::class, 'studentsSearch'])->name('students_search');
     Route::get('/single-student/{id}', [HomeController::class, 'singleStudent'])->name('single-student');
     Route::delete('/student_delete/{id}', [HomeController::class, 'studentDelete'])->name('student_delete');
     Route::get('/students/{studentId}/edit', [HomeController::class, 'StudentEdit'])->name('student_edit');
     Route::post('/students/{studentId}', [HomeController::class, 'student_update'])->name('students_update');
+
+    // student upgrade
+    Route::get('/student_promotion', [HomeController::class, 'studentUpgradeUI'])->name('student-upgrade-ui');
+    Route::post('/student_promotion_search', [HomeController::class, 'studentUpgradeUISearch'])->name('student-upgrade-ui-search');
+    Route::post('/student_promotion_form', [HomeController::class, 'studentUpgradeForme'])->name('student-upgrade-form');
+
 
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 
