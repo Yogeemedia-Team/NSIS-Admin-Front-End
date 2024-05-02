@@ -189,18 +189,18 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <!-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="monthly_fee" class="form-label">Monthly Fee</label>
                                 <input type="number" min="100" class="form-control"  name="monthly_fee" placeholder="Enter Monthly Fee" required>
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                        </div> -->
+                        <!-- <div class="col-md-6">
                             <div class="mb-3">
                                 <label for="Total_number_of_students" class="form-label">No of Students</label>
                                 <input type="text" class="form-control" name="Total_number_of_students" placeholder="Enter No of Students" required>
                             </div>
-                        </div>
+                        </div> -->
                        <div class="col-md-6">
                             <div class="mb-3">
                                 <label class="form-check-label">Status</label>

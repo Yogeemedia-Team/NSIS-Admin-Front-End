@@ -51,6 +51,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/student_promotion_search', [HomeController::class, 'studentUpgradeUISearch'])->name('student-upgrade-ui-search');
     Route::post('/student_promotion_form', [HomeController::class, 'studentUpgradeForme'])->name('student-upgrade-form');
 
+    Route::get('/get_year_grade_class', [HomeController::class, 'getYearGradeClass'])->name('get-year-grade-class');
+
 
     Route::get('/documant', [HomeController::class, 'documant'])->name('documant');
 

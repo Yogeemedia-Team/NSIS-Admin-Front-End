@@ -175,34 +175,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                           
-                             @foreach($yeargradeclasses as $yeargradeclass)
-                                    <tr>
-                                        <td>{{ $yeargradeclass['year'] }}</td>
-                                        <td>{{ $yeargradeclass['grade']['grade_name'] ?? 'N/A' }}</td>
-                                        <td>{{ $yeargradeclass['class']['class_name'] ?? 'N/A' }}</td>
-                                        <td>{{ $yeargradeclass['Total_number_of_students'] ?? 'N/A' }}</td>
-                                        <td>
-                                            <div class="badge {{ $yeargradeclass['active_status'] == 1 ? 'badge-success' : 'badge-warning' }}">
-                                                {{ $yeargradeclass['active_status'] == 1 ? 'Active' : 'Inactive' }}
-                                            </div>
-                                        </td>
-                                        <td class="d-flex">
-                                            <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('year_grade_class_edit', ['yeargradeclassId' => $yeargradeclass['id']]) }}"><i class="fas fa-edit"></i></a>
-                                            
-                                            @if($yeargradeclass['id'] !== null)
-                                                <form id="deleteForm{{ $yeargradeclass['id'] }}" action="{{ route('year_grade_class_delete', ['id' => $yeargradeclass['id']]) }}" method="POST">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $yeargradeclass['id'] }}')">
-                                                        <i class="fa-solid fa-trash"></i>
-                                                    </button>
-                                                </form>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                @endforeach
+                            @if(isset($yeargradeclasses) && $yeargradeclasses)
+                            @foreach($yeargradeclasses as $yeargradeclass)
+                            <tr>
+                                <td>{{ $yeargradeclass['year'] }}</td>
+                                <td>{{ $yeargradeclass['grade']['grade_name'] ?? 'N/A' }}</td>
+                                <td>{{ $yeargradeclass['class']['class_name'] ?? 'N/A' }}</td>
+                                <td>{{ $yeargradeclass['student_count'] ?? 'N/A' }}</td>
+                                <td>
+                                    <div class="badge {{ $yeargradeclass['active_status'] == 1 ? 'badge-success' : 'badge-warning' }}">
+                                        {{ $yeargradeclass['active_status'] == 1 ? 'Active' : 'Inactive' }}
+                                    </div>
+                                </td>
+                                <td class="d-flex">
+                                    <a class="btn btn-secondary m-0 py-1 px-2 me-2" href="{{ route('year_grade_class_edit', ['yeargradeclassId' => $yeargradeclass['id']]) }}"><i class="fas fa-edit"></i></a>
 
+                                    @if($yeargradeclass['id'] !== null)
+                                    <form id="deleteForm{{ $yeargradeclass['id'] }}" action="{{ route('year_grade_class_delete', ['id' => $yeargradeclass['id']]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button style="border:2px solid #c1476e" type="button" class="btn btn-danger m-0 py-1 px-2" onclick="confirmDelete('{{ $yeargradeclass['id'] }}')">
+                                            <i class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </form>
+                                    @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                            @endif
 
                         </tbody>
                     </table>

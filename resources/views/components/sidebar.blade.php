@@ -117,13 +117,13 @@
       </li>
       <hr class="bg-white my-1">
       <li class="nav-item">
-        <a data-bs-toggle="collapse" href="#masterfiles" class="nav-link mx-2 {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : 'text-white' }}" aria-controls="masterfiles" role="button" aria-expanded="false">
+        <a data-bs-toggle="collapse" href="#masterfiles" class="nav-link mx-2 {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : 'text-white' }}" aria-controls="masterfiles" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-file-word"></i>
           </div>
           <span class="nav-link-text ms-1">Masterfiles</span>
         </a>
-        <div class="collapse  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="masterfiles">
+        <div class="collapse  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="masterfiles">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
               <a class="nav-link mx-0 " data-bs-toggle="collapse" aria-expanded="false" href="#stdfee">
@@ -153,12 +153,12 @@
                 </ul>
               </div>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
               <a class="nav-link mx-0  " data-bs-toggle="collapse" aria-expanded="false" href="#sch">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> School <b class="caret"></b></span>
               </a>
-              <div class="collapse {{ request()->routeIs('grades') || request()->routeIs('classes') || request()->routeIs('year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="sch">
+              <div class="collapse {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="sch">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
 
@@ -186,7 +186,7 @@
                   </li>
                   <hr class="bg-black my-1">
 
-                  <li class="nav-item {{ request()->routeIs('year_grade_class') ? 'active sub-title' : '' }}">
+                  <li class="nav-item {{request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') ? 'active sub-title' : '' }}">
                     <a class="nav-link mx-2 px-0" href="{{ route('year_grade_class') }}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Year Grade Class Relationship </span>

@@ -87,7 +87,7 @@ class HomeController extends Controller
             return view('layouts.pages.students', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
         }
 
-        $response = $this->apiService->makeApiRequest('GET', 'students');
+        $response = $this->apiService->makeApiRequest('POST', 'search-student', $apiData);
 
         if ($response['status'] === false) {
 
@@ -336,55 +336,26 @@ class HomeController extends Controller
     // student upgrade to next year
     public function studentUpgradeUI(Request $request)
     {
-
-        $apiData = [
-            'sd_year_grade_class_id' => '',
-            'promote_sd_year_grade_class_id' => '',
-            'default_monthly_fee' => '',
-        ];
-
         $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
         if ($classResponse['status'] === false) {
-
             return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
         }
-
-        $response = $this->apiService->makeApiRequest('GET', 'students');
-
-        if ($response['status'] === false) {
-
-            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $response['errors'], 'message' => $response['message']]);
-        } else {
-
-            $studentDetails = $response['data'];
-            $year_grades = $classResponse['data'];
-            return view('layouts.pages.student.upgrade.upgrade', compact('studentDetails', 'year_grades', 'apiData'));
-        }
+        $year_grades = $classResponse['data'];
+        return view('layouts.pages.student.upgrade.upgrade', compact('year_grades',));
     }
     public function studentUpgradeUISearch(Request $request)
     {
         $apiData = [
             'sd_year_grade_class_id' =>  $request->sd_year_grade_class_id ?? '',
-            'promote_sd_year_grade_class_id' =>  $request->promote_sd_year_grade_class_id ?? '',
-            'default_monthly_fee' =>  $request->default_monthly_fee ?? '',
         ];
 
-        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
-        if ($classResponse['status'] === false) {
-
-            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
-        }
-
-        $response = $this->apiService->makeApiRequest('GET', 'students');
+        $response = $this->apiService->makeApiRequest('POST', 'search-student', $apiData);
 
         if ($response['status'] === false) {
-
-            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $response['errors'], 'message' => $response['message']]);
         } else {
 
             $studentDetails = $response['data'];
-            $year_grades = $classResponse['data'];
-            return view('layouts.pages.student.upgrade.upgrade', compact('studentDetails', 'year_grades', 'apiData'));
+            return response()->json(['status' => 200, 'data' => $studentDetails]);
         }
     }
 
@@ -413,12 +384,14 @@ class HomeController extends Controller
 
         // Constructing final result
         $result = [
-            'prev_sd_year_grade_class_id' => $data['sd_year_grade_class_id'],
+            'prev_sd_year_grade_class_id' => $data['prev_sd_year_grade_class_id'],
             'promoted_sd_year_grade_class_id' => $promoted_sd_year_grade_class_id,
             'student_data' => $studentData
         ];
 
-        $response =  $this->apiService->makeApiRequest('POST', 'promote', $result);
+
+
+        $response =  $this->apiService->makeApiRequestJson('POST', 'promote', $result);
 
         if ($response['status'] === false) {
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
@@ -427,6 +400,18 @@ class HomeController extends Controller
         }
 
         return redirect('/student_promotion')->withInput();
+    }
+
+    public function getYearGradeClass(Request $request)
+    {
+        $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+
+        if ($classResponse['status'] === false) {
+            return response()->json(['status' => 500, 'errors' => $classResponse['errors'], 'message' => $classResponse['message']]);
+        }
+
+        $year_grades = $classResponse['data'];
+        return response()->json(['status' => 200, 'data' => $year_grades]);
     }
 
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -784,7 +769,6 @@ class HomeController extends Controller
 
             return view('layouts.pages.year_grade_class.index', ['errors' => $response['errors'], 'message' => $response['message']]);
         } else {
-
             $yeargradeclasses = $response['data'];
             return view('layouts.pages.year_grade_class.index', compact('yeargradeclasses'));
         }

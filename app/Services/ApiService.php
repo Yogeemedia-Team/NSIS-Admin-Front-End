@@ -55,7 +55,30 @@ class ApiService
     }
 
 
+    public function makeApiRequestJson($method, $endpoint, $params = [])
+    {
+        $client = new Client();
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer ' . $this->getAccessToken(),
+        ];
+        $body = json_encode($params);
 
+        try {
+            $response = $client->request($method, $this->apiUrl . '/' . $endpoint, [
+                'headers' => $headers,
+                'body' => $body,
+            ]);
+
+            return json_decode($response->getBody(), true);
+        } catch (RequestException $e) {
+            return [
+                'status' => false,
+                'errors' => [],
+                'message' => 'Failed to communicate with the API.',
+            ];
+        }
+    }
 
 
 
