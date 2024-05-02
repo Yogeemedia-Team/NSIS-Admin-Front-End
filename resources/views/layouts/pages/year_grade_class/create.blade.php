@@ -197,8 +197,8 @@
                         </div>
                         <div class="col-md-6">
                             <div class="mb-3">
-                                <label for="total_number_of_students" class="form-label">No of Students</label>
-                                <input type="text" class="form-control" name="total_number_of_students" placeholder="Enter No of Students" required>
+                                <label for="Total_number_of_students" class="form-label">No of Students</label>
+                                <input type="text" class="form-control" name="Total_number_of_students" placeholder="Enter No of Students" required>
                             </div>
                         </div>
                        <div class="col-md-6">
