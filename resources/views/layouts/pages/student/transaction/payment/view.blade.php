@@ -71,7 +71,7 @@
                                                 <tr>
                                                     <td scope="row">{{ $key+1}}</td>
                                                     <td>{{ $data['id']}}</td>
-                                                    <td>{{ $data['type']}} date</td>
+                                                    <td>{{ $data['type']}}</td>
                                                     <td>{{ \Carbon\Carbon::parse($data['updated_at'])->format('M d Y') }}</td>
                                                     <td>{{ \Carbon\Carbon::parse($data['due_date'])->format('M d Y') }}</td>
                                                     <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>

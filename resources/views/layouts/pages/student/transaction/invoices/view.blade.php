@@ -70,7 +70,7 @@
                                     <tr>
                                         <td>{{ $key+1}}</td>
                                         <td>{{ $data['id']}}</td>
-                                        <td>{{ $data['type']}} date</td>
+                                        <td>{{ $data['type']}} </td>
                                         <td>{{ date('Y-m-d' , strtotime($data['updated_at']))}}</td>
                                         <td>{{ $data['due_date']}}</td>
                                         <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>

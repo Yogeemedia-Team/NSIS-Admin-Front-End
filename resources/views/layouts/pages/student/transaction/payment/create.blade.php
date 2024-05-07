@@ -27,7 +27,7 @@
                         </div>
                         <div class="col-md-2">
                             <label for="payment_date" class="col-form-label">Paid Date<span class="text-danger"> *</span></label>
-                            <input type="date" class="form-control" value="{{ $apiData['payment_date'] ?? '' }}" name="payment_date" required>
+                            <input type="date" class="form-control" value="{{ $apiData['payment_date'] == '' ? date('Y-m-d') : $apiData['payment_date'] ?? date('Y-m-d') }}" name="payment_date" required>
                         </div>
                         <div class="col-md-3">
                             <label for="payment_term" class="col-form-label">Payment Term<span class="text-danger"> *</span></label>
@@ -36,7 +36,7 @@
                                 @if(isset($apiData))
                                 <option {{ $apiData['payment_term'] == 'Bank Transfer' ? 'selected' : ''}} value="Bank Transfer">Bank Transfer</option>
                                 <option {{ $apiData['payment_term'] == 'Card Payment' ? 'selected' : ''}} value="Card Payment">Card Payment</option>
-                                <option {{ $apiData['payment_term'] == 'Manual' ? 'selected' : ''}} value="Manual">Manual</option>
+                                <option {{ $apiData['payment_term'] == 'Manual' ? 'selected' : 'selected'}} value="Manual">Manual</option>
                                 @endif
                             </select>
                         </div>

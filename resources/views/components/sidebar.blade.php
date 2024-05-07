@@ -89,7 +89,7 @@
           </ul>
         </div>
       </li>
-      <hr class="bg-white my-1">
+      <!-- <hr class="bg-white my-1">
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#enrollments" class="nav-link mx-2 {{ request()->routeIs('add_enrollment') || request()->routeIs('enrollments') ? 'active' : 'text-white' }}" aria-controls="enrollments" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
@@ -114,7 +114,7 @@
 
           </ul>
         </div>
-      </li>
+      </li> -->
       <hr class="bg-white my-1">
       <li class="nav-item">
         <a data-bs-toggle="collapse" href="#masterfiles" class="nav-link mx-2 {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : 'text-white' }}" aria-controls="masterfiles" role="button" aria-expanded="false">
@@ -243,7 +243,7 @@
         </div>
       </li>
       <hr class="bg-white my-1">
-      <li class="nav-item">
+      <!-- <li class="nav-item">
         <a data-bs-toggle="collapse" href="#reports" class="nav-link mx-2 {{ request()->routeIs('students') ||  request()->routeIs('students_search') ? 'text-white' : 'text-white' }}" aria-controls="reports" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-file"></i>
@@ -343,7 +343,7 @@
             </li>
           </ul>
       </li>
-      <hr class="bg-white my-1">
+      <hr class="bg-white my-1"> -->
     </ul>
   </div>
   <div class="sidenav-footer mx-3 mt-3 pt-3">
