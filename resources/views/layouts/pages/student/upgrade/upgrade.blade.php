@@ -90,6 +90,7 @@
 
 @endsection
 @section('footer-scripts')
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $('#currentYearClass').change(function() {
@@ -111,6 +112,10 @@
                         $('#studentTableSection').addClass('d-none');
                         $('.promoteYearClassDivAndDefaultMonthlyFee').addClass('d-none');
                         alert('No Data Found');
+                        Swal.fire({
+                            icon: 'warning',
+                            html: 'No Data Found'
+                        });
                         return;
                     }
                     $('#studentTableSection').removeClass('d-none');
@@ -166,7 +171,11 @@
             e.preventDefault();
             var promote_sd_year_grade_class_id = $('#promote_sd_year_grade_class_id').val();
             if (promote_sd_year_grade_class_id == '') {
-                alert('Please Select Promote Year / Class / Grade');
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    html: 'Please Select Promote Year / Class / Grade'
+                });
                 return false;
             } else {
                 $(this).unbind('submit').submit();

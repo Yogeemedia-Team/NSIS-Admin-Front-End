@@ -338,7 +338,7 @@ class HomeController extends Controller
     {
         $classResponse = $this->apiService->makeApiRequest('GET', 'year_grade_class');
         if ($classResponse['status'] === false) {
-            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message'], 'apiData' => $apiData]);
+            return view('layouts.pages.student.upgrade.upgrade', ['errors' => $classResponse['errors'], 'message' => $classResponse['message']]);
         }
         $year_grades = $classResponse['data'];
         return view('layouts.pages.student.upgrade.upgrade', compact('year_grades',));
@@ -1633,6 +1633,30 @@ class HomeController extends Controller
         $accountPayableData = $tableDataResponse['data'];
 
         return view('layouts.pages.student.transaction.account-payable.index', compact('token', 'year_grades', 'accountPayableData', 'apiData'));
+    }
+
+    public function accountPayableRevise(Request $request)
+    {
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+
+        $apiData = $request->input(); // Set form data as array
+        $apiData = array_map(function ($value) {
+            if (is_array($value)) {
+                return implode(',', $value);
+            }
+            return $value;
+        }, $apiData);
+        $endPoint = 'revice_sercharge';
+
+        $tableDataResponse = $this->apiService->makeApiRequest('POST', $endPoint, $apiData);
+
+        if ($tableDataResponse['status'] === false) {
+            return response()->json(['status' => 500, 'errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message']]);
+        }
+
+        return response()->json(['status' => 200, 'message' => 'Success']);
     }
 
     public function invoices(Request $request)

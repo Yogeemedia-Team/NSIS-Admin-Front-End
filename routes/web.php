@@ -166,6 +166,7 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     // account_payable
     Route::get('/account_payable', [HomeController::class, 'accountPayable'])->name('account_payable');
     Route::post('/account_payable/search', [HomeController::class, 'searchAccountPayable'])->name('account_payable_search');
+    Route::post('/account_payable_revise', [HomeController::class, 'accountPayableRevise'])->name('account_payable_revise');
 
 
 

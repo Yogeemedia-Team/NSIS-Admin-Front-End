@@ -13,6 +13,12 @@
                     <div class="col-md-6 align-self-center">
                         <h5 class="font-weight-bolder text-white mb-0">Account Payable</h5>
                     </div>
+                    <div class="col-md-6 text-end">
+                        <button id="reviseSurchargeOpenModal" type="button" class="btn btn-danger mb-0" data-bs-toggle="modal" data-bs-target="#reviseSurchargeModal">
+                            Revise Surcharge
+                        </button>
+
+                    </div>
                 </div>
             </div>
             <div class="card-header">
@@ -25,9 +31,11 @@
                                     <label for="class" class="col-form-label">Year/Class/Grade</label>
                                     <select class="form-select pe-5" name="sd_year_grade_class_id">
                                         <option selected value="">All</option>
+                                        @if(isset($year_grades))
                                         @foreach($year_grades as $year_grade)
                                         <option value="{{$year_grade['id']}}" {{ $apiData['sd_year_grade_class_id'] == $year_grade['id'] ? 'selected' : ''}}>{{ $year_grade['year'].' - '.$year_grade['grade']['grade_name'].' - '.$year_grade['class']['class_name']  }}</option>
                                         @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="col-md-3">
@@ -70,18 +78,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @if(isset($accountPayableData))
                             @foreach($accountPayableData as $key => $data)
                             <tr>
                                 <td>{{ $key+1}}</td>
                                 <td>{{ $data['id']}}</td>
                                 <td>{{ $data['admission_no']}}</td>
-                                <td>{{ $data['type']}} date</td>
+                                <td>{{ $data['type']}}</td>
                                 <td>{{ date('Y-m-d' , strtotime($data['updated_at']))}}</td>
                                 <td>{{ $data['due_date']}}</td>
                                 <td>Rs. {{number_format(doubleval($data['amount']),2) }}</td>
                                 <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Completed" : "Partial Paid")) : "Unknown" }}</td>
                             </tr>
                             @endforeach
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -90,6 +100,50 @@
 
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="reviseSurchargeModal" tabindex="-1" aria-labelledby="reviseSurchargeModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="reviseSurchargeModalLabel">Revise Surcharge</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="reviseSurchargeForm">
+                            <div class="mb-3">
+                                <label for="reviseAdmission" class="form-label">Admission No <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="reviseAdmission" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviseAmount" class="form-label">Amount <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" id="reviseAmount" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="reviseRemark" class="form-label">Remark</label>
+                                <textarea class="form-control" id="reviseRemark"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="reviseSurchargeSubmit" type="button" class="btn btn-primary">Revise</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            document.getElementById('reviseSurchargeSubmit').addEventListener('click', function() {
+                var form = document.getElementById('reviseSurchargeForm');
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+                if (form.checkValidity() === true) {
+                    // Submit form
+                }
+            }, false);
+        </script>
 
     </div>
     </div>
@@ -103,6 +157,53 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
+    $('#reviseSurchargeOpenModal').click(function() {
+        $('#reviseAdmission').val('');
+        $('#reviseAmount').val('');
+        $('#reviseRemark').val('');
+        $('#reviseSurchargeForm').removeClass('was-validated');
+    });
+
+    $('#reviseSurchargeSubmit').click(function() {
+        var admissionNo = $('#reviseAdmission').val();
+        var reviseAmount = $('#reviseAmount').val();
+        var reviseRemark = $('#reviseRemark').val();
+
+        $.ajax({
+            type: "POST",
+            url: "{{ route('account_payable_revise') }}",
+            data: {
+                _token: "{{ csrf_token() }}",
+                admission_no: admissionNo,
+                amount: reviseAmount,
+                remark: reviseRemark
+            },
+            success: function(response) {
+                if (response.status == 200) {
+                    $('#reviseSurchargeModal').modal('hide');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success',
+                        text: 'Account Payable Revised Successfully',
+                    }).then(function() {
+                        location.reload();
+                    })
+                } else {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: response.message,
+                    })
+                }
+
+            },
+            error: function(xhr, status, error) {
+
+            }
+        })
+    })
+
+
     $(function() {
         $("#due_date").datepicker({
             dateFormat: 'yy-mm-dd',
@@ -133,6 +234,11 @@
 </script>
 <script>
     $(document).ready(function() {
+
+
+
+
+
         var accordionItem = '';
         $('#searchForm').click(function(event) {
             // Prevent the default form submission
