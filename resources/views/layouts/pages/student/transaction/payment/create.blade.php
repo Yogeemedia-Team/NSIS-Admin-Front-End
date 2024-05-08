@@ -20,16 +20,21 @@
                 <form id="paymentForm" method="POST" action="{{ route('add_student_payment_get_invoices')}}">
                     @csrf
                     <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label for="admission_id" class="col-form-label">Admission No<span class="text-danger"> *</span></label>
 
                             <input type="text" class="form-control" name="admission_id" value="{{ $apiData['admission_id'] ?? '' }}" required>
                         </div>
                         <div class="col-md-2">
+                            <label for="payment_reference_no" class="col-form-label">Reference No</label>
+
+                            <input type="text" class="form-control" name="payment_reference_no" value="{{ $apiData['payment_reference_no'] ?? '' }}">
+                        </div>
+                        <div class="col-md-2">
                             <label for="payment_date" class="col-form-label">Paid Date<span class="text-danger"> *</span></label>
                             <input type="date" class="form-control" value="{{ $apiData['payment_date'] == '' ? date('Y-m-d') : $apiData['payment_date'] ?? date('Y-m-d') }}" name="payment_date" required>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <label for="payment_term" class="col-form-label">Payment Term<span class="text-danger"> *</span></label>
                             <select class="form-select pe-5" name="payment_term" required>
                                 <option selected disabled value="">Select</option>
@@ -98,6 +103,7 @@
                         <input type="hidden" name="date" value="{{$apiData['payment_date']}}">
                         <input type="hidden" name="payment_amount" value="{{$apiData['payment_amount']}}">
                         <input type="hidden" name="paid_from" value="{{$apiData['payment_term']}}">
+                        <input type="hidden" name="payment_reference_no" value="{{$apiData['payment_reference_no']}}">
                         <button type="submit" id="submitSelectedBtn" class="btn btn-primary mt-3">Submit</button>
                         @endif
                         @endif

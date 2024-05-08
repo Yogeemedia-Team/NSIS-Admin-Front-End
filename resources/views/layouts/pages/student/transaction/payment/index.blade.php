@@ -64,7 +64,7 @@
                         <thead>
                             <tr>
                                 <th class="px-2">Transaction Id</th>
-                                <!-- <th class="px-2">Admission No</th> -->
+                                <th class="px-2">Reference No</th>
                                 <th class="px-2">Payment Date</th>
                                 <th class="px-2">Payment Term</th>
                                 <th class="px-2">Paid Amount</th>
@@ -77,7 +77,7 @@
                             @foreach($allPayments as $data)
                             <tr>
                                 <td>{{ $data['payment_id']}}</td>
-                                <!-- <td>{{ $data['admission_no']}}</td> -->
+                                <td>{{ $data['payment_reference_no'] ?? ""}}</td>
                                 <td>{{ $data['date']}}</td>
                                 <td>{{ $data['paid_from']}}</td>
                                 <td>Rs. {{ $data['total_due']}}</td>

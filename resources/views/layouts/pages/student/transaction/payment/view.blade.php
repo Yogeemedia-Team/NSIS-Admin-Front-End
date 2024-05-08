@@ -22,6 +22,7 @@
                         <p class="mb-0 fs-6 text-black fw-bold">Admission No : {{ $details['admission_no']}}</p>
                         <p class="mb-0 fs-6 text-black fw-bold">Student Name : {{ $details['sd_name_with_initials']}}</p>
                         <p class="mb-0 fs-6 text-black fw-bold">Transaction No : {{ $details['payment_id']}}</p>
+                        <p class="mb-0 fs-6 text-black fw-bold">Reference No : {{ $details['payment_reference_no']}}</p>
                     </div>
                     <div class="col-md-6 text-end">
                         <p class="mb-0 fs-6 text-black fw-bold text-capitalize">Paid Date : {{ $details['date']}}</p>
