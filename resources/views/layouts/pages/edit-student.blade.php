@@ -179,7 +179,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="monthly_fee" class="form-label">Monthly Fee <span class="text-danger"> *</span></label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['year_class_data']['monthly_fee'] ?? '' }}" name="monthly_fee" placeholder="Enter Monthly Fee" required>
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['monthly_fee'] ?? '' }}" name="monthly_fee" placeholder="Enter Monthly Fee" required>
                                     </div>
                                 </div>
 
