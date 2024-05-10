@@ -168,7 +168,12 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/account_payable/search', [HomeController::class, 'searchAccountPayable'])->name('account_payable_search');
     Route::post('/account_payable_revise', [HomeController::class, 'accountPayableRevise'])->name('account_payable_revise');
 
-
+    Route::get('/admission_payment', [HomeController::class, 'admissionPayment'])->name('admission_payment');
+    Route::post('/admission_payment_search', [HomeController::class, 'admissionPaymentSearch'])->name('admission_payment_search');
+    Route::get('/admission_payment_create', [HomeController::class, 'admissionPaymentCreate'])->name('admission_payment_create');
+    Route::post('/admission_payment_store', [HomeController::class, 'admissionPaymentStore'])->name('admission_payment_store');
+    Route::get('/admission_payment_view/{id}', [HomeController::class, 'admissionPaymentView'])->name('admission_payment_view');
+    Route::post('/admission_payment_update', [HomeController::class, 'admissionPaymentUpdate'])->name('admission_payment_update');
 
     Route::get('/invoices', [HomeController::class, 'invoices'])->name('invoices');
     Route::post('/invoices/search', [HomeController::class, 'searchInvoices'])->name('invoices_search');

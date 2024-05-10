@@ -75,7 +75,7 @@ class ApiService
             return [
                 'status' => false,
                 'errors' => [],
-                'message' => 'Failed to communicate with the API.',
+                'message' => $e->getMessage(),
             ];
         }
     }

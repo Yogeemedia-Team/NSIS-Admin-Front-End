@@ -1659,6 +1659,110 @@ class HomeController extends Controller
         return response()->json(['status' => 200, 'message' => 'Success']);
     }
 
+
+    public function admissionPayment(Request $request)
+    {
+        $apiData = [
+            'admission_no' => $request->admission_id
+        ];
+
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', 'student_admissions');
+
+
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.admission.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+
+        $accountPayableData = $tableDataResponse['data'];
+        // dd($accountPayableData);
+        return view('layouts.pages.student.transaction.admission.index', compact('apiData', 'accountPayableData'));
+    }
+
+    public function admissionPaymentSearch(Request $request)
+    {
+        $apiData = [
+            'admission_id' => $request->admission_id
+        ];
+
+        $url = 'student_admissions?admission_no=' . $request->admission_id;
+
+        $tableDataResponse = $this->apiService->makeApiRequest('GET', $url);
+
+        if ($tableDataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.admission.index', ['errors' => $tableDataResponse['errors'], 'message' => $tableDataResponse['message'], 'apiData' => $apiData]);
+        }
+        $accountPayableData = $tableDataResponse['data'];
+        return view('layouts.pages.student.transaction.admission.index', compact('apiData', 'accountPayableData'));
+    }
+
+    public function admissionPaymentCreate(Request $request)
+    {
+        $data = $request->all();
+
+        return view('layouts.pages.student.transaction.admission.create', compact('data'));
+    }
+
+    public function admissionPaymentStore(Request $request)
+    {
+        $data = $request->all();
+        $param = [
+            'admission_no' => $data['admissionNo'],
+            'total_amount' => $data['admissionAmount'],
+            'no_of_instalments' => $data['numberOfInstallments'],
+            'admission_instalments' => $data['installmentArray']
+        ];
+
+
+        $response =  $this->apiService->makeApiRequestJson('POST', 'student_admissions/create', $param);
+
+        if ($response['status'] === false) {
+            return response()->json(['status' => 500, 'message' => $response['message']]);
+        }
+        return response()->json(['status' => 200, 'message' => 'Admission Added Successfully']);
+    }
+
+
+    public function admissionPaymentView(Request $request, $id)
+    {
+
+        $data = [];
+
+        $endPoint = 'student_admission/' . $id;
+
+        $dataResponse = $this->apiService->makeApiRequest('GET', $endPoint);
+
+        // dd($dataResponse);
+
+        if ($dataResponse['status'] === false) {
+            return view('layouts.pages.student.transaction.admission.view', ['errors' => $dataResponse['errors'], 'message' => $dataResponse['message']]);
+        }
+
+        $data = $dataResponse['data'];
+        
+
+        return view('layouts.pages.student.transaction.admission.view', compact('data'));
+    }
+
+    public function admissionPaymentUpdate(Request $request)
+    {
+
+        $data = $request->all();
+
+        $param = [
+            'id' => $data['id'],
+            'paid_date' => $data['paid_date'],
+            'reference_no' => $data['reference_no'],
+        ];
+
+        $response =  $this->apiService->makeApiRequestJson('POST', 'student_admissions/update', $param);
+
+        if ($response['status'] === false) {
+            return response()->json(['status' => 500, 'message' => $response['message']]);
+        }
+
+        return response()->json(['status' => 200, 'message' => 'Installment Updated Successfully']);
+    }
+
     public function invoices(Request $request)
     {
         $apiService = new ApiService();
