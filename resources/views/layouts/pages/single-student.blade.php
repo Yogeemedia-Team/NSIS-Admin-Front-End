@@ -97,6 +97,15 @@
                         <hr class="bg-dark my-1">
                         <div class="row">
                             <div class="col-md-3">
+                                <h6 class="text-dark">Monthly Fee</h6>
+                            </div>
+                            <div class="col-md-9 align-self-center">
+                                <p class="mb-0">: {{ $studentDetails['data']['monthly_fee'] ?? '' }}</p>
+                            </div>
+                        </div>
+                        <hr class="bg-dark my-1">
+                        <div class="row">
+                            <div class="col-md-3">
                                 <h6 class="text-dark">Date of Birth</h6>
                             </div>
                             <div class="col-md-9 align-self-center">
@@ -113,6 +122,7 @@
                             </div>
                         </div>
                         <hr class="bg-dark my-1">
+
                         <div class="row">
                             <div class="col-md-3">
                                 <h6 class="text-dark">Ethnicity</h6>

@@ -20,6 +20,27 @@ Breadcrumbs::for('students_search', function ($trail) {
 });
 
 
+Breadcrumbs::for('admission_payment', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Admission Payments', route('admission_payment'));
+});
+
+Breadcrumbs::for('admission_payment_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Admission Payments', route('admission_payment_search'));
+});
+
+Breadcrumbs::for('admission_payment_create', function ($trail) {
+    $trail->parent('admission_payment');
+    $trail->push('Add Admission Payment', route('admission_payment_create'));
+});
+
+Breadcrumbs::for('admission_payment_view', function ($trail , $id) {
+    $trail->parent('admission_payment');
+    $trail->push('View Admission Payment', route('admission_payment_view' , $id));
+});
+
+
 
 Breadcrumbs::for('student-upgrade-ui', function ($trail) {
     $trail->parent('home');
