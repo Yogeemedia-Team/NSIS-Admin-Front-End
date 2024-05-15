@@ -111,7 +111,6 @@
                     if (data.data.length == 0) {
                         $('#studentTableSection').addClass('d-none');
                         $('.promoteYearClassDivAndDefaultMonthlyFee').addClass('d-none');
-                        alert('No Data Found');
                         Swal.fire({
                             icon: 'warning',
                             html: 'No Data Found'
