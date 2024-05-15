@@ -100,7 +100,7 @@
                                 <h6 class="text-dark">Monthly Fee</h6>
                             </div>
                             <div class="col-md-9 align-self-center">
-                                <p class="mb-0">: {{ $studentDetails['data']['monthly_fee'] ?? '' }}</p>
+                                <p class="mb-0">:Rs. {{ $studentDetails['data']['monthly_fee'] ?? '' }}</p>
                             </div>
                         </div>
                         <hr class="bg-dark my-1">
@@ -220,57 +220,63 @@
                 </div>
             </div>
 
-            <div class="card-header py-0">
-                <div class="text-dark fw-bold">Siblings Details</div>
-            </div>
-
-            <div class="card-body pt-1">
+           
                 <!-- Parent details -->
                 @if(isset($studentDetails['data']['sibling_data'][0]) &&
                 isset($studentDetails['data']['sibling_data'][0]['ss_details']) &&
                 !empty($studentDetails['data']['sibling_data'][0]['ss_details']))
-                <div class="table-responsive">
-                    <table class="table table-sm mb-0">
-                        <thead>
-                            <tr>
-                                <th class="px-1 text-sm">First Name</th>
-                                <th class="px-1 text-sm">Last name</th>
-                                <th class="px-1 text-sm">Gender</th>
-                                <th class="px-1 text-sm">Date of Birth</th>
-                                <th class="px-1 text-sm">School</th>
-                            </tr>
-                        </thead>
-                        <tbody>
 
-                            {{-- Decode the JSON string into an array --}}
-                            @php
-                            $siblingData = json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
+                {{-- Decode the JSON string into an array --}}
+                @php
+                $siblingData = json_decode($studentDetails['data']['sibling_data'][0]['ss_details'], true)
 
-                            @endphp
+                @endphp
+                    @if(isset($siblingData) && $siblingData != null)
+                        <div class="card-header py-0">
+                            <div class="text-dark fw-bold">Siblings Details</div>
+                        </div>
 
-                            {{-- Loop through sibling data --}}
-                            @foreach($siblingData as $index => $sibling)
-                            @if(isset($sibling['first_name']) &&
-                            isset($sibling['last_name']) &&
-                            isset($sibling['sex']) &&
-                            isset($sibling['date_of_birth']) &&
-                            isset($sibling['school']))
-                            <tr>
-                                <td class="text-sm ps-0">{{ $sibling['first_name'] }}</td>
-                                <td class="text-sm">{{ $sibling['last_name'] }}</td>
-                                <td class="text-sm">{{ $sibling['sex'] }}</td>
-                                <td class="text-sm">{{ $sibling['date_of_birth'] }}</td>
-                                <td class="text-sm">{{ $sibling['school'] }}</td>
-                            </tr>
-                            @endif
+                        <div class="card-body pt-1">
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-1 text-sm">First Name</th>
+                                            <th class="px-1 text-sm">Last name</th>
+                                            <th class="px-1 text-sm">Gender</th>
+                                            <th class="px-1 text-sm">Date of Birth</th>
+                                            <th class="px-1 text-sm">School</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
 
-                            @endforeach
+                                    
 
-                        </tbody>
-                    </table>
-                </div>
+                                        {{-- Loop through sibling data --}}
+                                        @foreach($siblingData as $index => $sibling)
+                                        @if(isset($sibling['first_name']) &&
+                                        isset($sibling['last_name']) &&
+                                        isset($sibling['sex']) &&
+                                        isset($sibling['date_of_birth']) &&
+                                        isset($sibling['school']))
+                                        <tr>
+                                            <td class="text-sm ps-0">{{ $sibling['first_name'] }}</td>
+                                            <td class="text-sm">{{ $sibling['last_name'] }}</td>
+                                            <td class="text-sm">{{ $sibling['sex'] }}</td>
+                                            <td class="text-sm">{{ $sibling['date_of_birth'] }}</td>
+                                            <td class="text-sm">{{ $sibling['school'] }}</td>
+                                        </tr>
+                                        @endif
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    @endif
                 @endif
-            </div>
+           
 
             <div class="card-header py-0">
                 <div class="text-dark fw-bold">Attachments</div>
@@ -278,10 +284,19 @@
 
             <div class="card-body pt-1">
                 <!-- Attachments details -->
+                @php
+                $haveAnyAttachment =  false;
+
+                @endphp
+
                 @if(isset($studentDetails['data']['documents']) && is_array($studentDetails['data']['documents']) && !empty($studentDetails['data']['documents'][0]))
                 <div class="row">
                     @foreach($studentDetails['data']['documents'][0] as $key => $value)
-                    @if (strpos($key, 'sd_') === 0)
+                    @if ($value != null && strpos($key, 'sd_') === 0)
+
+                    @php
+                        $haveAnyAttachment =  true;
+                    @endphp
                     <div class="col-md-3 bg-white">
                         <a href="{{ asset("storage/".$value) }}" class="btn bg-white">
                             <img src="{{ asset('assets/img/form_img/attachments.png') }}" class="w-15" alt="...">
@@ -293,6 +308,10 @@
                     @endforeach
                 </div>
                 @else
+                <p colspan="3">No attachment data available</p>
+                @endif
+
+                @if(!$haveAnyAttachment)
                 <p colspan="3">No attachment data available</p>
                 @endif
             </div>

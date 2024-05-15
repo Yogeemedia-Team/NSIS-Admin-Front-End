@@ -132,7 +132,37 @@
         </a>
         <div class="collapse  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="masterfiles">
           <ul class="nav px-4">
-            <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('grades') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Grades </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('classes') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('classes') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Classes </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('extracurriculars') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('extracurriculars') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Extracurriculars </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('year_grade_class') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Year Grade Class Relationship </span>
+              </a>
+            </li>
+            <!-- <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
               <a class="nav-link mx-0 " data-bs-toggle="collapse" aria-expanded="false" href="#stdfee">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Students <b class="caret"></b></span>
@@ -159,8 +189,8 @@
 
                 </ul>
               </div>
-            </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
+            </li> -->
+            <!-- <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
               <a class="nav-link mx-0  " data-bs-toggle="collapse" aria-expanded="false" href="#sch">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> School <b class="caret"></b></span>
@@ -203,7 +233,7 @@
 
                 </ul>
               </div>
-            </li>
+            </li> -->
           </ul>
       </li>
       <hr class="bg-white my-1">
