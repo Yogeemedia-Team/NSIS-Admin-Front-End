@@ -337,7 +337,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6 class="mt-4 mb-3">Student Payment</h6>
+                           {{--- <h6 class="mt-4 mb-3">Student Payment</h6>
                             <div class="row">
                                 <!-- Admission Date -->
                                 <div class="col-md-4 align-self-center">
@@ -362,7 +362,7 @@
                                         <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" >
                                     </div>
                                 </div>
-                            </div>
+                            </div> ---}}
 
                             <h6 class="mt-4 mb-3">Student Siblings</h6>
                             <div class="table-responsive">

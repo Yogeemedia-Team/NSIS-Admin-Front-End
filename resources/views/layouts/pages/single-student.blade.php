@@ -276,9 +276,8 @@
                         </div>
                     @endif
                 @endif
-           
 
-            <div class="card-header py-0">
+                <div class="card-header py-0 pt-1">
                 <div class="text-dark fw-bold">Attachments</div>
             </div>
 
@@ -315,6 +314,65 @@
                 <p colspan="3">No attachment data available</p>
                 @endif
             </div>
+ 
+            <div class="card-header py-0">
+                <ul class="nav nav-tabs nav-justified mb-3" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="curriculars-tab" data-bs-toggle="tab" data-bs-target="#curriculars-tab-pane" type="button" role="tab" aria-controls="curriculars-tab-pane" aria-selected="true">Extra Curriculars</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="students_queries-tab" data-bs-toggle="tab" data-bs-target="#students_queries-tab-pane" type="button" role="tab" aria-controls="students_queries-tab-pane" aria-selected="false">Student Queries</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Student Winnings</button>
+                    </li>
+                    
+                </ul>
+            </div>
+            <div class="card-body pt-1  tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="curriculars-tab-pane" role="tabpanel" aria-labelledby="curriculars-tab" tabindex="0">
+                    @if(isset($studentDetails['data']['student_extra_curriculars']) &&
+                        !empty($studentDetails['data']['student_extra_curriculars']))
+                            <div class="table-responsive">
+                                <table class="table table-sm mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th class="px-1 text-sm">Extra Curricular</th>
+                                            <th class="px-1 text-sm">Start Date</th>
+                                            <th class="px-1 text-sm">End Date</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        {{-- Loop through sibling data --}}
+                                        @foreach($studentDetails['data']['student_extra_curriculars'] as $index => $studentExtraCurricular)
+                                        <tr>
+                                            <td class="text-sm ps-0">{{ $studentExtraCurricular['extra_curriculars']['extracurricular_name'] ?? "" }}</td>
+                                            <td class="text-sm">{{ $studentExtraCurricular['start_from'] ?? "-" }}</td>
+                                            <td class="text-sm">{{ $studentExtraCurricular['end_from'] ?? "-" }}</td>
+                                        </tr>
+
+                                        @endforeach
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        
+                        @endif
+                </div>
+                <div class="tab-pane fade" id="students_queries-tab-pane" role="tabpanel" aria-labelledby="students_queries-tab" tabindex="0">
+                    {{$studentDetails['data']['student_queries'] ?? "No data available"}}
+                </div>
+                <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                     {{$studentDetails['data']['student_winnings'] ?? "No data available"}}
+                </div>
+                <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">333333...</div>
+            </div>
+                
+            
+
+              
+            
         </div>
     </div>
 
