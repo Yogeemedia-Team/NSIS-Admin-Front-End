@@ -706,7 +706,7 @@ class HomeController extends Controller
         $extracurricular = $response;
 
         // Pass the student details to the view
-        return view('layouts.pages.extracurriculars.edit', compact('extracurriculars'));
+        return view('layouts.pages.extracurriculars.edit', compact('extracurricular'));
     }
 
     public function updateExtracurricular(Request $request, $classId)
@@ -726,7 +726,7 @@ class HomeController extends Controller
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         $updatedData['organization_id'] = env('ORGANIZATION_ID');
         // Make the API request to update the student record
-        $response = $this->apiService->makeApiRequest('PUT', 'class/' . $classId, $updatedData);
+        $response = $this->apiService->makeApiRequest('PUT', 'extra_curricular/' . $classId, $updatedData);
 
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
