@@ -171,6 +171,7 @@
                             </tr>
                         </thead>
                         <tbody>
+                           
                            @foreach($extracurriculars as $extracurricular)
                            
                             <tr>

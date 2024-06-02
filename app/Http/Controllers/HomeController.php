@@ -687,13 +687,13 @@ class HomeController extends Controller
             Alert::success('Success', 'Extra curricular create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the classes.
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
     }
 
     public function editExtracurricular($id)
     {
-        $endpoint = 'extracurricular/' . $id;
+        $endpoint = 'extra_curricular/' . $id;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
 
         // Check if the API request was successful
@@ -706,7 +706,7 @@ class HomeController extends Controller
         $extracurricular = $response;
 
         // Pass the student details to the view
-        return view('layouts.pages.extracurriculars.edit', compact('extracurricular'));
+        return view('layouts.pages.extracurriculars.edit', compact('extracurriculars'));
     }
 
     public function updateExtracurricular(Request $request, $classId)
@@ -714,12 +714,12 @@ class HomeController extends Controller
         // Validate the form data, including the file uploads
 
         // Fetch existing student data from the API
-        $existingStudentData = $this->apiService->makeApiRequest('GET', 'class/' . $classId);
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'extra_curricular/' . $classId);
 
         if ($existingStudentData['status'] === false) {
             // Handle error if the student data cannot be fetched
             Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
 
         // Update the data with the new values
@@ -731,18 +731,18 @@ class HomeController extends Controller
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         } else {
             // If the update is successful, display a success message.
             Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
     }
 
     public function deleteExtracurricular($id)
     {
         // Endpoint to delete by ID
-        $endpoint = 'extracurricular/' . $id;
+        $endpoint = 'extra_curricular/' . $id;
 
         // Make the API request to delete
         $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
@@ -756,7 +756,7 @@ class HomeController extends Controller
         }
 
         // Redirect
-        return redirect()->route('extracurricular');
+        return redirect()->route('extracurriculars');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
