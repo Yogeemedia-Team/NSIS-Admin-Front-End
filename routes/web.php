@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,4 +178,9 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/invoices', [HomeController::class, 'invoices'])->name('invoices');
     Route::post('/invoices/search', [HomeController::class, 'searchInvoices'])->name('invoices_search');
     Route::get('/invoices_view/{id}', [HomeController::class, 'invoicesView'])->name('invoices_view');
+
+    //reports
+    Route::get('/student_payments_report', [ReportController::class, 'studentPaymentsReport'])->name('student_payments_report');
+    Route::get('/payments_delaied_student', [ReportController::class, 'PaymentDelaiedStudent'])->name('payments_delaied_student');
+    
 });

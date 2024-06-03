@@ -287,7 +287,7 @@
           </div>
           <span class="nav-link-text ms-1">Reports</span>
         </a>
-        <div class="collapse {{ request()->routeIs('add_enrollment') ? '' : '' }}" id="reports">
+        <div class="collapse {{ request()->routeIs('student_payments_report') ? '' : '' }}" id="reports">
           <ul class="nav px-4">
             <li class="nav-item sub-menu-line mt-1 rounded">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#payreports">
@@ -306,8 +306,8 @@
                   </li>
                   <hr class="bg-black my-1">
 
-                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
+                  <li class="nav-item {{ request()->routeIs('student_payments_report') ? '' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('student_payments_report') }}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Payment Summary </span>
                     </a>
@@ -315,19 +315,19 @@
                   <hr class="bg-black my-1">
 
                   <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
+                    <a class="nav-link mx-2 px-0" href="{{ route('payments_delaied_student') }}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
-                      <span class="sidenav-normal"> Transaction Detailed Report </span>
+                      <span class="sidenav-normal"> Payment Detailed Students </span>
                     </a>
                   </li>
-                  <hr class="bg-black my-1">
+                  <!-- <hr class="bg-black my-1">
 
                   <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
+                    <a class="nav-link mx-2 px-0" href="">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Payment Delayed List </span>
                     </a>
-                  </li>
+                  </li> -->
                   <hr class="bg-black my-1">
 
                 </ul>

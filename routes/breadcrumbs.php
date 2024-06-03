@@ -286,3 +286,14 @@ Breadcrumbs::for('invoices_view', function ($trail, $invoiceId) {
     $trail->push('Invoices', route('invoices'));
     $trail->push('Invoices View', route('invoices_view', $invoiceId));
 });
+
+Breadcrumbs::for('student_payments_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Student Payment Report', route('student_payments_report'));
+});
+
+
+Breadcrumbs::for('payments_delaied_student', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Payments Delaied Students Report', route('payments_delaied_student'));
+});
