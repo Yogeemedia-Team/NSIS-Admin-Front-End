@@ -186,4 +186,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/extra_curricular_report', [ReportController::class, 'extraCurricularReport'])->name('extra_curricular_report');
     Route::get('/income_report', [ReportController::class, 'incomeReport'])->name('income_report');
     
+    Route::post('/curricular_create', [HomeController::class, 'curricularCreate'])->name('curricular_create');
+    Route::post('/curricular_update', [HomeController::class, 'curricularUpdate'])->name('curricular_update');
+    Route::post('/curricular_delete/{id}', [HomeController::class, 'deleteCurricular'])->name('curricular_delete');
+
 });
