@@ -182,5 +182,8 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     //reports
     Route::get('/student_payments_report', [ReportController::class, 'studentPaymentsReport'])->name('student_payments_report');
     Route::get('/payments_delaied_student', [ReportController::class, 'PaymentDelaiedStudent'])->name('payments_delaied_student');
+    Route::get('/grade_class_student_report', [ReportController::class, 'gradeClassStudentReport'])->name('grade_class_student_report');
+    Route::get('/extra_curricular_report', [ReportController::class, 'extraCurricularReport'])->name('extra_curricular_report');
+    Route::get('/income_report', [ReportController::class, 'incomeReport'])->name('income_report');
     
 });

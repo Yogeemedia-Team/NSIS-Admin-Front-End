@@ -292,8 +292,17 @@ Breadcrumbs::for('student_payments_report', function ($trail) {
     $trail->push('Student Payment Report', route('student_payments_report'));
 });
 
-
 Breadcrumbs::for('payments_delaied_student', function ($trail) {
     $trail->parent('home');
     $trail->push('Payments Delaied Students Report', route('payments_delaied_student'));
+});
+
+Breadcrumbs::for('extra_curricular_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Student Extra Curricular Report', route('extra_curricular_report'));
+});
+
+Breadcrumbs::for('income_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Income Report', route('income_report'));
 });

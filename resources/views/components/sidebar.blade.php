@@ -343,7 +343,7 @@
                   <hr class="bg-black my-1">
 
                   <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
+                    <a class="nav-link mx-2 px-0" href="{{ route('grade_class_student_report') }}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Student Lists </span>
                     </a>
@@ -351,7 +351,7 @@
                   <hr class="bg-black my-1">
 
                   <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
+                    <a class="nav-link mx-2 px-0" href="{{ route('extra_curricular_report')}}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Extracurriculars </span>
                     </a>
@@ -369,7 +369,7 @@
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
                   <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
+                    <a class="nav-link mx-2 px-0" href="{{route('income_report')}}">
                       <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Income Summary </span>
                     </a>
