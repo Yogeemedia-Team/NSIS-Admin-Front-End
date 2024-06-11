@@ -190,4 +190,11 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::post('/curricular_update', [HomeController::class, 'curricularUpdate'])->name('curricular_update');
     Route::post('/curricular_delete/{id}', [HomeController::class, 'deleteCurricular'])->name('curricular_delete');
 
+    Route::get('/student_transaction_summery', [ReportController::class, 'transactionSummery'])->name('student_transaction_summery');
+    Route::post('/student_transaction_summery_search', [ReportController::class, 'transactionSummerySearch'])->name('student_transaction_summery_search');
+
+    Route::get('/student_outstanding_summery', [ReportController::class, 'outstandingSummery'])->name('student_outstanding_summery');
+    Route::post('/student_outstanding_summery_search', [ReportController::class, 'outstandingSummerySearch'])->name('student_outstanding_summery_search');
+
+
 });

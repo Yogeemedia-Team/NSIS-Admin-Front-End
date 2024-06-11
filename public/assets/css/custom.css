@@ -194,7 +194,7 @@ table.dataTable tbody tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-.sub-title{
+.sub-title {
     background: rgb(220, 214, 237);
 }
 
@@ -279,6 +279,40 @@ input[type="number"]::-webkit-outer-spin-button {
     background-position: bottom right 10%;
     background-repeat: no-repeat;
 }
+
+.main-table {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.invoice-table {
+    background-color: #f0f8ff;
+    margin: 10px 0;
+}
+
+.invoice-table thead {
+    background-color: #e0f7fa;
+}
+
+.payable-table {
+    background-color: #fff3e0;
+    margin: 10px 0 0 20px;
+}
+
+.payable-table thead {
+    background-color: #ffe0b2;
+}
+
+.table-bordered {
+    border: 1px solid #ddd;
+}
+
+.nested-table thead th,
+.nested-table tbody td {
+    padding: 8px;
+    text-align: left;
+}
+
 
 /* Mobile sizes rsponsive*/
 @media only screen and (max-width: 576px) {
