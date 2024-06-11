@@ -296,6 +296,11 @@ Breadcrumbs::for('payments_delaied_student', function ($trail) {
     $trail->parent('home');
     $trail->push('Payments Delaied Students Report', route('payments_delaied_student'));
 });
+Breadcrumbs::for('grade_class_student_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Grade Class Students Report', route('grade_class_student_report'));
+});
+
 
 Breadcrumbs::for('extra_curricular_report', function ($trail) {
     $trail->parent('home');

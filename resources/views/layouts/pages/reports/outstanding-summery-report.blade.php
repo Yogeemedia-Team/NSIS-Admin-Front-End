@@ -8,6 +8,10 @@
         <!-- Students table -->
         @include('components/session-section')
         <div class="card">
+            <div id="loader" class="loader d-none">
+                <!-- Loader content, e.g., spinner -->
+                <div class="spinner"></div>
+            </div>
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
@@ -48,8 +52,34 @@
                 </div>
             </div>
 
-            <div class="card-body pt-0">
-                <div id="TransactionSummery" class="p-2 shadow col-sm-12">
+            <div class="card-body pt-0"id="TransactionSummery">
+                <div id="hiddenContent" class="d-none">
+                    <div class="row px-1 invoice-header py-2">
+                        <div class="col-md-2 text-center align-self-center">
+                            <img src="{{ asset('assets/img/nsis.png') }}" class="w-50 shadow rounded-circle" alt="logo">
+                        </div>
+                        <div class="col-md-8 align-self-center">
+                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">negombo south international school</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">nittambuwa branch</p>
+                        </div>
+                    </div>
+                    <hr class="bg-black my-1">
+                    <div class="row align-self-center text-center">
+                        <p class="mb-0 fs-5 text-black text-center fw-bold text-capitalize">Outstanding Summery</p>
+                    </div>
+                    <div class="row px-1 invoice-address py-1">
+                        <div class="col-md-6 text-start">
+                            <p class="mb-0 fs-6 text-black ">Admission No: <span id="lblAdmissionNo" class="fw-bold"></span></p>
+                            <p class="mb-0 fs-6 text-black ">From Date: <span id="lblFromDate" class="fw-bold" ></span></p>
+                            <p class="mb-0 fs-6 text-black ">To Date: <span id="lblToDate" class="fw-bold" ></span></p>
+                        </div>
+                        <div class="col-md-6 text-end py-1">
+                        <p class="mb-0 fs-6 text-black fw-light">Issued {{ \Carbon\Carbon::now()->format('M d Y') }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
+                <div class="p-2 shadow col-sm-12">
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered main-table">
                             <thead>
@@ -68,7 +98,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $outstanding['invoice_number'] }}</td>
                                     <td>{{ $outstanding['status']== 0 ? "Pending" : ($outstanding['status'] == 1 ? "Completed" : "Partial Paid") }}</td>
-                                    <td>{{ $outstanding['invoice_total'] }}</td>
+                                    <td class="text-end" >Rs.{{ $outstanding['invoice_total'] }}</td>
                                 </tr>
                                 <tr>
                                     <td class="px-0" colspan="4">
@@ -91,7 +121,7 @@
                                                     <td>{{ $payable['type'] }}</td>
                                                     <td>{{ $payable['due_date'] }}</td>
                                                     <td>{{ $payable['status']== 0 ? "Pending" : ($payable['status'] == 1 ? "Completed" : "Partial Paid") }}</td>
-                                                    <td>Rs. {{ $payable['amount'] }}</td>
+                                                    <td class="text-end" >Rs. {{ $payable['amount'] }}</td>
                                                 </tr>
                                                 @endforeach
                                             </tbody>
@@ -136,7 +166,13 @@
 <script>
     $(document).ready(function() {
         $("#downloadButton").click(function() {
+            $("#loader").removeClass('d-none');
             $("#downloadButton").addClass('d-none');
+            $("#hiddenContent").removeClass('d-none');
+         
+            $("#lblAdmissionNo").text($('[name="admission_no"]').val());
+            $("#lblFromDate").text($('[name="from_date"]').val());
+            $("#lblToDate").text($('[name="to_date"]').val());
 
             // Get the HTML content of the element to be converted to PDF
             var content = document.getElementById("TransactionSummery");
@@ -144,7 +180,7 @@
             // Use html2pdf to convert HTML content to PDF
             html2pdf(content, {
                 margin: 10,
-                filename: 'transaction_summery.pdf',
+                filename: 'outstanding_summery.pdf',
                 image: {
                     type: 'jpeg',
                     quality: 0.98
@@ -163,6 +199,8 @@
                 }
             }).then(function() {
                 $("#downloadButton").removeClass('d-none');
+                $("#hiddenContent").addClass('d-none');
+                $("#loader").addClass('d-none');
             });
         });
     });

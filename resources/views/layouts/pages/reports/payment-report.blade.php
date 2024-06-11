@@ -8,13 +8,16 @@
         <!-- Students table -->
         @include('components/session-section')
         <div class="card">
+            <div id="loader" class="loader d-none">
+                <div class="spinner"></div>
+            </div>
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
                         <h5 class="font-weight-bolder text-white mb-0">Student Payment Summery Report</h5>
                     </div>
                     <div class="col-md-6 align-self-center text-end">
-                        <a href="{{ route('add_student_payment') }}" class="btn btn-primary mb-0"><i class="fa-solid fa-download me-2"></i> Download</a>
+                        <a type="button" id="downloadButton" class="btn btn-primary mb-0"><i class="fa-solid fa-download me-2"></i> Download</a>
                     </div>
                 </div>
             </div>
@@ -48,20 +51,49 @@
                     </div>
                 </div>
             </div>
-            <div class="card-body pt-0">
+           
+
+            <div class="card-body pt-0" id="PaymentSummery">
+                <div id="hiddenContent" class="d-none">
+                    <div class="row px-1 invoice-header py-2">
+                        <div class="col-md-2 text-center align-self-center">
+                            <img src="{{ asset('assets/img/nsis.png') }}" class="w-50 shadow rounded-circle" alt="logo">
+                        </div>
+                        <div class="col-md-8 align-self-center">
+                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">negombo south international school</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">nittambuwa branch</p>
+                        </div>
+                    </div>
+                    <hr class="bg-black my-1">
+                        <div class="row align-self-center text-center">
+                            <p class="mb-0 fs-5 text-black text-center fw-bold text-capitalize">Student Payment Summery Report</p>
+                        </div>
+                    <div class="row px-1 invoice-address py-1">
+                        <div class="col-md-6 text-start">
+                            <p class="mb-0 fs-6 text-black ">Admission No: <span id="lblAdmissionNo" class="fw-bold"></span></p>
+                            <p class="mb-0 fs-6 text-black ">From Date: <span id="lblFromDate" class="fw-bold" ></span></p>
+                            <p class="mb-0 fs-6 text-black ">To Date: <span id="lblToDate" class="fw-bold" ></span></p>
+                        </div>
+                        <div class="col-md-6 text-end py-1">
+                        <p class="mb-0 fs-6 text-black fw-light">Issued {{ \Carbon\Carbon::now()->format('M d Y') }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
                 <div class="table-responsive">
-                    <table  class="table table-striped" style="width:100%">
+                    <table class="table table-striped" style="width:100%">
                         <thead>
                             <tr>
                                 <th class="px-2">Transaction Id</th>
-                                <th class="px-2">Reference No</th>
+                                <th class="px-2">Ref No</th>
                                 <th class="px-2">Payment Date</th>
                                 <th class="px-2">Payment Term</th>
-                                <th class="px-2 text-center">Payment Status</th>
+                                <th class="px-2 text-center">Status</th>
                                 <th class="px-2">Paid Amount</th>
                             </tr>
                         </thead>
                         <tbody id="transactionAccordion">
+                      
                             @if(isset($allPayments) && count($allPayments) > 0)
                             @php 
                             $total = 0;
@@ -69,28 +101,26 @@
 
                             @foreach($allPayments as $data)
                             @php 
-                            $total = $total + $data['total_due'];
+                            $total += $data['total_due'];
                             @endphp
                             <tr>
-                                <td>{{ $data['payment_id']}}</td>
-                                <td>{{ $data['payment_reference_no'] ?? ""}}</td>
-                                <td>{{ $data['date']}}</td>
-                                <td>{{ $data['paid_from']}}</td>
+                                <td class="wrap-text" style="font-size: small;">{{$data['payment_id'] }}</td>
+                                <td>{{ $data['payment_reference_no'] ?? "" }}</td>
+                                <td>{{ $data['date'] }}</td>
+                                <td>{{ $data['paid_from'] }}</td>
                                 <td class="text-center">{{ isset($data['status']) ? ($data['status'] == 0 ? "Pending" : ($data['status'] == 1 ? "Confirmed" : "Partial Paid")) : "Unknown" }}</td>
-                                <td>Rs. {{ $data['total_due']}}</td>
+                                <td>Rs. {{ $data['total_due'] }}</td>
                             </tr>
-                            
                             @endforeach
                             
                             <tr>
-                                <td colspan="4"></td> 
-                                <td  colspan="2" class="text-end"><b>Total  Rs. {{ $total }}.00</b></td>
+                                <td colspan="4"></td>
+                                <td colspan="2" class="text-end"><b>Total Rs. {{ $total }}.00</b></td>
                             </tr>
                             @endif
                         </tbody>
                     </table>
                 </div>
-
             </div>
 
         </div>
@@ -106,11 +136,21 @@
 @endsection
 @section('footer-scripts')
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.1/html2pdf.bundle.min.js"></script>
 
 
 <script>
     $(document).ready(function() {
+        
+        function splitTextIntoTwo(text) {
+                var length = text.length;
+                var middle = Math.ceil(length / 2);
+                var part1 = text.substring(0, middle);
+                var part2 = text.substring(middle);
+                return part1+"<br>"+part2;
+            }
+  
+
         var accordionItem = '';
         $('#searchForm').submit(function(event) {
             // Prevent the default form submission
@@ -164,12 +204,12 @@
 
                 var payment_reference_no = payment['payment_reference_no'] != null ? payment['payment_reference_no']: "-";
                 accordionItem +=  ' <tr>'+
-                        ' <td>'+ payment['payment_id']+'</td>'+
+                        ' <td class="wrap-text" style="font-size: small;">'+ splitTextIntoTwo(payment['payment_id'])+'</td>'+
                         ' <td>'+  payment_reference_no+'</td>'+
                         ' <td>'+ payment['date']+'</td>'+
                         ' <td>'+ payment['paid_from']+'</td>'+
                         ' <td>'+ paymentStatus+'</td>'+
-                        ' <td>'+ payment['total_due']+'</td>';
+                        ' <td class="text-end">Rs. '+ payment['total_due']+'</td>';
 
 
                 });
@@ -183,7 +223,47 @@
         }
 
 
+    $("#downloadButton").click(function() {
+            $("#loader").removeClass('d-none');
+            $("#downloadButton").addClass('d-none');
+            $("#hiddenContent").removeClass('d-none');
+         
+            // Get the current date and format it
+            var currentDate = new Date();
+            var formattedDate = currentDate.toLocaleString('default', { month: 'short' }) + ' ' + currentDate.getDate() + ' ' + currentDate.getFullYear();
+
+            // Add the formatted date to the hidden content
+            $("#lblAdmissionNo").text($('[name="admission_no"]').val());
+            $("#lblFromDate").text($('[name="from_date"]').val());
+            $("#lblToDate").text($('[name="to_date"]').val());
+
+            var content = document.getElementById("PaymentSummery");
+            html2pdf(content, {
+                margin: 10,
+                filename: $('[name="admission_no"]').val() + '_payment_summery.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    dpi: 192,
+                    letterRendering: true
+                },
+                jsPDF: {
+                    unit: 'mm',
+                    format: 'a4',
+                    orientation: 'portrait'
+                },
+                pagebreak: {
+                    mode: ['avoid-all', 'css', 'legacy']
+                }
+            }).then(function() {
+                $("#downloadButton").removeClass('d-none');
+                $("#hiddenContent").addClass('d-none');
+                $("#loader").addClass('d-none');
+            });
     });
+});
 
 
 </script>

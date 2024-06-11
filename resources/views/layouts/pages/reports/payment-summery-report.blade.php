@@ -8,6 +8,9 @@
         <!-- Students table -->
         @include('components/session-section')
         <div class="card">
+        <div id="loader" class="loader d-none">
+                <div class="spinner"></div>
+            </div>
             <div class="card-header pt-1 px-3">
                 <div class="row bg-secondary py-2 px-1 rounded-4">
                     <div class="col-md-6 align-self-center">
@@ -48,8 +51,33 @@
                 </div>
             </div>
 
-            <div class="card-body pt-0">
-                <div id="TransactionSummery" class="p-2 shadow col-sm-12">
+            <div class="card-body pt-0" id="TransactionSummery">
+                <div id="hiddenContent" class="d-none">
+                    <div class="row px-1 invoice-header py-2">
+                        <div class="col-md-2 text-center align-self-center">
+                            <img src="{{ asset('assets/img/nsis.png') }}" class="w-50 shadow rounded-circle" alt="logo">
+                        </div>
+                        <div class="col-md-8 align-self-center">
+                            <p class="mb-0 fs-5 text-black fw-bold text-capitalize">negombo south international school</p>
+                            <p class="mb-0 fs-6 text-black fw-light text-capitalize">nittambuwa branch</p>
+                        </div>
+                    </div>
+                    <hr class="bg-black my-1">
+                    <div class="row align-self-center text-center">
+                        <p class="mb-0 fs-5 text-black text-center fw-bold text-capitalize">Student Payment Summery Report</p>
+                    </div>
+                    <div class="row px-1 invoice-address py-1">
+                        <div class="col-md-6 text-start">
+                            <p class="mb-0 fs-6 text-black ">Admission No: <span id="lblAdmissionNo" class="fw-bold"></span></p>
+                            <p class="mb-0 fs-6 text-black ">From Date: <span id="lblFromDate" class="fw-bold" ></span></p>
+                            <p class="mb-0 fs-6 text-black ">To Date: <span id="lblToDate" class="fw-bold" ></span></p>
+                        </div>
+                        <div class="col-md-6 text-end py-1">
+                        <p class="mb-0 fs-6 text-black fw-light">Issued {{ \Carbon\Carbon::now()->format('M d Y') }}</p>
+                        </div>
+                    </div>
+                   
+                </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered main-table">
                             <thead>
@@ -58,26 +86,42 @@
                                     <th class="col-sm">Transaction No</th>
                                     <th class="col-sm">Payment Term</th>
                                     <th class="col-sm">Payment Date</th>
-                                    <th class="col-sm">Payment Amount</th>
+                                    <th class="col-sm">Amount</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                @php
+                                    if (!function_exists('splitTextIntoTwo')) {
+                                        function splitTextIntoTwo($text) {
+                                            try {
+                                                $length = strlen($text);
+                                                $middle = ceil($length / 2);
+                                                $part1 = substr($text, 0, $middle);
+                                                $part2 = substr($text, $middle);
+                                                return $part1.'<br>'.$part2;
+                                            } catch (\Exception $e) {
+                                                // Handle the exception, log it, or return a default value
+                                                return $text;
+                                            }
+                                        }
+                                    }
+                                @endphp
                                 @if(isset($transactionSummery))
                                 @if(Count($transactionSummery) != 0)
                                 @foreach ($transactionSummery as $key => $transaction)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
-                                    <td>{{ $transaction['payment_id'] }}</td>
+                                    <td style="font-size: small;">{!! splitTextIntoTwo($transaction['payment_id']) !!}</td>
                                     <td>{{ $transaction['paid_from'] }}</td>
                                     <td>{{ $transaction['date'] }}</td>
-                                    <td>Rs. {{ $transaction['total_due'] }}</td>
+                                    <td class="text-end">Rs. {{ $transaction['total_due'] }}</td>
                                 </tr>
                                 <tr>
                                     <td class="px-0" colspan="5">
                                         <table class="table table-striped table-bordered invoice-table nested-table">
                                             <thead>
                                                 <tr>
-                                                    <th>#</th>
+                                                    
                                                     <th>Invoice No</th>
                                                     <th>Status</th>
                                                     <th>Amount</th>
@@ -86,18 +130,18 @@
                                             <tbody>
                                                 @foreach ($transaction['invoice_list'] as $invoice)
                                                 <tr>
-                                                    <td>*</td>
+                                                   
                                                     <td>{{ $invoice['invoice_number'] }}</td>
                                                     <td>{{ $invoice['status']== 0 ? "Pending" : ($invoice['status'] == 1 ? "Completed" : "Partial Paid") }}</td>
-                                                    <td>Rs. {{ $invoice['invoice_total'] }}</td>
+                                                    <td class="text-end">Rs. {{ $invoice['invoice_total'] }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td class="px-0" colspan="4">
                                                         <table class="table table-striped table-bordered payable-table nested-table">
                                                             <thead>
                                                                 <tr>
-                                                                    <th>#</th>
-                                                                    <th>Payable No</th>
+                                                                    
+                                                                    <th>No</th>
                                                                     <th>Discretion</th>
                                                                     <th>Date</th>
                                                                     <th>Status</th>
@@ -107,12 +151,12 @@
                                                             <tbody>
                                                                 @foreach ($invoice['account_paybles'] as $payable)
                                                                 <tr>
-                                                                    <td>*</td>
+                                                                    
                                                                     <td>{{ $payable['id'] }}</td>
                                                                     <td>{{ $payable['type'] }}</td>
                                                                     <td>{{ $payable['due_date'] }}</td>
                                                                     <td>{{ $payable['status']== 0 ? "Pending" : ($payable['status'] == 1 ? "Completed" : "Partial Paid") }}</td>
-                                                                    <td>Rs. {{ $payable['amount'] }}</td>
+                                                                    <td class="text-end" >Rs. {{ $payable['amount'] }}</td>
                                                                 </tr>
                                                                 @endforeach
                                                             </tbody>
@@ -139,7 +183,6 @@
                         </table>
                     </div>
                 </div>
-            </div>
 
         </div>
 
@@ -161,16 +204,30 @@
 <!-- print pdf -->
 <script>
     $(document).ready(function() {
-        $("#downloadButton").click(function() {
-            $("#downloadButton").addClass('d-none');
 
-            // Get the HTML content of the element to be converted to PDF
+  
+
+
+        $("#downloadButton").click(function() {
+            $("#loader").removeClass('d-none');
+            $("#downloadButton").addClass('d-none');
+            $("#hiddenContent").removeClass('d-none');
+         
+
+            var currentDate = new Date();
+            var formattedDate = currentDate.toLocaleString('default', { month: 'short' }) + ' ' + currentDate.getDate() + ' ' + currentDate.getFullYear();
+
+            // Add the formatted date to the hidden content
+            $("#lblAdmissionNo").text($('[name="admission_no"]').val());
+            $("#lblFromDate").text($('[name="from_date"]').val());
+            $("#lblToDate").text($('[name="to_date"]').val());
+
             var content = document.getElementById("TransactionSummery");
 
             // Use html2pdf to convert HTML content to PDF
             html2pdf(content, {
                 margin: 10,
-                filename: 'transaction_summery.pdf',
+                filename: $('[name="admission_no"]').val() + '_transaction_summery.pdf',
                 image: {
                     type: 'jpeg',
                     quality: 0.98
@@ -189,6 +246,8 @@
                 }
             }).then(function() {
                 $("#downloadButton").removeClass('d-none');
+                $("#hiddenContent").addClass('d-none');
+                $("#loader").addClass('d-none');
             });
         });
     });
