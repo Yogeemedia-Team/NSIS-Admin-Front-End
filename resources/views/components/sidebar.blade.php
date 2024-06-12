@@ -258,7 +258,7 @@
                 <span class="sidenav-normal"> User Levels </span>
               </a>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_roles') ? 'active' : '' }}">
+            <!-- <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_roles') ? 'active' : '' }}">
               <a class="nav-link mx-0" href="{{ route('user_roles') }}">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Roles </span>
@@ -275,7 +275,7 @@
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Assigning </span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </li>
@@ -299,7 +299,7 @@
                   <hr class="bg-black my-1">
                   <li class="nav-item {{ request()->routeIs('student_outstanding_summery') || request()->routeIs('student_outstanding_summery_search') ? 'active sub-title' : '' }}">
                     <a class="nav-link mx-2 px-0" href="{{ route('student_outstanding_summery') }}">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                      <span class="sidenav-mini-icon  pe-4"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Outstanding List </span>
                     </a>
                   </li>
