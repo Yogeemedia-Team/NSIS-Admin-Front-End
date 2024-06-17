@@ -329,30 +329,30 @@
                                 </div>
                             </div>
 
-                            <h6 class="mt-4 mb-3">Student Payment</h6>
-                            <div class="row">
+                            <!-- <h6 class="mt-4 mb-3">Student Payment</h6>
+                            <div class="row"> -->
                                 <!-- Admission Date -->
-                                <div class="col-md-4 align-self-center">
+                                <!-- <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_admission_date" class="form-label">Admission Date</label>
                                         <input type="date" class="form-control" oninput="this.className = 'form-control'" name="sd_admission_date" placeholder="Select Admission Date" >
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Admission Payment Amount -->
-                                <div class="col-md-4 align-self-center">
+                                <!-- <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_admission_payment_amount" class="form-label">Admission Payment Amount</label>
                                         <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_admission_payment_amount" placeholder="Enter Admission Payment Amount" >
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- Number of Installments -->
-                                <div class="col-md-4 align-self-center">
+                                <!-- <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_no_of_installments" class="form-label">Number of Installments</label>
                                         <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" name="sd_no_of_installments" placeholder="Enter Number of Installments" >
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
 
                             <h6 class="mt-4 mb-3">Student Siblings</h6>
                             <div class="table-responsive">

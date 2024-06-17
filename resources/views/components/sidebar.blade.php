@@ -132,7 +132,37 @@
         </a>
         <div class="collapse  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') || request()->routeIs('extracurriculars') || request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'show' : '' }}" id="masterfiles">
           <ul class="nav px-4">
-            <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('grades') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Grades </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('classes') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('classes') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Classes </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('extracurriculars') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('extracurriculars') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Extracurriculars </span>
+              </a>
+            </li>
+            <hr class="bg-black my-1">
+
+            <li class="nav-item sub-menu-line mt-1 rounded {{request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') ? 'active' : '' }}">
+              <a class="nav-link mx-2 px-0" href="{{ route('year_grade_class') }}">
+                <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                <span class="sidenav-normal"> Year Grade Class Relationship </span>
+              </a>
+            </li>
+            <!-- <li class="nav-item sub-menu-line  {{ request()->routeIs('admission_fee') || request()->routeIs('monthly_fee') ? 'active' : '' }}  sub-menu-line mt-1 rounded">
               <a class="nav-link mx-0 " data-bs-toggle="collapse" aria-expanded="false" href="#stdfee">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Students <b class="caret"></b></span>
@@ -159,8 +189,8 @@
 
                 </ul>
               </div>
-            </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
+            </li> -->
+            <!-- <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grades') || request()->routeIs('classes') ||request()->routeIs('year_grade_class') || request()->routeIs('add_year_grade_class') || request()->routeIs('extracurriculars') ? 'active' : '' }}">
               <a class="nav-link mx-0  " data-bs-toggle="collapse" aria-expanded="false" href="#sch">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> School <b class="caret"></b></span>
@@ -203,7 +233,7 @@
 
                 </ul>
               </div>
-            </li>
+            </li> -->
           </ul>
       </li>
       <hr class="bg-white my-1">
@@ -228,7 +258,7 @@
                 <span class="sidenav-normal"> User Levels </span>
               </a>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_roles') ? 'active' : '' }}">
+            <!-- <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('user_roles') ? 'active' : '' }}">
               <a class="nav-link mx-0" href="{{ route('user_roles') }}">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Roles </span>
@@ -245,102 +275,95 @@
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> User Assigning </span>
               </a>
-            </li>
+            </li> -->
           </ul>
         </div>
       </li>
       <hr class="bg-white my-1">
-      <!-- <li class="nav-item">
-        <a data-bs-toggle="collapse" href="#reports" class="nav-link mx-2 {{ request()->routeIs('students') ||  request()->routeIs('students_search') ? 'text-white' : 'text-white' }}" aria-controls="reports" role="button" aria-expanded="false">
+      <li class="nav-item">
+        <a data-bs-toggle="collapse" href="#reports" class="nav-link mx-2 {{ request()->routeIs('income_report') || request()->routeIs('grade_class_student_report') || request()->routeIs('extra_curricular_report') ||  request()->routeIs('student_outstanding_summery') || request()->routeIs('student_outstanding_summery_search') || request()->routeIs('student_transaction_summery_search') || request()->routeIs('student_transaction_summery') || request()->routeIs('student_payments_report') || request()->routeIs('payments_delaied_student') ? 'active' : 'text-white' }}" aria-controls="reports" role="button" aria-expanded="false">
           <div class="icon icon-shape icon-sm shadow border-radius-md bg-white text-center d-flex align-items-center justify-content-center  me-2">
             <i class="fa-solid fa-file"></i>
           </div>
           <span class="nav-link-text ms-1">Reports</span>
         </a>
-        <div class="collapse {{ request()->routeIs('add_enrollment') ? '' : '' }}" id="reports">
+        <div class="collapse {{ request()->routeIs('income_report') || request()->routeIs('grade_class_student_report') || request()->routeIs('extra_curricular_report') || request()->routeIs('student_outstanding_summery_search') || request()->routeIs('student_outstanding_summery') || request()->routeIs('student_transaction_summery_search') || request()->routeIs('student_transaction_summery') || request()->routeIs('student_payments_report') || request()->routeIs('payments_delaied_student') ? 'show' : '' }}" id="reports">
           <ul class="nav px-4">
-            <li class="nav-item sub-menu-line mt-1 rounded">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('student_outstanding_summery') || request()->routeIs('student_outstanding_summery_search') || request()->routeIs('student_payments_report') || request()->routeIs('payments_delaied_student') || request()->routeIs('student_transaction_summery_search') || request()->routeIs('student_transaction_summery') ? 'active' : '' }}">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#payreports">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Payment Reports <b class="caret"></b></span>
               </a>
-              <div class="collapse {{ request()->routeIs('add_enrollment') ? '' : '' }} " id="payreports">
+              <div class="collapse {{ request()->routeIs('student_outstanding_summery') || request()->routeIs('student_outstanding_summery_search') || request()->routeIs('student_payments_report') || request()->routeIs('payments_delaied_student') || request()->routeIs('student_transaction_summery_search') || request()->routeIs('student_transaction_summery') ? 'show' : '' }} " id="payreports">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{ request()->routeIs('student_outstanding_summery') || request()->routeIs('student_outstanding_summery_search') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('student_outstanding_summery') }}">
+                      <span class="sidenav-mini-icon  pe-4"> <i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Outstanding List </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{ request()->routeIs('student_payments_report') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('student_payments_report') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Payment Summary </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
-                      <span class="sidenav-normal"> Transaction Detailed Report </span>
+                  <li class="nav-item {{ request()->routeIs('student_transaction_summery_search') || request()->routeIs('student_transaction_summery') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('student_transaction_summery') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
+                      <span class="sidenav-normal"> Transaction Summary </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item {{ request()->routeIs('add_enrollment') ? '' : '' }}">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
-                      <span class="sidenav-normal"> Payment Delayed List </span>
+                  <li class="nav-item {{ request()->routeIs('payments_delaied_student') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('payments_delaied_student') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
+                      <span class="sidenav-normal"> Payment Detailed Students </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-
                 </ul>
               </div>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('grade_class_student_report') || request()->routeIs('extra_curricular_report') ? 'active' : '' }}">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#lists">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Lists <b class="caret"></b></span>
               </a>
-              <div class="collapse " id="lists">
+              <div class="collapse {{ request()->routeIs('grade_class_student_report') || request()->routeIs('extra_curricular_report') ? 'show' : '' }} " id="lists">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{ request()->routeIs('grade_class_student_report') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('grade_class_student_report') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Student Lists </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
-
-                  <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
-                      <span class="sidenav-normal"> Extracurriculars </span>
+                  <li class="nav-item {{ request()->routeIs('extra_curricular_report') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('extra_curricular_report')}}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
+                      <span class="sidenav-normal"> Extracurricular </span>
                     </a>
                   </li>
                   <hr class="bg-black my-1">
                 </ul>
               </div>
             </li>
-            <li class="nav-item sub-menu-line mt-1 rounded">
+            <li class="nav-item sub-menu-line mt-1 rounded {{ request()->routeIs('income_report') ? 'active' : '' }}">
               <a class="nav-link mx-0" data-bs-toggle="collapse" aria-expanded="false" href="#finance">
                 <span class="sidenav-mini-icon pe-4"> <i class="fas fa-stop"></i> </span>
                 <span class="sidenav-normal"> Finance Reports <b class="caret"></b></span>
               </a>
-              <div class="collapse " id="finance">
+              <div class="collapse {{ request()->routeIs('income_report') ? 'show' : '' }} " id="finance">
                 <ul class="nav nav-sm flex-column">
                   <hr class="bg-black my-1">
-                  <li class="nav-item">
-                    <a class="nav-link mx-2 px-0" href="#">
-                      <span class="sidenav-mini-icon  pe-3"> <i class="fas fa-chevron-right"></i></span>
+                  <li class="nav-item {{ request()->routeIs('income_report') ? 'active sub-title' : '' }}">
+                    <a class="nav-link mx-2 px-0" href="{{ route('income_report') }}">
+                      <span class="sidenav-mini-icon pe-4"><i class="fas fa-chevron-right"></i></span>
                       <span class="sidenav-normal"> Income Summary </span>
                     </a>
                   </li>
@@ -349,8 +372,10 @@
               </div>
             </li>
           </ul>
+        </div>
       </li>
-      <hr class="bg-white my-1"> -->
+
+      <hr class="bg-white my-1">
     </ul>
   </div>
   <div class="sidenav-footer mx-3 mt-3 pt-3">

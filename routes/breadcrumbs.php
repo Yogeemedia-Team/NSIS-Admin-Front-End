@@ -35,9 +35,9 @@ Breadcrumbs::for('admission_payment_create', function ($trail) {
     $trail->push('Add Admission Payment', route('admission_payment_create'));
 });
 
-Breadcrumbs::for('admission_payment_view', function ($trail , $id) {
+Breadcrumbs::for('admission_payment_view', function ($trail, $id) {
     $trail->parent('admission_payment');
-    $trail->push('View Admission Payment', route('admission_payment_view' , $id));
+    $trail->push('View Admission Payment', route('admission_payment_view', $id));
 });
 
 
@@ -285,4 +285,49 @@ Breadcrumbs::for('invoices_view', function ($trail, $invoiceId) {
     $trail->parent('home');
     $trail->push('Invoices', route('invoices'));
     $trail->push('Invoices View', route('invoices_view', $invoiceId));
+});
+
+Breadcrumbs::for('student_payments_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Student Payment Report', route('student_payments_report'));
+});
+
+Breadcrumbs::for('payments_delaied_student', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Payments Delaied Students Report', route('payments_delaied_student'));
+});
+Breadcrumbs::for('grade_class_student_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Grade Class Students Report', route('grade_class_student_report'));
+});
+
+
+Breadcrumbs::for('extra_curricular_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Student Extra Curricular Report', route('extra_curricular_report'));
+});
+
+Breadcrumbs::for('income_report', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Income Report', route('income_report'));
+});
+
+Breadcrumbs::for('student_transaction_summery', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Students Transaction Summery', route('student_transaction_summery'));
+});
+
+Breadcrumbs::for('student_transaction_summery_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Students Transaction Summery', route('student_transaction_summery_search'));
+});
+
+Breadcrumbs::for('student_outstanding_summery', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Students Outstanding Summery', route('student_outstanding_summery'));
+});
+
+Breadcrumbs::for('student_outstanding_summery_search', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Students Outstanding Summery', route('student_outstanding_summery_search'));
 });

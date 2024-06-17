@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
-
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -178,4 +178,23 @@ Route::group(['middleware' => 'checkRoutes'], function () {
     Route::get('/invoices', [HomeController::class, 'invoices'])->name('invoices');
     Route::post('/invoices/search', [HomeController::class, 'searchInvoices'])->name('invoices_search');
     Route::get('/invoices_view/{id}', [HomeController::class, 'invoicesView'])->name('invoices_view');
+
+    //reports
+    Route::get('/student_payments_report', [ReportController::class, 'studentPaymentsReport'])->name('student_payments_report');
+    Route::get('/payments_delaied_student', [ReportController::class, 'PaymentDelaiedStudent'])->name('payments_delaied_student');
+    Route::get('/grade_class_student_report', [ReportController::class, 'gradeClassStudentReport'])->name('grade_class_student_report');
+    Route::get('/extra_curricular_report', [ReportController::class, 'extraCurricularReport'])->name('extra_curricular_report');
+    Route::get('/income_report', [ReportController::class, 'incomeReport'])->name('income_report');
+    
+    Route::post('/curricular_create', [HomeController::class, 'curricularCreate'])->name('curricular_create');
+    Route::post('/curricular_update', [HomeController::class, 'curricularUpdate'])->name('curricular_update');
+    Route::post('/curricular_delete/{id}', [HomeController::class, 'deleteCurricular'])->name('curricular_delete');
+
+    Route::get('/student_transaction_summery', [ReportController::class, 'transactionSummery'])->name('student_transaction_summery');
+    Route::post('/student_transaction_summery_search', [ReportController::class, 'transactionSummerySearch'])->name('student_transaction_summery_search');
+
+    Route::get('/student_outstanding_summery', [ReportController::class, 'outstandingSummery'])->name('student_outstanding_summery');
+    Route::post('/student_outstanding_summery_search', [ReportController::class, 'outstandingSummerySearch'])->name('student_outstanding_summery_search');
+
+
 });

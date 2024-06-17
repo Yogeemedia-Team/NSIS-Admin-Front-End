@@ -246,10 +246,18 @@ class HomeController extends Controller
         $studentDetails = $response;
         $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
 
-        $year_grades = $response_year['data'];
+        $response_year = $this->apiService->makeApiRequest('GET', 'year_grade_class');
+        $response_extra_curricular = $this->apiService->makeApiRequest('GET', 'extra_curricular');
 
+        // extra_curricular
+
+        $year_grades = $response_year['data'];
+        $year_grades = $response_year['data'];
+        $extra_curricular = $response_extra_curricular['data'];
+
+        // dd($studentDetails);
         // Pass the student details to the view
-        return view('layouts.pages.edit-student', compact('studentDetails', 'year_grades'));
+        return view('layouts.pages.edit-student', compact('studentDetails', 'year_grades', 'extra_curricular'));
     }
 
     public function student_update(Request $request, $studentId)
@@ -687,13 +695,13 @@ class HomeController extends Controller
             Alert::success('Success', 'Extra curricular create successful!')->showConfirmButton('OK');
 
             // Redirect the user to the classes.
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
     }
 
     public function editExtracurricular($id)
     {
-        $endpoint = 'extracurricular/' . $id;
+        $endpoint = 'extra_curricular/' . $id;
         $response = $this->apiService->makeApiRequest('GET', $endpoint);
 
         // Check if the API request was successful
@@ -714,35 +722,35 @@ class HomeController extends Controller
         // Validate the form data, including the file uploads
 
         // Fetch existing student data from the API
-        $existingStudentData = $this->apiService->makeApiRequest('GET', 'class/' . $classId);
+        $existingStudentData = $this->apiService->makeApiRequest('GET', 'extra_curricular/' . $classId);
 
         if ($existingStudentData['status'] === false) {
             // Handle error if the student data cannot be fetched
             Alert::error('Error', $existingStudentData['message'])->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
 
         // Update the data with the new values
         $updatedData = $request->all(); // You might need to modify this based on your form fields
         $updatedData['organization_id'] = env('ORGANIZATION_ID');
         // Make the API request to update the student record
-        $response = $this->apiService->makeApiRequest('PUT', 'class/' . $classId, $updatedData);
+        $response = $this->apiService->makeApiRequest('PUT', 'extra_curricular/' . $classId, $updatedData);
 
         if ($response['status'] === false) {
             // If the update request fails, display an error message.
             Alert::error('Error', $response['message'])->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         } else {
             // If the update is successful, display a success message.
             Alert::success('Success', 'Extracurricular update successful!')->showConfirmButton('OK');
-            return redirect()->route('extracurricular');
+            return redirect()->route('extracurriculars');
         }
     }
 
     public function deleteExtracurricular($id)
     {
         // Endpoint to delete by ID
-        $endpoint = 'extracurricular/' . $id;
+        $endpoint = 'extra_curricular/' . $id;
 
         // Make the API request to delete
         $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
@@ -756,7 +764,7 @@ class HomeController extends Controller
         }
 
         // Redirect
-        return redirect()->route('extracurricular');
+        return redirect()->route('extracurriculars');
     }
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////    
 
@@ -1738,7 +1746,7 @@ class HomeController extends Controller
         }
 
         $data = $dataResponse['data'];
-        
+
 
         return view('layouts.pages.student.transaction.admission.view', compact('data'));
     }
@@ -1849,5 +1857,69 @@ class HomeController extends Controller
         $details = $invoicesResponse['data'];
 
         return view('layouts.pages.student.transaction.payment.view', compact('token', 'details'));
+    }
+
+
+    public function curricularCreate(Request $request)
+    {
+        $endPoint = 'student_extra_curricular_add';
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = [
+            'student_id' => $request->get('student_id_for_curricular'),
+            'extra_curricular_id' => $request->get('extra_curricular_id'),
+            'start_from' => $request->get('curricular_start_date'),
+            'end_from' => $request->get('curricular_end_date'),
+            'status' => 1,
+        ];
+
+
+        $response = $this->apiService->makeApiRequest('POST', $endPoint, $apiData);
+
+        if ($response['status'] === false) {
+            return response()->json(['status' => 500, 'msg' => $response['message']]);
+        } else {
+            return response()->json(['status' => 200, 'msg' => 'Create successfully', 'data' => $response['data']]);
+        }
+    }
+
+
+    public function curricularUpdate(Request $request)
+    {
+        $endPoint = 'student_extra_curricular_update/' . $request->get('id');
+        $apiService = new ApiService();
+        $token = $apiService->getAccessToken();
+
+        $apiData = [
+            'student_id' => $request->get('student_id_for_curricular'),
+            'extra_curricular_id' => $request->get('extra_curricular_id'),
+            'start_from' => $request->get('curricular_start_date'),
+            'end_from' => $request->get('curricular_end_date'),
+            'status' => 1,
+        ];
+
+
+        $response = $this->apiService->makeApiRequest('POST', $endPoint, $apiData);
+
+        if ($response['status'] === false) {
+            return response()->json(['status' => 500, 'msg' => $response['message']]);
+        } else {
+            return response()->json(['status' => 200, 'msg' => 'Updated successfully', 'data' => $response['data']]);
+        }
+    }
+
+    public function deleteCurricular(Request $request, $id)
+    {
+
+        $endpoint = 'destroy_extra_curricular/' . $request->id;
+
+        $response = $this->apiService->makeApiRequest('DELETE', $endpoint);
+
+        if ($response['status'] === false) {
+            return response()->json(['status' => 500, 'msg' => $response['message']]);
+        } else {
+            return response()->json(['status' => 200, 'msg' => 'Deleted successfully']);
+        }
     }
 }

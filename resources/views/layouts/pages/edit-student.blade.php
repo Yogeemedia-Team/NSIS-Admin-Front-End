@@ -2,7 +2,7 @@
 @section('content')
 <link href="{{ asset('assets/css/cropper.min.css') }}" rel="stylesheet" />
 <main class="main-content position-relative max-height-vh-100 side-bar-bg  h-100 ">
-@include('components/header-ui')
+    @include('components/header-ui')
     <div class="container-fluid body_content py-4">
         <!-- step form -->
         <div class="card">
@@ -171,7 +171,7 @@
                                     <div class="mb-3">
                                         <label for="sd_birthcertificate_number" class="form-label">Birth Certificate
                                             Number</label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] ?? '' }}" name="sd_birth_certificate_number" >
+                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_birth_certificate_number'] ?? '' }}" name="sd_birth_certificate_number">
                                     </div>
                                 </div>
 
@@ -190,6 +190,61 @@
                                         <textarea class="form-control" oninput="this.className = 'form-control'" name="sd_health_conditions">{{ $studentDetails['data']['sd_health_conditions'] ?? '' }}</textarea>
                                     </div>
                                 </div>
+                                <div class="col-md-4 align-self-center">
+                                    <div class="mb-3">
+                                        <label for="student_queries" class="form-label">Student Queries</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="student_queries">{{ $studentDetails['data']['student_queries'] ?? '' }}</textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 align-self-center">
+                                    <div class="mb-3">
+                                        <label for="student_winnings" class="form-label">Student Winnings</label>
+                                        <textarea class="form-control" oninput="this.className = 'form-control'" name="student_winnings">{{ $studentDetails['data']['student_winnings'] ?? '' }}</textarea>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="row">
+                                <h6 class="mb-3">Extra Curricular</h6>
+
+                                <div class="col-md-3 offset-9 text-end">
+                                    <button id="openCurricularModal" type="button" class="btn btn-success py-2 px-4" data-bs-toggle="modal" data-bs-target="#addCurricular">Add Curricular</button>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="table-responsive">
+                                        <table id="curricular_table" class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="px-2">#</th>
+                                                    <th class="px-2">Curricular Name</th>
+                                                    <th class="px-2">Start Date</th>
+                                                    <th class="px-2">End Date</th>
+                                                    <th class="px-2">Action</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @if(isset( $studentDetails['data']['student_extra_curriculars']))
+                                                @foreach( $studentDetails['data']['student_extra_curriculars'] as $index => $data)
+                                                <tr>
+                                                    <td>{{$index + 1}}</td>
+                                                    <td>{{ $data['extra_curriculars']['extracurricular_name']}}</td>
+                                                    <td>{{ $data['start_from']}}</td>
+                                                    <td>{{ $data['end_from']}}</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-warning curricularEdit" data-bs-toggle="modal" data-bs-target="#editCurricular" start_from="{{ $data['start_from'] }}" name="{{ $data['extra_curriculars']['extracurricular_name']}}" end_from="{{ $data['end_from'] }}" extra_curricular_id="{{ $data['extra_curricular_id'] }}" data_id="{{ $data['id'] }}">Edit</button>
+                                                        <button type="button" class="btn btn-danger curricularDelete" data-id="{{ $data['id'] }}">Remove</button>
+                                                    </td>
+                                                </tr>
+                                                @endforeach
+                                                @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
+
                             </div>
                         </div>
 
@@ -200,7 +255,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}" name="sp_father_first_name" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_first_name'] ?? '' }}" name="sp_father_first_name">
                                     </div>
                                 </div>
                                 <!-- Last Name -->
@@ -214,7 +269,7 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}" name="sp_father_nic" >
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_nic'] ?? '' }}" name="sp_father_nic">
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
@@ -222,14 +277,14 @@
                                     <div class="mb-3">
                                         <label for="sp_father_higher_education_qualification" class="form-label">Higher
                                             Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_higher_education_qualification'] ?? '' }}" name="sp_father_higher_education_qualification" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_higher_education_qualification'] ?? '' }}" name="sp_father_higher_education_qualification">
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}" name="sp_father_occupation" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_occupation'] ?? '' }}" name="sp_father_occupation">
                                     </div>
                                 </div>
 
@@ -238,14 +293,14 @@
                                     <div class="mb-3">
                                         <label for="sp_father_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official" >
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_official'] ?? '' }}" name="sp_father_contact_official">
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile" >
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_father_contact_mobile'] ?? '' }}" name="sp_father_contact_mobile">
                                     </div>
                                 </div>
                                 <!-- Official Address -->
@@ -272,21 +327,21 @@
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_first_name" class="form-label">First Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}" name="sp_mother_first_name" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_first_name'] ?? '' }}" name="sp_mother_first_name">
                                     </div>
                                 </div>
                                 <!-- Last Name -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_last_name" class="form-label">Last Name</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}" name="sp_mother_last_name" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_last_name'] ?? '' }}" name="sp_mother_last_name">
                                     </div>
                                 </div>
                                 <!-- NIC No -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_nic" class="form-label">NIC Number</label>
-                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}" name="sp_mother_nic" >
+                                        <input type="text" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_nic'] ?? '' }}" name="sp_mother_nic">
                                     </div>
                                 </div>
                                 <!-- Higher Education Qualification -->
@@ -294,14 +349,14 @@
                                     <div class="mb-3">
                                         <label for="sp_mother_higher_education_qualification" class="form-label">Higher
                                             Education Qualification</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_higher_education_qualification'] ?? '' }}" name="sp_mother_higher_education_qualification" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_higher_education_qualification'] ?? '' }}" name="sp_mother_higher_education_qualification">
                                     </div>
                                 </div>
                                 <!-- Occupation -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_occupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}" name="sp_mother_occupation" >
+                                        <input type="text" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_occupation'] ?? '' }}" name="sp_mother_occupation">
                                     </div>
                                 </div>
 
@@ -310,14 +365,14 @@
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_official" class="form-label">Official Contact
                                             Number</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official" >
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_official'] ?? '' }}" name="sp_mother_contact_official">
                                     </div>
                                 </div>
                                 <!-- Mobile Number -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_mother_contact_mobile" class="form-label">Mobile Number</label>
-                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile" >
+                                        <input type="number" class="form-control phone-input" oninput="this.className = 'form-control phone-input'" value="{{ $studentDetails['data']['parent_data'][0]['sp_mother_contact_mobile'] ?? '' }}" name="sp_mother_contact_mobile">
                                     </div>
                                 </div>
                                 <!-- Official Address -->
@@ -337,184 +392,184 @@
                                     </div>
                                 </div>
                             </div>
-                            <h6 class="mt-4 mb-3">Student Payment</h6>
+                            {{--- <h6 class="mt-4 mb-3">Student Payment</h6>
                             <div class="row">
                                 <!-- Admission Date -->
                                 <div class="col-md-4 align-self-center">
                                     <div class="mb-3">
                                         <label for="sp_father_admission_date" class="form-label">Admission Date</label>
                                         <input type="date" class="form-control" oninput="this.className = 'form-control'" value="{{ $studentDetails['data']['sd_admission_date'] }}" name="sd_admission_date" >
-                                    </div>
-                                </div>
-                                <!-- Admission Payment Amount -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sp_father_admission_payment_amount" class="form-label">Admission
-                                            Payment Amount</label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount" >
-                                    </div>
-                                </div>
-                                <!-- Number of Installments -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sp_father_no_of_installments" class="form-label">Number of
-                                            Installments</label>
-                                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments" >
-                                    </div>
-                                </div>
-                            </div>
-
-                            <h6 class="mt-4 mb-3">Student Siblings</h6>
-                            <div class="table-responsive">
-                                <table id="siblings_table" class="table">
-                                    <thead>
-                                        <tr>
-                                            <th class="px-2">First Name</th>
-                                            <th class="px-2">Last Name</th>
-                                            <th class="px-2">Gender</th>
-                                            <th class="px-2">Date of Birth</th>
-                                            <th class="px-2">School</th>
-                                            <th class="px-2">Action</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {{-- Decode the JSON string into an array --}}
-                                        @php
-                                        $siblingData = $studentDetails['data']['sibling_data'][0]['ss_details'] ?? '[]';
-                                        $siblingData = json_decode($siblingData, true);
-                                        @endphp
-
-                                        {{-- Loop through sibling data --}}
-                                        @foreach($siblingData as $index => $sibling)
-                                        @if(isset($sibling))
-                                        <tr>
-                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][first_name]" value="{{ $sibling['first_name'] ?? '' }}"></td>
-                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][last_name]" value="{{ $sibling['last_name'] ?? '' }}"></td>
-                                            <td>
-                                                <select class="form-select" name="siblings[{{ $index }}][sex]">
-                                                    <option value="male" {{ $sibling['sex'] === 'male' ? 'selected' : '' }}>
-                                                        Male</option>
-                                                    <option value="female" {{ $sibling['sex'] === 'female' ? 'selected' : '' }}>
-                                                        Female</option>
-                                                </select>
-                                            </td>
-                                            <td><input type="date" class="form-control" name="siblings[{{ $index }}][date_of_birth]" value="{{ $sibling['date_of_birth'] ?? '' }}"></td>
-                                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][school]" value="{{ $sibling['school'] ?? '' }}"></td>
-                                            <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
-                                        </tr>
-                                        @endif
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-
-                            <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
-                            <input type="hidden" name="ss_details" id="siblings_data">
                         </div>
+                </div>
+                <!-- Admission Payment Amount -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sp_father_admission_payment_amount" class="form-label">Admission
+                            Payment Amount</label>
+                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_admission_payment_amount'] }}" name="sd_admission_payment_amount">
+                    </div>
+                </div>
+                <!-- Number of Installments -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sp_father_no_of_installments" class="form-label">Number of
+                            Installments</label>
+                        <input type="number" class="form-control alphanumeric-input" oninput="this.className = 'form-control alphanumeric-input'" value="{{ $studentDetails['data']['sd_no_of_installments'] }}" name="sd_no_of_installments">
+                    </div>
+                </div>
+            </div> ---}}
 
-                        <div class="tab">
-                            <h6 class="mt-4 mb-3">Attachments</h6>
-                            <div class="row">
+            <h6 class="mt-4 mb-3">Student Siblings</h6>
+            <div class="table-responsive">
+                <table id="siblings_table" class="table">
+                    <thead>
+                        <tr>
+                            <th class="px-2">First Name</th>
+                            <th class="px-2">Last Name</th>
+                            <th class="px-2">Gender</th>
+                            <th class="px-2">Date of Birth</th>
+                            <th class="px-2">School</th>
+                            <th class="px-2">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{-- Decode the JSON string into an array --}}
+                        @php
+                        $siblingData = $studentDetails['data']['sibling_data'][0]['ss_details'] ?? '[]';
+                        $siblingData = json_decode($siblingData, true);
+                        @endphp
 
-                                <!-- Profile Picture Path -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_profle_picture_path" class="form-label">Profile Picture<span style="color:red;"> *</span></label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_profile_picture']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_profile_picture']) : 'assets/img/no-image.png' }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" value="{{ $studentDetails['data']['documents'][0]['sd_profile_picture'] ?? '' }}">
+                        {{-- Loop through sibling data --}}
+                        @foreach($siblingData as $index => $sibling)
+                        @if(isset($sibling))
+                        <tr>
+                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][first_name]" value="{{ $sibling['first_name'] ?? '' }}"></td>
+                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][last_name]" value="{{ $sibling['last_name'] ?? '' }}"></td>
+                            <td>
+                                <select class="form-select" name="siblings[{{ $index }}][sex]">
+                                    <option value="male" {{ $sibling['sex'] === 'male' ? 'selected' : '' }}>
+                                        Male</option>
+                                    <option value="female" {{ $sibling['sex'] === 'female' ? 'selected' : '' }}>
+                                        Female</option>
+                                </select>
+                            </td>
+                            <td><input type="date" class="form-control" name="siblings[{{ $index }}][date_of_birth]" value="{{ $sibling['date_of_birth'] ?? '' }}"></td>
+                            <td><input type="text" class="form-control" name="siblings[{{ $index }}][school]" value="{{ $sibling['school'] ?? '' }}"></td>
+                            <td><button type="button" class="btn btn-danger" onclick="removeSiblingRow(this)">Remove</button></td>
+                        </tr>
+                        @endif
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+
+            <button type="button" class="btn btn-primary" onclick="addSiblingRow()">Add Sibling</button>
+            <input type="hidden" name="ss_details" id="siblings_data">
+        </div>
+
+        <div class="tab">
+            <h6 class="mt-4 mb-3">Attachments</h6>
+            <div class="row">
+
+                <!-- Profile Picture Path -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_profle_picture_path" class="form-label">Profile Picture<span style="color:red;"> *</span></label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_profile_picture']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_profile_picture']) : 'assets/img/no-image.png' }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" id="sd_profile_picture" name="sd_profile_picture" value="{{ $studentDetails['data']['documents'][0]['sd_profile_picture'] ?? '' }}">
 
 
-                                            <!-- Hidden input for cropped image data -->
-                                            <input type="hidden" name="croppedImage" id="croppedImage" value="{{ $studentDetails['data']['documents'][0]['croppedImage'] ?? '' }}">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- Birth Certificate -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_birth_certificate" class="form-label">Birth Certificate<span style="color:red;"> *</span></label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_birth_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_birth_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" value="{{ isset($studentDetails['data']['documents'][0]['sd_birth_certificate']) ? $studentDetails['data']['documents'][0]['sd_birth_certificate'] : '' }}">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Father NIC -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_nic_fatherer" class="form-label">Father NIC</label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_nic_father']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_father']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_nic_father']) ? $studentDetails['data']['documents'][0]['sd_nic_father'] : '' }}" name="sd_nic_father">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Mother NIC -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_nic_motherer" class="form-label">Mother NIC</label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_nic_mother']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_mother']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_nic_mother']) ? $studentDetails['data']['documents'][0]['sd_nic_mother'] : '' }}" name="sd_nic_mother">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Marriage Certificate -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_marriage_certificate" class="form-label">Marriage
-                                            Certificate</label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_marriage_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_marriage_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_marriage_certificate']) ? $studentDetails['data']['documents'][0]['sd_marriage_certificate'] : '' }}" name="sd_marriage_certificate">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Permission Letter -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_permission_letter" class="form-label">Permission Letter</label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_permission_letter']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_permission_letter']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_permission_letter']) ? $studentDetails['data']['documents'][0]['sd_permission_letter'] : '' }}" name="sd_permission_letter">
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Permission Letter -->
-                                <div class="col-md-4 align-self-center">
-                                    <div class="mb-3">
-                                        <label for="sd_leaving_certificate" class="form-label">Leaving
-                                            Certificate</label>
-                                        <div class="d-flex align-items-center">
-                                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_leaving_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_leaving_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
-                                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_leaving_certificate']) ? $studentDetails['data']['documents'][0]['sd_leaving_certificate'] : '' }}" name="sd_leaving_certificate">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            <!-- Hidden input for cropped image data -->
+                            <input type="hidden" name="croppedImage" id="croppedImage" value="{{ $studentDetails['data']['documents'][0]['croppedImage'] ?? '' }}">
                         </div>
-                        <!-- tabs over -->
-                        <div class="mt-3" style="overflow:auto;">
-                            <div style="float:right;">
-                                <button class="btn btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-                                <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
-                            </div>
+                    </div>
+                </div>
+
+                <!-- Birth Certificate -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_birth_certificate" class="form-label">Birth Certificate<span style="color:red;"> *</span></label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_birth_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_birth_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" name="sd_birth_certificate" value="{{ isset($studentDetails['data']['documents'][0]['sd_birth_certificate']) ? $studentDetails['data']['documents'][0]['sd_birth_certificate'] : '' }}">
                         </div>
-                        <!-- Circles which indicates the steps of the form: -->
-                        <div style="text-align:center;margin-top:40px;">
-                            <span class="step"></span>
-                            <span class="step"></span>
-                            <span class="step"></span>
-                            <!-- <span class="step"></span> -->
+                    </div>
+                </div>
+                <!-- Father NIC -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_nic_fatherer" class="form-label">Father NIC</label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_nic_father']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_father']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_nic_father']) ? $studentDetails['data']['documents'][0]['sd_nic_father'] : '' }}" name="sd_nic_father">
                         </div>
-                    </form>
+                    </div>
+                </div>
+                <!-- Mother NIC -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_nic_motherer" class="form-label">Mother NIC</label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_nic_mother']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_nic_mother']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_nic_mother']) ? $studentDetails['data']['documents'][0]['sd_nic_mother'] : '' }}" name="sd_nic_mother">
+                        </div>
+                    </div>
+                </div>
+                <!-- Marriage Certificate -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_marriage_certificate" class="form-label">Marriage
+                            Certificate</label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_marriage_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_marriage_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_marriage_certificate']) ? $studentDetails['data']['documents'][0]['sd_marriage_certificate'] : '' }}" name="sd_marriage_certificate">
+                        </div>
+                    </div>
+                </div>
+                <!-- Permission Letter -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_permission_letter" class="form-label">Permission Letter</label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_permission_letter']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_permission_letter']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_permission_letter']) ? $studentDetails['data']['documents'][0]['sd_permission_letter'] : '' }}" name="sd_permission_letter">
+                        </div>
+                    </div>
+                </div>
+                <!-- Permission Letter -->
+                <div class="col-md-4 align-self-center">
+                    <div class="mb-3">
+                        <label for="sd_leaving_certificate" class="form-label">Leaving
+                            Certificate</label>
+                        <div class="d-flex align-items-center">
+                            <img src="{{ isset($studentDetails['data']['documents'][0]['sd_leaving_certificate']) ? asset("storage/".$studentDetails['data']['documents'][0]['sd_leaving_certificate']) : asset('assets/img/no-image.png') }}" class="avatar avatar-sm me-3" alt="user1">
+                            <input type="file" class="form-control" oninput="this.className = 'form-control'" value="{{ isset($studentDetails['data']['documents'][0]['sd_leaving_certificate']) ? $studentDetails['data']['documents'][0]['sd_leaving_certificate'] : '' }}" name="sd_leaving_certificate">
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+        <!-- tabs over -->
+        <div class="mt-3" style="overflow:auto;">
+            <div style="float:right;">
+                <button class="btn btn-secondary" type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                <button class="btn btn-primary" type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+            </div>
+        </div>
+        <!-- Circles which indicates the steps of the form: -->
+        <div style="text-align:center;margin-top:40px;">
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <!-- <span class="step"></span> -->
+        </div>
+        </form>
+    </div>
+    </div>
+    </div>
 
-        <!-- step form -->
+    <!-- step form -->
     </div>
 
     <!-- Modal -->
@@ -542,12 +597,354 @@
             </div>
         </div>
     </div>
+    <!-- Modal -->
+    <div class="modal fade" id="addCurricular" tabindex="-1" aria-labelledby="addCurricularLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Curricular</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form id="addFormCurricular" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="extra_curricular_id" class="form-label">Curricular <span class="text-danger">*</span></label>
+                                <select class="form-select" name="extra_curricular_id" id="extra_curricular_id" required>
+                                    <!-- Options go here -->
+                                    <option selected disabled value="">Select Curricular</option>
+                                    @if(isset($extra_curricular))
+                                    @foreach($extra_curricular as $data)
+                                    <option value="{{ $data['id']}}">{{ $data['extracurricular_name'] }}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                                <input type="hidden" id="student_id_for_curricular" value="{{ $studentDetails['data']['student_id'] }}">
+                                <div class="invalid-feedback">Please select a curricular.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="curricular_start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="curricular_start_date" name="curricular_start_date" required>
+                                <div class="invalid-feedback">Please provide a start date.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="curricular_end_date" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="curricular_end_date" name="curricular_end_date">
+                                <div class="invalid-feedback">Please provide an end date.</div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-6 text-end">
+                            <a class="btn btn-danger" data-bs-dismiss="modal">Cancel</a>
+                        </div>
+                        <div class="col-md-3  text-end">
+                            <a id="saveCurricular" class="btn btn-primary">Add</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="editCurricular" tabindex="-1" aria-labelledby="addCurricularLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Edit Curricular</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <form id="addFormCurricular" class="needs-validation" novalidate>
+                            <div class="mb-3">
+                                <label for="extra_curricular_id" class="form-label">Curricular</label>
+                                <input type="text" disabled class="form-control" id="edit_curricular_name" name="edit_curricular_name" required>
+                                <input type="hidden" id="edit_extra_curricular_id" value="">
+                                <input type="hidden" id="curricular_id" value="">
+                                <input type="hidden" id="edit_student_id_for_curricular" value="{{ $studentDetails['data']['student_id'] }}">
+                                <div class="invalid-feedback">Please select a curricular.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="curricular_start_date" class="form-label">Start Date <span class="text-danger">*</span></label>
+                                <input type="date" class="form-control" id="edit_curricular_start_date" name="curricular_start_date" required>
+                                <div class="invalid-feedback">Please provide a start date.</div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="curricular_end_date" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="edit_curricular_end_date" name="curricular_end_date">
+                                <div class="invalid-feedback">Please provide an end date.</div>
+                            </div>
+                        </form>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3 offset-6 text-end">
+                            <a class="btn btn-danger" data-bs-dismiss="modal">Cancel</a>
+                        </div>
+                        <div class="col-md-3  text-end">
+                            <a id="updateCurricular" class="btn btn-primary">Update</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     @include('components/footer-ui')
 </main>
 
 @endsection
 @section('footer-scripts')
 <script src="{{ asset('assets/js/plugins/cropper.min.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+    $(document).ready(function() {
+
+        // Clear form fields when opening the modal
+        $('#openCurricularModal').click(function() {
+            $('#extra_curricular_id').val('');
+            $('#curricular_start_date').val('');
+            $('#curricular_end_date').val('');
+            $('#extra_curricular_id').removeClass('is-invalid');
+            $('#curricular_start_date').removeClass('is-invalid');
+        });
+
+        let $row = null;
+        let ExtraCurricularId = null;
+        let CurricularId = null;
+        let CurricularName = null;
+        let CurricularStartDate = null;
+        let CurricularEndDate = null;
+        let btn = null;
+
+        $('.curricularEdit').click(function() {
+            var name = '';
+            var extra_curricular_id = $(this).attr('extra_curricular_id')
+            var start_from = $(this).attr('start_from')
+            var end_from = $(this).attr('end_from')
+            var name = $(this).attr('name')
+            var id = $(this).attr('data_id')
+
+            btn = $(this);
+
+            $('#curricular_id').val('');
+            $('#edit_extra_curricular_id').val('');
+            $('#edit_curricular_name').val('');
+            $('#edit_curricular_start_date').val('');
+            $('#edit_curricular_end_date').val('');
+            $('#edit_extra_curricular_id').removeClass('is-invalid');
+            $('#edit_curricular_start_date').removeClass('is-invalid');
+
+            $('#edit_extra_curricular_id').val(extra_curricular_id);
+            $('#edit_curricular_name').val(name);
+            $('#edit_curricular_start_date').val(start_from);
+            $('#edit_curricular_end_date').val(end_from);
+            $('#curricular_id').val(id);
+
+            $row = $(this).closest('tr');
+
+
+        })
+
+        // Handle form submission
+        $('#saveCurricular').click(function() {
+
+            var extra_curricular_id = $('#extra_curricular_id').val();
+            var student_id_for_curricular = $('#student_id_for_curricular').val();
+            var curricular_start_date = $('#curricular_start_date').val();
+            var curricular_end_date = $('#curricular_end_date').val();
+
+            // Reset validation feedback
+            $('#extra_curricular_id').removeClass('is-invalid');
+            $('#curricular_start_date').removeClass('is-invalid');
+
+            var isValid = true;
+
+            // Validate curricular selection
+            if (!extra_curricular_id) {
+                $('#extra_curricular_id').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Validate start date
+            if (!curricular_start_date) {
+                $('#curricular_start_date').addClass('is-invalid');
+                isValid = false;
+            }
+
+            // Proceed if the form is valid
+            if (isValid) {
+                // Example AJAX call
+                $.ajax({
+                    url: '/curricular_create', // Replace with your endpoint URL
+                    type: 'POST',
+                    data: {
+                        _token: "{{ csrf_token() }}",
+                        extra_curricular_id: extra_curricular_id,
+                        student_id_for_curricular: student_id_for_curricular,
+                        curricular_start_date: curricular_start_date,
+                        curricular_end_date: curricular_end_date
+                    },
+                    success: function(response) {
+
+                        if (response.status == 200) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: response.msg,
+                                icon: 'success',
+                            })
+                            $('#addCurricular').modal('hide');
+                            // need to add row 
+                            var rowCount = $('#curricular_table tbody tr').length;
+                            var name = response.data.extra_curriculars.extracurricular_name;
+                            // Append new row to the table
+                            $('#curricular_table tbody').append('<tr><td>' + (rowCount + 1) + '</td><td>' + name + '</td><td>' + curricular_start_date + '</td><td>' + curricular_end_date + '</td>' +
+                                '<td><button type="button" class="btn btn-warning curricularEdit" data-bs-toggle="modal" data-bs-target="#editCurricular" start_from="' + curricular_start_date + '" name="' + name + '" end_from="' + curricular_end_date + '" extra_curricular_id="' + response.data.extra_curricular_id + '" data_id="' + response.data.id + '">Edit</button>' +
+                                '<button type="button" class="btn btn-danger curricularDelete" data-id="' + response.data.id + '">Remove</button></td></tr>');
+                            // 
+                        } else {
+                            Swal.fire({
+                                title: 'Error',
+                                text: response.msg,
+                                icon: 'error',
+                            })
+                        }
+
+
+                    },
+                    error: function(error) {
+                        Swal.fire({
+                            title: 'Error',
+                            text: 'error',
+                            icon: 'error',
+                        })
+                    }
+                });
+            }
+        });
+
+
+        $('#updateCurricular').click(function() {
+
+            var edit_extra_curricular_id = $('#edit_extra_curricular_id').val();
+            var edit_curricular_name = $('#edit_curricular_name').val();
+            var edit_curricular_start_date = $('#edit_curricular_start_date').val();
+            var edit_curricular_end_date = $('#edit_curricular_end_date').val();
+            var edit_student_id_for_curricular = $('#edit_student_id_for_curricular').val();
+            var id = $('#curricular_id').val();
+
+            // Validate start date
+            if (!curricular_start_date) {
+                $('#edit_curricular_start_date').addClass('is-invalid');
+                return;
+            }
+
+
+            $.ajax({
+                url: '/curricular_update', // Replace with your endpoint URL
+                type: 'POST',
+                data: {
+                    _token: "{{ csrf_token() }}",
+                    id: id,
+                    extra_curricular_id: edit_extra_curricular_id,
+                    curricular_start_date: edit_curricular_start_date,
+                    curricular_end_date: edit_curricular_end_date,
+                    student_id_for_curricular: edit_student_id_for_curricular
+                },
+                success: function(response) {
+
+                    if (response.status == 200) {
+                        Swal.fire({
+                            title: 'Success',
+                            text: response.msg,
+                            icon: 'success',
+                        })
+                        $('#editCurricular').modal('hide');
+
+                        $row.find('td:nth-child(2)').text(edit_curricular_name);
+                        $row.find('td:nth-child(3)').text(edit_curricular_start_date);
+                        $row.find('td:nth-child(4)').text(edit_curricular_end_date);
+
+                        btn.attr('start_from', edit_curricular_start_date);
+                        btn.attr('end_from', edit_curricular_end_date);
+
+                    } else {
+                        Swal.fire({
+                            title: 'Error',
+                            text: response.msg,
+                            icon: 'error',
+                        })
+                    }
+                },
+                error: function(error) {
+                    Swal.fire({
+                        title: 'Error',
+                        text: 'error',
+                        icon: 'error',
+                    })
+                }
+
+            });
+
+        });
+
+        $(document).on('click', '.curricularDelete', function() {
+            var id = $(this).attr('data-id');
+            var $row = $(this).closest('tr');
+
+            removeCurricularData(id, function(success) {
+                if (success) {
+                    $row.remove();
+                }
+            });
+        });
+
+        function removeCurricularData(id, callback) {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: 'You won\'t be able to revert this!',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: '/curricular_delete/' + id,
+                        type: 'POST',
+                        data: {
+                            _token: "{{ csrf_token() }}",
+                            id: id
+                        },
+                        success: function(response) {
+                            Swal.fire({
+                                title: 'Success',
+                                text: response.msg,
+                                icon: 'success',
+                            });
+                            callback(true);
+                        },
+                        error: function(error) {
+                            Swal.fire({
+                                title: 'Error',
+                                text: 'Error deleting data',
+                                icon: 'error',
+                            });
+                            callback(false);
+                        }
+                    });
+                } else {
+                    callback(false);
+                }
+            });
+        }
+
+
+    });
+</script>
 <script>
     var cropper;
     var imageInput = document.getElementById('sd_profile_picture');
